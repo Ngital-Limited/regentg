@@ -37,6 +37,14 @@ export const newsItems: NewsItem[] = [
     image: groundBreakingPalaceImg,
   },
   {
+    slug: "ground-breaking-ceremony-regent-jannat",
+    title: "Ground Breaking Ceremony of Regent Jannat",
+    date: "February 15, 2021",
+    excerpt:
+      "Ground Breaking Ceremony of Regent Jannat was held on 15 February 2021 at Plot F-37 & F-39, Block-F, Road- 03, Sector-02, Aftabnagar R/A. The ceremony took place in the presence of the Chairman of Regent Design & Development (RDDL) Barrister Tareque Akbar Khondakar and other guests. RDDL shall build a 9 (G+8) Storied residential building with modern facilities & architectural work.",
+    image: groundBreakingJannatImg,
+  },
+  {
     slug: "regent-grand-heritage-structural-completion",
     title: "Regent Grand Heritage Achieves Structural Completion",
     date: "March 15, 2026",
