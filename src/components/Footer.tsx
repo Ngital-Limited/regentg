@@ -40,7 +40,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-[11px] uppercase tracking-[0.2em] text-primary mb-8 font-medium">Quick Links</h4>
-            <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
               {[
                 { label: "About", path: "/about" },
                 { label: "Projects", path: "/projects" },
