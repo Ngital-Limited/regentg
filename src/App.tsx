@@ -10,6 +10,7 @@ import News from "./pages/News.tsx";
 import Blog from "./pages/Blog.tsx";
 import Career from "./pages/Career.tsx";
 import Contact from "./pages/Contact.tsx";
+import Leaders from "./pages/Leaders.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
