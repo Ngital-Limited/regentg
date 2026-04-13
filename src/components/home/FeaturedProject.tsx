@@ -1,0 +1,120 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight, MapPin, Maximize, BedDouble, Building2, Layers } from "lucide-react";
+
+const FeaturedProject = () => {
+  const project = {
+    name: "Regent Grand Heritage",
+    slug: "regent-grand-heritage",
+    tagline: "Where Luxury Meets Everyday Convenience",
+    location: "Pragati Sarani Road, Shahjadpur, North Badda, Dhaka",
+    size: "1350 - 3280 SFT",
+    bedrooms: "03 - 04",
+    floors: "B+G+9",
+    totalApartments: "90",
+    handover: "December 2028",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-8.jpg",
+    description:
+      "A Premium South-Facing Condominium in the peaceful residential area of Shahjadpur, just a stone's throw from Gulshan-2. Spanning 10 levels of refined living, this Architectural Gem offers a seamless blend of Elegance, Comfort and Modern Functionality.",
+  };
+
+  const specs = [
+    { icon: Maximize, label: "Size", value: project.size },
+    { icon: BedDouble, label: "Bedrooms", value: project.bedrooms },
+    { icon: Building2, label: "Floors", value: project.floors },
+    { icon: Layers, label: "Total Apartments", value: project.totalApartments },
+  ];
+
+  return (
+    <section className="relative w-full min-h-screen flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={project.image}
+          alt={project.name}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
+      </div>
+
+      {/* Content */}
+      <div className="relative container-regent py-24 md:py-32">
+        <div className="max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="text-primary text-[10px] uppercase tracking-[0.3em] font-medium">
+              Featured Project
+            </span>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase mt-4 leading-tight">
+              {project.name}
+            </h2>
+
+            <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide mt-3 italic">
+              {project.tagline}
+            </p>
+
+            <div className="flex items-center gap-2 mt-6 text-muted-foreground">
+              <MapPin className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-sm">{project.location}</span>
+            </div>
+
+            <p className="text-sm text-muted-foreground leading-relaxed mt-6 max-w-xl">
+              {project.description}
+            </p>
+          </motion.div>
+
+          {/* Specs Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-0 mt-10 border border-border/50"
+          >
+            {specs.map((spec) => (
+              <div
+                key={spec.label}
+                className="p-5 border-r border-b border-border/50 last:border-r-0 [&:nth-child(2)]:border-r-0 sm:[&:nth-child(2)]:border-r [&:nth-child(4)]:border-r-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0 sm:[&:nth-child(1)]:border-b-0 sm:[&:nth-child(2)]:border-b-0 bg-background/60 backdrop-blur-sm"
+              >
+                <spec.icon className="w-4 h-4 text-primary mb-2" />
+                <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-1">{spec.label}</p>
+                <p className="text-sm font-medium text-foreground">{spec.value}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mt-10 flex flex-wrap gap-4"
+          >
+            <Link
+              to={`/projects/${project.slug}`}
+              className="group inline-flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all"
+            >
+              Explore Project
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-8 py-3.5 border border-border text-xs uppercase tracking-[0.2em] text-foreground hover:border-primary hover:text-primary transition-all"
+            >
+              View All Projects
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturedProject;
