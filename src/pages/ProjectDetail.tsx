@@ -359,19 +359,12 @@ const ProjectDetail = () => {
             <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT LOCATION</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
-        </div>
-        <div className="w-full h-[450px] relative">
-          <iframe
-            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9!2d90.43!3d23.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s${project.mapQuery}!5e0!3m2!1sen!2sbd`}
-            width="100%"
-            height="100%"
-            style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)" }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title={`${project.name} Location`}
-          />
-        </div>
+        <ProjectMap
+          lat={project.mapCoords.lat}
+          lng={project.mapCoords.lng}
+          projectName={project.name}
+          address={project.glance.find(g => g.icon === "address")?.value}
+        />
       </section>
 
       {/* Project Gallery – Full View */}
