@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
 import mouSigningImg from "@/assets/news/mou-signing-grand-heritage.png";
+import mouMalekImg from "@/assets/news/mou-signing-regent-malek.png";
 
 const newsItems = [
   {
