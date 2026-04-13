@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import SectionHeading from "../SectionHeading";
 
 const StakeholdersSection = () => {
-  const stakeholders = ["Our Clients", "Financial Partners", "Consultants", "Suppliers", "Government Bodies", "Community"];
+  const stakeholders = ["Our Clients", "Our Landowners"];
 
   return (
     <section className="section-padding bg-regent-charcoal">
       <div className="container-regent">
         <SectionHeading subtitle="Together We Build" title="OUR STAKEHOLDERS" />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {stakeholders.map((s, i) => (
             <motion.div
               key={s}
