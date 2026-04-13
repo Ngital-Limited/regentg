@@ -5,17 +5,20 @@ import { Link } from "react-router-dom";
 
 const slides = [
   {
-    title: "CRAFTING LUXURY SPACES",
+    titleLine1: "CRAFTING",
+    titleLine2: "LUXURY SPACES",
     subtitle: "Designing Tomorrow's Landmarks",
     image: "https://images.unsplash.com/photo-1776109377198-7c9e7d632a4a",
   },
   {
-    title: "BUILDING WITH TRUST",
+    titleLine1: "BUILDING",
+    titleLine2: "WITH TRUST",
     subtitle: "Excellence In Every Detail",
     image: "https://images.unsplash.com/photo-1776108450800-524c042a6c40",
   },
   {
-    title: "REDEFINING MODERN LIVING",
+    titleLine1: "REDEFINING",
+    titleLine2: "MODERN LIVING",
     subtitle: "Innovation Meets Timeless Design",
     image: "https://images.unsplash.com/photo-1776110793538-d539dc12285b",
   },
