@@ -70,25 +70,25 @@ const HeroSlider = () => {
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase">
                 {slides[current].title}
               </h1>
-
-              <div className="flex items-center gap-6 pt-4">
-                <Link
-                  to="/projects?status=completed"
-                  className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors group"
-                >
-                  <CircleCheckBig className="w-4 h-4 text-primary" />
-                  <span className="text-xs uppercase tracking-[0.15em]">Completed Projects</span>
-                </Link>
-                <Link
-                  to="/projects?status=ongoing"
-                  className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors group"
-                >
-                  <Loader className="w-4 h-4 text-primary" />
-                  <span className="text-xs uppercase tracking-[0.15em]">Ongoing Projects</span>
-                </Link>
-              </div>
             </motion.div>
           </AnimatePresence>
+
+          <div className="flex items-center gap-6 pt-6">
+            <Link
+              to="/projects?status=completed"
+              className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors group"
+            >
+              <CircleCheckBig className="w-4 h-4 text-primary" />
+              <span className="text-xs uppercase tracking-[0.15em]">Completed Projects</span>
+            </Link>
+            <Link
+              to="/projects?status=ongoing"
+              className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors group"
+            >
+              <Loader className="w-4 h-4 text-primary" />
+              <span className="text-xs uppercase tracking-[0.15em]">Ongoing Projects</span>
+            </Link>
+          </div>
         </div>
       </div>
 
