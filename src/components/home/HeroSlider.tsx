@@ -7,16 +7,19 @@ const slides = [
     title: "REGENT GRAND HERITAGE",
     subtitle: "Luxury Living Redefined",
     description: "Experience the pinnacle of architectural excellence in the heart of Dhaka.",
+    image: "/hero/hero-1.jpg",
   },
   {
     title: "REGENT SAPPHIRE",
     subtitle: "Where Elegance Meets Comfort",
     description: "A masterpiece of modern design crafted for discerning homeowners.",
+    image: "/hero/hero-1.jpg",
   },
   {
     title: "BUILDING TRUST SINCE ESTABLISHMENT",
     subtitle: "400+ Apartments Delivered",
     description: "Regent Design & Development Ltd — your trusted partner in real estate.",
+    image: "/hero/hero-1.jpg",
   },
 ];
 
@@ -42,10 +45,14 @@ const HeroSlider = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2 }}
           className="absolute inset-0"
-          style={{
-            background: `linear-gradient(135deg, hsl(240 51% 15% / 0.9), hsl(194 89% 20% / 0.4), hsl(0 0% 5% / 0.95))`,
-          }}
-        />
+        >
+          <img
+            src={slides[current].image}
+            alt={slides[current].title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </motion.div>
       </AnimatePresence>
 
       {/* Decorative grid */}
