@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Building2, HardHat } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const slides = [
@@ -9,18 +9,24 @@ const slides = [
     subtitle: "Luxury Living Redefined",
     description: "Experience the pinnacle of architectural excellence in the heart of Dhaka.",
     image: "https://images.unsplash.com/photo-1776109377198-7c9e7d632a4a",
+    completedProjects: "15+ Completed Projects",
+    ongoingProjects: "6 Ongoing Projects",
   },
   {
     title: "REGENT SAPPHIRE",
     subtitle: "Where Elegance Meets Comfort",
     description: "A masterpiece of modern design crafted for discerning homeowners.",
     image: "https://images.unsplash.com/photo-1776108450800-524c042a6c40",
+    completedProjects: "15+ Completed Projects",
+    ongoingProjects: "6 Ongoing Projects",
   },
   {
     title: "BUILDING TRUST SINCE ESTABLISHMENT",
     subtitle: "400+ Apartments Delivered",
     description: "Regent Design & Development Ltd — your trusted partner in real estate.",
     image: "https://images.unsplash.com/photo-1776110793538-d539dc12285b",
+    completedProjects: "15+ Completed Projects",
+    ongoingProjects: "6 Ongoing Projects",
   },
 ];
 
@@ -55,7 +61,7 @@ const HeroSlider = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Gradient overlay – bottom-heavy like project detail hero */}
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
 
       {/* Content pinned to bottom */}
@@ -78,12 +84,26 @@ const HeroSlider = () => {
               <p className="text-muted-foreground text-lg md:text-xl mt-4 font-light tracking-wide max-w-2xl">
                 {slides[current].description}
               </p>
-              <div className="flex gap-4 mt-8">
-                <Link to="/projects" className="px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors">
-                  Our Projects
+
+              {/* Project links with icons */}
+              <div className="flex items-center gap-8 mt-8">
+                <Link
+                  to="/projects?status=completed"
+                  className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors group"
+                >
+                  <Building2 className="w-5 h-5 text-primary" />
+                  <span className="text-sm uppercase tracking-[0.15em] group-hover:tracking-[0.2em] transition-all">
+                    {slides[current].completedProjects}
+                  </span>
                 </Link>
-                <Link to="/contact" className="px-8 py-3 border border-border text-foreground text-sm uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors">
-                  Contact Us
+                <Link
+                  to="/projects?status=ongoing"
+                  className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors group"
+                >
+                  <HardHat className="w-5 h-5 text-primary" />
+                  <span className="text-sm uppercase tracking-[0.15em] group-hover:tracking-[0.2em] transition-all">
+                    {slides[current].ongoingProjects}
+                  </span>
                 </Link>
               </div>
             </motion.div>
