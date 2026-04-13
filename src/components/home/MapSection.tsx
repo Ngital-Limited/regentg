@@ -67,8 +67,9 @@ const MapSection = () => {
         </div>
       `;
 
-      const marker = L.marker([project.lat, project.lng], { icon })
+      const marker = L.marker([project.lat, project.lng], { icon, title: project.name })
         .bindPopup(popup)
+        .bindTooltip(project.name, { direction: "top", offset: [0, -28], className: "leaflet-tooltip-custom" })
         .addTo(markersRef.current!);
 
       marker.on("click", () => {
