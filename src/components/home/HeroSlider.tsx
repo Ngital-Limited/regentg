@@ -45,10 +45,14 @@ const HeroSlider = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2 }}
           className="absolute inset-0"
-          style={{
-            background: `linear-gradient(135deg, hsl(240 51% 15% / 0.9), hsl(194 89% 20% / 0.4), hsl(0 0% 5% / 0.95))`,
-          }}
-        />
+        >
+          <img
+            src={slides[current].image}
+            alt={slides[current].title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </motion.div>
       </AnimatePresence>
 
       {/* Decorative grid */}
