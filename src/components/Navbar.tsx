@@ -39,12 +39,12 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
           menuOpen
-            ? "bg-transparent"
+            ? "z-[60] bg-transparent"
             : scrolled
-              ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
-              : "bg-transparent"
+              ? "z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
+              : "z-50 bg-transparent"
         }`}
       >
         <div className="container-regent flex items-center justify-between h-20">
