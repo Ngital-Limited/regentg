@@ -26,7 +26,7 @@ const FeaturedProject = () => {
   ];
 
   return (
-    <section className="relative w-full min-h-screen flex items-center overflow-hidden">
+    <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -34,12 +34,12 @@ const FeaturedProject = () => {
           alt={project.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 md:via-background/85 to-background/60 md:to-background/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
       </div>
 
       {/* Content */}
-      <div className="relative container-regent py-24 md:py-32">
+      <div className="relative container-regent py-20 md:py-32">
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -51,11 +51,11 @@ const FeaturedProject = () => {
               Featured Project
             </span>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase mt-4 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase mt-4 leading-tight">
               {project.name}
             </h2>
 
-            <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide mt-3 italic">
+            <p className="text-sm md:text-lg lg:text-xl text-muted-foreground font-light tracking-wide mt-3 italic">
               {project.tagline}
             </p>
 
@@ -75,12 +75,12 @@ const FeaturedProject = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-0 mt-10 border border-border/50"
+            className="grid grid-cols-2 gap-0 mt-8 md:mt-10 border border-border/50"
           >
-            {specs.map((spec) => (
+            {specs.map((spec, idx) => (
               <div
                 key={spec.label}
-                className="p-5 border-r border-b border-border/50 last:border-r-0 [&:nth-child(2)]:border-r-0 sm:[&:nth-child(2)]:border-r [&:nth-child(4)]:border-r-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0 sm:[&:nth-child(1)]:border-b-0 sm:[&:nth-child(2)]:border-b-0 bg-background/60 backdrop-blur-sm"
+                className={`p-4 md:p-5 border-border/50 bg-background/60 backdrop-blur-sm ${idx % 2 === 0 ? 'border-r' : ''} ${idx < 2 ? 'border-b' : ''}`}
               >
                 <spec.icon className="w-4 h-4 text-primary mb-2" />
                 <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-1">{spec.label}</p>
@@ -95,18 +95,18 @@ const FeaturedProject = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 md:gap-4"
           >
             <Link
               to={`/projects/${project.slug}`}
-              className="group inline-flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all"
+              className="group inline-flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all"
             >
               Explore Project
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-8 py-3.5 border border-border text-xs uppercase tracking-[0.2em] text-foreground hover:border-primary hover:text-primary transition-all"
+              className="inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-3.5 border border-border text-xs uppercase tracking-[0.2em] text-foreground hover:border-primary hover:text-primary transition-all"
             >
               View All Projects
             </Link>

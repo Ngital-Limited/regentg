@@ -99,12 +99,12 @@ const MapSection = () => {
           description={`Explore our ${projectLocations.length} projects across prime areas of Dhaka.`}
         />
 
-        <div className="flex justify-center gap-3 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
           {(["all", "ongoing", "completed"] as const).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-5 py-2 text-[10px] uppercase tracking-[0.2em] border transition-all ${
+              className={`px-3 md:px-5 py-2 text-[9px] md:text-[10px] uppercase tracking-[0.15em] md:tracking-[0.2em] border transition-all ${
                 filter === f
                   ? "border-primary bg-primary/10 text-primary"
                   : "border-border text-muted-foreground hover:border-primary/40"
@@ -118,17 +118,17 @@ const MapSection = () => {
         </div>
       </div>
 
-      <div className="w-full h-[550px] relative border-t border-b border-border">
+      <div className="w-full h-[350px] md:h-[550px] relative border-t border-b border-border">
         <div ref={containerRef} className="h-full w-full z-10" />
-        <div className="absolute bottom-6 right-6 z-20 bg-background/90 backdrop-blur-sm border border-border px-4 py-3 flex flex-col gap-2">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Legend</p>
+        <div className="absolute bottom-3 md:bottom-6 right-3 md:right-6 z-20 bg-background/90 backdrop-blur-sm border border-border px-3 md:px-4 py-2 md:py-3 flex flex-col gap-1.5 md:gap-2">
+          <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-0.5 md:mb-1">Legend</p>
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "hsl(194, 89%, 57%)" }} />
-            <span className="text-[11px] text-foreground">Ongoing</span>
+            <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full" style={{ backgroundColor: "hsl(194, 89%, 57%)" }} />
+            <span className="text-[10px] md:text-[11px] text-foreground">Ongoing</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "hsl(142, 71%, 45%)" }} />
-            <span className="text-[11px] text-foreground">Completed</span>
+            <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full" style={{ backgroundColor: "hsl(142, 71%, 45%)" }} />
+            <span className="text-[10px] md:text-[11px] text-foreground">Completed</span>
           </div>
         </div>
       </div>
