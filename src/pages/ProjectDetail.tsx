@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BrochureDownloadDialog from "@/components/BrochureDownloadDialog";
 import { motion } from "framer-motion";
 import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock } from "lucide-react";
@@ -106,6 +107,7 @@ const ProjectDetail = () => {
   const { slug } = useParams();
   const project = projectsData[slug || ""];
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [brochureOpen, setBrochureOpen] = useState(false);
 
   if (!project) {
     return (
@@ -324,13 +326,23 @@ const ProjectDetail = () => {
               <Download className="w-5 h-5 text-primary" />
               <span className="text-sm uppercase tracking-[0.15em] text-foreground font-light">Project Brochure</span>
             </div>
-            <button className="px-6 py-2 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center gap-2">
+            <button
+              onClick={() => setBrochureOpen(true)}
+              className="px-6 py-2 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+            >
               <Download className="w-3.5 h-3.5" />
               Download
             </button>
           </motion.div>
         </div>
       </section>
+
+      <BrochureDownloadDialog
+        open={brochureOpen}
+        onOpenChange={setBrochureOpen}
+        projectName={project.name}
+        brochureUrl={project.brochureUrl}
+      />
 
       {/* Dynamic Project Location */}
       <section className="section-padding bg-card/50">
