@@ -15,6 +15,14 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    slug: "rehab-fair-2022-co-sponsored-by-regent",
+    title: "REHAB FAIR 2022 – Co-Sponsored by REGENT",
+    date: "December 21, 2022",
+    excerpt:
+      "The country's largest event in the housing sector REHAB FAIR 2022 started from 21 Dec 2022 till 25 December 2022 at BICC, Dhaka & REGENT contributed as the co-sponsor of this annual programme. The 5-Day long winter REHAB FAIR 2022 finished with a huge response from visitors and buyers during the flagship real estate sector event. With the current REHAB membership of amongst 1191 real-estate developers a total of 180 housing and land developers, 16 buildings materials companies and 13 financial institutions showcased their products including flats, plots, housing loans and construction materials in the fair.",
+    image: rehabFair2022Img,
+  },
+  {
     slug: "mou-signing-ceremony-regent-grand-heritage",
     title: "MOU Signing Ceremony of Regent Grand Heritage",
     date: "September 22, 2021",
