@@ -326,13 +326,23 @@ const ProjectDetail = () => {
               <Download className="w-5 h-5 text-primary" />
               <span className="text-sm uppercase tracking-[0.15em] text-foreground font-light">Project Brochure</span>
             </div>
-            <button className="px-6 py-2 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center gap-2">
+            <button
+              onClick={() => setBrochureOpen(true)}
+              className="px-6 py-2 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+            >
               <Download className="w-3.5 h-3.5" />
               Download
             </button>
           </motion.div>
         </div>
       </section>
+
+      <BrochureDownloadDialog
+        open={brochureOpen}
+        onOpenChange={setBrochureOpen}
+        projectName={project.name}
+        brochureUrl={project.brochureUrl}
+      />
 
       {/* Dynamic Project Location */}
       <section className="section-padding bg-card/50">
