@@ -7,8 +7,41 @@ import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock } from "lucide-react";
 import { useState } from "react";
 
-// Sample project data – in production this would come from a DB
-const projectsData: Record<string, {
+const defaultFeatures = [
+  "Earthquake-resistant RCC structure designed by BUET professor",
+  "High-speed passenger elevator with generator backup",
+  "24/7 security with CCTV surveillance",
+  "Standby generator for common areas",
+  "Intercom & video door phone system",
+  "Landscaped rooftop garden with community space",
+  "Underground car parking facility",
+  "Fire detection & suppression system",
+  "Premium bathroom fittings & sanitary ware",
+  "Imported tiles & high-quality finishes",
+];
+
+const defaultProgress = [
+  { label: "Foundation", value: 100 },
+  { label: "Structure", value: 85 },
+  { label: "Brickwork", value: 60 },
+  { label: "Plumbing & Electrical", value: 40 },
+  { label: "Finishing", value: 15 },
+  { label: "Overall Progress", value: 55 },
+];
+
+const defaultGlance = [
+  { icon: "address", label: "Address", value: "Block-M, Sector-03, Aftabnagar R/A, Dhaka" },
+  { icon: "size", label: "Size", value: "2080 SFT" },
+  { icon: "bedroom", label: "Bedroom", value: "04" },
+  { icon: "facing", label: "Project Facing", value: "South" },
+  { icon: "floor", label: "Floor", value: "G+6" },
+  { icon: "apartments", label: "Apartments", value: "1" },
+  { icon: "total", label: "Total Apartments", value: "6" },
+  { icon: "designer", label: "Structural Designer", value: "Prof. Shafiul Bari (BUET)" },
+  { icon: "handover", label: "Handover Date", value: "December 2026" },
+];
+
+interface ProjectData {
   name: string;
   tagline: string;
   status: "ongoing" | "completed";
@@ -19,47 +52,39 @@ const projectsData: Record<string, {
   gallery: string[];
   mapQuery: string;
   brochureUrl?: string;
-}> = {
-  "regent-grand-heritage": {
-    name: "Regent Grand Heritage",
-    tagline: "A Legacy of Luxury Living",
-    status: "ongoing",
-    overview:
-      "Regent Grand Heritage is a prestigious residential project located in the heart of Aftabnagar. Designed with meticulous attention to detail, this development offers an unparalleled living experience combining modern architecture with timeless elegance. Every aspect of the project has been carefully planned to provide residents with comfort, convenience, and a sense of belonging.",
-    features: [
-      "Earthquake-resistant RCC structure designed by BUET professor",
-      "High-speed passenger elevator with generator backup",
-      "24/7 security with CCTV surveillance",
-      "Standby generator for common areas",
-      "Intercom & video door phone system",
-      "Landscaped rooftop garden with community space",
-      "Underground car parking facility",
-      "Fire detection & suppression system",
-      "Premium bathroom fittings & sanitary ware",
-      "Imported tiles & high-quality finishes",
-    ],
-    progress: [
-      { label: "Foundation", value: 100 },
-      { label: "Structure", value: 85 },
-      { label: "Brickwork", value: 60 },
-      { label: "Plumbing & Electrical", value: 40 },
-      { label: "Finishing", value: 15 },
-      { label: "Overall Progress", value: 55 },
-    ],
-    glance: [
-      { icon: "address", label: "Address", value: "Block-M, Sector-03, Aftabnagar R/A, Dhaka" },
-      { icon: "size", label: "Size", value: "2080 SFT" },
-      { icon: "bedroom", label: "Bedroom", value: "04" },
-      { icon: "facing", label: "Project Facing", value: "South" },
-      { icon: "floor", label: "Floor", value: "G+6" },
-      { icon: "apartments", label: "Apartments", value: "1" },
-      { icon: "total", label: "Total Apartments", value: "6" },
-      { icon: "designer", label: "Structural Designer", value: "Prof. Shafiul Bari (BUET)" },
-      { icon: "handover", label: "Handover Date", value: "December 2026" },
-    ],
-    gallery: [],
-    mapQuery: "Block-M,+Sector-03,+Aftabnagar,+Dhaka",
-  },
+}
+
+const makeProject = (name: string, status: "ongoing" | "completed"): ProjectData => ({
+  name,
+  tagline: "A Legacy of Luxury Living",
+  status,
+  overview: `${name} is a prestigious residential project by Regent Design & Development Ltd. Designed with meticulous attention to detail, this development offers an unparalleled living experience combining modern architecture with timeless elegance. Every aspect of the project has been carefully planned to provide residents with comfort, convenience, and a sense of belonging.`,
+  features: defaultFeatures,
+  progress: defaultProgress,
+  glance: defaultGlance,
+  gallery: [],
+  mapQuery: "Aftabnagar,+Dhaka",
+});
+
+const projectsData: Record<string, ProjectData> = {
+  // Ongoing
+  "regent-grand-heritage": makeProject("Regent Grand Heritage", "ongoing"),
+  "regent-hasina": makeProject("Regent Hasina", "ongoing"),
+  "regent-sapphire": makeProject("Regent Sapphire", "ongoing"),
+  "regent-spring-dale": makeProject("Regent Spring Dale", "ongoing"),
+  "regent-tara": makeProject("Regent Tara", "ongoing"),
+  "regent-palace": makeProject("Regent Palace", "ongoing"),
+  "regent-spring-field": makeProject("Regent Spring Field", "ongoing"),
+  "regent-rizia": makeProject("Regent Rizia", "ongoing"),
+  // Completed
+  "regent-jannat": makeProject("Regent Jannat", "completed"),
+  "regent-south-pearl": makeProject("Regent South Pearl", "completed"),
+  "regent-east-castle": makeProject("Regent East Castle", "completed"),
+  "regent-south-lake": makeProject("Regent South Lake", "completed"),
+  "regent-east-queen": makeProject("Regent East Queen", "completed"),
+  "regent-sufia": makeProject("Regent Sufia", "completed"),
+  "regent-parbata-grand": makeProject("Regent Parbata Grand", "completed"),
+  "regent-islam": makeProject("Regent Islam", "completed"),
 };
 
 const getGlanceIcon = (icon: string) => {
@@ -79,8 +104,26 @@ const getGlanceIcon = (icon: string) => {
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const project = projectsData[slug || ""] || projectsData["regent-grand-heritage"];
+  const project = projectsData[slug || ""];
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-light text-foreground tracking-wide">Project Not Found</h1>
+            <p className="text-muted-foreground mt-4">The project you're looking for doesn't exist.</p>
+            <Link to="/projects" className="inline-block mt-8 px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em]">
+              View All Projects
+            </Link>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
