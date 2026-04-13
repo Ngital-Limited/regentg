@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
@@ -122,26 +123,39 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership placeholder */}
+      {/* Leadership Preview */}
       <section className="section-padding bg-background">
         <div className="container-regent">
-          <SectionHeading subtitle="Leadership" title="OUR TEAM" description="Guided by experienced leaders who share a passion for excellence." />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {["Chairman", "Managing Director", "Director"].map((role, i) => (
+          <SectionHeading subtitle="Leadership" title="OUR LEADERS" description="Visionary leadership driving Regent Group's legacy of trust and excellence." />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            {[
+              { name: "Mr. Golam Akbar Khondakar", role: "Founder Chairman", image: "/leaders/golam-akbar-khondakar.webp" },
+              { name: "Barrister Tareque Akbar Khondakar", role: "Managing Director", image: "/leaders/tareque-akbar-khondakar.webp" },
+              { name: "Galib Akbar Khondakar", role: "Deputy Managing Director", image: "/leaders/galib-akbar-khondakar.webp" },
+            ].map((leader, i) => (
               <motion.div
-                key={role}
+                key={leader.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="aspect-[3/4] bg-card border border-border mb-6 flex items-center justify-center">
-                  <span className="text-muted-foreground text-xs uppercase tracking-[0.2em]">Photo</span>
+                <div className="aspect-square overflow-hidden border border-border mb-6">
+                  <img src={leader.image} alt={leader.name} className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs uppercase tracking-[0.2em] text-primary">{role}</p>
+                <h3 className="text-sm font-medium text-foreground mb-1">{leader.name}</h3>
+                <p className="text-xs uppercase tracking-[0.2em] text-primary">{leader.role}</p>
               </motion.div>
             ))}
+          </div>
+          <div className="text-center">
+            <Link
+              to="/leaders"
+              className="inline-block text-xs uppercase tracking-[0.2em] text-primary border border-primary/30 px-8 py-3 hover:bg-primary/10 transition-colors duration-300"
+            >
+              View Full Profiles →
+            </Link>
           </div>
         </div>
       </section>
