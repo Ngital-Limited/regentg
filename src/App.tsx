@@ -14,6 +14,8 @@ import Leaders from "./pages/Leaders.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
 import NewsDetail from "./pages/NewsDetail.tsx";
+import OurClients from "./pages/OurClients.tsx";
+import OurLandowners from "./pages/OurLandowners.tsx";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/leaders" element={<Leaders />} />
+          <Route path="/our-clients" element={<OurClients />} />
+          <Route path="/our-landowners" element={<OurLandowners />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

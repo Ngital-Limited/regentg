@@ -8,6 +8,8 @@ const navLinks = [
   { label: "About", path: "/about" },
   { label: "Our Leaders", path: "/leaders" },
   { label: "Projects", path: "/projects" },
+  { label: "Our Clients", path: "/our-clients" },
+  { label: "Our Landowners", path: "/our-landowners" },
   { label: "News", path: "/news" },
   { label: "Blog", path: "/blog" },
   { label: "Career", path: "/career" },
