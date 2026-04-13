@@ -29,7 +29,7 @@ const NewsDetail = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 px-4 bg-regent-charcoal">
+      <section className="relative pt-28 md:pt-32 pb-12 md:pb-16 px-4 bg-regent-charcoal">
         <div className="container-regent max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <Link
@@ -42,7 +42,7 @@ const NewsDetail = () => {
             <span className="block text-primary text-[10px] uppercase tracking-[0.3em] mb-4">
               {article.date}
             </span>
-            <h1 className="text-3xl md:text-5xl font-light tracking-wide text-foreground">
+            <h1 className="text-2xl md:text-5xl font-light tracking-wide text-foreground">
               {article.title}
             </h1>
             <div className="w-16 h-[2px] bg-primary mt-6" />

@@ -8,11 +8,11 @@ const News = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <section className="pt-32 pb-20 px-4 bg-regent-charcoal">
+      <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Latest Updates</span>
-            <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">NEWS</h1>
+            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">NEWS</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
         </div>

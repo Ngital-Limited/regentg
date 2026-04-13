@@ -79,7 +79,7 @@ const BlogDetail = () => {
             </div>
 
             {/* Title */}
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-light tracking-wide text-foreground leading-tight mb-10">
+            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-light tracking-wide text-foreground leading-tight mb-8 md:mb-10">
               {post.title}
             </h1>
 
