@@ -226,11 +226,11 @@ const Projects = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 px-4 bg-regent-charcoal">
+      <section className="pt-28 md:pt-32 pb-12 md:pb-16 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Our Portfolio</span>
-            <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">PROJECTS</h1>
+            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">PROJECTS</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-4 text-sm max-w-lg mx-auto">
               Explore {allProjects.length} projects across Dhaka — ongoing, completed & upcoming
@@ -241,8 +241,8 @@ const Projects = () => {
 
       {/* Filters */}
       <section className="sticky top-[72px] z-30 bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="container-regent py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="container-regent py-4 md:py-6">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-8">
             {[
               { label: "Type", value: typeFilter, setter: setTypeFilter, options: typeOptions },
               { label: "Status", value: statusFilter, setter: setStatusFilter, options: statusOptions },
