@@ -55,23 +55,25 @@ const HeroSlider = () => {
 
       <div className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-28 px-4">
         <div className="container-regent">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.7 }}
-              className="space-y-3"
-            >
-              <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium">
-                {slides[current].subtitle}
-              </span>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase">
-                {slides[current].title}
-              </h1>
-            </motion.div>
-          </AnimatePresence>
+          <div className="min-h-[120px] md:min-h-[140px] relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.7 }}
+                className="absolute inset-x-0 bottom-0 space-y-3"
+              >
+                <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium block">
+                  {slides[current].subtitle}
+                </span>
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase">
+                  {slides[current].title}
+                </h1>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           <div className="flex items-center gap-6 pt-6">
             <Link
