@@ -52,7 +52,7 @@ interface ProjectData {
   progress: { label: string; value: number }[];
   glance: { icon: string; label: string; value: string }[];
   gallery: string[];
-  mapQuery: string;
+  mapCoords: { lat: number; lng: number };
   brochureUrl?: string;
 }
 
