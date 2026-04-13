@@ -46,8 +46,9 @@ const Leaders = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-4 bg-regent-charcoal">
-        <div className="container-regent text-center">
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-regent-charcoal via-background to-background" />
+        <div className="container-regent text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Leadership</span>
             <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">
@@ -62,52 +63,99 @@ const Leaders = () => {
       </section>
 
       {/* Leaders */}
-      <section className="bg-background">
+      <section className="pb-20">
         {leaders.map((leader, i) => (
-          <div
-            key={leader.name}
-            className={`section-padding ${i % 2 === 1 ? "bg-regent-charcoal" : "bg-background"}`}
-          >
+          <div key={leader.name} className="py-16 md:py-24">
             <div className="container-regent">
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className={`flex flex-col ${i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} gap-10 md:gap-16 items-start`}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className={`flex flex-col ${i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} gap-12 md:gap-20 items-start`}
               >
                 {/* Image */}
-                <div className="w-full md:w-[320px] flex-shrink-0">
-                  <div className="aspect-square overflow-hidden border border-border">
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="w-full h-full object-cover"
-                    />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: 0.15 }}
+                  className="w-full md:w-[380px] flex-shrink-0"
+                >
+                  <div className="relative group">
+                    {/* Decorative accent frame */}
+                    <div className="absolute -inset-3 border border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-primary/60" />
+                    <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-primary/60" />
+                    
+                    <div className="aspect-[3/4] overflow-hidden bg-muted">
+                      <img
+                        src={leader.image}
+                        alt={leader.name}
+                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                      />
+                    </div>
+
+                    {/* Name plate overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent p-6 pt-16">
+                      <p className="text-primary text-[10px] uppercase tracking-[0.3em] font-medium">
+                        {leader.title}
+                      </p>
+                      <p className="text-muted-foreground text-[10px] uppercase tracking-[0.2em] mt-0.5">
+                        {leader.org}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Bio */}
                 <div className="flex-1">
-                  <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground mb-2">
-                    {leader.name}
-                  </h2>
-                  <p className="text-primary text-xs uppercase tracking-[0.2em] mb-1 font-medium">
-                    {leader.title}
-                  </p>
-                  <p className="text-muted-foreground text-xs uppercase tracking-[0.15em] mb-8">
-                    {leader.org}
-                  </p>
-                  <div className="space-y-4">
-                    {leader.bio.map((para, j) => (
-                      <p key={j} className="text-muted-foreground text-sm leading-relaxed">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, x: i % 2 === 1 ? -30 : 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-[1px] bg-primary" />
+                      <span className="text-primary text-[10px] uppercase tracking-[0.3em] font-medium">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    <h2 className="text-3xl md:text-4xl font-light tracking-wide text-foreground mb-8 leading-tight">
+                      {leader.name}
+                    </h2>
+
+                    <div className="space-y-5">
+                      {leader.bio.map((para, j) => (
+                        <motion.p
+                          key={j}
+                          initial={{ opacity: 0, y: 15 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: 0.4 + j * 0.1 }}
+                          className="text-muted-foreground text-sm leading-[1.8] tracking-wide"
+                        >
+                          {para}
+                        </motion.p>
+                      ))}
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
+
+            {/* Divider between leaders */}
+            {i < leaders.length - 1 && (
+              <div className="container-regent mt-16 md:mt-24">
+                <div className="flex items-center gap-4">
+                  <div className="flex-1 h-[1px] bg-border/50" />
+                  <div className="w-2 h-2 rotate-45 border border-primary/40" />
+                  <div className="flex-1 h-[1px] bg-border/50" />
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </section>
