@@ -1,6 +1,7 @@
 import mouSigningImg from "@/assets/news/mou-signing-grand-heritage.png";
 import mouMalekImg from "@/assets/news/mou-signing-regent-malek.png";
 import groundBreakingPalaceImg from "@/assets/news/ground-breaking-regent-palace.png";
+import groundBreakingJannatImg from "@/assets/news/ground-breaking-regent-jannat.png";
 
 export interface NewsItem {
   slug: string;
@@ -34,6 +35,14 @@ export const newsItems: NewsItem[] = [
     excerpt:
       "Piling work inauguration of Regent Palace was held on 06 June 2021 at Road no.17, Baitul Aman Housing Society, Adabor, Mohammadpur. Chairman of Regent Design & Development, Barrister Tareque Akbar Khondakar inaugurated the ceremony along with the presence of the landowners and other distinguished guests.",
     image: groundBreakingPalaceImg,
+  },
+  {
+    slug: "ground-breaking-ceremony-regent-jannat",
+    title: "Ground Breaking Ceremony of Regent Jannat",
+    date: "February 15, 2021",
+    excerpt:
+      "Ground Breaking Ceremony of Regent Jannat was held on 15 February 2021 at Plot F-37 & F-39, Block-F, Road- 03, Sector-02, Aftabnagar R/A. The ceremony took place in the presence of the Chairman of Regent Design & Development (RDDL) Barrister Tareque Akbar Khondakar and other guests. RDDL shall build a 9 (G+8) Storied residential building with modern facilities & architectural work.",
+    image: groundBreakingJannatImg,
   },
   {
     slug: "regent-grand-heritage-structural-completion",
