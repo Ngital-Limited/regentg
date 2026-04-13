@@ -70,12 +70,14 @@ const Footer = () => {
                 Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani, Dhaka-1213, Bangladesh.
               </p>
             </div>
-            <div className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-primary shrink-0" />
-              <a href="tel:01810009333" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <a href="tel:01810009333" className="inline-flex items-center gap-3 mt-2 group">
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <Phone className="w-5 h-5 text-primary" />
+              </span>
+              <span className="text-lg font-medium text-foreground tracking-wide group-hover:text-primary transition-colors">
                 0181 000 9333
-              </a>
-            </div>
+              </span>
+            </a>
           </div>
         </div>
       </div>
