@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BrochureDownloadDialog from "@/components/BrochureDownloadDialog";
+import ProjectMap from "@/components/ProjectMap";
 import { motion } from "framer-motion";
 import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock } from "lucide-react";
