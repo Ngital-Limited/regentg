@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 
 const slides = [
   {
-    title: "REGENT GRAND HERITAGE",
-    subtitle: "Luxury Living Redefined",
+    title: "CRAFTING LUXURY SPACES",
+    subtitle: "Designing Tomorrow's Landmarks",
     image: "https://images.unsplash.com/photo-1776109377198-7c9e7d632a4a",
   },
   {
-    title: "REGENT SAPPHIRE",
-    subtitle: "Where Elegance Meets Comfort",
+    title: "BUILDING WITH TRUST",
+    subtitle: "Excellence In Every Detail",
     image: "https://images.unsplash.com/photo-1776108450800-524c042a6c40",
   },
   {
-    title: "BUILDING TRUST",
-    subtitle: "Your Trusted Partner in Real Estate",
+    title: "REDEFINING MODERN LIVING",
+    subtitle: "Innovation Meets Timeless Design",
     image: "https://images.unsplash.com/photo-1776110793538-d539dc12285b",
   },
 ];
