@@ -115,7 +115,7 @@ const Navbar = () => {
                     <Link
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`block text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.2em] font-extralight py-2 transition-all duration-300 text-center hover:text-primary ${
+                      className={`story-link block text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.2em] font-extralight py-2 transition-all duration-300 text-center hover:text-primary hover:tracking-[0.35em] hover:scale-105 ${
                         location.pathname === link.path
                           ? "text-primary"
                           : "text-foreground/60"
@@ -136,9 +136,9 @@ const Navbar = () => {
               >
                 <a
                   href="tel:01810009333"
-                  className="inline-flex items-center gap-2 text-xs text-foreground/40 hover:text-primary transition-colors tracking-[0.15em]"
+                  className="inline-flex items-center gap-3 text-base sm:text-lg text-foreground/70 hover:text-primary transition-all duration-300 tracking-[0.15em] font-light"
                 >
-                  <Phone className="w-3 h-3" />
+                  <Phone className="w-5 h-5" />
                   0181 000 9333
                 </a>
               </motion.div>
