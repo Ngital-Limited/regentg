@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Youtube, Linkedin, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -43,6 +43,25 @@ const Footer = () => {
               Regent Design & Development Ltd is a leading real estate company in Bangladesh,
               building trust and excellence since establishment.
             </p>
+            <div className="flex items-center gap-3 pt-1">
+              {[
+                { icon: Facebook, href: "https://www.facebook.com/regentgroupbd", label: "Facebook" },
+                { icon: Youtube, href: "https://www.youtube.com/@RegentGroupBD", label: "YouTube" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/regentgroupbd", label: "LinkedIn" },
+                { icon: Instagram, href: "https://www.instagram.com/regentgroup.bd", label: "Instagram" },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  className="w-9 h-9 flex items-center justify-center border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/40 transition-all"
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
