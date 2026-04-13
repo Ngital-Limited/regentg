@@ -311,25 +311,22 @@ const ProjectDetail = () => {
       </section>
 
       {/* Download Brochure */}
-      <section className="py-20 bg-background">
+      <section className="py-8 bg-background">
         <div className="container-regent">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center border border-border/50 p-12 md:p-16 relative overflow-hidden"
+            transition={{ duration: 0.4 }}
+            className="flex items-center justify-between border border-border/50 px-6 py-4 max-w-2xl mx-auto"
           >
-            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/30" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/30" />
-            <Download className="w-10 h-10 text-primary mx-auto mb-6" />
-            <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground">DOWNLOAD BROCHURE</h2>
-            <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-              Get detailed information about floor plans, specifications, and pricing in our comprehensive project brochure.
-            </p>
-            <button className="mt-8 px-10 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center gap-2">
-              <Download className="w-4 h-4" />
-              Download PDF
+            <div className="flex items-center gap-3">
+              <Download className="w-5 h-5 text-primary" />
+              <span className="text-sm uppercase tracking-[0.15em] text-foreground font-light">Project Brochure</span>
+            </div>
+            <button className="px-6 py-2 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center gap-2">
+              <Download className="w-3.5 h-3.5" />
+              Download
             </button>
           </motion.div>
         </div>
