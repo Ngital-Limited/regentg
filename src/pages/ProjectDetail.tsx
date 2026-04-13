@@ -65,7 +65,7 @@ const makeProject = (name: string, status: "ongoing" | "completed"): ProjectData
   progress: defaultProgress,
   glance: defaultGlance,
   gallery: [],
-  mapQuery: "Aftabnagar,+Dhaka",
+  mapCoords: { lat: 23.7697, lng: 90.4312 },
 });
 
 const projectsData: Record<string, ProjectData> = {
