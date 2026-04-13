@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
 import mouSigningImg from "@/assets/news/mou-signing-grand-heritage.png";
+import mouMalekImg from "@/assets/news/mou-signing-regent-malek.png";
 
 const newsItems = [
   {
@@ -11,6 +12,13 @@ const newsItems = [
     excerpt:
       "A Memorandum of Understanding (MOU) was signed on 22 September 2021 at the head office of Regent Group in Kemal Ataturk Avenue, Banani C/A between Regent Design & Development Ltd (RDDL) and Joint Landowners of 24 Katha land of North Badda (Beside Bti Premier Plaza & Opposite to Suvastu Nazar Valley Market). Chairman of Regent Design & Development Ltd, Barrister Tareque Akbar Khondakar signed the MOU on behalf of the company. RDDL will build a luxurious condominium project with facilities such as Double Height Entry, Swimming Pool, Shops, Kids Play Zone, BBQ Zone, Walkways, Mosques, Landscaping works, Waterfalls & other facilities.",
     image: mouSigningImg,
+  },
+  {
+    title: "MOU Signing Ceremony of Regent Malek",
+    date: "September 14, 2021",
+    excerpt:
+      "A Memorandum of Understanding (MOU) was signed on 14 September 2021 at the head office of Regent Group in Kemal Ataturk Avenue, Banani C/A between Regent Design & Development Ltd (RDDL) and Landowners of 7 Katha land of West Agargaon. Chairman of Regent Design & Development Ltd, Barrister Tareque Akbar Khondakar signed the MOU on behalf of the company. RDDL will build a 10-Storied (B+G+9) luxurious residential building with facilities such as Mosques, Kids Play Zone, Landscaping works & other facilities.",
+    image: mouMalekImg,
   },
   {
     title: "Regent Grand Heritage Achieves Structural Completion",
