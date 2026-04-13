@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import HeroSlider from "@/components/home/HeroSlider";
 import ProjectCarousel from "@/components/home/ProjectCarousel";
+import FeaturedProject from "@/components/home/FeaturedProject";
 import AboutSection from "@/components/home/AboutSection";
 import WhyRegent from "@/components/home/WhyRegent";
 import AwardsSection from "@/components/home/AwardsSection";
@@ -15,6 +16,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSlider />
+      <FeaturedProject />
       <ProjectCarousel />
       <AboutSection />
       <WhyRegent />
