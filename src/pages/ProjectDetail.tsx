@@ -359,6 +359,7 @@ const ProjectDetail = () => {
             <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT LOCATION</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
+        </div>
         <ProjectMap
           lat={project.mapCoords.lat}
           lng={project.mapCoords.lng}
