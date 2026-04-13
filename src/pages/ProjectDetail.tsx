@@ -490,22 +490,22 @@ const ProjectDetail = () => {
               <span className="text-primary text-xs uppercase tracking-[0.3em] font-medium">
                 {project.status === "ongoing" ? "Ongoing Project" : "Completed Project"}
               </span>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-wide mt-4 text-foreground uppercase">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-light tracking-wide mt-4 text-foreground uppercase">
                 {project.name}
               </h1>
-              <p className="text-muted-foreground text-lg md:text-xl mt-4 font-light tracking-wide">
+              <p className="text-muted-foreground text-sm md:text-lg lg:text-xl mt-3 md:mt-4 font-light tracking-wide">
                 {project.tagline}
               </p>
-              <div className="flex gap-4 mt-8">
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 md:mt-8">
                 <a
                   href="#schedule"
-                  className="px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors"
+                  className="px-6 md:px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors text-center"
                 >
                   Schedule Visit
                 </a>
                 <a
                   href="#overview"
-                  className="px-8 py-3 border border-border text-foreground text-sm uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors"
+                  className="px-6 md:px-8 py-3 border border-border text-foreground text-sm uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors text-center"
                 >
                   Learn More
                 </a>
@@ -534,7 +534,7 @@ const ProjectDetail = () => {
             className="text-center"
           >
             <span className="text-primary text-xs uppercase tracking-[0.3em]">About the Project</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT OVERVIEW</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT OVERVIEW</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-10 text-base md:text-lg leading-relaxed">
               {project.overview}
@@ -554,7 +554,7 @@ const ProjectDetail = () => {
             className="text-center mb-16"
           >
             <span className="text-primary text-xs uppercase tracking-[0.3em]">What We Offer</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT FEATURES</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT FEATURES</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
 
@@ -587,7 +587,7 @@ const ProjectDetail = () => {
             className="text-center mb-16"
           >
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Construction Update</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT PROGRESS</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT PROGRESS</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
 
@@ -625,7 +625,7 @@ const ProjectDetail = () => {
             className="text-center mb-16"
           >
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Quick Info</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">AT A GLANCE</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mt-3 text-foreground">AT A GLANCE</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
 
@@ -660,15 +660,15 @@ const ProjectDetail = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="flex items-center justify-between border border-border/50 px-6 py-4 max-w-2xl mx-auto"
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-border/50 px-4 md:px-6 py-4 max-w-2xl mx-auto"
           >
             <div className="flex items-center gap-3">
-              <Download className="w-5 h-5 text-primary" />
+              <Download className="w-5 h-5 text-primary shrink-0" />
               <span className="text-sm uppercase tracking-[0.15em] text-foreground font-light">Project Brochure</span>
             </div>
             <button
               onClick={() => setBrochureOpen(true)}
-              className="px-6 py-2 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+              className="w-full sm:w-auto px-6 py-2 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors inline-flex items-center justify-center gap-2"
             >
               <Download className="w-3.5 h-3.5" />
               Download
@@ -695,7 +695,7 @@ const ProjectDetail = () => {
             className="text-center mb-12"
           >
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Find Us</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT LOCATION</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT LOCATION</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
         </div>
@@ -718,7 +718,7 @@ const ProjectDetail = () => {
             className="text-center mb-16"
           >
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Visual Tour</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT GALLERY</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mt-3 text-foreground">PROJECT GALLERY</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
 
@@ -777,14 +777,14 @@ const ProjectDetail = () => {
             className="text-center mb-12"
           >
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Get in Touch</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide mt-3 text-foreground">SCHEDULE YOUR VISIT</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mt-3 text-foreground">SCHEDULE YOUR VISIT</h2>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-6 text-sm leading-relaxed max-w-xl mx-auto">
               Interested in this project? Schedule a site visit or contact us for more information.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-12">
             {[
               { icon: <Phone className="w-5 h-5" />, label: "Call Us", value: "0181 000 9333", href: "tel:01810009333" },
               { icon: <Mail className="w-5 h-5" />, label: "Email Us", value: "info@regentddl.com", href: "mailto:info@regentddl.com" },
@@ -818,7 +818,7 @@ const ProjectDetail = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="border border-border/50 p-8 md:p-12 space-y-8"
+            className="border border-border/50 p-5 md:p-8 lg:p-12 space-y-6 md:space-y-8"
             onSubmit={(e: FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               const form = e.currentTarget;

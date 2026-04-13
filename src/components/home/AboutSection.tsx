@@ -5,7 +5,7 @@ const AboutSection = () => {
   return (
     <section className="section-padding bg-regent-charcoal">
       <div className="container-regent">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -37,7 +37,7 @@ const AboutSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-regent-charcoal border border-border" />
             <div className="absolute inset-8 border border-primary/20 flex items-center justify-center">
               <div className="text-center space-y-2">
-                <span className="text-5xl md:text-7xl font-light text-primary">400+</span>
+                <span className="text-4xl md:text-5xl lg:text-7xl font-light text-primary">400+</span>
                 <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Apartments Delivered</p>
               </div>
             </div>

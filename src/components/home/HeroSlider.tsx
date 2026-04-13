@@ -56,9 +56,9 @@ const HeroSlider = () => {
 
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
 
-      <div className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-28 px-4">
+      <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-4">
         <div className="container-regent">
-          <div className="min-h-[120px] md:min-h-[140px] relative">
+          <div className="min-h-[100px] md:min-h-[140px] relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -66,12 +66,12 @@ const HeroSlider = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.7 }}
-                className="absolute inset-x-0 bottom-0 space-y-3"
+                className="absolute inset-x-0 bottom-0 space-y-2 md:space-y-3"
               >
-                <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium block">
+                <span className="text-primary text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium block">
                   {slides[current].subtitle}
                 </span>
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase leading-tight">
                   {slides[current].titleLine1}<br />
                   {slides[current].titleLine2}
                 </h1>
@@ -79,30 +79,30 @@ const HeroSlider = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center gap-6 pt-6">
+          <div className="flex items-center gap-4 md:gap-6 pt-4 md:pt-6">
             <Link
               to="/projects?status=completed"
-              className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors group"
+              className="flex items-center gap-1.5 md:gap-2 text-foreground/70 hover:text-primary transition-colors group"
             >
-              <CircleCheckBig className="w-4 h-4 text-primary" />
-              <span className="text-xs uppercase tracking-[0.15em]">Completed Projects</span>
+              <CircleCheckBig className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.1em] md:tracking-[0.15em]">Completed</span>
             </Link>
             <Link
               to="/projects?status=ongoing"
-              className="flex items-center gap-2 text-foreground/70 hover:text-primary transition-colors group"
+              className="flex items-center gap-1.5 md:gap-2 text-foreground/70 hover:text-primary transition-colors group"
             >
-              <Loader className="w-4 h-4 text-primary" />
-              <span className="text-xs uppercase tracking-[0.15em]">Ongoing Projects</span>
+              <Loader className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.1em] md:tracking-[0.15em]">Ongoing</span>
             </Link>
           </div>
         </div>
       </div>
 
-      <button onClick={prev} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 p-3 text-foreground/50 hover:text-primary transition-colors">
-        <ChevronLeft className="w-8 h-8" />
+      <button onClick={prev} className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 text-foreground/50 hover:text-primary transition-colors">
+        <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
       </button>
-      <button onClick={next} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 p-3 text-foreground/50 hover:text-primary transition-colors">
-        <ChevronRight className="w-8 h-8" />
+      <button onClick={next} className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 text-foreground/50 hover:text-primary transition-colors">
+        <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
       </button>
 
       <motion.div
@@ -113,12 +113,12 @@ const HeroSlider = () => {
         <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
       </motion.div>
 
-      <div className="absolute bottom-8 right-8 md:right-16 z-20 flex gap-3">
+      <div className="absolute bottom-6 md:bottom-8 right-4 md:right-16 z-20 flex gap-2 md:gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`h-[2px] transition-all duration-500 ${i === current ? "w-12 bg-primary" : "w-6 bg-foreground/30"}`}
+            className={`h-[2px] transition-all duration-500 ${i === current ? "w-8 md:w-12 bg-primary" : "w-4 md:w-6 bg-foreground/30"}`}
           />
         ))}
       </div>

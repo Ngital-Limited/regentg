@@ -45,7 +45,7 @@ const WhyRegent = () => {
           description="Six pillars that define the Regent experience and set us apart in the industry."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
@@ -53,9 +53,9 @@ const WhyRegent = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group p-8 border border-border bg-card hover:border-primary/30 transition-all duration-500"
+              className="group p-5 md:p-8 border border-border bg-card hover:border-primary/30 transition-all duration-500"
             >
-              <feature.icon className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <feature.icon className="w-6 h-6 md:w-8 md:h-8 text-primary mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-sm uppercase tracking-[0.2em] text-foreground mb-4 font-medium">{feature.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
             </motion.div>

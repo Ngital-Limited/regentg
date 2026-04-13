@@ -77,11 +77,47 @@
   }
 
   .section-padding {
-    @apply py-20 md:py-28 px-4 md:px-8;
+    @apply py-14 md:py-20 lg:py-28 px-4 md:px-8;
   }
 
   .container-regent {
     @apply max-w-7xl mx-auto px-4 md:px-8;
+  }
+}
+
+/* Mobile touch & scroll improvements */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar on horizontal scroll containers */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Ensure images don't overflow on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Better tap targets on mobile */
+  @media (max-width: 768px) {
+    a, button {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Prevent horizontal overflow */
+    body {
+      overflow-x: hidden;
+    }
   }
 }
 

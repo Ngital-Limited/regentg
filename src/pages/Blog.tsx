@@ -11,11 +11,11 @@ const Blog = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-4 bg-regent-charcoal">
+      <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Knowledge Hub</span>
-            <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">BLOG</h1>
+            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">BLOG</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-6 max-w-xl mx-auto text-sm leading-relaxed">
               Insights, guides, and stories from the world of real estate in Bangladesh.
@@ -44,12 +44,12 @@ const Blog = () => {
                   height={512}
                 />
               </div>
-              <div className="p-8 md:p-12 flex flex-col justify-center space-y-5">
+              <div className="p-5 md:p-8 lg:p-12 flex flex-col justify-center space-y-4 md:space-y-5">
                 <div className="flex items-center gap-4">
                   <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-medium bg-primary/10 px-3 py-1">{blogPosts[0].category}</span>
                   <span className="text-[11px] text-muted-foreground">{blogPosts[0].date}</span>
                 </div>
-                <h2 className="text-xl md:text-2xl font-light text-foreground group-hover:text-primary transition-colors leading-snug tracking-wide">
+                <h2 className="text-lg md:text-xl lg:text-2xl font-light text-foreground group-hover:text-primary transition-colors leading-snug tracking-wide">
                   {blogPosts[0].title}
                 </h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">{blogPosts[0].excerpt}</p>

@@ -33,11 +33,11 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-4 bg-regent-charcoal">
+      <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Get In Touch</span>
-            <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">CONTACT US</h1>
+            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">CONTACT US</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-4 text-sm max-w-lg mx-auto">
               We'd love to hear from you. Reach out to discuss your dream home or any queries.
@@ -56,7 +56,7 @@ const Contact = () => {
             <h2 className="text-2xl font-light tracking-wide text-foreground uppercase">Head Office</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 -mx-4 sm:mx-0">
             {contactDetails.map((item, i) => (
               <motion.div
                 key={item.label}
@@ -163,7 +163,7 @@ const Contact = () => {
       </section>
 
       {/* Section 3: Full Map */}
-      <section className="w-full h-[500px] relative">
+      <section className="w-full h-[300px] md:h-[500px] relative">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.699188716458!2d90.40255617539356!3d23.793723887111618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c567e6fc2b6f%3A0x48919a43d551765f!2sRegent%20Group!5e0!3m2!1sen!2sbd!4v1776113570192!5m2!1sen!2sbd"
           width="100%"

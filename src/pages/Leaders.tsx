@@ -46,12 +46,12 @@ const Leaders = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+      <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-regent-charcoal via-background to-background" />
         <div className="container-regent text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Leadership</span>
-            <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">
+            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">
               OUR LEADERS
             </h1>
             <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-2xl mx-auto">
@@ -123,7 +123,7 @@ const Leaders = () => {
                       </span>
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-light tracking-wide text-foreground mb-8 leading-tight">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-wide text-foreground mb-6 md:mb-8 leading-tight">
                       {leader.name}
                     </h2>
 
