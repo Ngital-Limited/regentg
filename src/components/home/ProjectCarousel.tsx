@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeading from "../SectionHeading";
 
+const projectImages: Record<string, string> = {
+  "Regent Tara": "https://regentgroup.com.bd/wp-content/uploads/2025/02/tara-p-i.jpg",
+};
+
 const ongoingProjects = [
   "Regent Grand Heritage",
   "Regent Hasina",
@@ -56,13 +60,20 @@ const ProjectCarousel = () => {
                 className="flex-shrink-0 w-[280px] md:w-[300px] snap-start"
               >
                 <div className="relative aspect-[4/5] bg-card border border-border overflow-hidden group cursor-pointer">
-                  {/* Placeholder gradient */}
-                  <div
-                    className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                    style={{
-                      background: `linear-gradient(${135 + i * 20}deg, hsl(194 89% ${15 + i * 3}%), hsl(240 51% ${20 + i * 3}%), hsl(0 0% ${8 + i * 2}%))`,
-                    }}
-                  />
+                  {projectImages[project] ? (
+                    <img
+                      src={projectImages[project]}
+                      alt={project}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  ) : (
+                    <div
+                      className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
+                      style={{
+                        background: `linear-gradient(${135 + i * 20}deg, hsl(194 89% ${15 + i * 3}%), hsl(240 51% ${20 + i * 3}%), hsl(0 0% ${8 + i * 2}%))`,
+                      }}
+                    />
+                  )}
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                   {/* Content */}
