@@ -67,9 +67,25 @@ const MapSection = () => {
         </div>
       `;
 
-      L.marker([project.lat, project.lng], { icon })
+      const marker = L.marker([project.lat, project.lng], { icon })
         .bindPopup(popup)
         .addTo(markersRef.current!);
+
+      marker.on("click", () => {
+        marker.openPopup();
+      });
+
+      // Make popup link work with React Router
+      marker.on("popupopen", () => {
+        const popupEl = marker.getPopup()?.getElement();
+        const link = popupEl?.querySelector("a[href]") as HTMLAnchorElement | null;
+        if (link) {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = link.getAttribute("href") || "";
+          });
+        }
+      });
     });
   }, [filter]);
 
