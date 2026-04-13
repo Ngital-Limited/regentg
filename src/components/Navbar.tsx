@@ -48,7 +48,7 @@ const Navbar = () => {
       >
         <div className="container-regent flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 relative z-50">
-            <img src="/regent-logo.webp" alt="Regent Design & Development Ltd" className="h-12 w-auto" />
+            <img src="/regent-dark-logo.png" alt="Regent Design & Development Ltd" className="h-12 w-auto" />
           </Link>
 
           {/* Hamburger Toggle – always visible */}
