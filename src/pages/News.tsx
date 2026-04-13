@@ -22,6 +22,14 @@ const newsItems = [
     image: mouMalekImg,
   },
   {
+  {
+    title: "Ground Breaking Ceremony of Regent Palace",
+    date: "June 6, 2021",
+    excerpt:
+      "Piling work inauguration of Regent Palace was held on 06 June 2021 at Road no.17, Baitul Aman Housing Society, Adabor, Mohammadpur. Chairman of Regent Design & Development, Barrister Tareque Akbar Khondakar inaugurated the ceremony along with the presence of the landowners and other distinguished guests.",
+    image: groundBreakingPalaceImg,
+  },
+  {
     title: "Regent Grand Heritage Achieves Structural Completion",
     date: "March 15, 2026",
     excerpt:
