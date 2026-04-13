@@ -67,7 +67,7 @@ const ProjectCarousel = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex-shrink-0 w-[280px] md:w-[300px] snap-start"
               >
-                <div className="relative aspect-[4/5] bg-card border border-border overflow-hidden group cursor-pointer">
+                <Link to={`/projects/${project.toLowerCase().replace(/\s+/g, "-")}`} className="block relative aspect-[4/5] bg-card border border-border overflow-hidden group cursor-pointer">
                   {projectImages[project] ? (
                     <img
                       src={projectImages[project]}
@@ -82,15 +82,13 @@ const ProjectCarousel = () => {
                       }}
                     />
                   )}
-                  {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                  {/* Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <span className="text-primary text-[10px] uppercase tracking-[0.3em]">Ongoing</span>
                     <h3 className="text-lg font-light tracking-wider text-foreground mt-1">{project}</h3>
                     <div className="h-[1px] w-8 bg-primary mt-3 transition-all duration-500 group-hover:w-16" />
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
