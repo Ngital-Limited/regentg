@@ -175,13 +175,17 @@ const ProjectDetail = () => {
 
       {/* Hero Section – Full View */}
       <section className="relative h-screen w-full overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(135deg, hsl(240 51% 14%), hsl(194 89% 10%), hsl(0 0% 5%))",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        {project.heroImage ? (
+          <img src={project.heroImage} alt={project.name} className="absolute inset-0 w-full h-full object-cover" />
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(135deg, hsl(240 51% 14%), hsl(194 89% 10%), hsl(0 0% 5%))",
+            }}
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
         <div className="relative h-full flex flex-col justify-end pb-20 px-4">
           <div className="container-regent">
             <motion.div
