@@ -1,103 +1,380 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Search, SlidersHorizontal, X } from "lucide-react";
 
 const toSlug = (name: string) => name.toLowerCase().replace(/\s+/g, "-");
 
-const projectImages: Record<string, string> = {
-  "Regent Tara": "https://regentgroup.com.bd/wp-content/uploads/2025/02/tara-p-i.jpg",
-  "Regent Spring Field": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-Field.jpg",
-  "Regent Rizia": "https://regentgroup.com.bd/wp-content/uploads/2026/02/F-01-HD-15.07.25-scaled.jpg",
-  "Regent Palace": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Palace.jpg",
-  "Regent Grand Heritage": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Up-22Grand-heritage.jpg",
-  "Regent Hasina": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Hasina.webp",
-  "Regent Sapphire": "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-p-i.jpg",
-  "Regent Spring Dale": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-dale-Side-View.jpg",
+type ProjectInfo = {
+  name: string;
+  status: "ongoing" | "completed" | "upcoming";
+  location: string;
+  size: string;
+  bedrooms: string;
+  type: string;
+  image?: string;
 };
 
-const ongoingProjects = [
-  "Regent Grand Heritage", "Regent Hasina", "Regent Sapphire", "Regent Spring Dale",
-  "Regent Tara", "Regent Palace", "Regent Spring Field", "Regent Rizia",
+const allProjects: ProjectInfo[] = [
+  // Ongoing
+  {
+    name: "Regent Grand Heritage",
+    status: "ongoing",
+    location: "Shahjadpur, Gulshan",
+    size: "1350-3280 SFT",
+    bedrooms: "3-4",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Up-22Grand-heritage.jpg",
+  },
+  {
+    name: "Regent Hasina",
+    status: "ongoing",
+    location: "Bashundhara R/A",
+    size: "2180 SFT",
+    bedrooms: "4",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Hasina.webp",
+  },
+  {
+    name: "Regent Sapphire",
+    status: "ongoing",
+    location: "Bashundhara R/A",
+    size: "2650 SFT",
+    bedrooms: "4",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-p-i.jpg",
+  },
+  {
+    name: "Regent Spring Dale",
+    status: "ongoing",
+    location: "Bashundhara R/A",
+    size: "2450 SFT",
+    bedrooms: "4",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-dale-Side-View.jpg",
+  },
+  {
+    name: "Regent Tara",
+    status: "ongoing",
+    location: "Mirpur DOHS",
+    size: "1650 SFT",
+    bedrooms: "3",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/tara-p-i.jpg",
+  },
+  {
+    name: "Regent Palace",
+    status: "ongoing",
+    location: "Adabor, Mohammadpur",
+    size: "1580 SFT",
+    bedrooms: "3",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Palace.jpg",
+  },
+  {
+    name: "Regent Spring Field",
+    status: "ongoing",
+    location: "Bashundhara R/A",
+    size: "2200 SFT",
+    bedrooms: "4",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-Field.jpg",
+  },
+  {
+    name: "Regent Rizia",
+    status: "ongoing",
+    location: "Uttara",
+    size: "1700 SFT",
+    bedrooms: "3-4",
+    type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2026/02/F-01-HD-15.07.25-scaled.jpg",
+  },
+  // Completed
+  {
+    name: "Regent Jannat",
+    status: "completed",
+    location: "Bashundhara R/A",
+    size: "2100 SFT",
+    bedrooms: "4",
+    type: "Residential",
+  },
+  {
+    name: "Regent South Pearl",
+    status: "completed",
+    location: "Dhanmondi",
+    size: "1800 SFT",
+    bedrooms: "3",
+    type: "Residential",
+  },
+  {
+    name: "Regent East Castle",
+    status: "completed",
+    location: "Badda",
+    size: "1600 SFT",
+    bedrooms: "3",
+    type: "Residential",
+  },
+  {
+    name: "Regent South Lake",
+    status: "completed",
+    location: "Dhanmondi",
+    size: "1750 SFT",
+    bedrooms: "3",
+    type: "Residential",
+  },
+  {
+    name: "Regent East Queen",
+    status: "completed",
+    location: "Badda",
+    size: "1500 SFT",
+    bedrooms: "3",
+    type: "Residential",
+  },
+  {
+    name: "Regent Sufia",
+    status: "completed",
+    location: "Bashundhara R/A",
+    size: "2000 SFT",
+    bedrooms: "4",
+    type: "Residential",
+  },
+  {
+    name: "Regent Parbata Grand",
+    status: "completed",
+    location: "Uttara",
+    size: "1900 SFT",
+    bedrooms: "3",
+    type: "Residential",
+  },
+  {
+    name: "Regent Islam",
+    status: "completed",
+    location: "Mirpur",
+    size: "1550 SFT",
+    bedrooms: "3",
+    type: "Residential",
+  },
 ];
 
-const completedProjects = [
-  "Regent Jannat", "Regent South Pearl", "Regent East Castle", "Regent South Lake",
-  "Regent East Queen", "Regent Sufia", "Regent Parbata Grand", "Regent Islam",
-];
+const statusOptions = ["All", "Ongoing", "Completed", "Upcoming"];
+const typeOptions = ["All", "Residential", "Commercial"];
 
 const Projects = () => {
-  const [tab, setTab] = useState<"ongoing" | "completed">("ongoing");
-  const projects = tab === "ongoing" ? ongoingProjects : completedProjects;
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("All");
+  const [typeFilter, setTypeFilter] = useState("All");
+  const [locationFilter, setLocationFilter] = useState("All");
+  const [sizeFilter, setSizeFilter] = useState("All");
+  const [showFilters, setShowFilters] = useState(false);
+
+  const locations = useMemo(() => {
+    const locs = [...new Set(allProjects.map((p) => p.location))];
+    return ["All", ...locs.sort()];
+  }, []);
+
+  const sizeOptions = ["All", "Under 1600 SFT", "1600-2000 SFT", "2000-2500 SFT", "Above 2500 SFT"];
+
+  const matchesSize = (projectSize: string, filter: string) => {
+    if (filter === "All") return true;
+    // Extract the first number from size string
+    const match = projectSize.match(/(\d+)/);
+    if (!match) return true;
+    const size = parseInt(match[1]);
+    switch (filter) {
+      case "Under 1600 SFT": return size < 1600;
+      case "1600-2000 SFT": return size >= 1600 && size <= 2000;
+      case "2000-2500 SFT": return size > 2000 && size <= 2500;
+      case "Above 2500 SFT": return size > 2500;
+      default: return true;
+    }
+  };
+
+  const filtered = useMemo(() => {
+    return allProjects.filter((p) => {
+      if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+      if (statusFilter !== "All" && p.status !== statusFilter.toLowerCase()) return false;
+      if (typeFilter !== "All" && p.type !== typeFilter) return false;
+      if (locationFilter !== "All" && p.location !== locationFilter) return false;
+      if (!matchesSize(p.size, sizeFilter)) return false;
+      return true;
+    });
+  }, [searchQuery, statusFilter, typeFilter, locationFilter, sizeFilter]);
+
+  const activeFilterCount = [statusFilter, typeFilter, locationFilter, sizeFilter].filter((f) => f !== "All").length;
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setStatusFilter("All");
+    setTypeFilter("All");
+    setLocationFilter("All");
+    setSizeFilter("All");
+  };
+
+  const statusColor = (status: string) => {
+    switch (status) {
+      case "ongoing": return "bg-primary/20 text-primary";
+      case "completed": return "bg-green-500/20 text-green-400";
+      case "upcoming": return "bg-yellow-500/20 text-yellow-400";
+      default: return "bg-muted text-muted-foreground";
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="pt-32 pb-20 px-4 bg-regent-charcoal">
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Our Portfolio</span>
             <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">PROJECTS</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
+            <p className="text-muted-foreground mt-4 text-sm max-w-lg mx-auto">
+              Explore {allProjects.length} projects across Dhaka — ongoing, completed & upcoming
+            </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="section-padding bg-background">
-        <div className="container-regent">
-          {/* Tabs */}
-          <div className="flex justify-center gap-8 mb-16">
-            {(["ongoing", "completed"] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => setTab(t)}
-                className={`text-sm uppercase tracking-[0.2em] pb-2 border-b-2 transition-all ${
-                  tab === t ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {t} Projects
+      {/* Filters */}
+      <section className="sticky top-[72px] z-30 bg-background/95 backdrop-blur-md border-b border-border">
+        <div className="container-regent py-4">
+          {/* Search + Filter Toggle */}
+          <div className="flex items-center gap-3">
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 bg-card border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+              />
+            </div>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className={`flex items-center gap-2 px-4 py-2.5 border rounded-lg text-sm transition-colors ${
+                showFilters || activeFilterCount > 0
+                  ? "border-primary text-primary bg-primary/5"
+                  : "border-border text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <SlidersHorizontal className="w-4 h-4" />
+              <span className="hidden sm:inline">Filters</span>
+              {activeFilterCount > 0 && (
+                <span className="w-5 h-5 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-medium">
+                  {activeFilterCount}
+                </span>
+              )}
+            </button>
+            {activeFilterCount > 0 && (
+              <button onClick={clearFilters} className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors">
+                <X className="w-3 h-3" /> Clear
               </button>
-            ))}
+            )}
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((project, i) => (
-              <Link to={`/projects/${toSlug(project)}`} key={project}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="group cursor-pointer"
-              >
-                <div className="relative aspect-[4/5] bg-card border border-border overflow-hidden">
-                  {projectImages[project] ? (
-                    <img
-                      src={projectImages[project]}
-                      alt={project}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  ) : (
-                    <div
-                      className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                      style={{
-                        background: `linear-gradient(${130 + i * 15}deg, hsl(194 89% ${12 + i * 2}%), hsl(240 51% ${18 + i * 2}%), hsl(0 0% ${6 + i}%))`,
-                      }}
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-primary text-[10px] uppercase tracking-[0.3em]">{tab}</span>
-                    <h3 className="text-base font-light tracking-wider text-foreground mt-1">{project}</h3>
-                    <div className="h-[1px] w-8 bg-primary mt-3 transition-all duration-500 group-hover:w-16" />
-                  </div>
+          {/* Filter Dropdowns */}
+          {showFilters && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4"
+            >
+              {[
+                { label: "Status", value: statusFilter, setter: setStatusFilter, options: statusOptions },
+                { label: "Type", value: typeFilter, setter: setTypeFilter, options: typeOptions },
+                { label: "Location", value: locationFilter, setter: setLocationFilter, options: locations },
+                { label: "Size", value: sizeFilter, setter: setSizeFilter, options: sizeOptions },
+              ].map((filter) => (
+                <div key={filter.label}>
+                  <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1.5 block">{filter.label}</label>
+                  <select
+                    value={filter.value}
+                    onChange={(e) => filter.setter(e.target.value)}
+                    className="w-full px-3 py-2 bg-card border border-border rounded-lg text-sm text-foreground focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
+                  >
+                    {filter.options.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
                 </div>
-              </motion.div>
-              </Link>
-            ))}
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* Results */}
+      <section className="section-padding bg-background">
+        <div className="container-regent">
+          <div className="flex items-center justify-between mb-8">
+            <p className="text-sm text-muted-foreground">
+              Showing <span className="text-foreground font-medium">{filtered.length}</span> of {allProjects.length} projects
+            </p>
           </div>
+
+          {filtered.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground text-lg">No projects match your filters</p>
+              <button onClick={clearFilters} className="mt-4 text-primary text-sm hover:underline">Clear all filters</button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {filtered.map((project, i) => (
+                <Link to={`/projects/${toSlug(project.name)}`} key={project.name}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                    className="group cursor-pointer"
+                  >
+                    <div className="relative aspect-[4/5] bg-card border border-border overflow-hidden">
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={project.name}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div
+                          className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
+                          style={{
+                            background: `linear-gradient(${130 + i * 15}deg, hsl(194 89% ${12 + i * 2}%), hsl(240 51% ${18 + i * 2}%), hsl(0 0% ${6 + i}%))`,
+                          }}
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+
+                      {/* Status Badge */}
+                      <div className="absolute top-4 left-4">
+                        <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full ${statusColor(project.status)}`}>
+                          {project.status}
+                        </span>
+                      </div>
+
+                      {/* Content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 className="text-base font-light tracking-wider text-foreground">{project.name}</h3>
+                        <p className="text-[11px] text-muted-foreground mt-1">{project.location}</p>
+                        <div className="flex items-center gap-3 mt-2">
+                          <span className="text-[10px] text-muted-foreground">{project.size}</span>
+                          <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
+                          <span className="text-[10px] text-muted-foreground">{project.bedrooms} Bed</span>
+                        </div>
+                        <div className="h-[1px] w-8 bg-primary mt-3 transition-all duration-500 group-hover:w-16" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
