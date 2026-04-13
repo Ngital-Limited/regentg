@@ -15,8 +15,11 @@ const About = () => {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">About Us</span>
             <h1 className="text-4xl md:text-6xl font-light tracking-wide mt-4 text-foreground">
-              OUR STORY
+              SHAPING MODERN LIFESTYLES
             </h1>
+            <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-2xl mx-auto">
+              Through Quality, Innovation, and On-Time Delivery
+            </p>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
         </div>
@@ -27,13 +30,13 @@ const About = () => {
         <div className="container-regent max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
-              Regent Design & Development Ltd (RDDL) is one of Bangladesh's leading real estate companies.
-              With a steadfast commitment to quality construction, innovative design, and timely delivery,
-              RDDL has successfully delivered over 400 apartments across Dhaka.
+              Regent Design & Development Ltd (RDDL) is one of the fastest-growing flagship companies of Regent Group, successfully developing joint-venture projects across prime areas of Dhaka. Guided by our mission to "Creating a Lifestyle with Timely Handover of Projects"— RDDL is steadily expanding both in size and scope.
+            </p>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+              With a strong track record of delivering high-quality projects ahead of schedule, RDDL continues to make a positive impact through every development. Our ability to adapt and transform each opportunity into a successful venture has allowed us to not only navigate but emerge stronger from challenging market conditions.
             </p>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              Our journey is built on trust, transparency, and an unwavering dedication to exceeding expectations.
-              Every project we undertake reflects our core values of excellence, integrity, and customer satisfaction.
+              RDDL upholds an enduring commitment to quality, timely project handovers and apartment owner satisfaction — the foundation of every apartment we build. Combining your dream with our expertise, we create the perfect balance between vision and execution. Each of our apartments stands as a masterpiece of craftsmanship, built with meticulous attention to detail and a standard of finish that is second to none.
             </p>
           </motion.div>
         </div>
@@ -44,8 +47,8 @@ const About = () => {
         <div className="container-regent">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Target, title: "Our Mission", text: "To deliver world-class residential solutions that exceed expectations through quality, innovation, and integrity." },
-              { icon: Eye, title: "Our Vision", text: "To be the most trusted and preferred real estate company in Bangladesh, setting benchmarks in the industry." },
+              { icon: Target, title: "Our Mission", text: "Creating a Lifestyle with Timely Handover" },
+              { icon: Eye, title: "Our Vision", text: "To Become the Leading & Most Trusted Real Estate Developer of Bangladesh" },
               { icon: Users, title: "Our Values", text: "Quality, Transparency, Timely Delivery, Innovation, and Customer-Centric approach in everything we do." },
             ].map((item, i) => (
               <motion.div
