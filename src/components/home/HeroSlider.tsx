@@ -48,7 +48,7 @@ const HeroSlider = () => {
         >
           <img
             src={slides[current].image}
-            alt={slides[current].title}
+            alt={slides[current].titleLine1 + " " + slides[current].titleLine2}
             className="w-full h-full object-cover"
           />
         </motion.div>
@@ -71,8 +71,9 @@ const HeroSlider = () => {
                 <span className="text-primary text-[11px] uppercase tracking-[0.3em] font-medium block">
                   {slides[current].subtitle}
                 </span>
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase">
-                  {slides[current].title}
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase leading-tight">
+                  {slides[current].titleLine1}<br />
+                  {slides[current].titleLine2}
                 </h1>
               </motion.div>
             </AnimatePresence>
