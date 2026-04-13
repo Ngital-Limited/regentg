@@ -1,40 +1,5 @@
-import { useEffect, useRef } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
 import { motion } from "framer-motion";
-
-// Custom animated marker icon
-const createPulsingIcon = () => {
-  return L.divIcon({
-    className: "",
-    html: `
-      <div style="position:relative;width:40px;height:40px;">
-        <div style="position:absolute;inset:0;border-radius:50%;background:hsl(194 89% 60% / 0.2);animation:pulse-ring 2s cubic-bezier(0.4,0,0.6,1) infinite;"></div>
-        <div style="position:absolute;inset:8px;border-radius:50%;background:hsl(194 89% 60% / 0.3);animation:pulse-ring 2s cubic-bezier(0.4,0,0.6,1) infinite 0.3s;"></div>
-        <div style="position:absolute;inset:14px;border-radius:50%;background:hsl(194 89% 60%);box-shadow:0 0 12px hsl(194 89% 60% / 0.6);"></div>
-      </div>
-      <style>
-        @keyframes pulse-ring {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.5); opacity: 0.4; }
-        }
-      </style>
-    `,
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [0, -20],
-  });
-};
-
-// Animate map fly-in
-const FlyToLocation = ({ lat, lng }: { lat: number; lng: number }) => {
-  const map = useMap();
-  useEffect(() => {
-    map.flyTo([lat, lng], 15, { duration: 2.5 });
-  }, [lat, lng, map]);
-  return null;
-};
+import { MapPin } from "lucide-react";
 
 interface ProjectMapProps {
   lat: number;
@@ -44,40 +9,62 @@ interface ProjectMapProps {
 }
 
 const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
-  const icon = useRef(createPulsingIcon());
+  const mapUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`;
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="w-full h-[450px] rounded-sm overflow-hidden border border-border/30"
-      style={{ isolation: "isolate" }}
+      transition={{ duration: 0.6 }}
+      className="container-regent"
     >
-      <MapContainer
-        center={[lat, lng]}
-        zoom={12}
-        scrollWheelZoom={false}
-        className="w-full h-full z-0"
-        zoomControl={false}
-        attributionControl={false}
-        style={{ background: "hsl(0 0% 5%)" }}
-      >
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+      <div className="relative overflow-hidden border border-border/40 bg-card/60">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.18),transparent_28%),linear-gradient(135deg,hsl(var(--secondary)/0.18),transparent_55%)]" />
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              "linear-gradient(hsl(var(--border) / 0.35) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.35) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
         />
-        <Marker position={[lat, lng]} icon={icon.current}>
-          <Popup className="custom-popup">
-            <div style={{ color: "#e2e8f0", fontSize: "13px", lineHeight: "1.5" }}>
-              <strong style={{ color: "#3EC9F3", fontSize: "14px" }}>{projectName}</strong>
-              {address && <div style={{ marginTop: "4px", opacity: 0.8 }}>{address}</div>}
+
+        <div className="relative flex min-h-[420px] items-center justify-center px-6 py-12 md:px-10">
+          <div className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/20 bg-primary/5" />
+          <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10" />
+
+          <motion.div
+            initial={{ scale: 0.85, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="relative z-10 flex flex-col items-center text-center"
+          >
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_0_35px_hsl(var(--primary)/0.35)]">
+              <MapPin className="h-7 w-7" />
+              <span className="absolute inset-0 rounded-full border border-primary/40 animate-ping" />
+              <span className="absolute inset-[-14px] rounded-full border border-primary/20 animate-pulse" />
             </div>
-          </Popup>
-        </Marker>
-        <FlyToLocation lat={lat} lng={lng} />
-      </MapContainer>
+
+            <div className="mt-8 max-w-md space-y-3">
+              <p className="text-xs uppercase tracking-[0.32em] text-primary">Location Marker</p>
+              <h3 className="text-2xl font-light uppercase tracking-[0.14em] text-foreground">{projectName}</h3>
+              {address ? <p className="text-sm leading-relaxed text-muted-foreground">{address}</p> : null}
+            </div>
+
+            <a
+              href={mapUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center gap-2 border border-border/60 px-5 py-3 text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              <MapPin className="h-4 w-4" />
+              Open Map
+            </a>
+          </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 };
