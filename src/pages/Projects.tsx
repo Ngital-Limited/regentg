@@ -241,72 +241,31 @@ const Projects = () => {
 
       {/* Filters */}
       <section className="sticky top-[72px] z-30 bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="container-regent py-4">
-          {/* Search + Filter Toggle */}
-          <div className="flex items-center gap-3">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="Search projects..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-card border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-4 py-2.5 border rounded-lg text-sm transition-colors ${
-                showFilters || activeFilterCount > 0
-                  ? "border-primary text-primary bg-primary/5"
-                  : "border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <SlidersHorizontal className="w-4 h-4" />
-              <span className="hidden sm:inline">Filters</span>
-              {activeFilterCount > 0 && (
-                <span className="w-5 h-5 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-medium">
-                  {activeFilterCount}
-                </span>
-              )}
-            </button>
-            {activeFilterCount > 0 && (
-              <button onClick={clearFilters} className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors">
-                <X className="w-3 h-3" /> Clear
-              </button>
-            )}
+        <div className="container-regent py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { label: "Type", value: typeFilter, setter: setTypeFilter, options: typeOptions },
+              { label: "Status", value: statusFilter, setter: setStatusFilter, options: statusOptions },
+              { label: "Location", value: locationFilter, setter: setLocationFilter, options: locations },
+              { label: "Size", value: sizeFilter, setter: setSizeFilter, options: sizeOptions },
+            ].map((filter) => (
+              <div key={filter.label} className="relative">
+                <select
+                  value={filter.value}
+                  onChange={(e) => filter.setter(e.target.value)}
+                  className="w-full pb-3 pt-1 bg-transparent border-b border-border text-sm text-foreground focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer pr-8"
+                >
+                  <option value="All">{filter.label}</option>
+                  {filter.options.filter(o => o !== "All").map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+                <svg className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            ))}
           </div>
-
-          {/* Filter Dropdowns */}
-          {showFilters && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4"
-            >
-              {[
-                { label: "Status", value: statusFilter, setter: setStatusFilter, options: statusOptions },
-                { label: "Type", value: typeFilter, setter: setTypeFilter, options: typeOptions },
-                { label: "Location", value: locationFilter, setter: setLocationFilter, options: locations },
-                { label: "Size", value: sizeFilter, setter: setSizeFilter, options: sizeOptions },
-              ].map((filter) => (
-                <div key={filter.label}>
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1.5 block">{filter.label}</label>
-                  <select
-                    value={filter.value}
-                    onChange={(e) => filter.setter(e.target.value)}
-                    className="w-full px-3 py-2 bg-card border border-border rounded-lg text-sm text-foreground focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
-                  >
-                    {filter.options.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
-                </div>
-              ))}
-            </motion.div>
-          )}
         </div>
       </section>
 
