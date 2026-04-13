@@ -2,12 +2,40 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
+import mouSigningImg from "@/assets/news/mou-signing-grand-heritage.png";
 
 const newsItems = [
-  { title: "Regent Grand Heritage Achieves Structural Completion", date: "March 15, 2026", excerpt: "We are proud to announce that Regent Grand Heritage has reached its structural milestone ahead of schedule." },
-  { title: "RDDL Receives Excellence in Construction Award", date: "February 20, 2026", excerpt: "Regent Design & Development Ltd has been honored with the Excellence in Construction Award for 2026." },
-  { title: "New Project Launch: Regent Spring Dale", date: "January 10, 2026", excerpt: "We are excited to unveil our latest residential project in a prime location of Dhaka." },
-  { title: "Regent Sapphire — 80% Units Sold", date: "December 5, 2025", excerpt: "Overwhelming response from homebuyers for our premium Regent Sapphire development." },
+  {
+    title: "MOU Signing Ceremony of Regent Grand Heritage",
+    date: "September 22, 2021",
+    excerpt:
+      "A Memorandum of Understanding (MOU) was signed on 22 September 2021 at the head office of Regent Group in Kemal Ataturk Avenue, Banani C/A between Regent Design & Development Ltd (RDDL) and Joint Landowners of 24 Katha land of North Badda (Beside Bti Premier Plaza & Opposite to Suvastu Nazar Valley Market). Chairman of Regent Design & Development Ltd, Barrister Tareque Akbar Khondakar signed the MOU on behalf of the company. RDDL will build a luxurious condominium project with facilities such as Double Height Entry, Swimming Pool, Shops, Kids Play Zone, BBQ Zone, Walkways, Mosques, Landscaping works, Waterfalls & other facilities.",
+    image: mouSigningImg,
+  },
+  {
+    title: "Regent Grand Heritage Achieves Structural Completion",
+    date: "March 15, 2026",
+    excerpt:
+      "We are proud to announce that Regent Grand Heritage has reached its structural milestone ahead of schedule.",
+  },
+  {
+    title: "RDDL Receives Excellence in Construction Award",
+    date: "February 20, 2026",
+    excerpt:
+      "Regent Design & Development Ltd has been honored with the Excellence in Construction Award for 2026.",
+  },
+  {
+    title: "New Project Launch: Regent Spring Dale",
+    date: "January 10, 2026",
+    excerpt:
+      "We are excited to unveil our latest residential project in a prime location of Dhaka.",
+  },
+  {
+    title: "Regent Sapphire — 80% Units Sold",
+    date: "December 5, 2025",
+    excerpt:
+      "Overwhelming response from homebuyers for our premium Regent Sapphire development.",
+  },
 ];
 
 const News = () => {
@@ -34,11 +62,24 @@ const News = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="border border-border bg-card p-8 hover:border-primary/30 transition-all group cursor-pointer"
+                className="border border-border bg-card overflow-hidden hover:border-primary/30 transition-all group cursor-pointer"
               >
-                <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{item.date}</span>
-                <h3 className="text-lg font-light tracking-wide text-foreground mt-3 mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.excerpt}</p>
+                {item.image && (
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                )}
+                <div className="p-8">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{item.date}</span>
+                  <h3 className="text-lg font-light tracking-wide text-foreground mt-3 mb-3 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.excerpt}</p>
+                </div>
               </motion.article>
             ))}
           </div>
