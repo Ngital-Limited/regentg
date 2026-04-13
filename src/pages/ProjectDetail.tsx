@@ -107,6 +107,24 @@ const ProjectDetail = () => {
   const project = projectsData[slug || ""];
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-light text-foreground tracking-wide">Project Not Found</h1>
+            <p className="text-muted-foreground mt-4">The project you're looking for doesn't exist.</p>
+            <Link to="/projects" className="inline-block mt-8 px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em]">
+              View All Projects
+            </Link>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
