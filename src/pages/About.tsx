@@ -2,7 +2,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
-import { Target, Eye, Users } from "lucide-react";
+import { Target, Eye, Users, Clock, Building2, Home, Ruler, UsersRound, CalendarCheck } from "lucide-react";
+
+const stats = [
+  { icon: CalendarCheck, value: "44+", label: "Years of Group Legacy", desc: "Building on the Regent Group's trusted foundation established in 1981." },
+  { icon: Clock, value: "100%", label: "On-Time Project Handover", desc: "A proven track record of delivering every single project on or ahead of schedule." },
+  { icon: Building2, value: "50+", label: "Joint-Venture Projects", desc: "Successfully completed projects in prime locations across Dhaka." },
+  { icon: Home, value: "1,500+", label: "Happy Families Housed", desc: "Crafting dream homes and earning the trust of thousands of satisfied clients and customers." },
+  { icon: Ruler, value: "5M+", label: "Square Feet Developed", desc: "Demonstrating our extensive experience in creating quality residential and commercial spaces." },
+  { icon: UsersRound, value: "100+", label: "In-House Professionals", desc: "A dedicated team of expert engineers, architects, and technical staff ensuring excellence." },
+];
 
 const About = () => {
   return (
@@ -25,9 +34,54 @@ const About = () => {
         </div>
       </section>
 
-      {/* Company Story */}
+      {/* Introduction */}
       <section className="section-padding bg-background">
         <div className="container-regent max-w-4xl">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <p className="text-foreground text-lg md:text-xl leading-relaxed mb-8 font-light text-center">
+              With a legacy of trust dating back to 1981, we build dream homes and create lasting value through an unwavering commitment to quality and on-time delivery.
+            </p>
+            <div className="w-12 h-[1px] bg-primary/40 mx-auto mb-8" />
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+              Founded on the principles of Honesty, Service, and Commitment, Regent Group began its journey in 1981. Since then, it has expanded its operations across a wide range of sectors, including Paper Mills, Ship Breaking, Textiles, Heimtex Mills and Shipping. Regent is the Founder of the Real Estate Housing Project "Purbachal Regent Town"— located adjacent to RAJUK's New Purbachal Town and "Regent Textile Mills Ltd"— a 100% export-oriented composite textile mill based in Chittagong.
+            </p>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+              Driven by a vision of diversification and growth, Regent Group entered the real estate sector with an experienced, dynamic and thoughtful team dedicated to Creating a Lifestyle with Timely Handover of Projects. In response to evolving market demands, Regent has established several sister companies offering a wide range of services — from residential and commercial developments to ready flats and plot sales.
+            </p>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              With an unwavering commitment to quality and reliability, Regent Group has consistently delivered projects without delays, building the dream homes of those who place their trust in us.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Grid */}
+      <section className="section-padding bg-regent-charcoal">
+        <div className="container-regent">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="p-8 border border-border bg-card/50 group hover:border-primary/30 transition-colors duration-300"
+              >
+                <stat.icon className="w-6 h-6 text-primary mb-4" />
+                <h3 className="text-3xl md:text-4xl font-light text-primary mb-2">{stat.value}</h3>
+                <p className="text-sm uppercase tracking-[0.15em] text-foreground font-medium mb-3">{stat.label}</p>
+                <p className="text-muted-foreground text-xs leading-relaxed">{stat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Company Story - RDDL */}
+      <section className="section-padding bg-background">
+        <div className="container-regent max-w-4xl">
+          <SectionHeading subtitle="Our Company" title="REGENT DESIGN & DEVELOPMENT LTD" />
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
               Regent Design & Development Ltd (RDDL) is one of the fastest-growing flagship companies of Regent Group, successfully developing joint-venture projects across prime areas of Dhaka. Guided by our mission to "Creating a Lifestyle with Timely Handover of Projects"— RDDL is steadily expanding both in size and scope.
