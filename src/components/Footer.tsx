@@ -12,8 +12,8 @@ const Footer = () => {
   return (
     <footer className="bg-regent-charcoal border-t border-border">
       {/* Main Footer - 3 columns */}
-      <div className="container-regent py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+      <div className="container-regent py-10 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-20">
           {/* Brand */}
           <div className="space-y-6">
             <img src="/regent-dark-logo.png" alt="Regent" className="h-16 w-auto" />
@@ -84,7 +84,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-border">
-        <div className="container-regent py-6 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div className="container-regent py-4 md:py-6 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-3">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Regent Design & Development Ltd. All rights reserved.
           </p>
