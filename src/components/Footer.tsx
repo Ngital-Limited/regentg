@@ -69,29 +69,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Ongoing Projects */}
-          <div>
-            <h4 className="text-[11px] uppercase tracking-[0.2em] text-primary mb-6 font-medium">Ongoing Projects</h4>
-            <div className="flex flex-col gap-3">
-              {[
-                { name: "Regent Grand Heritage", slug: "regent-grand-heritage" },
-                { name: "Regent Sapphire", slug: "regent-sapphire" },
-                { name: "Regent Spring Dale", slug: "regent-spring-dale" },
-                { name: "Regent Palace", slug: "regent-palace" },
-                { name: "Regent Spring Field", slug: "regent-spring-field" },
-                { name: "Regent Rizia", slug: "regent-rizia" },
-              ].map((p) => (
-                <Link
-                  key={p.slug}
-                  to={`/projects/${p.slug}`}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {p.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-
           {/* Head Office */}
           <div>
             <h4 className="text-[11px] uppercase tracking-[0.2em] text-primary mb-6 font-medium">Head Office</h4>
@@ -99,11 +76,6 @@ const Footer = () => {
               <MapPin className="w-4 h-4 text-primary mt-1 shrink-0" />
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani, Dhaka-1213, Bangladesh.
-              </p>
-            </div>
-            <div className="mt-4 flex items-center gap-3">
-              <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-                Sat – Thu: 10:00 AM – 6:00 PM
               </p>
             </div>
           </div>
