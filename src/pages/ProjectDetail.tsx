@@ -107,6 +107,7 @@ const ProjectDetail = () => {
   const { slug } = useParams();
   const project = projectsData[slug || ""];
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [brochureOpen, setBrochureOpen] = useState(false);
 
   if (!project) {
     return (
