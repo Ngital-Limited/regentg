@@ -871,6 +871,51 @@ const ProjectDetail = () => {
         </div>
       </section>
 
+      {/* Lightbox Modal */}
+      {selectedImage !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 p-2 text-muted-foreground hover:text-foreground transition-colors z-50"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(selectedImage > 0 ? selectedImage - 1 : project.gallery.length - 1);
+            }}
+            className="absolute left-4 md:left-8 p-2 text-muted-foreground hover:text-foreground transition-colors z-50"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(selectedImage < project.gallery.length - 1 ? selectedImage + 1 : 0);
+            }}
+            className="absolute right-4 md:right-8 p-2 text-muted-foreground hover:text-foreground transition-colors z-50"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+          <img
+            src={project.gallery[selectedImage]}
+            alt={`${project.name} gallery ${selectedImage + 1}`}
+            className="max-w-[90vw] max-h-[85vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <div className="absolute bottom-6 text-center text-muted-foreground text-xs uppercase tracking-[0.2em]">
+            {selectedImage + 1} / {project.gallery.length}
+          </div>
+        </motion.div>
+      )}
+
       <Footer />
       <WhatsAppButton />
     </div>
