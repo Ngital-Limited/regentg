@@ -65,7 +65,7 @@ const ProjectCarousel = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex-shrink-0 w-[280px] md:w-[300px] snap-start"
+                className="flex-shrink-0 w-[85%] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] snap-start"
               >
                 <Link to={`/projects/${project.toLowerCase().replace(/\s+/g, "-")}`} className="block relative aspect-[4/5] bg-card border border-border overflow-hidden group cursor-pointer">
                   {projectImages[project] ? (
