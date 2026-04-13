@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BrochureDownloadDialog from "@/components/BrochureDownloadDialog";
+import ProjectMap from "@/components/ProjectMap";
 import { motion } from "framer-motion";
 import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock } from "lucide-react";
@@ -51,7 +52,7 @@ interface ProjectData {
   progress: { label: string; value: number }[];
   glance: { icon: string; label: string; value: string }[];
   gallery: string[];
-  mapQuery: string;
+  mapCoords: { lat: number; lng: number };
   brochureUrl?: string;
 }
 
@@ -64,7 +65,7 @@ const makeProject = (name: string, status: "ongoing" | "completed"): ProjectData
   progress: defaultProgress,
   glance: defaultGlance,
   gallery: [],
-  mapQuery: "Aftabnagar,+Dhaka",
+  mapCoords: { lat: 23.7697, lng: 90.4312 },
 });
 
 const projectsData: Record<string, ProjectData> = {
@@ -359,18 +360,12 @@ const ProjectDetail = () => {
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
         </div>
-        <div className="w-full h-[450px] relative">
-          <iframe
-            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9!2d90.43!3d23.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s${project.mapQuery}!5e0!3m2!1sen!2sbd`}
-            width="100%"
-            height="100%"
-            style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)" }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title={`${project.name} Location`}
-          />
-        </div>
+        <ProjectMap
+          lat={project.mapCoords.lat}
+          lng={project.mapCoords.lng}
+          projectName={project.name}
+          address={project.glance.find(g => g.icon === "address")?.value}
+        />
       </section>
 
       {/* Project Gallery – Full View */}
