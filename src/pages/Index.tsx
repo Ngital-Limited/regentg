@@ -22,6 +22,7 @@ const Index = () => {
       <InsightsSection />
       <StakeholdersSection />
       <MapSection />
+      <WhatsAppButton />
       <Footer />
     </div>
   );
