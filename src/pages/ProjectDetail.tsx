@@ -7,7 +7,8 @@ import ProjectMap from "@/components/ProjectMap";
 import { motion } from "framer-motion";
 import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
+import { toast } from "sonner";
 
 const defaultFeatures = [
   "Earthquake-resistant RCC structure designed by BUET professor",
@@ -817,56 +818,133 @@ const ProjectDetail = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6 border border-border/50 p-8 md:p-12"
-            onSubmit={(e) => e.preventDefault()}
+            className="border border-border/50 p-8 md:p-12 space-y-8"
+            onSubmit={(e: FormEvent<HTMLFormElement>) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              const formData = new FormData(form);
+              const name = (formData.get("name") as string)?.trim();
+              const phone = (formData.get("phone") as string)?.trim();
+              const email = (formData.get("email") as string)?.trim();
+
+              if (!name || !phone) {
+                toast.error("Please fill in your name and phone number.");
+                return;
+              }
+              if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                toast.error("Please enter a valid email address.");
+                return;
+              }
+
+              toast.success("Thank you! We'll contact you shortly to confirm your visit.", {
+                duration: 5000,
+              });
+              form.reset();
+            }}
           >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary">
+                <Calendar className="w-5 h-5" />
+              </div>
+              <h3 className="text-sm uppercase tracking-[0.2em] text-foreground font-medium">Book a Site Visit</h3>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Full Name</label>
+              <div className="space-y-2">
+                <label className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground block">
+                  Full Name <span className="text-primary">*</span>
+                </label>
                 <input
+                  name="name"
                   type="text"
-                  className="w-full bg-transparent border border-border/50 px-4 py-3 text-foreground text-sm focus:border-primary outline-none transition-colors"
-                  placeholder="Your full name"
+                  required
+                  maxLength={100}
+                  className="w-full bg-background/50 border border-border/50 px-4 py-3.5 text-foreground text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground/40"
+                  placeholder="e.g. Mohammad Rahman"
                 />
               </div>
-              <div>
-                <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Phone Number</label>
+              <div className="space-y-2">
+                <label className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground block">
+                  Phone Number <span className="text-primary">*</span>
+                </label>
                 <input
+                  name="phone"
                   type="tel"
-                  className="w-full bg-transparent border border-border/50 px-4 py-3 text-foreground text-sm focus:border-primary outline-none transition-colors"
-                  placeholder="Your phone number"
+                  required
+                  maxLength={20}
+                  className="w-full bg-background/50 border border-border/50 px-4 py-3.5 text-foreground text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground/40"
+                  placeholder="e.g. 01XXXXXXXXX"
                 />
               </div>
             </div>
-            <div>
-              <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Email Address</label>
-              <input
-                type="email"
-                className="w-full bg-transparent border border-border/50 px-4 py-3 text-foreground text-sm focus:border-primary outline-none transition-colors"
-                placeholder="Your email address"
-              />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground block">Email Address</label>
+                <input
+                  name="email"
+                  type="email"
+                  maxLength={255}
+                  className="w-full bg-background/50 border border-border/50 px-4 py-3.5 text-foreground text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground/40"
+                  placeholder="e.g. your@email.com"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground block">Preferred Visit Date</label>
+                <input
+                  name="date"
+                  type="date"
+                  className="w-full bg-background/50 border border-border/50 px-4 py-3.5 text-foreground text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all [color-scheme:dark]"
+                />
+              </div>
             </div>
-            <div>
-              <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Preferred Visit Date</label>
-              <input
-                type="date"
-                className="w-full bg-transparent border border-border/50 px-4 py-3 text-foreground text-sm focus:border-primary outline-none transition-colors"
-              />
+
+            <div className="space-y-2">
+              <label className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground block">
+                Interested In
+              </label>
+              <select
+                name="interest"
+                className="w-full bg-background/50 border border-border/50 px-4 py-3.5 text-foreground text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all appearance-none cursor-pointer"
+              >
+                <option value="site-visit">Site Visit</option>
+                <option value="pricing">Pricing Information</option>
+                <option value="floor-plan">Floor Plan Details</option>
+                <option value="payment-plan">Payment Plan</option>
+                <option value="other">Other Inquiry</option>
+              </select>
             </div>
-            <div>
-              <label className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Message</label>
+
+            <div className="space-y-2">
+              <label className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground block">Message</label>
               <textarea
+                name="message"
                 rows={4}
-                className="w-full bg-transparent border border-border/50 px-4 py-3 text-foreground text-sm focus:border-primary outline-none transition-colors resize-none"
+                maxLength={1000}
+                className="w-full bg-background/50 border border-border/50 px-4 py-3.5 text-foreground text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all resize-none placeholder:text-muted-foreground/40"
                 placeholder="Any specific questions or requirements..."
               />
             </div>
-            <button
-              type="submit"
-              className="w-full py-4 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors"
-            >
-              Schedule Visit
-            </button>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <button
+                type="submit"
+                className="flex-1 py-4 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/20 font-medium"
+              >
+                Schedule Visit
+              </button>
+              <a
+                href="tel:01810009333"
+                className="flex items-center justify-center gap-2 py-4 px-6 border border-primary/30 text-primary text-sm uppercase tracking-[0.2em] hover:bg-primary/10 transition-all"
+              >
+                <Phone className="w-4 h-4" />
+                Call Now
+              </a>
+            </div>
+
+            <p className="text-[10px] text-muted-foreground/60 text-center">
+              By submitting, you agree to be contacted by Regent Design & Development Ltd regarding your inquiry.
+            </p>
           </motion.form>
         </div>
       </section>
