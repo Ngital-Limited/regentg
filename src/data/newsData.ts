@@ -1,6 +1,7 @@
 import mouSigningImg from "@/assets/news/mou-signing-grand-heritage.png";
 import mouMalekImg from "@/assets/news/mou-signing-regent-malek.png";
 import groundBreakingPalaceImg from "@/assets/news/ground-breaking-regent-palace.png";
+import groundBreakingJannatImg from "@/assets/news/ground-breaking-regent-jannat.png";
 
 export interface NewsItem {
   slug: string;
