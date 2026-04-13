@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
     title: "REGENT GRAND HERITAGE",
     subtitle: "Luxury Living Redefined",
     description: "Experience the pinnacle of architectural excellence in the heart of Dhaka.",
-    image: "/hero/hero-1.jpg",
+    image: "https://images.unsplash.com/photo-1776109377198-7c9e7d632a4a",
   },
   {
     title: "REGENT SAPPHIRE",
     subtitle: "Where Elegance Meets Comfort",
     description: "A masterpiece of modern design crafted for discerning homeowners.",
-    image: "/hero/hero-1.jpg",
+    image: "https://images.unsplash.com/photo-1776108450800-524c042a6c40",
   },
   {
     title: "BUILDING TRUST SINCE ESTABLISHMENT",
     subtitle: "400+ Apartments Delivered",
     description: "Regent Design & Development Ltd — your trusted partner in real estate.",
-    image: "/hero/hero-1.jpg",
+    image: "https://images.unsplash.com/photo-1776110793538-d539dc12285b",
   },
 ];
 
@@ -36,11 +37,11 @@ const HeroSlider = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background layers */}
+      {/* Background image */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2 }}
@@ -51,41 +52,39 @@ const HeroSlider = () => {
             alt={slides[current].title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/60" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Decorative grid */}
-      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
+      {/* Gradient overlay – bottom-heavy like project detail hero */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="container-regent text-center">
+      {/* Content pinned to bottom */}
+      <div className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-28 px-4">
+        <div className="container-regent">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
+              exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.8 }}
-              className="space-y-6"
             >
-              <span className="text-primary text-xs md:text-sm uppercase tracking-[0.4em]">
+              <span className="text-primary text-xs md:text-sm uppercase tracking-[0.3em] font-medium">
                 {slides[current].subtitle}
               </span>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.1em] text-foreground">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-wide mt-4 text-foreground uppercase">
                 {slides[current].title}
               </h1>
-              <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
+              <p className="text-muted-foreground text-lg md:text-xl mt-4 font-light tracking-wide max-w-2xl">
                 {slides[current].description}
               </p>
-              <div className="flex gap-4 justify-center pt-4">
-                <a href="/projects" className="px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-all">
+              <div className="flex gap-4 mt-8">
+                <Link to="/projects" className="px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors">
                   Our Projects
-                </a>
-                <a href="/contact" className="px-8 py-3 border border-foreground/30 text-foreground text-sm uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-all">
+                </Link>
+                <Link to="/contact" className="px-8 py-3 border border-border text-foreground text-sm uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors">
                   Contact Us
-                </a>
+                </Link>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -100,8 +99,17 @@ const HeroSlider = () => {
         <ChevronRight className="w-8 h-8" />
       </button>
 
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+      >
+        <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
+      </motion.div>
+
       {/* Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      <div className="absolute bottom-8 right-8 md:right-16 z-20 flex gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
