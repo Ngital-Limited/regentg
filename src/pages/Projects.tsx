@@ -14,6 +14,7 @@ const projectImages: Record<string, string> = {
   "Regent Grand Heritage": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Up-22Grand-heritage.jpg",
   "Regent Hasina": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Hasina.webp",
   "Regent Sapphire": "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-p-i.jpg",
+  "Regent Spring Dale": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-dale-Side-View.jpg",
 };
 
 const ongoingProjects = [
