@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-6">
-            <img src="/regent-logo.webp" alt="Regent" className="h-14 w-auto" />
+            <img src="/regent-dark-logo.png" alt="Regent" className="h-14 w-auto" />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Regent Design & Development Ltd is a leading real estate company in Bangladesh,
               building trust and excellence since establishment.
