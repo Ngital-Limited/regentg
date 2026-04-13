@@ -284,7 +284,7 @@ const Projects = () => {
               <button onClick={clearFilters} className="mt-4 text-primary text-sm hover:underline">Clear all filters</button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filtered.map((project, i) => (
                 <Link to={`/projects/${toSlug(project.name)}`} key={project.name}>
                   <motion.div
