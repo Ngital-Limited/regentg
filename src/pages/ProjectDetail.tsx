@@ -47,6 +47,7 @@ interface ProjectData {
   name: string;
   tagline: string;
   status: "ongoing" | "completed";
+  heroImage?: string;
   overview: string;
   features: string[];
   progress: { label: string; value: number }[];
@@ -74,7 +75,47 @@ const projectsData: Record<string, ProjectData> = {
   "regent-hasina": makeProject("Regent Hasina", "ongoing"),
   "regent-sapphire": makeProject("Regent Sapphire", "ongoing"),
   "regent-spring-dale": makeProject("Regent Spring Dale", "ongoing"),
-  "regent-tara": makeProject("Regent Tara", "ongoing"),
+  "regent-tara": {
+    name: "Regent Tara",
+    tagline: "Comfort, Convenience & Security in One Address",
+    status: "ongoing" as const,
+    heroImage: "https://regentgroup.com.bd/wp-content/uploads/2025/02/tara-p-i.jpg",
+    overview: "Regent Tara stands with elegance in the heart of Block-M @ Aftabnagar R/A combining Comfort, Convenience & Security in one thoughtfully crafted address. This South-Facing, 7-Storied (G+6) residential building features spacious 2080 SFT 4-Bedroom apartments, tailored for modern families who value Space, Light and Smart Design. The project welcomes residents with a Grand Entrance, while the beautifully Landscaped Rooftop—featuring a BBQ area and Serene Greenery—offers a perfect escape for relaxation and social gatherings. Strategically located near leading institutions such as East West University, reputed schools, hospitals, and major convention centers, Regent Tara ensures unmatched urban connectivity. With quick access to Banasree, Khilgaon, Hatirjheel, Badda, Rampura & Gulshan areas, this is where vibrant city life meets peaceful residential charm.",
+    features: [
+      "South Facing Project",
+      "Full Building Made of Stone",
+      "Modern Architectural Design",
+      "Landscaped Roof Top with Seating Arrangement",
+      "Project is Just Few Blocks from Main Avenue Road",
+      "Well Ventilated Apartments",
+    ],
+    progress: defaultProgress,
+    glance: [
+      { icon: "address", label: "Address", value: "Block-M, Sector-03, Aftabnagar R/A, Dhaka" },
+      { icon: "size", label: "Size", value: "2080 SFT" },
+      { icon: "bedroom", label: "Bedroom", value: "04" },
+      { icon: "facing", label: "Project Facing", value: "South" },
+      { icon: "floor", label: "Floor", value: "G+6" },
+      { icon: "apartments", label: "Apartments", value: "1" },
+      { icon: "total", label: "Total Apartments", value: "6" },
+      { icon: "designer", label: "Structural Designer", value: "Prof. Shafiul Bari (BUET)" },
+      { icon: "handover", label: "Handover Date", value: "December 2026" },
+    ],
+    gallery: [
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-1.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-2.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-3.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-4.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-5.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-6.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-7.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-8.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-9.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-10.jpg",
+    ],
+    mapCoords: { lat: 23.7671012, lng: 90.4551473 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Tara-Brochure.pdf",
+  },
   "regent-palace": makeProject("Regent Palace", "ongoing"),
   "regent-spring-field": makeProject("Regent Spring Field", "ongoing"),
   "regent-rizia": makeProject("Regent Rizia", "ongoing"),
