@@ -22,7 +22,6 @@ const newsItems = [
     image: mouMalekImg,
   },
   {
-  {
     title: "Ground Breaking Ceremony of Regent Palace",
     date: "June 6, 2021",
     excerpt:
