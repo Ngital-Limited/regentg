@@ -8,6 +8,7 @@ const toSlug = (name: string) => name.toLowerCase().replace(/\s+/g, "-");
 
 const projectImages: Record<string, string> = {
   "Regent Tara": "https://regentgroup.com.bd/wp-content/uploads/2025/02/tara-p-i.jpg",
+  "Regent Spring Field": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-Field.jpg",
 };
 
 const ongoingProjects = [
