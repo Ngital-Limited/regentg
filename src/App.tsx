@@ -14,6 +14,8 @@ import Leaders from "./pages/Leaders.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
 import NewsDetail from "./pages/NewsDetail.tsx";
+import OurClients from "./pages/OurClients.tsx";
+import OurLandowners from "./pages/OurLandowners.tsx";
 
 const queryClient = new QueryClient();
 
