@@ -10,7 +10,7 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="bg-regent-charcoal border-t border-border">
+    <footer className="bg-card border-t border-border">
       {/* Main Footer - 3 columns */}
       <div className="container-regent py-10 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-20">
