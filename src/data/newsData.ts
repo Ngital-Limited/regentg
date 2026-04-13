@@ -2,6 +2,7 @@ import mouSigningImg from "@/assets/news/mou-signing-grand-heritage.png";
 import mouMalekImg from "@/assets/news/mou-signing-regent-malek.png";
 import groundBreakingPalaceImg from "@/assets/news/ground-breaking-regent-palace.png";
 import groundBreakingJannatImg from "@/assets/news/ground-breaking-regent-jannat.png";
+import groundBreakingEastQueenImg from "@/assets/news/ground-breaking-regent-east-queen.png";
 
 export interface NewsItem {
   slug: string;
@@ -43,6 +44,14 @@ export const newsItems: NewsItem[] = [
     excerpt:
       "Ground Breaking Ceremony of Regent Jannat was held on 15 February 2021 at Plot F-37 & F-39, Block-F, Road- 03, Sector-02, Aftabnagar R/A. The ceremony took place in the presence of the Chairman of Regent Design & Development (RDDL) Barrister Tareque Akbar Khondakar and other guests. RDDL shall build a 9 (G+8) Storied residential building with modern facilities & architectural work.",
     image: groundBreakingJannatImg,
+  },
+  {
+    slug: "ground-breaking-ceremony-regent-east-queen",
+    title: "Ground Breaking Ceremony of Regent East Queen",
+    date: "January 28, 2021",
+    excerpt:
+      "Piling work inauguration of Regent East Queen was held on 28 January 2021 at Queens Garden Road, Nurer Chala, Vatara. Chairman of Regent Design & Development (RDDL), Barrister Tareque Akbar Khondakar inaugurated the ceremony along with the presence of the landowner and other staffs. RDDL shall building a 8-Storied (G+7) luxurious residential project which will cater to the housing needs of customers whose job location is within close proximity of Gulshan, Baridhara, Bashundhara, Khilgaon.",
+    image: groundBreakingEastQueenImg,
   },
   {
     slug: "regent-grand-heritage-structural-completion",
