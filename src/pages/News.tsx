@@ -14,6 +14,13 @@ const newsItems = [
     image: mouSigningImg,
   },
   {
+    title: "MOU Signing Ceremony of Regent Malek",
+    date: "September 14, 2021",
+    excerpt:
+      "A Memorandum of Understanding (MOU) was signed on 14 September 2021 at the head office of Regent Group in Kemal Ataturk Avenue, Banani C/A between Regent Design & Development Ltd (RDDL) and Landowners of 7 Katha land of West Agargaon. Chairman of Regent Design & Development Ltd, Barrister Tareque Akbar Khondakar signed the MOU on behalf of the company. RDDL will build a 10-Storied (B+G+9) luxurious residential building with facilities such as Mosques, Kids Play Zone, Landscaping works & other facilities.",
+    image: mouMalekImg,
+  },
+  {
     title: "Regent Grand Heritage Achieves Structural Completion",
     date: "March 15, 2026",
     excerpt:
