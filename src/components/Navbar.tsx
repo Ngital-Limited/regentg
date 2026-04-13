@@ -47,9 +47,9 @@ const Navbar = () => {
               : "z-50 bg-transparent"
         }`}
       >
-        <div className="container-regent flex items-center justify-between h-20">
+        <div className="container-regent flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-3 relative z-[60]">
-            <img src="/regent-dark-logo.png" alt="Regent Design & Development Ltd" className="h-12 w-auto" />
+            <img src="/regent-dark-logo.png" alt="Regent Design & Development Ltd" className="h-10 md:h-12 w-auto" />
           </Link>
 
           {/* Hamburger / Close Toggle */}
@@ -102,7 +102,7 @@ const Navbar = () => {
             <div className="absolute inset-0 bg-background/70 backdrop-blur-2xl" />
 
             {/* Menu content */}
-            <div className="relative h-full flex flex-col justify-center px-8 sm:px-12 md:px-20 lg:px-32">
+            <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 md:px-20 lg:px-32">
               <nav className="flex flex-col items-start gap-0">
                 {navLinks.map((link, i) => (
                   <motion.div
@@ -115,7 +115,7 @@ const Navbar = () => {
                     <Link
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`story-link block text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.2em] font-extralight py-2 transition-all duration-500 ease-out text-left hover:text-primary hover:tracking-[0.3em] hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] ${
+                      className={`story-link block text-sm sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.15em] md:tracking-[0.2em] font-extralight py-1.5 md:py-2 transition-all duration-500 ease-out text-left hover:text-primary hover:tracking-[0.25em] md:hover:tracking-[0.3em] hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] ${
                         location.pathname === link.path
                           ? "text-primary"
                           : "text-foreground/60"
@@ -132,13 +132,13 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.5 }}
-                className="absolute bottom-10 left-8 sm:left-12 md:left-20 lg:left-32"
+                className="absolute bottom-6 md:bottom-10 left-6 sm:left-12 md:left-20 lg:left-32"
               >
                 <a
                   href="tel:01810009333"
-                  className="inline-flex items-center gap-3 text-lg sm:text-xl md:text-2xl text-primary hover:text-primary/80 transition-all duration-300 tracking-[0.15em] font-light"
+                  className="inline-flex items-center gap-2 md:gap-3 text-base sm:text-lg md:text-xl lg:text-2xl text-primary hover:text-primary/80 transition-all duration-300 tracking-[0.1em] md:tracking-[0.15em] font-light"
                 >
-                  <Phone className="w-6 h-6" />
+                  <Phone className="w-5 h-5 md:w-6 md:h-6" />
                   0181 000 9333
                 </a>
               </motion.div>
