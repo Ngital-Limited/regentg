@@ -104,7 +104,7 @@ const getGlanceIcon = (icon: string) => {
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const project = projectsData[slug || ""] || projectsData["regent-grand-heritage"];
+  const project = projectsData[slug || ""];
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   return (
