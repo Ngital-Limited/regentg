@@ -115,7 +115,7 @@ const Navbar = () => {
                     <Link
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`story-link block text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.2em] font-extralight py-2 transition-all duration-300 text-center hover:text-primary hover:tracking-[0.35em] hover:scale-105 ${
+                      className={`story-link block text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.2em] font-extralight py-2 transition-all duration-500 ease-out text-center hover:text-primary hover:tracking-[0.3em] hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] ${
                         location.pathname === link.path
                           ? "text-primary"
                           : "text-foreground/60"
