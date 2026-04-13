@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import SectionHeading from "../SectionHeading";
 
 const StakeholdersSection = () => {
-  const stakeholders = ["Our Clients", "Financial Partners", "Consultants", "Suppliers", "Government Bodies", "Community"];
+  const stakeholders = ["Our Clients", "Our Landowners"];
 
   return (
     <section className="section-padding bg-regent-charcoal">
