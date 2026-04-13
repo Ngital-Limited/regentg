@@ -100,23 +100,23 @@ const Navbar = () => {
             <div className="absolute inset-0 bg-background/70 backdrop-blur-2xl" />
 
             {/* Menu content */}
-            <div className="relative h-full flex flex-col items-center justify-center">
-              <nav className="flex flex-col items-center gap-1 md:gap-2">
+            <div className="relative h-full flex flex-col items-center justify-center px-4">
+              <nav className="flex flex-col items-center gap-0">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.path}
-                    initial={{ opacity: 0, y: 25 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.35, delay: 0.05 + i * 0.04 }}
+                    transition={{ duration: 0.3, delay: 0.05 + i * 0.035 }}
                   >
                     <Link
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`block text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase tracking-[0.25em] font-extralight py-2 md:py-3 transition-all duration-300 text-center hover:text-primary hover:tracking-[0.35em] ${
+                      className={`block text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.2em] font-extralight py-2 transition-all duration-300 text-center hover:text-primary ${
                         location.pathname === link.path
                           ? "text-primary"
-                          : "text-foreground/70"
+                          : "text-foreground/60"
                       }`}
                     >
                       {link.label}
@@ -129,14 +129,14 @@ const Navbar = () => {
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.55 }}
-                className="absolute bottom-10 left-0 right-0 flex justify-center"
+                transition={{ duration: 0.4, delay: 0.5 }}
+                className="absolute bottom-8 left-0 right-0 flex justify-center"
               >
                 <a
                   href="tel:01810009333"
-                  className="inline-flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors tracking-widest"
+                  className="inline-flex items-center gap-2 text-xs text-foreground/40 hover:text-primary transition-colors tracking-[0.15em]"
                 >
-                  <Phone className="w-3.5 h-3.5" />
+                  <Phone className="w-3 h-3" />
                   0181 000 9333
                 </a>
               </motion.div>
