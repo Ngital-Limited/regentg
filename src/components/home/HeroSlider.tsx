@@ -7,16 +7,19 @@ const slides = [
     title: "REGENT GRAND HERITAGE",
     subtitle: "Luxury Living Redefined",
     description: "Experience the pinnacle of architectural excellence in the heart of Dhaka.",
+    image: "/hero/hero-1.jpg",
   },
   {
     title: "REGENT SAPPHIRE",
     subtitle: "Where Elegance Meets Comfort",
     description: "A masterpiece of modern design crafted for discerning homeowners.",
+    image: "/hero/hero-1.jpg",
   },
   {
     title: "BUILDING TRUST SINCE ESTABLISHMENT",
     subtitle: "400+ Apartments Delivered",
     description: "Regent Design & Development Ltd — your trusted partner in real estate.",
+    image: "/hero/hero-1.jpg",
   },
 ];
 
