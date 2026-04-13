@@ -46,6 +46,14 @@ export const newsItems: NewsItem[] = [
     image: groundBreakingJannatImg,
   },
   {
+    slug: "ground-breaking-ceremony-regent-east-queen",
+    title: "Ground Breaking Ceremony of Regent East Queen",
+    date: "January 28, 2021",
+    excerpt:
+      "Piling work inauguration of Regent East Queen was held on 28 January 2021 at Queens Garden Road, Nurer Chala, Vatara. Chairman of Regent Design & Development (RDDL), Barrister Tareque Akbar Khondakar inaugurated the ceremony along with the presence of the landowner and other staffs. RDDL shall building a 8-Storied (G+7) luxurious residential project which will cater to the housing needs of customers whose job location is within close proximity of Gulshan, Baridhara, Bashundhara, Khilgaon.",
+    image: groundBreakingEastQueenImg,
+  },
+  {
     slug: "regent-grand-heritage-structural-completion",
     title: "Regent Grand Heritage Achieves Structural Completion",
     date: "March 15, 2026",
