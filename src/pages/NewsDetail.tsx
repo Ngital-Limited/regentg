@@ -83,9 +83,11 @@ const NewsDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              {article.excerpt}
-            </p>
+            <div className="text-muted-foreground leading-relaxed text-base md:text-lg space-y-5">
+              {(article.content || article.excerpt).split("\n\n").map((para, idx) => (
+                <p key={idx} className="whitespace-pre-line">{para}</p>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
