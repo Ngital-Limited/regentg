@@ -418,7 +418,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Jannat",
     tagline: "Elegant South-Facing Living in Aftabnagar",
     status: "completed" as const,
-    heroImage: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat-Night.jpg",
+    heroImage: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat-Day-View-1.jpg",
     overview: "Regent Jannat is a completed residential project located in Block F of the Aftabnagar R/A, Dhaka. This G+8 building features 16 south-facing apartments, offering spacious 3-bedroom layouts of 1570 and 1670 SFT. Designed by Prof. Shafiul Bari of BUET, the earthquake-resistant structure combines modern architectural elegance with premium amenities, including 24/7 security, generator backup, and a communal rooftop space.",
     features: [
       "Modern and elegant architectural design",
