@@ -104,10 +104,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent South Pearl",
     status: "completed",
-    location: "Dhanmondi",
-    size: "1800 SFT",
+    location: "Khilgaon",
+    size: "1348 & 1361 SFT",
     bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/full-image-25-06-2018.png",
   },
   {
     name: "Regent East Castle",
