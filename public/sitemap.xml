@@ -13,6 +13,7 @@
   <url><loc>https://regent.ngital.com.bd/sustainability</loc><priority>0.7</priority></url>
   <url><loc>https://regent.ngital.com.bd/news</loc><priority>0.6</priority></url>
   <url><loc>https://regent.ngital.com.bd/blog</loc><priority>0.6</priority></url>
+  <url><loc>https://regent.ngital.com.bd/videos</loc><priority>0.6</priority></url>
   <url><loc>https://regent.ngital.com.bd/career</loc><priority>0.6</priority></url>
   <url><loc>https://regent.ngital.com.bd/contact</loc><priority>0.8</priority></url>
 
@@ -53,4 +54,12 @@
   <url><loc>https://regent.ngital.com.bd/news/rddl-excellence-construction-award</loc><priority>0.5</priority></url>
   <url><loc>https://regent.ngital.com.bd/news/new-project-launch-regent-spring-dale</loc><priority>0.5</priority></url>
   <url><loc>https://regent.ngital.com.bd/news/regent-sapphire-80-percent-sold</loc><priority>0.5</priority></url>
+
+  <!-- Videos -->
+  <url><loc>https://regent.ngital.com.bd/videos/regent-grand-heritage-walkthrough</loc><priority>0.5</priority></url>
+  <url><loc>https://regent.ngital.com.bd/videos/regent-corporate-overview-2026</loc><priority>0.5</priority></url>
+  <url><loc>https://regent.ngital.com.bd/videos/regent-sapphire-aerial-tour</loc><priority>0.5</priority></url>
+  <url><loc>https://regent.ngital.com.bd/videos/ground-breaking-regent-palace</loc><priority>0.5</priority></url>
+  <url><loc>https://regent.ngital.com.bd/videos/regent-spring-dale-launch</loc><priority>0.5</priority></url>
+  <url><loc>https://regent.ngital.com.bd/videos/rehab-fair-2025-highlights</loc><priority>0.5</priority></url>
 </urlset>
