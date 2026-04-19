@@ -140,10 +140,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Sufia",
     status: "completed",
-    location: "Bashundhara R/A",
-    size: "2000 SFT",
-    bedrooms: "4",
+    location: "West Agargaon",
+    size: "1383 & 1405 SFT",
+    bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SUFIA-2.png",
   },
   {
     name: "Regent Parbata Grand",
