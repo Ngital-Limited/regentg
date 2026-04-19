@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
@@ -45,6 +46,7 @@ const Leaders = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
+      <SEO title="Our Leaders" description="Meet the leadership team behind Regent Design & Development Ltd — visionaries shaping Bangladesh's real estate landscape." path="/leaders" />
       {/* Hero */}
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-regent-charcoal via-background to-background" />

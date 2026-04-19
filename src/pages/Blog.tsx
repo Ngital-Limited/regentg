@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ArrowRight, Clock, User } from "lucide-react";
@@ -10,6 +11,7 @@ const Blog = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
+      <SEO title="Blog & Insights" description="Real estate insights, buying guides, and industry updates from Regent Design & Development Ltd." path="/blog" />
       {/* Hero */}
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">

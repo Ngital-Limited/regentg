@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -71,6 +72,7 @@ const OurClients = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
+      <SEO title="Our Clients" description="Trusted by 1,500+ happy families and corporate clients across Dhaka. See why Regent is Bangladesh's preferred real estate developer." path="/our-clients" />
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>

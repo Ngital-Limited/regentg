@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import ContactButton from "@/components/ContactButton";
 import BrochureDownloadDialog from "@/components/BrochureDownloadDialog";
@@ -749,6 +750,13 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <SEO
+        title={`${project.name} — ${project.tagline}`}
+        description={project.overview.slice(0, 160)}
+        path={`/projects/${slug}`}
+        image={project.heroImage}
+        type="article"
+      />
 
       {/* Hero Section – Full View */}
       <section className="relative h-screen w-full overflow-hidden">

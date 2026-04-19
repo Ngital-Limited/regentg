@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
@@ -19,6 +20,7 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
+      <SEO title="About Us" description="Discover Regent Design & Development Ltd — a legacy of trust, quality, and on-time real estate delivery in Bangladesh since 1981." path="/about" />
       {/* Hero */}
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">

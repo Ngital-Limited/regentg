@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import ContactButton from "@/components/ContactButton";
 import SectionHeading from "@/components/SectionHeading";
@@ -69,6 +70,7 @@ const Sustainability = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
+      <SEO title="Sustainability" description="Regent's commitment to sustainable building — green design, water stewardship, responsible materials, and community wellbeing." path="/sustainability" />
       {/* Hero */}
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">

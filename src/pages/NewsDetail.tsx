@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { newsItems } from "@/data/newsData";
 
@@ -27,6 +28,13 @@ const NewsDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <SEO
+        title={article.title}
+        description={(article.excerpt || article.title).slice(0, 160)}
+        path={`/news/${slug}`}
+        image={article.image}
+        type="article"
+      />
 
       {/* Hero */}
       <section className="relative pt-28 md:pt-32 pb-12 md:pb-16 px-4 bg-regent-charcoal">

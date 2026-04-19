@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Search, SlidersHorizontal, X } from "lucide-react";
@@ -233,6 +234,7 @@ const Projects = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
+      <SEO title="Our Projects" description="Explore Regent's ongoing and completed residential real estate projects across Dhaka, Bangladesh — built with BUET-certified structural integrity." path="/projects" />
       {/* Hero */}
       <section className="pt-28 md:pt-32 pb-12 md:pb-16 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">

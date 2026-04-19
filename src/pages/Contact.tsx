@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, Clock, Globe, CheckCircle } from "lucide-react";
@@ -32,6 +33,7 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
+      <SEO title="Contact Us" description="Get in touch with Regent Design & Development Ltd. Visit our Banani head office or call our hotline for premium real estate inquiries in Dhaka." path="/contact" />
       {/* Hero */}
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">

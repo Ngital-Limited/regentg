@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import ContactButton from "@/components/ContactButton";
 import { motion } from "framer-motion";
@@ -31,6 +32,13 @@ const BlogDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <SEO
+        title={post.title}
+        description={(post.excerpt || post.title).slice(0, 160)}
+        path={`/blog/${slug}`}
+        image={post.image}
+        type="article"
+      />
 
       {/* Hero Image */}
       <section className="relative pt-20">
