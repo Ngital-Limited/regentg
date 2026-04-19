@@ -122,10 +122,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent South Lake",
     status: "completed",
-    location: "Dhanmondi",
-    size: "1750 SFT",
+    location: "Mahanagar Housing, Hatirjheel",
+    size: "1744 SFT",
     bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/full-view.jpg",
   },
   {
     name: "Regent East Queen",
