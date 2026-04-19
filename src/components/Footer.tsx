@@ -86,20 +86,17 @@ const Footer = () => {
       {/* Memberships */}
       <div className="border-t border-border bg-background/40">
         <div className="container-regent py-8 md:py-10">
-          <p className="text-[11px] uppercase tracking-[0.25em] text-primary text-center mb-6 font-medium">
-            Member Of
-          </p>
           <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
             <img
               src="https://regentgroup.com.bd/wp-content/uploads/2025/09/concordnoaddress.webp"
-              alt="Concord Membership"
-              className="h-10 md:h-12 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              alt="Concord"
+              className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
             <img
               src="https://regentgroup.com.bd/wp-content/uploads/2025/09/rehab-1024x265.webp"
-              alt="REHAB Member"
-              className="h-10 md:h-12 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              alt="REHAB"
+              className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
           </div>
