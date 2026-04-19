@@ -47,6 +47,7 @@ const Footer = () => {
                 { label: "Our Clients", path: "/our-clients" },
                 { label: "Our Landowners", path: "/our-landowners" },
                 { label: "News", path: "/news" },
+                { label: "Sustainability", path: "/sustainability" },
                 { label: "Career", path: "/career" },
                 { label: "Contact", path: "/contact" },
               ].map((item) => (
