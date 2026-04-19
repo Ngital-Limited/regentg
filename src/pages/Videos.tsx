@@ -3,24 +3,22 @@ import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Play, Clock, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import { videos, getVideoThumbnail } from "@/data/videoData";
+import { Play, X } from "lucide-react";
+import { videos, getVideoThumbnail, type Video } from "@/data/videoData";
 
 const Videos = () => {
   const categories = useMemo(() => ["All", ...Array.from(new Set(videos.map((v) => v.category)))], []);
   const [active, setActive] = useState("All");
+  const [playing, setPlaying] = useState<Video | null>(null);
 
   const filtered = active === "All" ? videos : videos.filter((v) => v.category === active);
-  const featured = filtered[0];
-  const rest = filtered.slice(1);
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <SEO
         title="Videos"
-        description="Watch project walkthroughs, corporate films, event highlights, and client stories from Regent Design & Development Ltd."
+        description="Watch project walkthroughs, corporate films, and event highlights from Regent Design & Development Ltd."
         path="/videos"
       />
 
@@ -31,9 +29,6 @@ const Videos = () => {
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Media Gallery</span>
             <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">VIDEOS</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
-            <p className="text-muted-foreground mt-6 max-w-xl mx-auto text-sm leading-relaxed">
-              Project walkthroughs, corporate films, events, and stories from the Regent world.
-            </p>
           </motion.div>
         </div>
       </section>
@@ -57,114 +52,68 @@ const Videos = () => {
         </div>
       </section>
 
-      {/* Featured */}
-      {featured && (
-        <section className="pt-12 pb-8 px-4 bg-background">
-          <div className="container-regent">
-            <Link to={`/videos/${featured.slug}`}>
-              <motion.article
-                initial={{ opacity: 0, y: 40 }}
+      {/* Grid */}
+      <section className="py-12 px-4 bg-background">
+        <div className="container-regent">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((video, i) => (
+              <motion.button
+                key={video.youtubeId + i}
+                onClick={() => setPlaying(video)}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-border overflow-hidden group cursor-pointer hover:border-primary/30 transition-all"
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className="relative overflow-hidden aspect-video border border-border bg-card group cursor-pointer hover:border-primary/40 transition-all"
+                aria-label="Play video"
               >
-                <div className="relative overflow-hidden aspect-video lg:aspect-auto">
-                  <img
-                    src={getVideoThumbnail(featured.youtubeId)}
-                    alt={featured.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    width={1280}
-                    height={720}
-                  />
-                  <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors flex items-center justify-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground ml-1" fill="currentColor" />
-                    </div>
+                <img
+                  src={getVideoThumbnail(video.youtubeId)}
+                  alt=""
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors flex items-center justify-center">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground ml-1" fill="currentColor" />
                   </div>
-                  <span className="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.15em] bg-background/80 text-foreground px-2 py-1 backdrop-blur-sm">
-                    {featured.duration}
-                  </span>
                 </div>
-                <div className="p-5 md:p-8 lg:p-12 flex flex-col justify-center space-y-4 md:space-y-5">
-                  <div className="flex items-center gap-4">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-medium bg-primary/10 px-3 py-1">
-                      {featured.category}
-                    </span>
-                    <span className="text-[11px] text-muted-foreground">{featured.date}</span>
-                  </div>
-                  <h2 className="text-lg md:text-xl lg:text-2xl font-light text-foreground group-hover:text-primary transition-colors leading-snug tracking-wide">
-                    {featured.title}
-                  </h2>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{featured.description}</p>
-                  <span className="text-primary text-xs uppercase tracking-[0.15em] flex items-center gap-1 group-hover:gap-2 transition-all pt-2">
-                    Watch Now <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </motion.article>
-            </Link>
-          </div>
-        </section>
-      )}
-
-      {/* Grid */}
-      <section className="pb-20 px-4 bg-background">
-        <div className="container-regent">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {rest.map((video, i) => (
-              <Link key={video.slug} to={`/videos/${video.slug}`}>
-                <motion.article
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="border border-border bg-card overflow-hidden group cursor-pointer hover:border-primary/30 transition-all h-full"
-                >
-                  <div className="relative overflow-hidden aspect-video">
-                    <img
-                      src={getVideoThumbnail(video.youtubeId)}
-                      alt={video.title}
-                      loading="lazy"
-                      width={800}
-                      height={450}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-background/20 group-hover:bg-background/5 transition-colors flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="w-5 h-5 text-primary-foreground ml-0.5" fill="currentColor" />
-                      </div>
-                    </div>
-                    <span className="absolute bottom-2 right-2 text-[10px] uppercase tracking-[0.15em] bg-background/80 text-foreground px-2 py-0.5 backdrop-blur-sm">
-                      {video.duration}
-                    </span>
-                  </div>
-                  <div className="p-6 space-y-3">
-                    <div className="flex items-center gap-3">
-                      <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-medium bg-primary/10 px-2 py-0.5">
-                        {video.category}
-                      </span>
-                      <span className="text-[10px] text-muted-foreground">{video.date}</span>
-                    </div>
-                    <h3 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-relaxed">
-                      {video.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{video.description}</p>
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-                        <Clock className="w-3 h-3" />
-                        {video.duration}
-                      </span>
-                      <span className="text-primary text-[10px] uppercase tracking-[0.15em] flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Watch <ArrowRight className="w-3 h-3" />
-                      </span>
-                    </div>
-                  </div>
-                </motion.article>
-              </Link>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Inline Lightbox Player */}
+      {playing && (
+        <div
+          className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+          onClick={() => setPlaying(null)}
+        >
+          <button
+            onClick={() => setPlaying(null)}
+            className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-primary hover:border-primary transition-colors"
+            aria-label="Close video"
+          >
+            <X className="w-5 h-5 text-foreground" />
+          </button>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-5xl aspect-video bg-black border border-border overflow-hidden"
+          >
+            <iframe
+              src={`https://www.youtube.com/embed/${playing.youtubeId}?autoplay=1&rel=0`}
+              title="Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </motion.div>
+        </div>
+      )}
 
       <Footer />
     </div>
