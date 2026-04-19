@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
+import ApplyDialog from "@/components/ApplyDialog";
 import { motion } from "framer-motion";
 import { Briefcase, MapPin, Clock } from "lucide-react";
 
@@ -13,6 +15,7 @@ const openings = [
 ];
 
 const Career = () => {
+  const [openJob, setOpenJob] = useState<string | null>(null);
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
