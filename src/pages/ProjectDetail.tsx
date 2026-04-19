@@ -747,6 +747,70 @@ const ProjectDetail = () => {
     );
   }
 
+  const glanceMap = Object.fromEntries(project.glance.map((g) => [g.label.toLowerCase(), g.value]));
+  const address = glanceMap["address"] || "Dhaka, Bangladesh";
+  const sizeStr = glanceMap["size"] || "";
+  const bedroomStr = glanceMap["bedroom"] || "";
+  const facing = glanceMap["project facing"] || "";
+  const floor = glanceMap["floor"] || "";
+  const totalApartments = glanceMap["total apartments"] || "";
+  const handover = glanceMap["handover date"] || "";
+
+  const sizeNumbers = sizeStr.match(/\d+/g)?.map(Number) ?? [];
+  const bedroomNumbers = bedroomStr.match(/\d+/g)?.map(Number) ?? [];
+  const projectUrl = `https://regent.ngital.com.bd/projects/${slug}`;
+
+  const residenceSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Residence",
+    name: project.name,
+    description: project.overview,
+    url: projectUrl,
+    image: project.gallery.length ? project.gallery : project.heroImage ? [project.heroImage] : undefined,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: address,
+      addressLocality: "Dhaka",
+      addressCountry: "BD",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: project.mapCoords.lat,
+      longitude: project.mapCoords.lng,
+    },
+    numberOfRooms: bedroomNumbers.length
+      ? { "@type": "QuantitativeValue", minValue: Math.min(...bedroomNumbers), maxValue: Math.max(...bedroomNumbers), unitText: "bedrooms" }
+      : undefined,
+    floorSize: sizeNumbers.length
+      ? { "@type": "QuantitativeValue", minValue: Math.min(...sizeNumbers), maxValue: Math.max(...sizeNumbers), unitCode: "FTK" }
+      : undefined,
+    numberOfRoomsTotal: totalApartments || undefined,
+    amenityFeature: project.features.map((f) => ({
+      "@type": "LocationFeatureSpecification",
+      name: f,
+      value: true,
+    })),
+    additionalProperty: [
+      facing && { "@type": "PropertyValue", name: "Facing", value: facing },
+      floor && { "@type": "PropertyValue", name: "Floors", value: floor },
+      handover && { "@type": "PropertyValue", name: "Handover Date", value: handover },
+      project.status && { "@type": "PropertyValue", name: "Status", value: project.status },
+    ].filter(Boolean),
+  };
+
+  // Remove undefined keys
+  Object.keys(residenceSchema).forEach((k) => residenceSchema[k] === undefined && delete residenceSchema[k]);
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://regent.ngital.com.bd/" },
+      { "@type": "ListItem", position: 2, name: "Projects", item: "https://regent.ngital.com.bd/projects" },
+      { "@type": "ListItem", position: 3, name: project.name, item: projectUrl },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -756,6 +820,7 @@ const ProjectDetail = () => {
         path={`/projects/${slug}`}
         image={project.heroImage}
         type="article"
+        jsonLd={[residenceSchema, breadcrumbSchema]}
       />
 
       {/* Hero Section – Full View */}
