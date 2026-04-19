@@ -12,64 +12,64 @@ const ytThumb = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`
 
 export const videos: Video[] = [
   {
-    slug: "regent-grand-heritage-tour",
-    title: "Regent Grand Heritage — Project Walkthrough",
+    slug: "regent-video-1",
+    title: "Regent Design & Development — Featured Film",
     description:
-      "Take an immersive walkthrough of Regent Grand Heritage, our flagship luxury residential development showcasing premium finishes, modern amenities, and timeless architecture.",
-    category: "Project Tour",
-    date: "March 2026",
-    duration: "3:42",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    slug: "regent-corporate-profile",
-    title: "Regent Design & Development — Corporate Profile",
-    description:
-      "Discover the story, vision, and craftsmanship behind one of Bangladesh's most trusted real estate developers.",
+      "An inside look at Regent Design & Development Ltd — our craftsmanship, our projects, and the people who make it all possible.",
     category: "Corporate",
-    date: "February 2026",
-    duration: "4:15",
-    youtubeId: "dQw4w9WgXcQ",
+    date: "2025",
+    duration: "Watch",
+    youtubeId: "N3_4QtpgoZs",
   },
   {
-    slug: "rehab-fair-2024-highlights",
-    title: "REHAB Fair 2024 — Event Highlights",
+    slug: "regent-video-2",
+    title: "Regent Project Showcase",
     description:
-      "Highlights from our participation at the REHAB Fair 2024, where we showcased our latest projects to thousands of visitors.",
+      "A cinematic walkthrough of one of Regent's signature residential developments — premium finishes, modern architecture, and timeless design.",
+    category: "Project Tour",
+    date: "2025",
+    duration: "Watch",
+    youtubeId: "hTBz-qYPpv8",
+  },
+  {
+    slug: "regent-video-3",
+    title: "Regent Residences — Living Experience",
+    description:
+      "Discover what life looks like inside a Regent residence — thoughtful spaces, refined details, and a community designed for excellence.",
+    category: "Project Tour",
+    date: "2025",
+    duration: "Watch",
+    youtubeId: "PDmXtaDEyeY",
+  },
+  {
+    slug: "regent-video-4",
+    title: "Behind the Build — Regent Construction",
+    description:
+      "A behind-the-scenes look at Regent's commitment to quality construction, structural integrity, and uncompromising standards.",
+    category: "Corporate",
+    date: "2025",
+    duration: "Watch",
+    youtubeId: "kRc6_3ULswU",
+  },
+  {
+    slug: "regent-video-5",
+    title: "Regent Event Highlights",
+    description:
+      "Highlights from a recent Regent event — celebrating partnerships, milestones, and the people who shape our journey.",
     category: "Events",
-    date: "December 2024",
-    duration: "2:08",
-    youtubeId: "dQw4w9WgXcQ",
+    date: "2025",
+    duration: "Watch",
+    youtubeId: "P30w9mcemXo",
   },
   {
-    slug: "client-testimonials-2025",
-    title: "Client Testimonials — Living the Regent Experience",
+    slug: "regent-video-6",
+    title: "Regent Design Vision",
     description:
-      "Hear directly from Regent homeowners about their experience choosing and living in a Regent residence.",
-    category: "Testimonials",
-    date: "November 2025",
-    duration: "5:21",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    slug: "sustainability-commitment",
-    title: "Our Commitment to Sustainable Development",
-    description:
-      "Learn how Regent integrates eco-friendly materials, energy-efficient systems, and green spaces across every project.",
-    category: "Sustainability",
-    date: "October 2025",
-    duration: "3:30",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    slug: "gulshan-luxury-residences-launch",
-    title: "Gulshan Luxury Residences — Launch Event",
-    description:
-      "A glimpse into the grand launch of our Gulshan Luxury Residences, attended by industry leaders and esteemed guests.",
-    category: "Events",
-    date: "September 2025",
-    duration: "2:55",
-    youtubeId: "dQw4w9WgXcQ",
+      "Explore the design philosophy behind every Regent project — where heritage, modernity, and sustainability meet.",
+    category: "Corporate",
+    date: "2025",
+    duration: "Watch",
+    youtubeId: "NXvtkQ-1xoM",
   },
 ];
 
