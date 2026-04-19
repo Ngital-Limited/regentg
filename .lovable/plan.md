@@ -1,56 +1,59 @@
 
-## Plan: Add a Videos page
+# Regent Design & Development Ltd — Website Plan
 
-I'll mirror the existing Blog pattern (data file + listing page + detail page) so the Videos section feels native to the site.
+## Brand & Design System
+- **Dark luxury theme** with deep blacks/charcoals
+- **Primary colors**: Sky blue `#3EC9F3` (from logo), Dark navy `#303192`, Charcoal `#373229`, Near-black `#0D0D0D`
+- **Typography**: Clean, minimal sans-serif (Inter for body, tracking-wide headings)
+- **Logo**: Uploaded Regent logo used in navbar and footer
 
-### 1. Data layer — `src/data/videoData.ts`
-A typed list of videos:
-```ts
-export interface Video {
-  slug: string;
-  title: string;
-  description: string;
-  category: string;        // e.g. "Project Tour", "Corporate", "Event"
-  date: string;
-  duration: string;        // "2:45"
-  thumbnail: string;       // poster image
-  source: "youtube" | "vimeo" | "file";
-  videoId?: string;        // for YouTube/Vimeo
-  videoUrl?: string;       // for self-hosted MP4
-}
-```
-Seed with a few placeholder entries (you can replace with your real videos after).
+## Pages (7 total)
 
-### 2. Listing page — `src/pages/Videos.tsx`
-- Same hero treatment as Blog ("MEDIA / VIDEOS")
-- Featured video on top (large player thumbnail with play overlay)
-- Grid of remaining videos (3 cols desktop, 1 col mobile) with thumbnail + play icon overlay, category chip, title, duration
-- Optional category filter chips (Project Tour, Corporate, Events)
-- Click → navigate to `/videos/:slug`
+### 1. Homepage
+- **Full-screen hero slider** (edge-to-edge, placeholder images) with project highlights and CTA
+- **Ongoing Projects carousel** — 4 cards in 4:5 ratio with project names
+- **About Regent** section — company intro with "Since 1981" heritage
+- **Why Regent / What Makes Us Unique** — 4 feature cards: Quality Materials, Build to Perfection, Architectural Design, On Time Handover, Credibility
+- **Awards & Memberships** section
+- **Regent Insights** section
+- **Our Stakeholders** section
+- **Full-view project location map** (interactive map of Dhaka with project pins)
+- **Footer** with contact info, quick links, social media
 
-### 3. Detail page — `src/pages/VideoDetail.tsx`
-- Embedded player (YouTube/Vimeo iframe, or `<video>` for MP4) — responsive 16:9
-- Title, date, category, description below
-- "Related Videos" grid (3 others) at bottom
-- BreadcrumbList + VideoObject JSON-LD via `SEO` for rich results
+### 2. About Page
+- Company history, mission, vision
+- Leadership/team section
+- Awards & recognition
 
-### 4. Routing — `src/components/AnimatedRoutes.tsx`
-Add:
-```tsx
-<Route path="/videos" element={<PageTransition><Videos /></PageTransition>} />
-<Route path="/videos/:slug" element={<PageTransition><VideoDetail /></PageTransition>} />
-```
+### 3. Projects Page
+- Tabs: Ongoing (8 projects) / Completed (8 projects)
+- Project cards in 4:5 ratio grid
+- Each card links to a project detail view
 
-### 5. Navigation — `src/components/Navbar.tsx`
-Insert `{ label: "Videos", path: "/videos" }` between **Blog** and **Sustainability**.
+### 4. News Page
+- News listing with cards
 
-### 6. SEO — `public/sitemap.xml`
-Add `/videos` and each `/videos/<slug>` URL.
+### 5. Blog Page
+- Blog post listing with featured image cards
 
-### Open question
-How do you want to host the videos?
-- **YouTube/Vimeo embeds** (recommended — fast, no bandwidth cost, autoplay-friendly)
-- **Self-hosted MP4** (uploaded to project / cloud — heavier, but no third-party branding)
-- **Mix of both** (the data model above already supports this)
+### 6. Career Page
+- Open positions listing
+- Application info
 
-If you confirm the hosting choice and share video URLs/IDs + thumbnails, I'll wire them in directly. Otherwise I'll scaffold with placeholders that you can swap.
+### 7. Contact Page
+- Contact form
+- Head office address, hotline, email
+- Embedded map
+
+## Layout
+- Fixed top navbar with Regent logo + nav links (transparent on hero, solid on scroll)
+- Smooth scroll animations and section transitions
+- Fully responsive (mobile hamburger menu)
+- Footer with company info, contact details, and quick links
+
+## Technical
+- React Router for all 7 pages
+- Embla Carousel for slider and project carousel
+- Placeholder images throughout (to be replaced later)
+- Framer Motion for scroll animations
+- Leaflet or embedded Google Maps for location map

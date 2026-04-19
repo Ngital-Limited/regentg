@@ -9,8 +9,6 @@ import News from "@/pages/News";
 import NewsDetail from "@/pages/NewsDetail";
 import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
-import Videos from "@/pages/Videos";
-import VideoDetail from "@/pages/VideoDetail";
 import Career from "@/pages/Career";
 import Contact from "@/pages/Contact";
 import Leaders from "@/pages/Leaders";
@@ -33,8 +31,6 @@ const AnimatedRoutes = () => {
         <Route path="/news/:slug" element={<PageTransition><NewsDetail /></PageTransition>} />
         <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
         <Route path="/blog/:slug" element={<PageTransition><BlogDetail /></PageTransition>} />
-        <Route path="/videos" element={<PageTransition><Videos /></PageTransition>} />
-        <Route path="/videos/:slug" element={<PageTransition><VideoDetail /></PageTransition>} />
         <Route path="/career" element={<PageTransition><Career /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/leaders" element={<PageTransition><Leaders /></PageTransition>} />
