@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
+import ApplyDialog from "@/components/ApplyDialog";
 import { motion } from "framer-motion";
 import { Briefcase, MapPin, Clock } from "lucide-react";
 
@@ -13,6 +15,7 @@ const openings = [
 ];
 
 const Career = () => {
+  const [openJob, setOpenJob] = useState<string | null>(null);
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -49,7 +52,10 @@ const Career = () => {
                     <span className="flex items-center gap-1 text-xs text-muted-foreground"><Clock className="w-3 h-3" />{job.type}</span>
                   </div>
                 </div>
-                <button className="px-6 py-2 border border-primary text-primary text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all shrink-0">
+                <button
+                  onClick={() => setOpenJob(job.title)}
+                  className="px-6 py-2 border border-primary text-primary text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all shrink-0"
+                >
                   Apply Now
                 </button>
               </motion.div>
@@ -68,6 +74,11 @@ const Career = () => {
         </div>
       </section>
       <Footer />
+      <ApplyDialog
+        open={!!openJob}
+        onOpenChange={(o) => !o && setOpenJob(null)}
+        jobTitle={openJob ?? ""}
+      />
     </div>
   );
 };
