@@ -90,13 +90,13 @@ const Footer = () => {
             <img
               src="https://regentgroup.com.bd/wp-content/uploads/2025/09/concordnoaddress.webp"
               alt="Concord"
-              className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              className="h-7 md:h-9 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
             <img
               src="https://regentgroup.com.bd/wp-content/uploads/2025/09/rehab-1024x265.webp"
               alt="REHAB"
-              className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              className="h-7 md:h-9 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
           </div>
