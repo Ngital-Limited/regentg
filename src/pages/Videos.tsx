@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
@@ -7,11 +7,7 @@ import { Play, X } from "lucide-react";
 import { videos, getVideoThumbnail, type Video } from "@/data/videoData";
 
 const Videos = () => {
-  const categories = useMemo(() => ["All", ...Array.from(new Set(videos.map((v) => v.category)))], []);
-  const [active, setActive] = useState("All");
   const [playing, setPlaying] = useState<Video | null>(null);
-
-  const filtered = active === "All" ? videos : videos.filter((v) => v.category === active);
 
   return (
     <div className="min-h-screen bg-background">
@@ -33,30 +29,11 @@ const Videos = () => {
         </div>
       </section>
 
-      {/* Filter */}
-      <section className="pt-10 px-4 bg-background">
-        <div className="container-regent flex flex-wrap justify-center gap-2 md:gap-3">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`text-[10px] md:text-xs uppercase tracking-[0.2em] px-4 py-2 border transition-all ${
-                active === cat
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "border-border text-muted-foreground hover:border-primary hover:text-primary"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </section>
-
       {/* Grid */}
-      <section className="py-12 px-4 bg-background">
+      <section className="py-16 px-4 bg-background">
         <div className="container-regent">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((video, i) => (
+            {videos.map((video, i) => (
               <motion.button
                 key={video.youtubeId + i}
                 onClick={() => setPlaying(video)}
