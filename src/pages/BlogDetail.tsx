@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import ContactButton from "@/components/ContactButton";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, User, Calendar, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blogData";
@@ -181,7 +181,7 @@ const BlogDetail = () => {
       </section>
 
       <Footer />
-      <WhatsAppButton />
+      <ContactButton />
     </div>
   );
 };

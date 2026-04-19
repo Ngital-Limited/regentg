@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import ContactButton from "@/components/ContactButton";
 import BrochureDownloadDialog from "@/components/BrochureDownloadDialog";
 import ProjectMap from "@/components/ProjectMap";
 import { motion } from "framer-motion";
@@ -1278,7 +1278,7 @@ const ProjectDetail = () => {
       )}
 
       <Footer />
-      <WhatsAppButton />
+      <ContactButton />
     </div>
   );
 };
