@@ -149,10 +149,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Parbata Grand",
     status: "completed",
-    location: "Uttara",
-    size: "1900 SFT",
+    location: "Senpara Parbata, Mirpur 10",
+    size: "1064-1396 SFT",
     bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/updated-hira_REGENT-PARBATA-GRAND-4-5-1.jpg",
   },
   {
     name: "Regent Islam",
