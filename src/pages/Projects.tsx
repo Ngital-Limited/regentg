@@ -95,10 +95,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Jannat",
     status: "completed",
-    location: "Bashundhara R/A",
-    size: "2100 SFT",
-    bedrooms: "4",
+    location: "Aftabnagar R/A, Dhaka",
+    size: "1570 & 1670 SFT",
+    bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat-Night.jpg",
   },
   {
     name: "Regent South Pearl",
