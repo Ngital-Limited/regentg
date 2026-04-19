@@ -1,17 +1,140 @@
-const WhatsAppButton = () => {
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { Phone, Mail, MapPin, X, MessageCircle, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const ContactButton = () => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onEsc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onEsc);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onEsc);
+    };
+  }, []);
+
   return (
-    <a
-      href="https://wa.me/8801810009333"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-      aria-label="Chat on WhatsApp"
-    >
-      <svg viewBox="0 0 32 32" className="w-7 h-7 fill-white">
-        <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.132 6.745 3.056 9.377L1.057 31.08l5.89-1.958A15.93 15.93 0 0 0 16.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.35 22.606c-.394 1.112-1.946 2.034-3.2 2.304-.86.182-1.98.328-5.756-1.238-4.832-2.006-7.94-6.9-8.18-7.22-.232-.318-1.946-2.59-1.946-4.942 0-2.352 1.232-3.508 1.67-3.986.394-.43 1.04-.644 1.66-.644.2 0 .38.01.54.018.478.02.718.048 1.034.798.394.938 1.352 3.29 1.472 3.53.12.24.24.558.078.876-.152.328-.278.514-.518.798-.24.284-.466.502-.706.81-.22.266-.468.55-.192 1.028.276.468 1.228 2.024 2.636 3.278 1.812 1.612 3.286 2.14 3.81 2.36.394.168.862.12 1.148-.192.364-.398.814-1.058 1.272-1.71.326-.464.738-.522 1.172-.352.44.16 2.784 1.314 3.262 1.554.478.24.798.358.916.558.12.198.12 1.158-.274 2.27z" />
-      </svg>
-    </a>
+    <div ref={ref} className="fixed bottom-6 right-6 z-50">
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.96 }}
+            transition={{ duration: 0.2 }}
+            className="absolute bottom-16 right-0 w-[88vw] max-w-sm border border-border bg-card shadow-2xl"
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+              <p className="text-[11px] uppercase tracking-[0.25em] text-primary font-medium">
+                Get In Touch
+              </p>
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="p-5 space-y-4">
+              <a
+                href="tel:01810009333"
+                className="flex items-start gap-3 group hover:text-primary transition-colors"
+              >
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 text-primary shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Phone className="w-4 h-4" />
+                </span>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                    Hotline
+                  </p>
+                  <p className="text-sm text-foreground group-hover:text-primary">0181 000 9333</p>
+                </div>
+              </a>
+
+              <a
+                href="mailto:info@regentgroup.com.bd"
+                className="flex items-start gap-3 group hover:text-primary transition-colors"
+              >
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 text-primary shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Mail className="w-4 h-4" />
+                </span>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                    Email
+                  </p>
+                  <p className="text-sm text-foreground group-hover:text-primary break-all">
+                    info@regentgroup.com.bd
+                  </p>
+                </div>
+              </a>
+
+              <div className="flex items-start gap-3">
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 text-primary shrink-0">
+                  <MapPin className="w-4 h-4" />
+                </span>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                    Head Office
+                  </p>
+                  <p className="text-sm text-foreground leading-relaxed">
+                    Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani, Dhaka-1213.
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground px-4 py-3 text-[11px] uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors mt-2"
+              >
+                Contact Page
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-label={open ? "Close contact details" : "Open contact details"}
+        className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+      >
+        <AnimatePresence mode="wait">
+          {open ? (
+            <motion.div
+              key="x"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X className="w-6 h-6" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="msg"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <MessageCircle className="w-6 h-6" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </button>
+    </div>
   );
 };
 
-export default WhatsAppButton;
+export default ContactButton;
