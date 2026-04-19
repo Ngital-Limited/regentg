@@ -74,6 +74,11 @@ const Career = () => {
         </div>
       </section>
       <Footer />
+      <ApplyDialog
+        open={!!openJob}
+        onOpenChange={(o) => !o && setOpenJob(null)}
+        jobTitle={openJob ?? ""}
+      />
     </div>
   );
 };
