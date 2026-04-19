@@ -150,7 +150,7 @@ const Sustainability = () => {
       <section className="py-20 md:py-28 bg-card/40 border-y border-border/40">
         <div className="container-regent">
           <SectionHeading
-            eyebrow="Our Pillars"
+            subtitle="Our Pillars"
             title="Six Principles, One Vision"
             description="The foundation of every sustainable Regent project."
           />
@@ -188,7 +188,7 @@ const Sustainability = () => {
       <section className="py-20 md:py-28">
         <div className="container-regent">
           <SectionHeading
-            eyebrow="In Action"
+            subtitle="In Action"
             title="Initiatives That Matter"
             description="From design philosophy to daily living, sustainability shapes every Regent project."
           />
