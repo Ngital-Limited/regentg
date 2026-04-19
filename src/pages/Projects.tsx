@@ -131,10 +131,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent East Queen",
     status: "completed",
-    location: "Badda",
-    size: "1500 SFT",
+    location: "Queen's Garden Road, Vatara",
+    size: "1520 SFT",
     bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Night-View-1.jpg",
   },
   {
     name: "Regent Sufia",
