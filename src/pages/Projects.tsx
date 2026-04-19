@@ -113,10 +113,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent East Castle",
     status: "completed",
-    location: "Badda",
-    size: "1600 SFT",
+    location: "Shadhinata Sarani, North Badda",
+    size: "1393 & 1398 SFT",
     bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-4.jpg",
   },
   {
     name: "Regent South Lake",
