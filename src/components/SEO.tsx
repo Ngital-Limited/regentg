@@ -57,11 +57,19 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd }
     isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Regent Design & Development Ltd" },
   };
 
-  const schemas: Record<string, unknown>[] = [organizationSchema, websiteSchema, webPageSchema];
+  const extraSchemas: Record<string, unknown>[] = [];
   if (jsonLd) {
-    if (Array.isArray(jsonLd)) schemas.push(...jsonLd);
-    else schemas.push(jsonLd);
+    if (Array.isArray(jsonLd)) extraSchemas.push(...jsonLd);
+    else extraSchemas.push(jsonLd);
   }
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [organizationSchema, websiteSchema, webPageSchema, ...extraSchemas].map((s) => {
+      // strip @context from individual nodes inside @graph
+      const { ["@context"]: _ctx, ...rest } = s as Record<string, unknown>;
+      return rest;
+    }),
+  };
 
   return (
     <Helmet>
@@ -80,11 +88,7 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd }
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
-      {schemas.map((schema, i) => (
-        <script key={i} type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      ))}
+      <script type="application/ld+json">{JSON.stringify(graph)}</script>
     </Helmet>
   );
 };
