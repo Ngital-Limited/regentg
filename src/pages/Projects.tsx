@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
@@ -171,12 +171,29 @@ const statusOptions = ["All", "Ongoing", "Completed", "Upcoming"];
 const typeOptions = ["All", "Residential", "Commercial"];
 
 const Projects = () => {
+  const [searchParams] = useSearchParams();
+  const initialStatus = (() => {
+    const s = (searchParams.get("status") || "").toLowerCase();
+    if (s === "ongoing") return "Ongoing";
+    if (s === "completed") return "Completed";
+    if (s === "upcoming") return "Upcoming";
+    return "All";
+  })();
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState("All");
+  const [statusFilter, setStatusFilter] = useState(initialStatus);
   const [typeFilter, setTypeFilter] = useState("All");
   const [locationFilter, setLocationFilter] = useState("All");
   const [sizeFilter, setSizeFilter] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
+
+  useEffect(() => {
+    const s = (searchParams.get("status") || "").toLowerCase();
+    if (s === "ongoing") setStatusFilter("Ongoing");
+    else if (s === "completed") setStatusFilter("Completed");
+    else if (s === "upcoming") setStatusFilter("Upcoming");
+    else setStatusFilter("All");
+  }, [searchParams]);
 
   const locations = useMemo(() => {
     const locs = [...new Set(allProjects.map((p) => p.location))];
