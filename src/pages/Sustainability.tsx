@@ -70,35 +70,19 @@ const Sustainability = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80)",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary)/0.15),transparent_55%)]" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="container-regent relative z-10 text-center"
-        >
-          <div className="inline-flex items-center gap-2 border border-primary/40 bg-primary/10 px-4 py-2 mb-6 backdrop-blur-sm">
-            <Leaf className="w-4 h-4 text-primary" />
-            <span className="text-[11px] uppercase tracking-[0.3em] text-primary">Our Commitment</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight uppercase tracking-[0.12em] text-foreground mb-6">
-            Sustainability
-          </h1>
-          <p className="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed">
-            Building responsibly for the people of today and the generations of tomorrow —
-            integrating environmental stewardship into every Regent home.
-          </p>
-        </motion.div>
+      <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
+        <div className="container-regent text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <span className="text-primary text-xs uppercase tracking-[0.3em]">Our Commitment</span>
+            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">
+              SUSTAINABILITY
+            </h1>
+            <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-2xl mx-auto">
+              Building responsibly for the people of today and the generations of tomorrow.
+            </p>
+            <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
+          </motion.div>
+        </div>
       </section>
 
       {/* Intro */}
