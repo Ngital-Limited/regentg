@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Our Landowners", path: "/our-landowners" },
   { label: "News", path: "/news" },
   { label: "Blog", path: "/blog" },
+  { label: "Videos", path: "/videos" },
   { label: "Sustainability", path: "/sustainability" },
   { label: "Career", path: "/career" },
   { label: "Contact", path: "/contact" },
