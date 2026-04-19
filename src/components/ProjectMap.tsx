@@ -9,7 +9,7 @@ interface ProjectMapProps {
 }
 
 const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
-  const mapUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`;
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
 
   return (
     <motion.div
