@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import ContactButton from "@/components/ContactButton";
 import HeroSlider from "@/components/home/HeroSlider";
@@ -15,6 +16,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <SEO title="Home — Premium Real Estate in Dhaka" description="Regent Design & Development Ltd builds premium residential & commercial real estate across Dhaka, Bangladesh. Trusted since 1981." path="/" />
       <HeroSlider />
       <ProjectCarousel />
       <AboutSection />

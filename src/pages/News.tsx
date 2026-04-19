@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ const News = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <SEO title="News & Updates" description="Latest news, events, and updates from Regent Design & Development Ltd — a leading real estate developer in Bangladesh." path="/news" />
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
