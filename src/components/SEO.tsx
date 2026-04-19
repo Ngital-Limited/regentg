@@ -17,6 +17,52 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd }
   const ogImage = image || DEFAULT_IMAGE;
   const fullTitle = title.includes("Regent") ? title : `${title} | Regent Design & Development Ltd`;
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    name: "Regent Design & Development Ltd",
+    url: SITE_URL,
+    logo: DEFAULT_IMAGE,
+    image: DEFAULT_IMAGE,
+    description:
+      "Regent Design & Development Ltd is a premier real estate developer in Bangladesh, delivering luxury residential and commercial projects.",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "BD",
+      addressLocality: "Dhaka",
+    },
+    sameAs: [] as string[],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Regent Design & Development Ltd",
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/projects?search={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": type === "article" ? "Article" : "WebPage",
+    name: fullTitle,
+    description,
+    url,
+    image: ogImage,
+    inLanguage: "en",
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Regent Design & Development Ltd" },
+  };
+
+  const schemas: Record<string, unknown>[] = [organizationSchema, websiteSchema, webPageSchema];
+  if (jsonLd) {
+    if (Array.isArray(jsonLd)) schemas.push(...jsonLd);
+    else schemas.push(jsonLd);
+  }
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
