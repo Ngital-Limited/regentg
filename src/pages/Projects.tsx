@@ -158,10 +158,11 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Islam",
     status: "completed",
-    location: "Mirpur",
-    size: "1550 SFT",
+    location: "Shadhinata Sarani, North Badda",
+    size: "1650 SFT",
     bedrooms: "3",
     type: "Residential",
+    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Islam-Day-View.jpg",
   },
 ];
 

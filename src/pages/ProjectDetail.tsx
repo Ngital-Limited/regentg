@@ -669,7 +669,42 @@ const projectsData: Record<string, ProjectData> = {
     ],
     mapCoords: { lat: 23.8069, lng: 90.3687 },
   },
-  "regent-islam": makeProject("Regent Islam", "completed"),
+  "regent-islam": {
+    name: "Regent Islam",
+    tagline: "Where Modern Convenience Meets Urban Sophistication",
+    status: "completed" as const,
+    heroImage: "https://cdn.pixabay.com/photo/2022/07/28/13/53/bedroom-7349893_1280.jpg",
+    overview: "Regent Islam is a thoughtfully designed residential project featuring spacious 1650 SFT double-unit apartments, located in the vibrant heart of Shadhinata Sarani, North Badda. The building stands out with its majestic Architectural Design, offering a perfect fusion of Elegance, Comfort and Modern Urban Living. Ideally positioned within walking distance of AMZ Hospital, Badda General Hospital, leading universities, schools, colleges and shopping malls, this project ensures seamless access to essential amenities for everyday living. With excellent connectivity to Gulshan-1, Gulshan-2, Baridhara, Rampura and the greater Badda area, Regent Islam is especially convenient for professionals working in the Gulshan and Baridhara diplomatic and commercial zones—cutting down on commute times and enhancing work-life balance.",
+    features: [
+      "Full Building Made of Stone",
+      "Premium Quality Fitting & Features",
+      "Elegant Building Elevation",
+      "Designed Landscaped Roof Top with Seating Arrangement",
+      "Project is Just Few Blocks from Main Avenue Road",
+      "Easy Accessibility to Gulshan-1 & Gulshan-2 Area",
+    ],
+    progress: [{ label: "Overall Progress", value: 100 }],
+    glance: [
+      { icon: "address", label: "Address", value: "Shadhinata Sarani Road, North Badda, Dhaka" },
+      { icon: "size", label: "Size", value: "1650 SFT" },
+      { icon: "bedroom", label: "Bedroom", value: "03" },
+      { icon: "facing", label: "Project Facing", value: "North" },
+      { icon: "floor", label: "Floor", value: "G+9" },
+      { icon: "apartments", label: "Apartments", value: "02" },
+      { icon: "total", label: "Total Apartments", value: "18" },
+      { icon: "designer", label: "Structural Designer", value: "Prof. Shafiul Bari (BUET)" },
+      { icon: "handover", label: "Handover Date", value: "June 2025" },
+    ],
+    gallery: [
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-1.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-2.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-3.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-4.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-5.jpg",
+      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Islam-Night-View_15-FEb-2022-scaled-1.jpg",
+    ],
+    mapCoords: { lat: 23.7849, lng: 90.4302 },
+  },
 };
 
 const getGlanceIcon = (icon: string) => {
