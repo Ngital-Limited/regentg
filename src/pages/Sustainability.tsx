@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import ContactButton from "@/components/ContactButton";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
 import { Leaf, Sun, Droplets, Recycle, TreePine, Wind, Building2, HeartHandshake } from "lucide-react";
@@ -244,7 +244,7 @@ const Sustainability = () => {
       </section>
 
       <Footer />
-      <WhatsAppButton />
+      <ContactButton />
     </div>
   );
 };

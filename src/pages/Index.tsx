@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import ContactButton from "@/components/ContactButton";
 import HeroSlider from "@/components/home/HeroSlider";
 import ProjectCarousel from "@/components/home/ProjectCarousel";
 import FeaturedProject from "@/components/home/FeaturedProject";
@@ -24,7 +24,7 @@ const Index = () => {
       <InsightsSection />
       <StakeholdersSection />
       <MapSection />
-      <WhatsAppButton />
+      <ContactButton />
       <Footer />
     </div>
   );
