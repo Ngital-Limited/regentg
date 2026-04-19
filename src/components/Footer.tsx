@@ -109,8 +109,16 @@ const Footer = () => {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Regent Design & Development Ltd. All rights reserved.
           </p>
-          <p className="text-xs text-primary italic">
-            Building Trust, Delivering Excellence.
+          <p className="text-xs text-muted-foreground">
+            Designed & Developed by{" "}
+            <a
+              href="https://ngital.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary hover:underline"
+            >
+              Ngital
+            </a>
           </p>
         </div>
       </div>
