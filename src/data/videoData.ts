@@ -8,7 +8,8 @@ export interface Video {
   youtubeId: string;
 }
 
-const ytThumb = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+const ytThumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const ytThumbHD = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
 export const videos: Video[] = [
   {
@@ -74,3 +75,4 @@ export const videos: Video[] = [
 ];
 
 export const getVideoThumbnail = (id: string) => ytThumb(id);
+export const getVideoThumbnailHD = (id: string) => ytThumbHD(id);
