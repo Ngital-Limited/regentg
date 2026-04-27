@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Share2, Facebook, Twitter, Linkedin, Link2, Check } from "lucide-react";
+import { ArrowLeft, Share2, Link2, Check } from "lucide-react";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
