@@ -27,6 +27,14 @@ const slides = [
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
 
+  // Preload all slide images so transitions never flash a black background
+  useEffect(() => {
+    slides.forEach((s) => {
+      const img = new Image();
+      img.src = s.image;
+    });
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => setCurrent((p) => (p + 1) % slides.length), 6000);
     return () => clearInterval(timer);
@@ -36,23 +44,28 @@ const HeroSlider = () => {
   const next = () => setCurrent((p) => (p + 1) % slides.length);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      <AnimatePresence mode="wait">
+    <section className="relative h-screen w-full overflow-hidden bg-regent-charcoal">
+      {/* Stacked slides — crossfade via opacity so no empty/black frame appears */}
+      {slides.map((slide, i) => (
         <motion.div
-          key={current}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2 }}
+          key={i}
+          initial={false}
+          animate={{
+            opacity: i === current ? 1 : 0,
+            scale: i === current ? 1 : 1.05,
+          }}
+          transition={{ opacity: { duration: 1.2 }, scale: { duration: 6, ease: "linear" } }}
           className="absolute inset-0"
+          style={{ zIndex: i === current ? 1 : 0 }}
         >
           <img
-            src={slides[current].image}
-            alt={slides[current].titleLine1 + " " + slides[current].titleLine2}
+            src={slide.image}
+            alt={slide.titleLine1 + " " + slide.titleLine2}
+            loading={i === 0 ? "eager" : "lazy"}
             className="w-full h-full object-cover"
           />
         </motion.div>
-      </AnimatePresence>
+      ))}
 
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
 
