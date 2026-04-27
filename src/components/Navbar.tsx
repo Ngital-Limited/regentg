@@ -13,7 +13,7 @@ const navLinks = [
   { label: "News", path: "/news" },
   { label: "Blog", path: "/blog" },
   { label: "Video", path: "/videos" },
-  { label: "Sustainability", path: "/sustainability" },
+  
   { label: "Career", path: "/career" },
   { label: "Contact", path: "/contact" },
 ];
