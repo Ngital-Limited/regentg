@@ -68,7 +68,7 @@ const Footer = () => {
             <div className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani, Dhaka-1213, Bangladesh.
+                Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani C/A, Dhaka-1213, Bangladesh.
               </p>
             </div>
             <a href="tel:01810009333" className="inline-flex items-center gap-3 mt-2 group">
