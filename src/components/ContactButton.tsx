@@ -21,7 +21,7 @@ const ContactButton = () => {
   }, []);
 
   return (
-    <div ref={ref} className="fixed bottom-20 right-6 z-50 md:bottom-10">
+    <div ref={ref} className="fixed bottom-28 right-6 z-50 md:bottom-14">
       <AnimatePresence>
         {open && (
           <motion.div
