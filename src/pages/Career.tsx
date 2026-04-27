@@ -4,22 +4,139 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 import ApplyDialog from "@/components/ApplyDialog";
-import { motion } from "framer-motion";
-import { Briefcase, MapPin, Clock } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Briefcase, MapPin, Clock, ChevronDown, GraduationCap, Calendar } from "lucide-react";
 
-const openings = [
-  { title: "Senior Architect", department: "Design", location: "Banani, Dhaka", type: "Full-time" },
-  { title: "Civil Engineer", department: "Construction", location: "Banani, Dhaka", type: "Full-time" },
-  { title: "Marketing Executive", department: "Marketing", location: "Banani, Dhaka", type: "Full-time" },
-  { title: "Sales Manager", department: "Sales", location: "Banani, Dhaka", type: "Full-time" },
+interface JobOpening {
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  experience: string;
+  deadline: string;
+  overview: string;
+  responsibilities: string[];
+  requirements: string[];
+}
+
+const openings: JobOpening[] = [
+  {
+    title: "Senior Architect",
+    department: "Design",
+    location: "Banani, Dhaka",
+    type: "Full-time",
+    experience: "8+ years",
+    deadline: "Open until filled",
+    overview:
+      "Lead the design of premium residential projects from concept to handover. Translate Regent's design philosophy into refined, livable spaces with strong attention to material, light, and proportion.",
+    responsibilities: [
+      "Lead the architectural design process for ongoing and upcoming residential projects",
+      "Develop concept designs, schematic drawings, and detailed construction documents",
+      "Coordinate with structural, MEP, and interior consultants",
+      "Review submissions for RAJUK and other regulatory approvals",
+      "Mentor junior architects and review their drawings for quality and accuracy",
+      "Conduct regular site visits to ensure design intent is preserved during construction",
+    ],
+    requirements: [
+      "B.Arch from BUET / a recognized university (M.Arch preferred)",
+      "Minimum 8 years of experience in residential / mixed-use developments",
+      "Strong proficiency in AutoCAD, Revit, SketchUp, and Adobe Suite",
+      "Sound knowledge of Bangladesh National Building Code (BNBC) and RAJUK guidelines",
+      "Excellent design sensibility, leadership, and client communication skills",
+    ],
+  },
+  {
+    title: "Civil Engineer",
+    department: "Construction",
+    location: "Banani, Dhaka",
+    type: "Full-time",
+    experience: "4–7 years",
+    deadline: "Open until filled",
+    overview:
+      "Manage day-to-day site execution for high-end residential projects, ensuring construction quality, schedule, and safety standards meet Regent's benchmarks.",
+    responsibilities: [
+      "Plan, supervise, and monitor site construction activities end-to-end",
+      "Ensure work is executed as per approved drawings and specifications",
+      "Coordinate with subcontractors, suppliers, and consultants",
+      "Maintain quality control, safety compliance, and progress reporting",
+      "Prepare BOQs, work schedules, and material requisitions",
+      "Conduct quantity surveys and verify contractor bills",
+    ],
+    requirements: [
+      "B.Sc. in Civil Engineering from a recognized university",
+      "4–7 years of experience in real estate / high-rise construction",
+      "Working knowledge of AutoCAD, MS Project, and estimation tools",
+      "Strong understanding of structural drawings and construction methods",
+      "Leadership, problem-solving, and on-site decision-making skills",
+    ],
+  },
+  {
+    title: "Marketing Executive",
+    department: "Marketing",
+    location: "Banani, Dhaka",
+    type: "Full-time",
+    experience: "2–4 years",
+    deadline: "Open until filled",
+    overview:
+      "Drive Regent's brand presence across digital and offline channels. Plan campaigns, produce engaging content, and grow the funnel of qualified leads for our projects.",
+    responsibilities: [
+      "Plan and execute marketing campaigns across digital and traditional media",
+      "Manage social media channels, website content, and email campaigns",
+      "Coordinate with creative agencies, photographers, and videographers",
+      "Track campaign performance and prepare monthly reporting",
+      "Support events, project launches, and REHAB fair activations",
+      "Generate and qualify leads in coordination with the sales team",
+    ],
+    requirements: [
+      "BBA / MBA in Marketing or related field",
+      "2–4 years of marketing experience (real estate experience a plus)",
+      "Hands-on with Meta Ads, Google Ads, GA4, and basic design tools (Canva / Figma)",
+      "Excellent written communication in English and Bangla",
+      "Creative thinker with strong organizational and analytical skills",
+    ],
+  },
+  {
+    title: "Sales Manager",
+    department: "Sales",
+    location: "Banani, Dhaka",
+    type: "Full-time",
+    experience: "6+ years",
+    deadline: "Open until filled",
+    overview:
+      "Lead the sales function for Regent's premium residential portfolio. Build a high-performing sales team and convert qualified inquiries into long-term customer relationships.",
+    responsibilities: [
+      "Drive monthly, quarterly, and annual sales targets across all projects",
+      "Lead, coach, and develop a team of sales executives",
+      "Conduct project presentations, site visits, and client negotiations",
+      "Maintain a strong CRM pipeline and accurate sales forecasting",
+      "Build and maintain relationships with high-net-worth clients and channel partners",
+      "Collaborate with marketing on lead-generation strategy and campaigns",
+    ],
+    requirements: [
+      "BBA / MBA in Sales, Marketing, or related field",
+      "Minimum 6 years of sales experience, with 2+ years in real estate",
+      "Proven track record of closing premium residential deals",
+      "Strong negotiation, presentation, and team-leadership skills",
+      "Existing network among real estate buyers / brokers is a strong plus",
+    ],
+  },
 ];
 
 const Career = () => {
   const [openJob, setOpenJob] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  const toggleExpand = (title: string) =>
+    setExpanded((prev) => (prev === title ? null : title));
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <SEO title="Careers" description="Join Regent Design & Development Ltd. Explore career opportunities with one of Bangladesh's most trusted real estate developers." path="/career" />
+      <SEO
+        title="Careers"
+        description="Join Regent Design & Development Ltd. Explore career opportunities with one of Bangladesh's most trusted real estate developers."
+        path="/career"
+      />
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -32,34 +149,137 @@ const Career = () => {
 
       <section className="section-padding bg-background">
         <div className="container-regent max-w-4xl">
-          <SectionHeading subtitle="Opportunities" title="OPEN POSITIONS" description="Be part of a team that's shaping the skyline of Dhaka." />
+          <SectionHeading
+            subtitle="Opportunities"
+            title="OPEN POSITIONS"
+            description="Be part of a team that's shaping the skyline of Dhaka."
+          />
 
           <div className="space-y-6">
-            {openings.map((job, i) => (
-              <motion.div
-                key={job.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="border border-border bg-card p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-primary/30 transition-all group"
-              >
-                <div>
-                  <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors">{job.title}</h3>
-                  <div className="flex flex-wrap gap-4 mt-2">
-                    <span className="flex items-center gap-1 text-xs text-muted-foreground"><Briefcase className="w-3 h-3" />{job.department}</span>
-                    <span className="flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="w-3 h-3" />{job.location}</span>
-                    <span className="flex items-center gap-1 text-xs text-muted-foreground"><Clock className="w-3 h-3" />{job.type}</span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setOpenJob(job.title)}
-                  className="px-6 py-2 border border-primary text-primary text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all shrink-0"
+            {openings.map((job, i) => {
+              const isOpen = expanded === job.title;
+              return (
+                <motion.div
+                  key={job.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="border border-border bg-card hover:border-primary/30 transition-all group overflow-hidden"
                 >
-                  Apply Now
-                </button>
-              </motion.div>
-            ))}
+                  <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                      <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
+                        {job.title}
+                      </h3>
+                      <div className="flex flex-wrap gap-4 mt-2">
+                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <Briefcase className="w-3 h-3" />
+                          {job.department}
+                        </span>
+                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <MapPin className="w-3 h-3" />
+                          {job.location}
+                        </span>
+                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <Clock className="w-3 h-3" />
+                          {job.type}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <button
+                        onClick={() => toggleExpand(job.title)}
+                        aria-expanded={isOpen}
+                        className="px-5 py-2 border border-border text-foreground/80 text-xs uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-all flex items-center gap-2"
+                      >
+                        {isOpen ? "Hide Details" : "View Details"}
+                        <ChevronDown
+                          className="w-3 h-3"
+                          style={{
+                            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                            transition: "transform 0.25s ease",
+                          }}
+                        />
+                      </button>
+                      <button
+                        onClick={() => setOpenJob(job.title)}
+                        className="px-6 py-2 border border-primary text-primary text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all"
+                      >
+                        Apply Now
+                      </button>
+                    </div>
+                  </div>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        key="details"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="border-t border-border"
+                      >
+                        <div className="p-6 md:p-8 space-y-6">
+                          <div className="flex flex-wrap gap-x-6 gap-y-2">
+                            <span className="flex items-center gap-2 text-xs text-muted-foreground">
+                              <GraduationCap className="w-3.5 h-3.5 text-primary" />
+                              Experience: <span className="text-foreground/80">{job.experience}</span>
+                            </span>
+                            <span className="flex items-center gap-2 text-xs text-muted-foreground">
+                              <Calendar className="w-3.5 h-3.5 text-primary" />
+                              Deadline: <span className="text-foreground/80">{job.deadline}</span>
+                            </span>
+                          </div>
+
+                          <div>
+                            <h4 className="text-[10px] uppercase tracking-[0.3em] text-primary mb-2">Overview</h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed text-justify">
+                              {job.overview}
+                            </p>
+                          </div>
+
+                          <div>
+                            <h4 className="text-[10px] uppercase tracking-[0.3em] text-primary mb-3">
+                              Key Responsibilities
+                            </h4>
+                            <ul className="space-y-2">
+                              {job.responsibilities.map((item, idx) => (
+                                <li
+                                  key={idx}
+                                  className="flex gap-3 text-sm text-muted-foreground leading-relaxed"
+                                >
+                                  <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h4 className="text-[10px] uppercase tracking-[0.3em] text-primary mb-3">
+                              Requirements
+                            </h4>
+                            <ul className="space-y-2">
+                              {job.requirements.map((item, idx) => (
+                                <li
+                                  key={idx}
+                                  className="flex gap-3 text-sm text-muted-foreground leading-relaxed"
+                                >
+                                  <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
 
           <motion.div
@@ -68,8 +288,12 @@ const Career = () => {
             viewport={{ once: true }}
             className="mt-16 p-8 border border-border bg-card text-center"
           >
-            <p className="text-sm text-muted-foreground mb-4">Don't see a suitable position? Send your CV to:</p>
-            <a href="mailto:info@regentgroup.com.bd" className="text-primary text-sm hover:underline">info@regentgroup.com.bd</a>
+            <p className="text-sm text-muted-foreground mb-4">
+              Don't see a suitable position? Send your CV to:
+            </p>
+            <a href="mailto:info@regentgroup.com.bd" className="text-primary text-sm hover:underline">
+              info@regentgroup.com.bd
+            </a>
           </motion.div>
         </div>
       </section>
