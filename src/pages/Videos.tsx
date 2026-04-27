@@ -5,6 +5,51 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Play, X } from "lucide-react";
 import { videos, getVideoThumbnail, getVideoThumbnailHD, type Video } from "@/data/videoData";
+import { useYoutubeMeta } from "@/hooks/useYoutubeMeta";
+
+const VideoCard = ({ video, index, onPlay }: { video: Video; index: number; onPlay: (v: Video) => void }) => {
+  const meta = useYoutubeMeta(video.youtubeId);
+  const title = meta.title || video.title;
+  const thumb = meta.thumbnail || getVideoThumbnailHD(video.youtubeId);
+
+  return (
+    <motion.button
+      onClick={() => onPlay(video)}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.06 }}
+      className="group relative overflow-hidden border border-border bg-card cursor-pointer hover:border-primary/40 transition-all flex flex-col text-left"
+      aria-label={`Play video: ${title}`}
+    >
+      <div className="relative aspect-video overflow-hidden">
+        <img
+          src={thumb}
+          alt={title}
+          loading="lazy"
+          onError={(e) => {
+            const img = e.currentTarget;
+            if (!img.dataset.fallback) {
+              img.dataset.fallback = "1";
+              img.src = getVideoThumbnail(video.youtubeId);
+            }
+          }}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors flex items-center justify-center">
+          <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <Play className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground ml-1" fill="currentColor" />
+          </div>
+        </div>
+      </div>
+      <div className="p-4 md:p-5">
+        <h3 className="text-sm md:text-base font-light text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+          {title}
+        </h3>
+      </div>
+    </motion.button>
+  );
+};
 
 const Videos = () => {
   const [playing, setPlaying] = useState<Video | null>(null);
