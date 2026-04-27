@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Share2, Link2, Check, Mail, Facebook, Linkedin, Twitter, MessageCircle } from "lucide-react";
+import { Share2, Link2, Check, Mail, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
