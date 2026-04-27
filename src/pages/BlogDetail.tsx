@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import ContactButton from "@/components/ContactButton";
+import ShareButton from "@/components/ShareButton";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, User, Calendar, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blogData";
