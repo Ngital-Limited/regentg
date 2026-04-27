@@ -41,12 +41,22 @@ const BrochureDownloadDialog = ({ open, onOpenChange, projectName, brochureUrl }
         description: `Thank you ${name}! Your brochure for ${projectName} is downloading.`,
       });
 
-      // Trigger download
+      // Trigger download (open in new tab — cross-origin PDFs ignore the `download` attr)
       if (brochureUrl) {
         const link = document.createElement("a");
         link.href = brochureUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
         link.download = `${projectName.replace(/\s+/g, "-")}-Brochure.pdf`;
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
+      } else {
+        toast({
+          title: "Brochure Unavailable",
+          description: "The brochure for this project is not available yet.",
+          variant: "destructive",
+        });
       }
 
       // Reset and close
