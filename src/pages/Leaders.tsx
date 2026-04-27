@@ -121,7 +121,7 @@ const Leaders = () => {
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-12 h-[1px] bg-primary" />
                       <span className="text-primary text-[10px] uppercase tracking-[0.3em] font-medium">
-                        {String(i + 1).padStart(2, "0")}
+                        Profile
                       </span>
                     </div>
 
