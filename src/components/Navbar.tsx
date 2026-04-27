@@ -180,12 +180,7 @@ const Navbar = () => {
                                   : "text-foreground/60"
                               }`}
                             >
-                              <span className="flex items-center gap-3">
-                                <span className="text-[10px] tabular-nums opacity-60 font-mono tracking-widest">
-                                  0{i + 1}
-                                </span>
-                                {item.label}
-                              </span>
+                              <span>{item.label}</span>
                               <ChevronDown
                                 className="w-4 h-4 md:w-5 md:h-5 shrink-0"
                                 style={{
@@ -249,9 +244,6 @@ const Navbar = () => {
                                 : "text-foreground/60"
                             }`}
                           >
-                            <span className="text-[10px] tabular-nums opacity-60 font-mono tracking-widest">
-                              0{i + 1}
-                            </span>
                             {item.label}
                           </Link>
                         )}
