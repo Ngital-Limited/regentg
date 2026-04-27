@@ -83,17 +83,17 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
     },
     {
       name: "Facebook",
-      icon: Facebook,
+      icon: FacebookIcon,
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     },
     {
       name: "X (Twitter)",
-      icon: Twitter,
+      icon: XIcon,
       href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     },
     {
       name: "LinkedIn",
-      icon: Linkedin,
+      icon: LinkedinIcon,
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
     },
     {
