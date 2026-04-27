@@ -835,19 +835,19 @@ const ProjectDetail = () => {
       />
 
       {/* Hero Section – Full View */}
-      <section className="relative h-[28vh] md:h-screen w-full overflow-hidden">
+      <section className="relative w-full overflow-hidden bg-background pt-20 md:h-screen md:pt-0">
         {project.heroImage ? (
-          <img src={project.heroImage} alt={project.name} className="absolute inset-0 w-full h-full object-cover" />
+          <img src={project.heroImage} alt={project.name} className="relative h-[22vh] w-full bg-card object-contain md:absolute md:inset-0 md:h-full md:object-cover" />
         ) : (
           <div
-            className="absolute inset-0"
+            className="relative h-[22vh] md:absolute md:inset-0 md:h-full"
             style={{
               background: "linear-gradient(135deg, hsl(240 51% 14%), hsl(194 89% 10%), hsl(0 0% 5%))",
             }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-        <div className="relative h-full flex flex-col justify-end pb-20 px-4">
+        <div className="absolute inset-0 hidden bg-gradient-to-t from-background via-background/60 to-background/20 md:block" />
+        <div className="relative flex flex-col justify-end px-4 py-8 md:h-full md:pb-20 md:pt-0">
           <div className="container-regent">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -882,7 +882,7 @@ const ProjectDetail = () => {
         </div>
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
