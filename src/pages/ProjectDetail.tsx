@@ -863,16 +863,16 @@ const ProjectDetail = () => {
               <p className="text-muted-foreground text-sm md:text-lg lg:text-xl mt-3 md:mt-4 font-light tracking-wide">
                 {project.tagline}
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 mt-6 md:mt-8">
+              <div className="grid grid-cols-1 sm:flex sm:flex-row gap-3 mt-6 md:mt-8">
                 <a
                   href="#schedule"
-                  className="px-6 md:px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors text-center"
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors text-center"
                 >
                   Schedule Visit
                 </a>
                 <a
                   href="#overview"
-                  className="px-6 md:px-8 py-3 border border-border text-foreground text-sm uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors text-center"
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 border border-border text-foreground text-sm uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-colors text-center"
                 >
                   Learn More
                 </a>
