@@ -526,6 +526,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-5.jpg",
     ],
     mapCoords: { lat: 23.784918, lng: 90.4301727 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-East-Castle.pdf",
   },
   "regent-south-lake": {
     name: "Regent South Lake",
@@ -561,6 +562,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SOUTH-LAKE-3.jpg",
     ],
     mapCoords: { lat: 23.7663796, lng: 90.4147224 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-South-Lake.pdf",
   },
   "regent-east-queen": {
     name: "Regent East Queen",
@@ -598,6 +600,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-QUEEN-5.jpg",
     ],
     mapCoords: { lat: 23.7925, lng: 90.4225 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-East-Queen.pdf",
   },
   "regent-sufia": {
     name: "Regent Sufia",
