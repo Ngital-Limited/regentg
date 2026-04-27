@@ -9,7 +9,8 @@ interface ProjectMapProps {
 }
 
 const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
-  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+  const query = encodeURIComponent(`${projectName}${address ? `, ${address}` : ""}`);
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${query}&query_place_id=&center=${lat},${lng}`;
 
   return (
     <motion.div
