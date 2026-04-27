@@ -835,7 +835,7 @@ const ProjectDetail = () => {
       />
 
       {/* Hero Section – Full View */}
-      <section className="relative h-[40vh] md:h-screen w-full overflow-hidden">
+      <section className="relative h-[28vh] md:h-screen w-full overflow-hidden">
         {project.heroImage ? (
           <img src={project.heroImage} alt={project.name} className="absolute inset-0 w-full h-full object-cover" />
         ) : (
