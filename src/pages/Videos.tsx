@@ -79,35 +79,7 @@ const Videos = () => {
         <div className="container-regent">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {videos.map((video, i) => (
-              <motion.button
-                key={video.youtubeId + i}
-                onClick={() => setPlaying(video)}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="relative overflow-hidden aspect-video border border-border bg-card group cursor-pointer hover:border-primary/40 transition-all"
-                aria-label={`Play video: ${video.title}`}
-              >
-                <img
-                  src={getVideoThumbnailHD(video.youtubeId)}
-                  alt={video.title}
-                  loading="lazy"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (!img.dataset.fallback) {
-                      img.dataset.fallback = "1";
-                      img.src = getVideoThumbnail(video.youtubeId);
-                    }
-                  }}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors flex items-center justify-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground ml-1" fill="currentColor" />
-                  </div>
-                </div>
-              </motion.button>
+              <VideoCard key={video.youtubeId + i} video={video} index={i} onPlay={setPlaying} />
             ))}
           </div>
         </div>
