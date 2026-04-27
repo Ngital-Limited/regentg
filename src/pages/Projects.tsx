@@ -59,7 +59,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Tara",
     status: "ongoing",
-    location: "Mirpur DOHS",
+    location: "Aftabnagar R/A",
     size: "1650 SFT",
     bedrooms: "3",
     type: "Residential",
