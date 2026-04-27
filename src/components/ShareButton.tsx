@@ -1,5 +1,23 @@
 import { useState } from "react";
 import { Share2, Link2, Check, Mail, MessageCircle } from "lucide-react";
+
+const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.24-1.46 1.49-1.46H17V4.45c-.27-.04-1.2-.12-2.27-.12-2.25 0-3.79 1.37-3.79 3.89V10.5H8.5v3H11V21h2.5z" />
+  </svg>
+);
+
+const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M18.244 3H21l-6.51 7.44L22.5 21h-6.79l-4.74-6.2L5.4 21H2.64l6.97-7.97L1.8 3h6.96l4.28 5.66L18.244 3zm-1.19 16.2h1.5L7.04 4.7H5.43l11.624 14.5z" />
+  </svg>
+);
+
+const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8.34 18H5.67V9.67h2.67V18zM7 8.5a1.55 1.55 0 110-3.1 1.55 1.55 0 010 3.1zM18.34 18h-2.67v-4.05c0-.97-.02-2.22-1.35-2.22-1.36 0-1.57 1.06-1.57 2.15V18h-2.67V9.67h2.56v1.14h.04c.36-.68 1.24-1.4 2.55-1.4 2.73 0 3.23 1.8 3.23 4.13V18z" />
+  </svg>
+);
 import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
