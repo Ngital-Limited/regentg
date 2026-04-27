@@ -9,8 +9,9 @@ interface ProjectMapProps {
 }
 
 const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
-  const query = encodeURIComponent(`${projectName}${address ? `, ${address}` : ""}`);
-  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${query}&query_place_id=&center=${lat},${lng}`;
+  const label = encodeURIComponent(projectName);
+  // Drop a precise pin at the exact coordinates with the project name as label
+  const mapUrl = `https://www.google.com/maps/place/${label}/@${lat},${lng},18z/data=!4m2!3m1!1s0x0:0x0?q=${lat},${lng}(${label})`;
 
   return (
     <motion.div
