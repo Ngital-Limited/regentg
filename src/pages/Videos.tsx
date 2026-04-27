@@ -13,7 +13,7 @@ const Videos = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <SEO
-        title="Videos"
+        title="Video"
         description="Watch project walkthroughs, corporate films, and event highlights from Regent Design & Development Ltd."
         path="/videos"
       />
@@ -23,7 +23,7 @@ const Videos = () => {
         <div className="container-regent text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-primary text-xs uppercase tracking-[0.3em]">Media Gallery</span>
-            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">VIDEOS</h1>
+            <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">VIDEO</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
         </div>
