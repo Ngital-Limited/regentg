@@ -268,7 +268,9 @@ const projectsData: Record<string, ProjectData> = {
       "Project is Just Few Blocks from Main Avenue Road",
       "Well Ventilated Apartments",
     ],
-    progress: defaultProgress,
+    progress: [
+      { label: "Overall Progress", value: 55 },
+    ],
     glance: [
       { icon: "address", label: "Address", value: "Block-M, Sector-03, Aftabnagar R/A, Dhaka" },
       { icon: "size", label: "Size", value: "2080 SFT" },
