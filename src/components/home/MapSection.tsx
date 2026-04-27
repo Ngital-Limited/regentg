@@ -96,7 +96,7 @@ const MapSection = () => {
         <SectionHeading
           subtitle="Find Us"
           title="PROJECT LOCATIONS"
-          description={`Explore our ${projectLocations.length} projects across prime areas of Dhaka.`}
+          description={`Explore Our ${projectLocations.length} Projects Across Prime Areas Of Dhaka.`}
         />
 
         <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
