@@ -93,6 +93,7 @@ const Footer = () => {
               className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
+            <div className="h-12 md:h-16 w-px bg-border" aria-hidden="true" />
             <img
               src="https://regentgroup.com.bd/wp-content/uploads/2025/09/rehab-1024x265.webp"
               alt="REHAB"
