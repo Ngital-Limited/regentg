@@ -85,7 +85,7 @@ const NewsDetail = () => {
           >
             <div className="text-muted-foreground leading-relaxed text-base md:text-lg space-y-5">
               {(article.content || article.excerpt).split("\n\n").map((para, idx) => (
-                <p key={idx} className="whitespace-pre-line">{para}</p>
+                <p key={idx} className="whitespace-pre-line text-justify">{para}</p>
               ))}
             </div>
           </motion.div>
