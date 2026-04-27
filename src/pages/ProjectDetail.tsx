@@ -337,7 +337,7 @@ const projectsData: Record<string, ProjectData> = {
   },
   "regent-spring-field": {
     name: "Regent Spring Field",
-    tagline: "West Agargaon | Dhaka",
+    tagline: "Unmatched Connectivity Come Together.",
     status: "ongoing" as const,
     heroImage: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
     overview: "Regent Spring Field is an Exclusive 8-Storied residential development located in the highly secure and prestigious neighborhood of West Agargaon—home to some of the Country's Key Government Institutions. Each Floor features well-designed 1650 SFT double-unit apartments offering a harmonious balance of Space, Privacy and Functionality. Surrounded by Key Government and Public establishments—including the Bangladesh Election Commission, Passport Office, Pongu Hospital, Neuro-Science Hospital, Department of Environment, Bangladesh Betar, PKSF, National Institute of Kidney Diseases and National Institute of Cardiovascular Diseases—this address is at the heart of national infrastructure. The project also enjoys excellent access to the Metro Rail Station.",
