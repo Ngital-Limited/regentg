@@ -1153,7 +1153,7 @@ const ProjectDetail = () => {
             {[
               { icon: <Phone className="w-5 h-5" />, label: "Call Us", value: "0181 000 9333", href: "tel:01810009333" },
               { icon: <Mail className="w-5 h-5" />, label: "Email Us", value: "info@regentgroup.com.bd", href: "mailto:info@regentgroup.com.bd" },
-              { icon: <Clock className="w-5 h-5" />, label: "Office Hours", value: "Sat–Thu, 10AM–6PM", href: null },
+              { icon: <Clock className="w-5 h-5" />, label: "Office Hours", value: "Sat–Thu, 9AM–6PM", href: null },
             ].map((item, i) => (
               <motion.div
                 key={i}
