@@ -395,7 +395,7 @@ const projectsData: Record<string, ProjectData> = {
       { label: "Overall Progress", value: 30 },
     ],
     glance: [
-      { icon: "address", label: "Address", value: "Plot-09, Road-02, Sector-15/I, Uttara | Dhaka" },
+      { icon: "address", label: "Address", value: "Plot-09, Road-02, Sector-15/I, Uttara, Dhaka" },
       { icon: "size", label: "Size", value: "2680 SFT" },
       { icon: "bedroom", label: "Bedroom", value: "04" },
       { icon: "facing", label: "Project Facing", value: "East" },
