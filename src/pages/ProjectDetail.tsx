@@ -638,6 +638,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SUFIA-2.jpg",
     ],
     mapCoords: { lat: 23.779832, lng: 90.3697709 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-Sufia.pdf",
   },
   "regent-parbata-grand": {
     name: "Regent Parbata Grand",
@@ -675,6 +676,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-PARBATA-GRAND-5.jpg",
     ],
     mapCoords: { lat: 23.8069, lng: 90.3687 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-Parbata-Grand-Final.pdf",
   },
   "regent-islam": {
     name: "Regent Islam",
@@ -711,6 +713,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/02/Islam-Night-View_15-FEb-2022-scaled-1.jpg",
     ],
     mapCoords: { lat: 23.7849, lng: 90.4302 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/regent-islam-all.pdf",
   },
 };
 
