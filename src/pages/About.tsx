@@ -131,9 +131,9 @@ const About = () => {
           <SectionHeading subtitle="Leadership" title="OUR LEADERS" description="Visionary leadership driving Regent Group's legacy of trust and excellence." />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {[
-              { name: "Mr. Golam Akbar Khondakar", role: "Founder Chairman", image: "/leaders/golam-akbar-khondakar.webp" },
-              { name: "Barrister Tareque Akbar Khondakar", role: "Managing Director", image: "/leaders/tareque-akbar-khondakar.webp" },
-              { name: "Galib Akbar Khondakar", role: "Deputy Managing Director", image: "/leaders/galib-akbar-khondakar.webp" },
+              { name: "MR. GOLAM AKBAR KHONDAKAR", role: "Founder Chairman", image: "/leaders/golam-akbar-khondakar.webp" },
+              { name: "BARRISTER TAREQUE AKBAR KHONDAKAR\n", role: "Managing Director", image: "/leaders/tareque-akbar-khondakar.webp" },
+              { name: "GALIB AKBAR KHONDAKAR", role: "Deputy Managing Director", image: "/leaders/galib-akbar-khondakar.webp" },
             ].map((leader, i) => (
               <motion.div
                 key={leader.name}
