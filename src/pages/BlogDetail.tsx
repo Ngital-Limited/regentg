@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import ContactButton from "@/components/ContactButton";
+import ShareButton from "@/components/ShareButton";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, User, Calendar, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blogData";
@@ -91,8 +92,11 @@ const BlogDetail = () => {
               {post.title}
             </h1>
 
-            {/* Divider */}
-            <div className="w-16 h-[2px] bg-primary mb-10" />
+            {/* Divider + Share */}
+            <div className="mb-10 flex items-center justify-between gap-4 flex-wrap">
+              <div className="w-16 h-[2px] bg-primary" />
+              <ShareButton title={post.title} text={post.excerpt} />
+            </div>
 
             {/* Article Body */}
             <article className="space-y-6">
