@@ -113,15 +113,6 @@ const HeroSlider = () => {
         <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
       </motion.div>
 
-      <div className="absolute bottom-6 md:bottom-8 right-4 md:right-16 z-20 flex gap-2 md:gap-3">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`h-[2px] transition-all duration-500 ${i === current ? "w-8 md:w-12 bg-primary" : "w-4 md:w-6 bg-foreground/30"}`}
-          />
-        ))}
-      </div>
     </section>
   );
 };
