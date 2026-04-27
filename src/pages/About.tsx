@@ -10,7 +10,7 @@ const stats = [
   { icon: CalendarCheck, value: "44+", label: "Years of Group Legacy", desc: "Building on the Regent Group's trusted foundation established in 1981." },
   { icon: Clock, value: "100%", label: "On-Time Project Handover", desc: "A proven track record of delivering every single project on or ahead of schedule." },
   { icon: Building2, value: "50+", label: "Joint-Venture Projects", desc: "Successfully completed projects in prime locations across Dhaka." },
-  { icon: Home, value: "500+", label: "Happy Families Housed", desc: "Crafting dream homes and earning the trust of thousands of satisfied clients and customers." },
+  { icon: Home, value: "400+", label: "Happy Families Housed", desc: "Crafting dream homes and earning the trust of thousands of satisfied clients and customers." },
   { icon: Ruler, value: "500K+", label: "Square Feet Developed", desc: "Demonstrating our extensive experience in creating quality residential and commercial spaces." },
   { icon: UsersRound, value: "100+", label: "In-House Professionals", desc: "A dedicated team of expert engineers, architects, and technical staff ensuring excellence." },
 ];
