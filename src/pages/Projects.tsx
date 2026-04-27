@@ -348,11 +348,6 @@ const Projects = () => {
                       <div className="absolute bottom-0 left-0 right-0 p-5">
                         <h3 className="text-base font-light tracking-wider text-foreground">{project.name}</h3>
                         <p className="text-[11px] text-muted-foreground mt-1">{project.location}</p>
-                        <div className="flex items-center gap-3 mt-2">
-                          <span className="text-[10px] text-muted-foreground">{project.size}</span>
-                          <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-                          <span className="text-[10px] text-muted-foreground">{project.bedrooms} Bed</span>
-                        </div>
                         <div className="h-[1px] w-8 bg-primary mt-3 transition-all duration-500 group-hover:w-16" />
                       </div>
                     </div>
