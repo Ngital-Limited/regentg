@@ -64,7 +64,7 @@ const FeaturedProject = () => {
               <span className="text-sm">{project.location}</span>
             </div>
 
-            <p className="text-sm text-muted-foreground leading-relaxed mt-6 max-w-xl">
+            <p className="text-sm text-muted-foreground leading-relaxed mt-6 max-w-xl text-justify">
               {project.description}
             </p>
           </motion.div>

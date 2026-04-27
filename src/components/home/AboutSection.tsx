@@ -13,12 +13,12 @@ const AboutSection = () => {
             transition={{ duration: 0.7 }}
           >
             <SectionHeading subtitle="About Us" title="REGENT DESIGN & DEVELOPMENT LTD" align="left" />
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6 text-justify">
               Regent Design & Development Ltd (RDDL) is one of the leading real estate companies in Bangladesh.
               With a proven track record of delivering over 400 apartments across Dhaka, we have established
               ourselves as a trusted name in the industry.
             </p>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-8 text-justify">
               Our commitment to quality, innovation, and timely delivery has made us the preferred choice
               for discerning homebuyers who seek nothing but the best.
             </p>
