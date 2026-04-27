@@ -86,13 +86,13 @@ const About = () => {
         <div className="container-regent max-w-4xl">
           <SectionHeading subtitle="Our Company" title="REGENT DESIGN & DEVELOPMENT LTD" />
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6 text-justify">
               Regent Design & Development Ltd (RDDL) is one of the fastest-growing flagship companies of Regent Group, successfully developing joint-venture projects across prime areas of Dhaka. Guided by our mission to "Creating a Lifestyle with Timely Handover of Projects"— RDDL is steadily expanding both in size and scope.
             </p>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6 text-justify">
               With a strong track record of delivering high-quality projects ahead of schedule, RDDL continues to make a positive impact through every development. Our ability to adapt and transform each opportunity into a successful venture has allowed us to not only navigate but emerge stronger from challenging market conditions.
             </p>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed text-justify">
               RDDL upholds an enduring commitment to quality, timely project handovers and apartment owner satisfaction — the foundation of every apartment we build. Combining your dream with our expertise, we create the perfect balance between vision and execution. Each of our apartments stands as a masterpiece of craftsmanship, built with meticulous attention to detail and a standard of finish that is second to none.
             </p>
           </motion.div>
