@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Play, X } from "lucide-react";
-import { videos, getVideoThumbnail, type Video } from "@/data/videoData";
+import { videos, getVideoThumbnail, getVideoThumbnailHD, type Video } from "@/data/videoData";
 
 const Videos = () => {
   const [playing, setPlaying] = useState<Video | null>(null);
@@ -42,12 +42,19 @@ const Videos = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 className="relative overflow-hidden aspect-video border border-border bg-card group cursor-pointer hover:border-primary/40 transition-all"
-                aria-label="Play video"
+                aria-label={`Play video: ${video.title}`}
               >
                 <img
-                  src={getVideoThumbnail(video.youtubeId)}
-                  alt=""
+                  src={getVideoThumbnailHD(video.youtubeId)}
+                  alt={video.title}
                   loading="lazy"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.dataset.fallback) {
+                      img.dataset.fallback = "1";
+                      img.src = getVideoThumbnail(video.youtubeId);
+                    }
+                  }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors flex items-center justify-center">
@@ -83,7 +90,7 @@ const Videos = () => {
           >
             <iframe
               src={`https://www.youtube.com/embed/${playing.youtubeId}?autoplay=1&rel=0`}
-              title="Video"
+              title={playing.title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="w-full h-full"
