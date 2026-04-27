@@ -58,7 +58,7 @@ const NewsDetail = () => {
               <div className="w-16 h-[2px] bg-primary" />
               <ShareButton title={article.title} text={article.excerpt} />
             </div>
-            <div className="w-16 h-[2px] bg-primary mt-6" />
+            
           </motion.div>
         </div>
       </section>
