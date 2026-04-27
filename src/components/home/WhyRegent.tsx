@@ -57,7 +57,7 @@ const WhyRegent = () => {
             >
               <feature.icon className="w-6 h-6 md:w-8 md:h-8 text-primary mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-sm uppercase tracking-[0.2em] text-foreground mb-4 font-medium">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed text-justify">{feature.description}</p>
             </motion.div>
           ))}
         </div>
