@@ -373,6 +373,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-7.jpg",
     ],
     mapCoords: { lat: 23.781365, lng: 90.367875 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-Field-Brochure.pdf",
   },
   "regent-rizia": {
     name: "Regent Rizia",
@@ -413,6 +414,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2026/02/Side-View-2-scaled.jpg",
     ],
     mapCoords: { lat: 23.8759, lng: 90.3795 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2026/02/Rizia-Brochure-v12-1.pdf",
   },
   // Completed
   "regent-jannat": {
@@ -450,6 +452,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat-Night-View-2.jpg",
     ],
     mapCoords: { lat: 23.7697, lng: 90.4312 },
+    brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-Jannat-2.pdf",
   },
   "regent-south-pearl": {
     name: "Regent South Pearl",
