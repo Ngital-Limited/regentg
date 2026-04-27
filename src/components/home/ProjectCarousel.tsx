@@ -42,7 +42,7 @@ const ProjectCarousel = () => {
         <SectionHeading
           subtitle="Our Portfolio"
           title="ONGOING PROJECTS"
-          description="Explore our current developments across Dhaka, each crafted with precision and elegance."
+          description="Explore Our Current Developments Across Dhaka, Each Crafted With Precision And Elegance."
         />
 
         <div className="relative">

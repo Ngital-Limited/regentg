@@ -42,7 +42,7 @@ const WhyRegent = () => {
         <SectionHeading
           subtitle="Why Choose Us"
           title="WHAT MAKES US UNIQUE"
-          description="Six pillars that define the Regent experience and set us apart in the industry."
+          description="Six Pillars That Define The Regent Experience And Set Us Apart In The Industry."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
