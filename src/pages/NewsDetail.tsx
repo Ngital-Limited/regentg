@@ -1,12 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Share2, Link2, Check } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
+import ShareButton from "@/components/ShareButton";
 import { newsItems } from "@/data/newsData";
-import { toast } from "sonner";
 
 const NewsDetail = () => {
   const { slug } = useParams();
