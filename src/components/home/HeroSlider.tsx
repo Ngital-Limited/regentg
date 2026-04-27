@@ -67,7 +67,9 @@ const HeroSlider = () => {
         </motion.div>
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
+      {/* Bottom shadow gradient — ensures slider text stays readable on any image */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
 
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-4">
         <div className="container-regent">
