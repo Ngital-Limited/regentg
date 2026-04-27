@@ -42,16 +42,16 @@ const About = () => {
         <div className="container-regent max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-foreground text-lg md:text-xl leading-relaxed mb-8 font-light text-center">
-              With a legacy of trust dating back to 1981, we build dream homes and create lasting value through an unwavering commitment to quality and on-time delivery.
+              With A Legacy Of Trust Dating Back To 1981, We Build Dream Homes And Create Lasting Value Through An Unwavering Commitment To Quality And On-Time Delivery.
             </p>
             <div className="w-12 h-[1px] bg-primary/40 mx-auto mb-8" />
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6 text-justify">
               Founded on the principles of Honesty, Service, and Commitment, Regent Group began its journey in 1981. Since then, it has expanded its operations across a wide range of sectors, including Paper Mills, Ship Breaking, Textiles, Heimtex Mills and Shipping. Regent is the Founder of the Real Estate Housing Project "Purbachal Regent Town"— located adjacent to RAJUK's New Purbachal Town and "Regent Textile Mills Ltd"— a 100% export-oriented composite textile mill based in Chittagong.
             </p>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6 text-justify">
               Driven by a vision of diversification and growth, Regent Group entered the real estate sector with an experienced, dynamic and thoughtful team dedicated to Creating a Lifestyle with Timely Handover of Projects. In response to evolving market demands, Regent has established several sister companies offering a wide range of services — from residential and commercial developments to ready flats and plot sales.
             </p>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed text-justify">
               With an unwavering commitment to quality and reliability, Regent Group has consistently delivered projects without delays, building the dream homes of those who place their trust in us.
             </p>
           </motion.div>
