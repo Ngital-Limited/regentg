@@ -83,10 +83,10 @@ const HeroSlider = () => {
                 transition={{ duration: 0.7 }}
                 className="absolute inset-x-0 bottom-0 space-y-2 md:space-y-3"
               >
-                <span className="text-primary text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium block">
+                <span className="text-primary text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium block [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
                   {slides[current].subtitle}
                 </span>
-                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase leading-tight [text-shadow:0_4px_16px_rgba(0,0,0,0.7)]">
                   {slides[current].titleLine1}<br />
                   {slides[current].titleLine2}
                 </h1>
