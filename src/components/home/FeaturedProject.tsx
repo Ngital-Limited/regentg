@@ -83,7 +83,7 @@ const FeaturedProject = () => {
                 className={`p-4 md:p-5 border-border/50 bg-background/60 backdrop-blur-sm ${idx % 2 === 0 ? 'border-r' : ''} ${idx < 2 ? 'border-b' : ''}`}
               >
                 <spec.icon className="w-4 h-4 text-primary mb-2" />
-                <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-1">{spec.label}</p>
+                <p className="uppercase tracking-[0.15em] text-muted-foreground text-base font-medium mb-1">{spec.label}</p>
                 <p className="text-sm font-medium text-foreground">{spec.value}</p>
               </div>
             ))}
