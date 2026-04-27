@@ -684,7 +684,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Islam",
     tagline: "Where Modern Convenience Meets Urban Sophistication",
     status: "completed" as const,
-    heroImage: "https://cdn.pixabay.com/photo/2022/07/28/13/53/bedroom-7349893_1280.jpg",
+    heroImage: "https://images.unsplash.com/photo-1777297400400-59b3ba8c05d4",
     overview: "Regent Islam is a thoughtfully designed residential project featuring spacious 1650 SFT double-unit apartments, located in the vibrant heart of Shadhinata Sarani, North Badda. The building stands out with its majestic Architectural Design, offering a perfect fusion of Elegance, Comfort and Modern Urban Living. Ideally positioned within walking distance of AMZ Hospital, Badda General Hospital, leading universities, schools, colleges and shopping malls, this project ensures seamless access to essential amenities for everyday living. With excellent connectivity to Gulshan-1, Gulshan-2, Baridhara, Rampura and the greater Badda area, Regent Islam is especially convenient for professionals working in the Gulshan and Baridhara diplomatic and commercial zones—cutting down on commute times and enhancing work-life balance.",
     features: [
       "Full Building Made of Stone",
