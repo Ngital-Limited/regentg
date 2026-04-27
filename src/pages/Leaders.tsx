@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const leaders = [
   {
-    name: "Mr. Golam Akbar Khondakar",
+    name: "MR. GOLAM AKBAR KHONDAKAR",
     title: "Founder Chairman",
     org: "Regent Group",
     image: "/leaders/golam-akbar-khondakar.webp",
@@ -17,7 +17,7 @@ const leaders = [
     ],
   },
   {
-    name: "Barrister Tareque Akbar Khondakar",
+    name: "BARRISTER TAREQUE AKBAR KHONDAKAR\n",
     title: "Managing Director",
     org: "Regent Group & Chairman, RDDL",
     image: "/leaders/tareque-akbar-khondakar.webp",
@@ -29,7 +29,7 @@ const leaders = [
     ],
   },
   {
-    name: "Galib Akbar Khondakar",
+    name: "GALIB AKBAR KHONDAKAR",
     title: "Deputy Managing Director",
     org: "Regent Group",
     image: "/leaders/galib-akbar-khondakar.webp",
@@ -137,7 +137,7 @@ const Leaders = () => {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.4, delay: 0.4 + j * 0.1 }}
-                          className="text-muted-foreground text-sm leading-[1.8] tracking-wide"
+                          className="text-muted-foreground text-sm leading-[1.8] tracking-wide text-justify"
                         >
                           {para}
                         </motion.p>
