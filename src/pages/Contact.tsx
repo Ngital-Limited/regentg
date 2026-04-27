@@ -25,7 +25,7 @@ const Contact = () => {
     { icon: MapPin, label: "Head Office Address", value: "Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani, Dhaka-1213, Bangladesh" },
     { icon: Phone, label: "Hotline", value: "0181 000 9333", href: "tel:01810009333" },
     { icon: Mail, label: "Email", value: "info@regentgroup.com.bd", href: "mailto:info@regentgroup.com.bd" },
-    { icon: Clock, label: "Office Hours", value: "Saturday – Thursday: 10:00 AM – 6:00 PM" },
+    { icon: Clock, label: "Office Hours", value: "Saturday – Thursday: 9:00 AM – 6:00 PM" },
     { icon: Globe, label: "Website", value: "www.regentgroup.com.bd", href: "https://regentgroup.com.bd" },
   ];
 
