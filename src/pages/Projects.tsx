@@ -240,7 +240,7 @@ const Projects = () => {
 
   const statusColor = (status: string) => {
     switch (status) {
-      case "ongoing": return "bg-primary/20 text-primary";
+      case "ongoing": return "text-primary bg-secondary";
       case "completed": return "bg-green-500/20 text-green-400";
       case "upcoming": return "bg-yellow-500/20 text-yellow-400";
       default: return "bg-muted text-muted-foreground";
@@ -260,7 +260,7 @@ const Projects = () => {
             <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">PROJECTS</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-4 text-sm max-w-lg mx-auto">
-              Explore {allProjects.length} projects across Dhaka — ongoing, completed & upcoming
+              Explore our portfolio of ongoing, completed, and upcoming projects shaping what’s next.
             </p>
           </motion.div>
         </div>
