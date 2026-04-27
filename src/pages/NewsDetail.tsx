@@ -54,6 +54,10 @@ const NewsDetail = () => {
             <h1 className="text-2xl md:text-5xl font-light tracking-wide text-foreground">
               {article.title}
             </h1>
+            <div className="mt-6 flex items-center gap-4">
+              <div className="w-16 h-[2px] bg-primary" />
+              <ShareButton title={article.title} text={article.excerpt} />
+            </div>
             <div className="w-16 h-[2px] bg-primary mt-6" />
           </motion.div>
         </div>
