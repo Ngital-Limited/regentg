@@ -1,28 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Play, X, Loader2 } from "lucide-react";
+import { Play, X } from "lucide-react";
+import { videos, getVideoThumbnail, getVideoThumbnailHD, type Video } from "@/data/videoData";
 import { useYoutubeMeta } from "@/hooks/useYoutubeMeta";
-import { supabase } from "@/integrations/supabase/client";
-
-type Video = {
-  id: string;
-  slug: string;
-  title: string;
-  description: string | null;
-  category: string | null;
-  youtube_id: string;
-};
-
-const ytThumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-const ytThumbHD = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
 const VideoCard = ({ video, index, onPlay }: { video: Video; index: number; onPlay: (v: Video) => void }) => {
-  const meta = useYoutubeMeta(video.youtube_id);
-  const title = video.title || meta.title || "";
-  const thumb = meta.thumbnail || ytThumbHD(video.youtube_id);
+  const meta = useYoutubeMeta(video.youtubeId);
+  const title = meta.title || video.title;
+  const thumb = meta.thumbnail || getVideoThumbnailHD(video.youtubeId);
 
   return (
     <motion.button
@@ -43,7 +31,7 @@ const VideoCard = ({ video, index, onPlay }: { video: Video; index: number; onPl
             const img = e.currentTarget;
             if (!img.dataset.fallback) {
               img.dataset.fallback = "1";
-              img.src = ytThumb(video.youtube_id);
+              img.src = getVideoThumbnail(video.youtubeId);
             }
           }}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -55,11 +43,6 @@ const VideoCard = ({ video, index, onPlay }: { video: Video; index: number; onPl
         </div>
       </div>
       <div className="p-4 md:p-5">
-        {video.category && (
-          <span className="text-[10px] uppercase tracking-[0.2em] text-primary block mb-2">
-            {video.category}
-          </span>
-        )}
         <h3 className="text-sm md:text-base font-light text-foreground line-clamp-2 group-hover:text-primary transition-colors">
           {title}
         </h3>
@@ -70,21 +53,6 @@ const VideoCard = ({ video, index, onPlay }: { video: Video; index: number; onPl
 
 const Videos = () => {
   const [playing, setPlaying] = useState<Video | null>(null);
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await supabase
-        .from("videos")
-        .select("id, slug, title, description, category, youtube_id")
-        .eq("is_published", true)
-        .order("display_order", { ascending: true })
-        .order("created_at", { ascending: false });
-      setVideos((data as Video[]) || []);
-      setLoading(false);
-    })();
-  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -109,19 +77,11 @@ const Videos = () => {
       {/* Grid */}
       <section className="py-16 px-4 bg-background">
         <div className="container-regent">
-          {loading ? (
-            <div className="flex justify-center py-20">
-              <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-            </div>
-          ) : videos.length === 0 ? (
-            <p className="text-center text-muted-foreground py-12 text-sm">No videos available yet.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {videos.map((video, i) => (
-                <VideoCard key={video.id} video={video} index={i} onPlay={setPlaying} />
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videos.map((video, i) => (
+              <VideoCard key={video.youtubeId + i} video={video} index={i} onPlay={setPlaying} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -146,7 +106,7 @@ const Videos = () => {
             className="w-full max-w-5xl aspect-video bg-black border border-border overflow-hidden"
           >
             <iframe
-              src={`https://www.youtube.com/embed/${playing.youtube_id}?autoplay=1&rel=0`}
+              src={`https://www.youtube.com/embed/${playing.youtubeId}?autoplay=1&rel=0`}
               title={playing.title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

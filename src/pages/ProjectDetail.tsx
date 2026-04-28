@@ -8,12 +8,8 @@ import ProjectMap from "@/components/ProjectMap";
 import { motion } from "framer-motion";
 import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect, FormEvent } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useState, FormEvent } from "react";
 import { toast } from "sonner";
-import { usePreview } from "@/hooks/usePreview";
-import PreviewBanner from "@/components/PreviewBanner";
-import { brochureUrl, projectImageUrl } from "@/lib/storage";
 import img_lifestyle_3107041_1280 from "@/assets/imported/lifestyle-3107041_1280.jpg";
 import img_real_estate_9053405_1280 from "@/assets/imported/real-estate-9053405_1280.jpg";
 import img_img_07_04_03_524_1280 from "@/assets/imported/07-04-03-524_1280.jpg";
@@ -861,97 +857,9 @@ const getGlanceIcon = (icon: string) => {
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const staticProject = projectsData[slug || ""];
+  const project = projectsData[slug || ""];
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [brochureOpen, setBrochureOpen] = useState(false);
-  const [dbProject, setDbProject] = useState<any | null>(null);
-  const [dbLoaded, setDbLoaded] = useState(false);
-
-  const { isPreview, authLoading } = usePreview();
-
-  useEffect(() => {
-    if (!slug || authLoading) return;
-    (async () => {
-      let q = supabase
-        .from("projects")
-        .select("*")
-        .eq("slug", slug);
-      if (!isPreview) q = q.eq("is_active", true);
-      const { data } = await q.maybeSingle();
-      setDbProject(data);
-      setDbLoaded(true);
-    })();
-  }, [slug, isPreview, authLoading]);
-
-  // Build merged project data — DB takes precedence, fallback to hardcoded
-  const project: ProjectData | null = (() => {
-    if (!dbProject && !staticProject) return null;
-    if (!dbProject) return staticProject;
-
-    const cover = projectImageUrl(dbProject.cover_image_path) || staticProject?.heroImage;
-    const gallery: string[] = (dbProject.gallery_paths || [])
-      .map((p: string) => projectImageUrl(p))
-      .filter(Boolean) as string[];
-    const brochure = brochureUrl(dbProject.brochure_path) || staticProject?.brochureUrl;
-
-    const glance: { icon: string; label: string; value: string }[] = [];
-    if (dbProject.location) glance.push({ icon: "address", label: "Address", value: dbProject.location });
-    if (dbProject.area_sqft) glance.push({ icon: "size", label: "Size", value: `${dbProject.area_sqft} SFT` });
-    if (dbProject.bedrooms) glance.push({ icon: "bedroom", label: "Bedroom", value: dbProject.bedrooms });
-    if (dbProject.facing) glance.push({ icon: "facing", label: "Project Facing", value: dbProject.facing });
-    if (dbProject.floors != null) glance.push({ icon: "floor", label: "Floor", value: String(dbProject.floors) });
-    if (dbProject.units != null) glance.push({ icon: "total", label: "Total Apartments", value: String(dbProject.units) });
-    if (dbProject.structural_designer) glance.push({ icon: "designer", label: "Structural Designer", value: dbProject.structural_designer });
-    if (dbProject.handover_date)
-      glance.push({
-        icon: "handover",
-        label: "Handover Date",
-        value: new Date(dbProject.handover_date).toLocaleDateString("en-US", { year: "numeric", month: "long" }),
-      });
-
-    const dbFeatures: string[] = (dbProject.features && dbProject.features.length)
-      ? dbProject.features
-      : (dbProject.amenities || []);
-
-    const dbProgress: { label: string; value: number }[] =
-      Array.isArray(dbProject.progress_items) && dbProject.progress_items.length
-        ? (dbProject.progress_items as any[]).map((p) => ({
-            label: String(p.label || ""),
-            value: Number(p.value) || 0,
-          }))
-        : staticProject?.progress || [];
-
-    return {
-      name: dbProject.name,
-      tagline: dbProject.short_description || staticProject?.tagline || "",
-      status: ((dbProject.status || staticProject?.status || "ongoing").toLowerCase() === "completed"
-        ? "completed"
-        : "ongoing") as "ongoing" | "completed",
-      heroImage: cover || undefined,
-      overview: dbProject.description || staticProject?.overview || "",
-      features: dbFeatures.length ? dbFeatures : (staticProject?.features || []),
-      progress: dbProgress,
-      glance: glance.length ? glance : staticProject?.glance || [],
-      gallery: gallery.length ? gallery : staticProject?.gallery || [],
-      mapCoords: {
-        lat: dbProject.latitude ?? staticProject?.mapCoords.lat ?? 23.7697,
-        lng: dbProject.longitude ?? staticProject?.mapCoords.lng ?? 90.4312,
-      },
-      brochureUrl: brochure || undefined,
-    };
-  })();
-
-  if (!dbLoaded && !staticProject) {
-    return (
-      <div className="min-h-screen bg-background flex flex-col">
-        <Navbar />
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-muted-foreground text-sm">Loading…</div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
 
   if (!project) {
     return (
@@ -970,7 +878,6 @@ const ProjectDetail = () => {
       </div>
     );
   }
-
 
   const glanceMap = Object.fromEntries(project.glance.map((g) => [g.label.toLowerCase(), g.value]));
   const address = glanceMap["address"] || "Dhaka, Bangladesh";
@@ -1038,24 +945,12 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {isPreview && dbProject && (
-        <PreviewBanner
-          status={dbProject.is_active ? "published" : "draft"}
-          label={dbProject.name}
-        />
-      )}
       <Navbar />
       <SEO
-        title={dbProject?.meta_title || `${project.name} — ${project.tagline}`}
-        description={
-          dbProject?.meta_description ||
-          dbProject?.short_description ||
-          project.overview.slice(0, 160)
-        }
+        title={`${project.name} — ${project.tagline}`}
+        description={project.overview.slice(0, 160)}
         path={`/projects/${slug}`}
-        image={
-          projectImageUrl(dbProject?.og_image_path) || project.heroImage
-        }
+        image={project.heroImage}
         type="article"
         jsonLd={[residenceSchema, breadcrumbSchema]}
       />
@@ -1412,16 +1307,13 @@ const ProjectDetail = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="border border-border/50 p-5 md:p-8 lg:p-12 space-y-6 md:space-y-8"
-            onSubmit={async (e: FormEvent<HTMLFormElement>) => {
+            onSubmit={(e: FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               const form = e.currentTarget;
               const formData = new FormData(form);
               const name = (formData.get("name") as string)?.trim();
               const phone = (formData.get("phone") as string)?.trim();
               const email = (formData.get("email") as string)?.trim();
-              const date = (formData.get("date") as string) || "";
-              const interest = (formData.get("interest") as string) || "site-visit";
-              const message = (formData.get("message") as string)?.trim();
 
               if (!name || !phone) {
                 toast.error("Please fill in your name and phone number.");
@@ -1431,25 +1323,7 @@ const ProjectDetail = () => {
                 toast.error("Please enter a valid email address.");
                 return;
               }
-              if (!date) {
-                toast.error("Please pick a preferred visit date.");
-                return;
-              }
 
-              const { error } = await supabase.from("visit_bookings").insert({
-                name,
-                phone,
-                email: email || `${phone}@noemail.local`,
-                preferred_date: date,
-                preferred_time: interest,
-                project_id: dbProject?.id || null,
-                project_name: project.name,
-                notes: message || null,
-              });
-              if (error) {
-                toast.error(error.message);
-                return;
-              }
               toast.success("Thank you! We'll contact you shortly to confirm your visit.", {
                 duration: 5000,
               });
