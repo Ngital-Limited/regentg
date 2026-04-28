@@ -24,15 +24,32 @@ export const useAuth = (): AuthState => {
   useEffect(() => {
     let mounted = true;
 
+    const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
     const checkAdminRole = async (userId: string) => {
-      const { data, error } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("role", "admin")
-        .maybeSingle();
-      if (!mounted) return;
-      setIsAdmin(!error && !!data);
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const { data, error } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", userId)
+          .eq("role", "admin")
+          .maybeSingle();
+
+        if (!mounted) return;
+
+        if (!error) {
+          setIsAdmin(!!data);
+          return;
+        }
+
+        if (attempt < 2 && error.message.toLowerCase().includes("schema cache")) {
+          await wait(800 * (attempt + 1));
+          continue;
+        }
+
+        setIsAdmin(false);
+        return;
+      }
     };
 
     // 1. Subscribe FIRST
@@ -41,20 +58,27 @@ export const useAuth = (): AuthState => {
       setSession(newSession);
       setUser(newSession?.user ?? null);
       if (newSession?.user) {
+        setLoading(true);
         // Defer the async role check so we don't deadlock the auth listener
-        setTimeout(() => checkAdminRole(newSession.user.id), 0);
+        setTimeout(async () => {
+          await checkAdminRole(newSession.user.id);
+          if (mounted) setLoading(false);
+        }, 0);
       } else {
         setIsAdmin(false);
+        setLoading(false);
       }
     });
 
     // 2. THEN read existing session
-    supabase.auth.getSession().then(({ data: { session: existingSession } }) => {
+    supabase.auth.getSession().then(async ({ data: { session: existingSession } }) => {
       if (!mounted) return;
       setSession(existingSession);
       setUser(existingSession?.user ?? null);
       if (existingSession?.user) {
-        checkAdminRole(existingSession.user.id);
+        await checkAdminRole(existingSession.user.id);
+      } else {
+        setIsAdmin(false);
       }
       setLoading(false);
     });
