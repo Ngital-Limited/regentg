@@ -14,6 +14,7 @@ interface ImageUploadProps {
 
 export function publicUrl(bucket: string, path?: string | null) {
   if (!path) return null;
+  if (path.startsWith("/") || path.startsWith("http://") || path.startsWith("https://")) return path;
   return supabase.storage.from(bucket).getPublicUrl(path).data.publicUrl;
 }
 
