@@ -31,6 +31,7 @@ import AdminBlog from "@/pages/admin/AdminBlog";
 import AdminTaxonomy from "@/pages/admin/AdminTaxonomy";
 import AdminHomepage from "@/pages/admin/AdminHomepage";
 import AdminTeam from "@/pages/admin/AdminTeam";
+import AdminSEO from "@/pages/admin/AdminSEO";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -67,6 +68,7 @@ const AnimatedRoutes = () => {
           <Route path="blog" element={<AdminBlog />} />
           <Route path="taxonomy" element={<AdminTaxonomy />} />
           <Route path="team" element={<AdminTeam />} />
+          <Route path="seo" element={<AdminSEO />} />
         </Route>
 
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
