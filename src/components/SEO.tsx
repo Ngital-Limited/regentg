@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { usePageSEO } from "@/hooks/usePageSEO";
-import { supabase } from "@/integrations/supabase/client";
 import { publicUrl } from "@/lib/storage";
 
 interface SEOProps {
