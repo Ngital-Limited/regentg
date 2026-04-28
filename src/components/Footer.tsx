@@ -90,14 +90,14 @@ const Footer = () => {
         <div className="container-regent py-8 md:py-10">
           <div className="flex flex-wrap items-center justify-center gap-x-16 md:gap-x-24 gap-y-8">
             <img
-              src=img_concordnoaddress
+              src={img_concordnoaddress}
               alt="Concord"
               className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
             <div className="h-12 md:h-16 w-px bg-border" aria-hidden="true" />
             <img
-              src=img_rehab_1024x265
+              src={img_rehab_1024x265}
               alt="REHAB"
               className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
