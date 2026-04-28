@@ -7,7 +7,7 @@ import BrochureDownloadDialog from "@/components/BrochureDownloadDialog";
 import ProjectMap from "@/components/ProjectMap";
 import { motion } from "framer-motion";
 import { Progress } from "@/components/ui/progress";
-import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock, X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { toast } from "sonner";
 import img_lifestyle_3107041_1280 from "@/assets/imported/lifestyle-3107041_1280.jpg";
