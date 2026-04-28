@@ -44,11 +44,15 @@ const AdminHomepage = () => {
       const { data, error } = await supabase
         .from("site_settings")
         .select("key, value")
-        .in("key", ["hero", "about", "stats"]);
+        .in("key", ["hero", "hero_slides", "about", "stats"]);
       if (error) toast.error(error.message);
-      const next = { ...defaults };
+      const next: Settings = { ...defaults, hero_slides: [] };
       data?.forEach((row: any) => {
-        (next as any)[row.key] = { ...(defaults as any)[row.key], ...row.value };
+        if (row.key === "hero_slides") {
+          next.hero_slides = Array.isArray(row.value) ? row.value : (row.value?.slides ?? []);
+        } else {
+          (next as any)[row.key] = { ...(defaults as any)[row.key], ...row.value };
+        }
       });
       setSettings(next);
       setLoading(false);
@@ -59,6 +63,7 @@ const AdminHomepage = () => {
     setSaving(true);
     const rows = [
       { key: "hero", value: settings.hero },
+      { key: "hero_slides", value: settings.hero_slides as any },
       { key: "about", value: settings.about },
       { key: "stats", value: settings.stats },
     ];
@@ -66,6 +71,22 @@ const AdminHomepage = () => {
     setSaving(false);
     if (error) return toast.error(error.message);
     toast.success("Homepage updated");
+  };
+
+  const updateSlide = (idx: number, patch: Partial<Slide>) => {
+    setSettings((s) => ({
+      ...s,
+      hero_slides: s.hero_slides.map((sl, i) => (i === idx ? { ...sl, ...patch } : sl)),
+    }));
+  };
+  const addSlide = () => {
+    setSettings((s) => ({
+      ...s,
+      hero_slides: [...s.hero_slides, { titleLine1: "", titleLine2: "", subtitle: "", image: "" }],
+    }));
+  };
+  const removeSlide = (idx: number) => {
+    setSettings((s) => ({ ...s, hero_slides: s.hero_slides.filter((_, i) => i !== idx) }));
   };
 
   if (loading)
