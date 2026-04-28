@@ -2,24 +2,40 @@ import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, Clock, Globe, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Clock, Globe, CheckCircle, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.message.trim()) {
       toast({ title: "Please fill in all required fields", variant: "destructive" });
+      return;
+    }
+    setSubmitting(true);
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      subject: form.subject.trim() || null,
+      message: form.message.trim(),
+    });
+    setSubmitting(false);
+    if (error) {
+      toast({ title: "Could not send message", description: error.message, variant: "destructive" });
       return;
     }
     setSubmitted(true);
     toast({ title: "Message sent successfully!", description: "We'll get back to you shortly." });
   };
+
 
   const contactDetails = [
     { icon: MapPin, label: "Head Office Address", value: "Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani C/A, Dhaka-1213, Bangladesh" },
@@ -124,7 +140,7 @@ const Contact = () => {
                 {[
                   { key: "name", label: "Full Name *", type: "text", placeholder: "Your full name" },
                   { key: "email", label: "Email Address *", type: "email", placeholder: "your@email.com" },
-                  { key: "phone", label: "Phone Number", type: "tel", placeholder: "+880 1XXX XXXXXX" },
+                  { key: "phone", label: "Phone Number *", type: "tel", placeholder: "+880 1XXX XXXXXX" },
                   { key: "subject", label: "Subject", type: "text", placeholder: "How can we help?" },
                 ].map((field) => (
                   <div key={field.key}>
@@ -153,10 +169,15 @@ const Contact = () => {
                 <p className="text-[10px] text-muted-foreground/60">* Required fields</p>
                 <button
                   type="submit"
-                  className="group flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all"
+                  disabled={submitting}
+                  className="group flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all disabled:opacity-60"
                 >
-                  <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  Send Message
+                  {submitting ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  )}
+                  {submitting ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>
