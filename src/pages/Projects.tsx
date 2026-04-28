@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { projectImageUrl } from "@/lib/storage";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 
 type DbProject = {
   id: string;
@@ -36,19 +38,22 @@ const Projects = () => {
   const [statusFilter, setStatusFilter] = useState(initialStatus);
   const [locationFilter, setLocationFilter] = useState("All");
   const [sizeFilter, setSizeFilter] = useState("All");
+  const { isPreview, authLoading } = usePreview();
 
   useEffect(() => {
+    if (authLoading) return;
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("projects")
-        .select("id, slug, name, status, location, area_sqft, units, cover_image_path")
-        .eq("is_active", true)
+        .select("id, slug, name, status, location, area_sqft, units, cover_image_path, is_active")
         .order("display_order", { ascending: true })
         .order("name", { ascending: true });
+      if (!isPreview) q = q.eq("is_active", true);
+      const { data } = await q;
       setProjects((data as DbProject[]) || []);
       setLoading(false);
     })();
-  }, []);
+  }, [isPreview, authLoading]);
 
   useEffect(() => {
     const s = (searchParams.get("status") || "").toLowerCase();
