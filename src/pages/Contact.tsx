@@ -2,24 +2,40 @@ import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, Clock, Globe, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Clock, Globe, CheckCircle, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.message.trim()) {
       toast({ title: "Please fill in all required fields", variant: "destructive" });
+      return;
+    }
+    setSubmitting(true);
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      subject: form.subject.trim() || null,
+      message: form.message.trim(),
+    });
+    setSubmitting(false);
+    if (error) {
+      toast({ title: "Could not send message", description: error.message, variant: "destructive" });
       return;
     }
     setSubmitted(true);
     toast({ title: "Message sent successfully!", description: "We'll get back to you shortly." });
   };
+
 
   const contactDetails = [
     { icon: MapPin, label: "Head Office Address", value: "Delta Dahlia, Level-5, 36 Kemal Ataturk Avenue, Banani C/A, Dhaka-1213, Bangladesh" },
