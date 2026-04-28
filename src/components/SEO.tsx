@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { usePageSEO } from "@/hooks/usePageSEO";
+import { supabase } from "@/integrations/supabase/client";
 
 interface SEOProps {
   title: string;
@@ -7,6 +9,8 @@ interface SEOProps {
   image?: string;
   type?: "website" | "article";
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** When true, do not look up admin-managed page_seo overrides (used by detail pages that already pass full meta) */
+  skipPageOverride?: boolean;
 }
 
 const SITE_URL = "https://regentgroup.com.bd";
@@ -33,26 +37,42 @@ const upsertLink = (rel: string, href: string) => {
   el.setAttribute("href", href);
 };
 
-const SEO = ({ title, description, path = "/", image, type = "website", jsonLd }: SEOProps) => {
+const ogImageUrl = (path?: string | null) => {
+  if (!path) return null;
+  if (path.startsWith("http")) return path;
+  // og_image_path could come from blog-images or project-images bucket
+  return supabase.storage.from("blog-images").getPublicUrl(path).data.publicUrl;
+};
+
+const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, skipPageOverride }: SEOProps) => {
+  const override = usePageSEO(skipPageOverride ? "__none__" : path);
+
+  const effectiveTitle = override?.meta_title || title;
+  const effectiveDescription = override?.meta_description || description;
+  const effectiveImage = image || ogImageUrl(override?.og_image_path) || DEFAULT_IMAGE;
+
   const url = `${SITE_URL}${path}`;
-  const ogImage = image || DEFAULT_IMAGE;
-  const fullTitle = title.includes("Regent") ? title : `${title} | Regent Design & Development Ltd`;
+  const ogImage = effectiveImage;
+  const fullTitle = effectiveTitle.includes("Regent")
+    ? effectiveTitle
+    : `${effectiveTitle} | Regent Design & Development Ltd`;
+  const description2 = effectiveDescription;
 
   useEffect(() => {
     document.title = fullTitle;
 
-    upsertMeta('meta[name="description"]', "name", "description", description);
+    upsertMeta('meta[name="description"]', "name", "description", description2);
     upsertLink("canonical", url);
 
     upsertMeta('meta[property="og:type"]', "property", "og:type", type);
     upsertMeta('meta[property="og:title"]', "property", "og:title", fullTitle);
-    upsertMeta('meta[property="og:description"]', "property", "og:description", description);
+    upsertMeta('meta[property="og:description"]', "property", "og:description", description2);
     upsertMeta('meta[property="og:url"]', "property", "og:url", url);
     upsertMeta('meta[property="og:image"]', "property", "og:image", ogImage);
 
     upsertMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
     upsertMeta('meta[name="twitter:title"]', "name", "twitter:title", fullTitle);
-    upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
+    upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", description2);
     upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", ogImage);
 
     // JSON-LD: Organization, WebSite, WebPage/Article + page-specific
@@ -79,7 +99,7 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd }
     const webPageSchema = {
       "@type": type === "article" ? "Article" : "WebPage",
       name: fullTitle,
-      description,
+      description: description2,
       url,
       image: ogImage,
       inLanguage: "en",
@@ -108,7 +128,7 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd }
       document.head.appendChild(scriptEl);
     }
     scriptEl.textContent = JSON.stringify(graph);
-  }, [fullTitle, description, url, ogImage, type, jsonLd]);
+  }, [fullTitle, description2, url, ogImage, type, jsonLd]);
 
   return null;
 };

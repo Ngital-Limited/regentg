@@ -291,6 +291,33 @@ export type Database = {
         }
         Relationships: []
       }
+      page_seo: {
+        Row: {
+          label: string
+          meta_description: string | null
+          meta_title: string | null
+          og_image_path: string | null
+          path: string
+          updated_at: string
+        }
+        Insert: {
+          label: string
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image_path?: string | null
+          path: string
+          updated_at?: string
+        }
+        Update: {
+          label?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image_path?: string | null
+          path?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       projects: {
         Row: {
           amenities: string[] | null
@@ -308,7 +335,10 @@ export type Database = {
           latitude: number | null
           location: string | null
           longitude: number | null
+          meta_description: string | null
+          meta_title: string | null
           name: string
+          og_image_path: string | null
           short_description: string | null
           slug: string
           status: string | null
@@ -331,7 +361,10 @@ export type Database = {
           latitude?: number | null
           location?: string | null
           longitude?: number | null
+          meta_description?: string | null
+          meta_title?: string | null
           name: string
+          og_image_path?: string | null
           short_description?: string | null
           slug: string
           status?: string | null
@@ -354,7 +387,10 @@ export type Database = {
           latitude?: number | null
           location?: string | null
           longitude?: number | null
+          meta_description?: string | null
+          meta_title?: string | null
           name?: string
+          og_image_path?: string | null
           short_description?: string | null
           slug?: string
           status?: string | null

@@ -37,6 +37,9 @@ type Project = {
   amenities: string[] | null;
   latitude: number | null;
   longitude: number | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  og_image_path: string | null;
   is_active: boolean;
   display_order: number;
 };
@@ -58,6 +61,9 @@ const empty: Partial<Project> = {
   amenities: [],
   latitude: null,
   longitude: null,
+  meta_title: "",
+  meta_description: "",
+  og_image_path: null,
   is_active: true,
   display_order: 0,
 };
@@ -352,6 +358,41 @@ const AdminProjects = () => {
                     }
                   />
                 </div>
+              </div>
+
+              <div className="border-t border-border pt-4 space-y-4">
+                <h4 className="text-xs uppercase tracking-wider text-muted-foreground">SEO</h4>
+                <div>
+                  <Label>Meta title</Label>
+                  <Input
+                    value={editing.meta_title || ""}
+                    placeholder={editing.name || "e.g. Regent Heights | Premium Apartments"}
+                    onChange={(e) => setEditing({ ...editing, meta_title: e.target.value })}
+                  />
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    {(editing.meta_title || "").length}/60 characters recommended
+                  </p>
+                </div>
+                <div>
+                  <Label>Meta description</Label>
+                  <Textarea
+                    rows={2}
+                    value={editing.meta_description || ""}
+                    placeholder={editing.short_description || "Brief description for search results"}
+                    onChange={(e) =>
+                      setEditing({ ...editing, meta_description: e.target.value })
+                    }
+                  />
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    {(editing.meta_description || "").length}/160 characters recommended
+                  </p>
+                </div>
+                <ImageUpload
+                  bucket="project-images"
+                  value={editing.og_image_path}
+                  onChange={(p) => setEditing({ ...editing, og_image_path: p })}
+                  label="Social share image (OG)"
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-4">

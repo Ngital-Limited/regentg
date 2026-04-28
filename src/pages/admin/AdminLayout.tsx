@@ -13,6 +13,7 @@ import {
   Home,
   Newspaper,
   Tags,
+  Search,
 } from "lucide-react";
 import SEO from "@/components/SEO";
 
@@ -25,6 +26,7 @@ const navItems = [
   { to: "/admin/projects", label: "Projects", icon: FolderOpen, group: "Content" },
   { to: "/admin/blog", label: "Blog Posts", icon: Newspaper, group: "Content" },
   { to: "/admin/taxonomy", label: "Categories & Tags", icon: Tags, group: "Content" },
+  { to: "/admin/seo", label: "Page SEO", icon: Search, group: "Content" },
   { to: "/admin/team", label: "Team Access", icon: UsersIcon, group: "Settings" },
 ];
 
