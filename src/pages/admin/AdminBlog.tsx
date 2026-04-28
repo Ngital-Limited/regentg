@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Plus, Pencil, Trash2, Loader2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Loader2, Eye } from "lucide-react";
 import { toast } from "sonner";
 import ImageUpload, { publicUrl } from "@/components/admin/ImageUpload";
 import { slugify } from "@/lib/slug";
@@ -210,6 +210,19 @@ const AdminBlog = () => {
                 </div>
                 <p className="text-xs text-muted-foreground truncate">/blog/{p.slug}</p>
               </div>
+              <Button
+                size="icon"
+                variant="ghost"
+                title={p.is_published ? "View live page" : "Preview draft"}
+                onClick={() => {
+                  const isNews =
+                    categories.find((c) => c.id === p.category_id)?.slug === "news";
+                  const base = isNews ? `/news/${p.slug}` : `/blog/${p.slug}`;
+                  window.open(`${base}${p.is_published ? "" : "?preview=1"}`, "_blank");
+                }}
+              >
+                <Eye className="h-4 w-4" />
+              </Button>
               <Button size="icon" variant="ghost" onClick={() => openEdit(p)}>
                 <Pencil className="h-4 w-4" />
               </Button>

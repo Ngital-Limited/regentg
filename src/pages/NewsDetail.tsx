@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import ShareButton from "@/components/ShareButton";
 import { supabase } from "@/integrations/supabase/client";
 import { blogImageUrl } from "@/lib/storage";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 
 type Post = {
   id: string;
@@ -18,6 +20,7 @@ type Post = {
   cover_image_path: string | null;
   published_at: string | null;
   created_at: string;
+  is_published?: boolean;
 };
 
 const formatDate = (d: string | null) =>
@@ -27,20 +30,21 @@ const NewsDetail = () => {
   const { slug } = useParams();
   const [article, setArticle] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
+  const { isPreview, authLoading } = usePreview();
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || authLoading) return;
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("blog_posts")
-        .select("id, slug, title, excerpt, body, cover_image_path, published_at, created_at")
-        .eq("slug", slug)
-        .eq("is_published", true)
-        .maybeSingle();
+        .select("id, slug, title, excerpt, body, cover_image_path, published_at, created_at, is_published")
+        .eq("slug", slug);
+      if (!isPreview) q = q.eq("is_published", true);
+      const { data } = await q.maybeSingle();
       setArticle((data as Post) || null);
       setLoading(false);
     })();
-  }, [slug]);
+  }, [slug, isPreview, authLoading]);
 
   if (loading) {
     return (
@@ -75,6 +79,12 @@ const NewsDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && (
+        <PreviewBanner
+          status={article.is_published ? "published" : "draft"}
+          label={article.title}
+        />
+      )}
       <Navbar />
       <SEO
         title={article.title}

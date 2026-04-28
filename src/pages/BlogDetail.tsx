@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Clock, User, Calendar, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { blogImageUrl } from "@/lib/storage";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 
 type Post = {
   id: string;
@@ -20,6 +22,7 @@ type Post = {
   author_name: string | null;
   published_at: string | null;
   created_at: string;
+  is_published?: boolean;
   blog_categories: { name: string; slug: string } | null;
 };
 
@@ -31,17 +34,18 @@ const BlogDetail = () => {
   const [post, setPost] = useState<Post | null>(null);
   const [related, setRelated] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const { isPreview, authLoading } = usePreview();
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || authLoading) return;
     setLoading(true);
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("blog_posts")
-        .select("id, slug, title, excerpt, body, cover_image_path, author_name, published_at, created_at, blog_categories(name, slug)")
-        .eq("slug", slug)
-        .eq("is_published", true)
-        .maybeSingle();
+        .select("id, slug, title, excerpt, body, cover_image_path, author_name, published_at, created_at, is_published, blog_categories(name, slug)")
+        .eq("slug", slug);
+      if (!isPreview) q = q.eq("is_published", true);
+      const { data } = await q.maybeSingle();
       setPost((data as Post) || null);
 
       if (data) {
@@ -56,7 +60,7 @@ const BlogDetail = () => {
       }
       setLoading(false);
     })();
-  }, [slug]);
+  }, [slug, isPreview, authLoading]);
 
   if (loading) {
     return (
@@ -91,6 +95,12 @@ const BlogDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && (
+        <PreviewBanner
+          status={post.is_published ? "published" : "draft"}
+          label={post.title}
+        />
+      )}
       <Navbar />
       <SEO
         title={post.title}

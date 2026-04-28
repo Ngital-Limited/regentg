@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { projectImageUrl } from "@/lib/storage";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 
 type DbProject = {
   id: string;
@@ -17,6 +19,7 @@ type DbProject = {
   area_sqft: number | null;
   units: number | null;
   cover_image_path: string | null;
+  is_active?: boolean;
 };
 
 const statusOptions = ["All", "Ongoing", "Completed", "Upcoming"];
@@ -36,19 +39,22 @@ const Projects = () => {
   const [statusFilter, setStatusFilter] = useState(initialStatus);
   const [locationFilter, setLocationFilter] = useState("All");
   const [sizeFilter, setSizeFilter] = useState("All");
+  const { isPreview, authLoading } = usePreview();
 
   useEffect(() => {
+    if (authLoading) return;
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("projects")
-        .select("id, slug, name, status, location, area_sqft, units, cover_image_path")
-        .eq("is_active", true)
+        .select("id, slug, name, status, location, area_sqft, units, cover_image_path, is_active")
         .order("display_order", { ascending: true })
         .order("name", { ascending: true });
+      if (!isPreview) q = q.eq("is_active", true);
+      const { data } = await q;
       setProjects((data as DbProject[]) || []);
       setLoading(false);
     })();
-  }, []);
+  }, [isPreview, authLoading]);
 
   useEffect(() => {
     const s = (searchParams.get("status") || "").toLowerCase();
@@ -102,6 +108,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && <PreviewBanner status="published" label="Listing includes drafts" />}
       <Navbar />
 
       <SEO title="Our Projects" description="Explore Regent's ongoing and completed residential real estate projects across Dhaka, Bangladesh — built with BUET-certified structural integrity." path="/projects" />
@@ -198,10 +205,15 @@ const Projects = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
 
                         {project.status && (
-                          <div className="absolute top-4 left-4">
+                          <div className="absolute top-4 left-4 flex gap-1.5">
                             <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full ${statusColor(project.status)}`}>
                               {project.status}
                             </span>
+                            {isPreview && project.is_active === false && (
+                              <span className="text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-amber-500 text-black">
+                                Draft
+                              </span>
+                            )}
                           </div>
                         )}
 

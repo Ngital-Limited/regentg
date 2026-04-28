@@ -11,6 +11,8 @@ import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat,
 import { useState, useEffect, FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 import img_lifestyle_3107041_1280 from "@/assets/imported/lifestyle-3107041_1280.jpg";
 import img_real_estate_9053405_1280 from "@/assets/imported/real-estate-9053405_1280.jpg";
 import img_img_07_04_03_524_1280 from "@/assets/imported/07-04-03-524_1280.jpg";
@@ -864,19 +866,21 @@ const ProjectDetail = () => {
   const [dbProject, setDbProject] = useState<any | null>(null);
   const [dbLoaded, setDbLoaded] = useState(false);
 
+  const { isPreview, authLoading } = usePreview();
+
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || authLoading) return;
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("projects")
         .select("*")
-        .eq("slug", slug)
-        .eq("is_active", true)
-        .maybeSingle();
+        .eq("slug", slug);
+      if (!isPreview) q = q.eq("is_active", true);
+      const { data } = await q.maybeSingle();
       setDbProject(data);
       setDbLoaded(true);
     })();
-  }, [slug]);
+  }, [slug, isPreview, authLoading]);
 
   // Build merged project data — DB takes precedence, fallback to hardcoded
   const project: ProjectData | null = (() => {
@@ -1022,6 +1026,12 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && dbProject && (
+        <PreviewBanner
+          status={dbProject.is_active ? "published" : "draft"}
+          label={dbProject.name}
+        />
+      )}
       <Navbar />
       <SEO
         title={`${project.name} — ${project.tagline}`}
