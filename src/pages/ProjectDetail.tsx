@@ -857,9 +857,84 @@ const getGlanceIcon = (icon: string) => {
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const project = projectsData[slug || ""];
+  const staticProject = projectsData[slug || ""];
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [brochureOpen, setBrochureOpen] = useState(false);
+  const [dbProject, setDbProject] = useState<any | null>(null);
+  const [dbLoaded, setDbLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!slug) return;
+    (async () => {
+      const { data } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("slug", slug)
+        .eq("is_active", true)
+        .maybeSingle();
+      setDbProject(data);
+      setDbLoaded(true);
+    })();
+  }, [slug]);
+
+  // Build merged project data — DB takes precedence, fallback to hardcoded
+  const project: ProjectData | null = (() => {
+    if (!dbProject && !staticProject) return null;
+    if (!dbProject) return staticProject;
+
+    const cover = dbProject.cover_image_path
+      ? supabase.storage.from("project-images").getPublicUrl(dbProject.cover_image_path).data.publicUrl
+      : staticProject?.heroImage;
+    const gallery: string[] = (dbProject.gallery_paths || []).map(
+      (p: string) => supabase.storage.from("project-images").getPublicUrl(p).data.publicUrl
+    );
+    const brochure = dbProject.brochure_path
+      ? supabase.storage.from("brochures").getPublicUrl(dbProject.brochure_path).data.publicUrl
+      : staticProject?.brochureUrl;
+
+    const glance: { icon: string; label: string; value: string }[] = [];
+    if (dbProject.location) glance.push({ icon: "address", label: "Address", value: dbProject.location });
+    if (dbProject.area_sqft) glance.push({ icon: "size", label: "Size", value: `${dbProject.area_sqft} SFT` });
+    if (dbProject.units != null) glance.push({ icon: "total", label: "Total Apartments", value: String(dbProject.units) });
+    if (dbProject.floors != null) glance.push({ icon: "floor", label: "Floor", value: String(dbProject.floors) });
+    if (dbProject.handover_date)
+      glance.push({
+        icon: "handover",
+        label: "Handover Date",
+        value: new Date(dbProject.handover_date).toLocaleDateString("en-US", { year: "numeric", month: "long" }),
+      });
+
+    return {
+      name: dbProject.name,
+      tagline: dbProject.short_description || staticProject?.tagline || "",
+      status: ((dbProject.status || staticProject?.status || "ongoing").toLowerCase() === "completed"
+        ? "completed"
+        : "ongoing") as "ongoing" | "completed",
+      heroImage: cover || undefined,
+      overview: dbProject.description || staticProject?.overview || "",
+      features: (dbProject.amenities && dbProject.amenities.length ? dbProject.amenities : staticProject?.features) || [],
+      progress: staticProject?.progress || [],
+      glance: glance.length ? glance : staticProject?.glance || [],
+      gallery: gallery.length ? gallery : staticProject?.gallery || [],
+      mapCoords: {
+        lat: dbProject.latitude ?? staticProject?.mapCoords.lat ?? 23.7697,
+        lng: dbProject.longitude ?? staticProject?.mapCoords.lng ?? 90.4312,
+      },
+      brochureUrl: brochure || undefined,
+    };
+  })();
+
+  if (!dbLoaded && !staticProject) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-muted-foreground text-sm">Loading…</div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   if (!project) {
     return (
@@ -878,6 +953,7 @@ const ProjectDetail = () => {
       </div>
     );
   }
+
 
   const glanceMap = Object.fromEntries(project.glance.map((g) => [g.label.toLowerCase(), g.value]));
   const address = glanceMap["address"] || "Dhaka, Bangladesh";
