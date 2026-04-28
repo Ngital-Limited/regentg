@@ -41,12 +41,17 @@ const HeroSlider = () => {
       const img = new Image();
       img.src = s.image;
     });
-  }, []);
+  }, [slides]);
 
   useEffect(() => {
+    if (slides.length <= 1) return;
     const timer = setInterval(() => setCurrent((p) => (p + 1) % slides.length), 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
+
+  useEffect(() => {
+    if (current >= slides.length) setCurrent(0);
+  }, [slides.length, current]);
 
   const prev = () => setCurrent((p) => (p - 1 + slides.length) % slides.length);
   const next = () => setCurrent((p) => (p + 1) % slides.length);
