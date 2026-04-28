@@ -108,6 +108,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && <PreviewBanner status="published" label="Listing includes drafts" />}
       <Navbar />
 
       <SEO title="Our Projects" description="Explore Regent's ongoing and completed residential real estate projects across Dhaka, Bangladesh — built with BUET-certified structural integrity." path="/projects" />
@@ -204,10 +205,15 @@ const Projects = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
 
                         {project.status && (
-                          <div className="absolute top-4 left-4">
+                          <div className="absolute top-4 left-4 flex gap-1.5">
                             <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full ${statusColor(project.status)}`}>
                               {project.status}
                             </span>
+                            {isPreview && project.is_active === false && (
+                              <span className="text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-amber-500 text-black">
+                                Draft
+                              </span>
+                            )}
                           </div>
                         )}
 
