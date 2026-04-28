@@ -140,7 +140,7 @@ const Contact = () => {
                 {[
                   { key: "name", label: "Full Name *", type: "text", placeholder: "Your full name" },
                   { key: "email", label: "Email Address *", type: "email", placeholder: "your@email.com" },
-                  { key: "phone", label: "Phone Number", type: "tel", placeholder: "+880 1XXX XXXXXX" },
+                  { key: "phone", label: "Phone Number *", type: "tel", placeholder: "+880 1XXX XXXXXX" },
                   { key: "subject", label: "Subject", type: "text", placeholder: "How can we help?" },
                 ].map((field) => (
                   <div key={field.key}>
@@ -169,10 +169,15 @@ const Contact = () => {
                 <p className="text-[10px] text-muted-foreground/60">* Required fields</p>
                 <button
                   type="submit"
-                  className="group flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all"
+                  disabled={submitting}
+                  className="group flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all disabled:opacity-60"
                 >
-                  <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  Send Message
+                  {submitting ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  )}
+                  {submitting ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>
