@@ -2,12 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, CircleCheckBig, Loader } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useSiteSetting } from "@/hooks/useSiteSettings";
-import { projectImageUrl } from "@/lib/storage";
 
-type Slide = { titleLine1: string; titleLine2: string; subtitle: string; image: string };
-
-const defaultSlides: Slide[] = [
+const slides = [
   {
     titleLine1: "CRAFTING",
     titleLine2: "LUXURY SPACES",
@@ -29,10 +25,6 @@ const defaultSlides: Slide[] = [
 ];
 
 const HeroSlider = () => {
-  const cmsSlides = useSiteSetting<Slide[]>("hero_slides", []);
-  const slides: Slide[] = cmsSlides && cmsSlides.length
-    ? cmsSlides.map((s) => ({ ...s, image: projectImageUrl(s.image) || s.image }))
-    : defaultSlides;
   const [current, setCurrent] = useState(0);
 
   // Preload all slide images so transitions never flash a black background
@@ -41,17 +33,12 @@ const HeroSlider = () => {
       const img = new Image();
       img.src = s.image;
     });
-  }, [slides]);
+  }, []);
 
   useEffect(() => {
-    if (slides.length <= 1) return;
     const timer = setInterval(() => setCurrent((p) => (p + 1) % slides.length), 6000);
     return () => clearInterval(timer);
-  }, [slides.length]);
-
-  useEffect(() => {
-    if (current >= slides.length) setCurrent(0);
-  }, [slides.length, current]);
+  }, []);
 
   const prev = () => setCurrent((p) => (p - 1 + slides.length) % slides.length);
   const next = () => setCurrent((p) => (p + 1) % slides.length);
