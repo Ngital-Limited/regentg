@@ -1275,11 +1275,11 @@ const ProjectDetail = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-12">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mb-10 md:mb-12">
             {[
-              { icon: <Phone className="w-5 h-5" />, label: "Call Us", value: "0181 000 9333", href: "tel:01810009333" },
-              { icon: <Mail className="w-5 h-5" />, label: "Email Us", value: "info@regentgroup.com.bd", href: "mailto:info@regentgroup.com.bd" },
-              { icon: <Clock className="w-5 h-5" />, label: "Office Hours", value: "Sat–Thu, 9AM–6PM", href: null },
+              { icon: <Phone className="w-4 h-4 md:w-5 md:h-5" />, label: "Call Us", value: "0181 000 9333", href: "tel:01810009333" },
+              { icon: <Mail className="w-4 h-4 md:w-5 md:h-5" />, label: "Email Us", value: "info@regentgroup.com.bd", href: "mailto:info@regentgroup.com.bd" },
+              { icon: <Clock className="w-4 h-4 md:w-5 md:h-5" />, label: "Office Hours", value: "Sat–Thu, 9AM–6PM", href: null },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -1287,18 +1287,18 @@ const ProjectDetail = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="text-center p-8 border border-border/50 hover:border-primary/30 transition-colors"
+                className="text-center p-3 md:p-8 border border-border/50 hover:border-primary/30 transition-colors"
               >
-                <div className="w-12 h-12 mx-auto flex items-center justify-center border border-primary/30 text-primary mb-4">
+                <div className="w-9 h-9 md:w-12 md:h-12 mx-auto flex items-center justify-center border border-primary/30 text-primary mb-2 md:mb-4">
                   {item.icon}
                 </div>
-                <span className="text-muted-foreground text-xs uppercase tracking-[0.2em]">{item.label}</span>
+                <span className="text-muted-foreground text-[9px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] block">{item.label}</span>
                 {item.href ? (
-                  <a href={item.href} className="block text-foreground mt-2 text-sm hover:text-primary transition-colors">
+                  <a href={item.href} className="block text-foreground mt-1 md:mt-2 text-[11px] md:text-sm hover:text-primary transition-colors break-words">
                     {item.value}
                   </a>
                 ) : (
-                  <p className="text-foreground mt-2 text-sm">{item.value}</p>
+                  <p className="text-foreground mt-1 md:mt-2 text-[11px] md:text-sm break-words">{item.value}</p>
                 )}
               </motion.div>
             ))}
