@@ -109,6 +109,25 @@ const BrochureDownloadDialog = ({ open, onOpenChange, projectName, projectId, br
           </div>
 
           <div className="space-y-2">
+            <Label htmlFor="brochure-email" className="text-xs uppercase tracking-wider text-muted-foreground">
+              Email
+            </Label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input
+                id="brochure-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="pl-10 bg-background border-border/50 text-foreground placeholder:text-muted-foreground"
+                required
+                maxLength={255}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
             <Label htmlFor="brochure-phone" className="text-xs uppercase tracking-wider text-muted-foreground">
               Phone Number
             </Label>
