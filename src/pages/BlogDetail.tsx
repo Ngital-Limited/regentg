@@ -34,17 +34,18 @@ const BlogDetail = () => {
   const [post, setPost] = useState<Post | null>(null);
   const [related, setRelated] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const { isPreview, authLoading } = usePreview();
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || authLoading) return;
     setLoading(true);
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("blog_posts")
-        .select("id, slug, title, excerpt, body, cover_image_path, author_name, published_at, created_at, blog_categories(name, slug)")
-        .eq("slug", slug)
-        .eq("is_published", true)
-        .maybeSingle();
+        .select("id, slug, title, excerpt, body, cover_image_path, author_name, published_at, created_at, is_published, blog_categories(name, slug)")
+        .eq("slug", slug);
+      if (!isPreview) q = q.eq("is_published", true);
+      const { data } = await q.maybeSingle();
       setPost((data as Post) || null);
 
       if (data) {
@@ -59,7 +60,7 @@ const BlogDetail = () => {
       }
       setLoading(false);
     })();
-  }, [slug]);
+  }, [slug, isPreview, authLoading]);
 
   if (loading) {
     return (
