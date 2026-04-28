@@ -14,6 +14,152 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          display_order: number
+          id: string
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      blog_post_tags: {
+        Row: {
+          post_id: string
+          tag_id: string
+        }
+        Insert: {
+          post_id: string
+          tag_id: string
+        }
+        Update: {
+          post_id?: string
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blog_post_tags_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "blog_posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "blog_post_tags_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "blog_tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      blog_posts: {
+        Row: {
+          author_avatar_path: string | null
+          author_name: string | null
+          body: string | null
+          category_id: string | null
+          cover_image_path: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          is_published: boolean
+          meta_description: string | null
+          meta_title: string | null
+          og_image_path: string | null
+          published_at: string | null
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_avatar_path?: string | null
+          author_name?: string | null
+          body?: string | null
+          category_id?: string | null
+          cover_image_path?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          is_published?: boolean
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image_path?: string | null
+          published_at?: string | null
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_avatar_path?: string | null
+          author_name?: string | null
+          body?: string | null
+          category_id?: string | null
+          cover_image_path?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          is_published?: boolean
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image_path?: string | null
+          published_at?: string | null
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blog_posts_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "blog_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      blog_tags: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
       brochure_leads: {
         Row: {
           admin_notes: string | null
@@ -147,40 +293,94 @@ export type Database = {
       }
       projects: {
         Row: {
+          amenities: string[] | null
+          area_sqft: number | null
           brochure_path: string | null
+          cover_image_path: string | null
           created_at: string
+          description: string | null
           display_order: number
+          floors: number | null
+          gallery_paths: string[] | null
+          handover_date: string | null
           id: string
           is_active: boolean
+          latitude: number | null
           location: string | null
+          longitude: number | null
           name: string
+          short_description: string | null
           slug: string
           status: string | null
+          units: number | null
           updated_at: string
         }
         Insert: {
+          amenities?: string[] | null
+          area_sqft?: number | null
           brochure_path?: string | null
+          cover_image_path?: string | null
           created_at?: string
+          description?: string | null
           display_order?: number
+          floors?: number | null
+          gallery_paths?: string[] | null
+          handover_date?: string | null
           id?: string
           is_active?: boolean
+          latitude?: number | null
           location?: string | null
+          longitude?: number | null
           name: string
+          short_description?: string | null
           slug: string
           status?: string | null
+          units?: number | null
           updated_at?: string
         }
         Update: {
+          amenities?: string[] | null
+          area_sqft?: number | null
           brochure_path?: string | null
+          cover_image_path?: string | null
           created_at?: string
+          description?: string | null
           display_order?: number
+          floors?: number | null
+          gallery_paths?: string[] | null
+          handover_date?: string | null
           id?: string
           is_active?: boolean
+          latitude?: number | null
           location?: string | null
+          longitude?: number | null
           name?: string
+          short_description?: string | null
           slug?: string
           status?: string | null
+          units?: number | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          description: string | null
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          description?: string | null
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          description?: string | null
+          key?: string
+          updated_at?: string
+          value?: Json
         }
         Relationships: []
       }

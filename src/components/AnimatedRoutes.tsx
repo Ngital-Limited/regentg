@@ -27,6 +27,9 @@ import AdminVisits from "@/pages/admin/AdminVisits";
 import AdminBrochures from "@/pages/admin/AdminBrochures";
 import AdminApplications from "@/pages/admin/AdminApplications";
 import AdminProjects from "@/pages/admin/AdminProjects";
+import AdminBlog from "@/pages/admin/AdminBlog";
+import AdminTaxonomy from "@/pages/admin/AdminTaxonomy";
+import AdminHomepage from "@/pages/admin/AdminHomepage";
 import AdminTeam from "@/pages/admin/AdminTeam";
 
 const AnimatedRoutes = () => {
@@ -59,7 +62,10 @@ const AnimatedRoutes = () => {
           <Route path="visits" element={<AdminVisits />} />
           <Route path="brochures" element={<AdminBrochures />} />
           <Route path="applications" element={<AdminApplications />} />
+          <Route path="homepage" element={<AdminHomepage />} />
           <Route path="projects" element={<AdminProjects />} />
+          <Route path="blog" element={<AdminBlog />} />
+          <Route path="taxonomy" element={<AdminTaxonomy />} />
           <Route path="team" element={<AdminTeam />} />
         </Route>
 
