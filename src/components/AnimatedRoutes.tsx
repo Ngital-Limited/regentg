@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "./PageTransition";
 import Index from "@/pages/Index";
@@ -17,6 +17,17 @@ import OurLandowners from "@/pages/OurLandowners";
 
 import Videos from "@/pages/Videos";
 import NotFound from "@/pages/NotFound";
+
+// Admin
+import RequireAuth from "@/components/admin/RequireAuth";
+import AdminLogin from "@/pages/admin/AdminLogin";
+import AdminLayout from "@/pages/admin/AdminLayout";
+import AdminContact from "@/pages/admin/AdminContact";
+import AdminVisits from "@/pages/admin/AdminVisits";
+import AdminBrochures from "@/pages/admin/AdminBrochures";
+import AdminApplications from "@/pages/admin/AdminApplications";
+import AdminProjects from "@/pages/admin/AdminProjects";
+import AdminTeam from "@/pages/admin/AdminTeam";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -39,6 +50,19 @@ const AnimatedRoutes = () => {
         <Route path="/our-landowners" element={<PageTransition><OurLandowners /></PageTransition>} />
         
         <Route path="/videos" element={<PageTransition><Videos /></PageTransition>} />
+
+        {/* Admin (no page transitions, no public crawling) */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<RequireAuth><AdminLayout /></RequireAuth>}>
+          <Route index element={<Navigate to="/admin/contact" replace />} />
+          <Route path="contact" element={<AdminContact />} />
+          <Route path="visits" element={<AdminVisits />} />
+          <Route path="brochures" element={<AdminBrochures />} />
+          <Route path="applications" element={<AdminApplications />} />
+          <Route path="projects" element={<AdminProjects />} />
+          <Route path="team" element={<AdminTeam />} />
+        </Route>
+
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
