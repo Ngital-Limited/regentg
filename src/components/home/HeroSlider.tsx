@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, CircleCheckBig, Loader } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
+import { projectImageUrl } from "@/lib/storage";
 
-const slides = [
+type Slide = { titleLine1: string; titleLine2: string; subtitle: string; image: string };
+
+const defaultSlides: Slide[] = [
   {
     titleLine1: "CRAFTING",
     titleLine2: "LUXURY SPACES",
@@ -25,6 +29,10 @@ const slides = [
 ];
 
 const HeroSlider = () => {
+  const cmsSlides = useSiteSetting<Slide[]>("hero_slides", []);
+  const slides: Slide[] = cmsSlides && cmsSlides.length
+    ? cmsSlides.map((s) => ({ ...s, image: projectImageUrl(s.image) || s.image }))
+    : defaultSlides;
   const [current, setCurrent] = useState(0);
 
   // Preload all slide images so transitions never flash a black background
