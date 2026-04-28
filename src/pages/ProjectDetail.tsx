@@ -984,18 +984,21 @@ const ProjectDetail = () => {
               <p className="text-muted-foreground text-sm md:text-lg lg:text-xl mt-3 md:mt-4 font-light tracking-wide">
                 {project.tagline}
               </p>
-              <div className="grid grid-cols-2 gap-3 mt-6 md:mt-8 sm:flex sm:flex-row">
+              <div className="grid grid-cols-2 gap-3 md:gap-4 mt-6 md:mt-8 sm:flex sm:flex-row">
                 <a
                   href="#schedule"
-                  className="w-full sm:w-auto px-4 md:px-8 py-3 bg-primary text-primary-foreground text-xs md:text-sm uppercase tracking-[0.15em] md:tracking-[0.2em] hover:bg-primary/90 transition-colors text-center"
+                  className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 md:gap-3 px-5 md:px-10 py-3 md:py-4 bg-primary text-primary-foreground text-[11px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.28em] font-medium overflow-hidden shadow-[0_8px_30px_-8px_hsl(var(--primary)/0.6)] hover:shadow-[0_12px_40px_-8px_hsl(var(--primary)/0.8)] transition-all duration-500"
                 >
-                  Schedule Visit
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="relative">Schedule Visit</span>
+                  <ArrowRight className="relative w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-500 group-hover:translate-x-1" />
                 </a>
                 <a
                   href="#overview"
-                  className="w-full sm:w-auto px-4 md:px-8 py-3 border border-border text-foreground text-xs md:text-sm uppercase tracking-[0.15em] md:tracking-[0.2em] hover:border-primary hover:text-primary transition-colors text-center"
+                  className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 md:gap-3 px-5 md:px-10 py-3 md:py-4 border border-foreground/30 text-foreground text-[11px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.28em] font-medium backdrop-blur-sm bg-background/20 hover:border-primary hover:text-primary hover:bg-background/40 transition-all duration-500"
                 >
-                  Learn More
+                  <span>Learn More</span>
+                  <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-500 group-hover:translate-x-1" />
                 </a>
               </div>
             </motion.div>
