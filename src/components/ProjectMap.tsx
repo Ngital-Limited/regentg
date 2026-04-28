@@ -15,8 +15,8 @@ const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
 
-  // External link to OpenStreetMap (free, no Google branding)
-  const mapUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=17/${lat}/${lng}`;
+  // Outbound link to Google Maps (no API key required, universally accessible)
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
