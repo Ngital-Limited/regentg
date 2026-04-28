@@ -1034,10 +1034,18 @@ const ProjectDetail = () => {
       )}
       <Navbar />
       <SEO
-        title={`${project.name} — ${project.tagline}`}
-        description={project.overview.slice(0, 160)}
+        title={dbProject?.meta_title || `${project.name} — ${project.tagline}`}
+        description={
+          dbProject?.meta_description ||
+          dbProject?.short_description ||
+          project.overview.slice(0, 160)
+        }
         path={`/projects/${slug}`}
-        image={project.heroImage}
+        image={
+          (dbProject?.og_image_path
+            ? supabase.storage.from("project-images").getPublicUrl(dbProject.og_image_path).data.publicUrl
+            : null) || project.heroImage
+        }
         type="article"
         jsonLd={[residenceSchema, breadcrumbSchema]}
       />
