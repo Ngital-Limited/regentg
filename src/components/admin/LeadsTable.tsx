@@ -101,7 +101,10 @@ const LeadsTable = ({ table, title, description, primaryField, secondaryField, f
   }, [table]);
 
   const updateStatus = async (id: string, status: string) => {
-    const { error } = await supabase.from(table).update({ status }).eq("id", id);
+    const { error } = await supabase
+      .from(table)
+      .update({ status: status as LeadStatus })
+      .eq("id", id);
     if (error) return toast.error(error.message);
     setRows((prev) => prev.map((r) => (r.id === id ? { ...r, status } : r)));
     if (selected?.id === id) setSelected({ ...selected, status });
