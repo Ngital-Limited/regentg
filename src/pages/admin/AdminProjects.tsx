@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Plus, Pencil, Trash2, Loader2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Loader2, Eye } from "lucide-react";
 import { toast } from "sonner";
 import ImageUpload, { publicUrl } from "@/components/admin/ImageUpload";
 import MultiImageUpload from "@/components/admin/MultiImageUpload";
@@ -155,16 +155,33 @@ const AdminProjects = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <h3 className="font-medium truncate">{p.name}</h3>
-                  {!p.is_active && (
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground border border-border px-1.5 py-0.5 rounded">
-                      Hidden
-                    </span>
-                  )}
+                  <span
+                    className={`text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded border ${
+                      p.is_active
+                        ? "border-primary/30 text-primary"
+                        : "border-amber-500/40 text-amber-500 bg-amber-500/5"
+                    }`}
+                  >
+                    {p.is_active ? "Published" : "Draft"}
+                  </span>
                 </div>
                 <p className="text-xs text-muted-foreground truncate">
                   {p.status} · {p.location || "—"} · /{p.slug}
                 </p>
               </div>
+              <Button
+                size="icon"
+                variant="ghost"
+                title={p.is_active ? "View live page" : "Preview draft"}
+                onClick={() =>
+                  window.open(
+                    `/projects/${p.slug}${p.is_active ? "" : "?preview=1"}`,
+                    "_blank"
+                  )
+                }
+              >
+                <Eye className="h-4 w-4" />
+              </Button>
               <Button size="icon" variant="ghost" onClick={() => setEditing(p)}>
                 <Pencil className="h-4 w-4" />
               </Button>
