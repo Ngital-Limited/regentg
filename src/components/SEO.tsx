@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { usePageSEO } from "@/hooks/usePageSEO";
 import { supabase } from "@/integrations/supabase/client";
+import { publicUrl } from "@/lib/storage";
 
 interface SEOProps {
   title: string;
@@ -39,9 +40,9 @@ const upsertLink = (rel: string, href: string) => {
 
 const ogImageUrl = (path?: string | null) => {
   if (!path) return null;
-  if (path.startsWith("http")) return path;
+  if (path.startsWith("/") || path.startsWith("http")) return path;
   // og_image_path could come from blog-images or project-images bucket
-  return supabase.storage.from("blog-images").getPublicUrl(path).data.publicUrl;
+  return publicUrl("blog-images", path);
 };
 
 const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, skipPageOverride }: SEOProps) => {
