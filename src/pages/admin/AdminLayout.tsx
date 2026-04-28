@@ -10,16 +10,22 @@ import {
   Briefcase,
   FolderOpen,
   Users as UsersIcon,
+  Home,
+  Newspaper,
+  Tags,
 } from "lucide-react";
 import SEO from "@/components/SEO";
 
 const navItems = [
-  { to: "/admin/contact", label: "Contact", icon: MessageSquare },
-  { to: "/admin/visits", label: "Site Visits", icon: CalendarCheck },
-  { to: "/admin/brochures", label: "Brochure Leads", icon: FileDown },
-  { to: "/admin/applications", label: "Job Applications", icon: Briefcase },
-  { to: "/admin/projects", label: "Projects", icon: FolderOpen },
-  { to: "/admin/team", label: "Team Access", icon: UsersIcon },
+  { to: "/admin/contact", label: "Contact", icon: MessageSquare, group: "Leads" },
+  { to: "/admin/visits", label: "Site Visits", icon: CalendarCheck, group: "Leads" },
+  { to: "/admin/brochures", label: "Brochure Leads", icon: FileDown, group: "Leads" },
+  { to: "/admin/applications", label: "Job Applications", icon: Briefcase, group: "Leads" },
+  { to: "/admin/homepage", label: "Homepage", icon: Home, group: "Content" },
+  { to: "/admin/projects", label: "Projects", icon: FolderOpen, group: "Content" },
+  { to: "/admin/blog", label: "Blog Posts", icon: Newspaper, group: "Content" },
+  { to: "/admin/taxonomy", label: "Categories & Tags", icon: Tags, group: "Content" },
+  { to: "/admin/team", label: "Team Access", icon: UsersIcon, group: "Settings" },
 ];
 
 const AdminLayout = () => {
@@ -60,21 +66,30 @@ const AdminLayout = () => {
           {/* Sidebar */}
           <aside>
             <nav className="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible">
-              {navItems.map(({ to, label, icon: Icon }) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-4 py-2.5 rounded-md text-sm whitespace-nowrap transition-colors ${
-                      isActive
-                        ? "bg-primary/10 text-primary"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    }`
-                  }
-                >
-                  <Icon className="h-4 w-4 flex-shrink-0" />
-                  <span>{label}</span>
-                </NavLink>
+              {["Leads", "Content", "Settings"].map((group) => (
+                <div key={group} className="lg:mb-4">
+                  <p className="hidden lg:block px-4 pt-2 pb-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60">
+                    {group}
+                  </p>
+                  {navItems
+                    .filter((i) => i.group === group)
+                    .map(({ to, label, icon: Icon }) => (
+                      <NavLink
+                        key={to}
+                        to={to}
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2.5 rounded-md text-sm whitespace-nowrap transition-colors ${
+                            isActive
+                              ? "bg-primary/10 text-primary"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                          }`
+                        }
+                      >
+                        <Icon className="h-4 w-4 flex-shrink-0" />
+                        <span>{label}</span>
+                      </NavLink>
+                    ))}
+                </div>
               ))}
             </nav>
           </aside>
