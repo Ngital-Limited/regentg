@@ -87,19 +87,19 @@ const Footer = () => {
 
       {/* Memberships */}
       <div className="border-t border-border bg-background/40">
-        <div className="container-regent py-8 md:py-10">
-          <div className="flex flex-wrap items-center justify-center gap-x-16 md:gap-x-24 gap-y-8">
+        <div className="container-regent py-6 md:py-10">
+          <div className="flex flex-row items-center justify-center gap-4 sm:gap-12 md:gap-24">
             <img
               src={img_concordnoaddress}
               alt="Concord"
-              className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              className="h-8 sm:h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
-            <div className="h-12 md:h-16 w-px bg-border" aria-hidden="true" />
+            <div className="h-8 sm:h-12 md:h-16 w-px bg-border" aria-hidden="true" />
             <img
               src={img_rehab_1024x265}
               alt="REHAB"
-              className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              className="h-8 sm:h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
           </div>
