@@ -47,12 +47,12 @@ interface Props {
   fields: FieldDef[];
 }
 
-const STATUS_OPTIONS = [
+type LeadStatus = "new" | "contacted" | "closed";
+
+const STATUS_OPTIONS: { value: LeadStatus; label: string }[] = [
   { value: "new", label: "New" },
   { value: "contacted", label: "Contacted" },
-  { value: "qualified", label: "Qualified" },
-  { value: "won", label: "Won" },
-  { value: "lost", label: "Lost" },
+  { value: "closed", label: "Closed" },
 ];
 
 const statusColor = (status: string) => {
@@ -61,12 +61,8 @@ const statusColor = (status: string) => {
       return "border-primary/40 text-primary bg-primary/5";
     case "contacted":
       return "border-amber-500/40 text-amber-400 bg-amber-500/5";
-    case "qualified":
-      return "border-blue-500/40 text-blue-400 bg-blue-500/5";
-    case "won":
+    case "closed":
       return "border-green-500/40 text-green-400 bg-green-500/5";
-    case "lost":
-      return "border-muted-foreground/30 text-muted-foreground bg-muted/20";
     default:
       return "border-border text-muted-foreground";
   }
