@@ -25,14 +25,12 @@ export const useAuth = (): AuthState => {
     let mounted = true;
 
     const checkAdminRole = async (userId: string) => {
-      const { data, error } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("role", "admin")
-        .maybeSingle();
+      const { data, error } = await supabase.rpc("has_role", {
+        _user_id: userId,
+        _role: "admin",
+      });
       if (!mounted) return;
-      setIsAdmin(!error && !!data);
+      setIsAdmin(!error && data === true);
     };
 
     // 1. Subscribe FIRST
@@ -49,12 +47,14 @@ export const useAuth = (): AuthState => {
     });
 
     // 2. THEN read existing session
-    supabase.auth.getSession().then(({ data: { session: existingSession } }) => {
+    supabase.auth.getSession().then(async ({ data: { session: existingSession } }) => {
       if (!mounted) return;
       setSession(existingSession);
       setUser(existingSession?.user ?? null);
       if (existingSession?.user) {
-        checkAdminRole(existingSession.user.id);
+        await checkAdminRole(existingSession.user.id);
+      } else {
+        setIsAdmin(false);
       }
       setLoading(false);
     });
