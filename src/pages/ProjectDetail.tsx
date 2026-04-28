@@ -958,10 +958,10 @@ const ProjectDetail = () => {
       {/* Hero Section – Full View */}
       <section className="relative w-full overflow-hidden bg-background pt-20 md:h-screen md:pt-0">
         {project.heroImage ? (
-          <img src={project.heroImage} alt={project.name} className="relative h-[22vh] w-full bg-card object-contain md:absolute md:inset-0 md:h-full md:object-cover" />
+          <img src={project.heroImage} alt={project.name} className="relative h-[55vh] w-full bg-card object-cover md:absolute md:inset-0 md:h-full" />
         ) : (
           <div
-            className="relative h-[22vh] md:absolute md:inset-0 md:h-full"
+            className="relative h-[55vh] md:absolute md:inset-0 md:h-full"
             style={{
               background: "linear-gradient(135deg, hsl(240 51% 14%), hsl(194 89% 10%), hsl(0 0% 5%))",
             }}
