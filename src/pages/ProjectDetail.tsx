@@ -1026,6 +1026,12 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && dbProject && (
+        <PreviewBanner
+          status={dbProject.is_active ? "published" : "draft"}
+          label={dbProject.name}
+        />
+      )}
       <Navbar />
       <SEO
         title={`${project.name} — ${project.tagline}`}
