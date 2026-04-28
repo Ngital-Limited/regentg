@@ -900,14 +900,29 @@ const ProjectDetail = () => {
     const glance: { icon: string; label: string; value: string }[] = [];
     if (dbProject.location) glance.push({ icon: "address", label: "Address", value: dbProject.location });
     if (dbProject.area_sqft) glance.push({ icon: "size", label: "Size", value: `${dbProject.area_sqft} SFT` });
-    if (dbProject.units != null) glance.push({ icon: "total", label: "Total Apartments", value: String(dbProject.units) });
+    if (dbProject.bedrooms) glance.push({ icon: "bedroom", label: "Bedroom", value: dbProject.bedrooms });
+    if (dbProject.facing) glance.push({ icon: "facing", label: "Project Facing", value: dbProject.facing });
     if (dbProject.floors != null) glance.push({ icon: "floor", label: "Floor", value: String(dbProject.floors) });
+    if (dbProject.units != null) glance.push({ icon: "total", label: "Total Apartments", value: String(dbProject.units) });
+    if (dbProject.structural_designer) glance.push({ icon: "designer", label: "Structural Designer", value: dbProject.structural_designer });
     if (dbProject.handover_date)
       glance.push({
         icon: "handover",
         label: "Handover Date",
         value: new Date(dbProject.handover_date).toLocaleDateString("en-US", { year: "numeric", month: "long" }),
       });
+
+    const dbFeatures: string[] = (dbProject.features && dbProject.features.length)
+      ? dbProject.features
+      : (dbProject.amenities || []);
+
+    const dbProgress: { label: string; value: number }[] =
+      Array.isArray(dbProject.progress_items) && dbProject.progress_items.length
+        ? (dbProject.progress_items as any[]).map((p) => ({
+            label: String(p.label || ""),
+            value: Number(p.value) || 0,
+          }))
+        : staticProject?.progress || [];
 
     return {
       name: dbProject.name,
@@ -917,8 +932,8 @@ const ProjectDetail = () => {
         : "ongoing") as "ongoing" | "completed",
       heroImage: cover || undefined,
       overview: dbProject.description || staticProject?.overview || "",
-      features: (dbProject.amenities && dbProject.amenities.length ? dbProject.amenities : staticProject?.features) || [],
-      progress: staticProject?.progress || [],
+      features: dbFeatures.length ? dbFeatures : (staticProject?.features || []),
+      progress: dbProgress,
       glance: glance.length ? glance : staticProject?.glance || [],
       gallery: gallery.length ? gallery : staticProject?.gallery || [],
       mapCoords: {
@@ -1402,13 +1417,16 @@ const ProjectDetail = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="border border-border/50 p-5 md:p-8 lg:p-12 space-y-6 md:space-y-8"
-            onSubmit={(e: FormEvent<HTMLFormElement>) => {
+            onSubmit={async (e: FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               const form = e.currentTarget;
               const formData = new FormData(form);
               const name = (formData.get("name") as string)?.trim();
               const phone = (formData.get("phone") as string)?.trim();
               const email = (formData.get("email") as string)?.trim();
+              const date = (formData.get("date") as string) || "";
+              const interest = (formData.get("interest") as string) || "site-visit";
+              const message = (formData.get("message") as string)?.trim();
 
               if (!name || !phone) {
                 toast.error("Please fill in your name and phone number.");
@@ -1418,7 +1436,25 @@ const ProjectDetail = () => {
                 toast.error("Please enter a valid email address.");
                 return;
               }
+              if (!date) {
+                toast.error("Please pick a preferred visit date.");
+                return;
+              }
 
+              const { error } = await supabase.from("visit_bookings").insert({
+                name,
+                phone,
+                email: email || `${phone}@noemail.local`,
+                preferred_date: date,
+                preferred_time: interest,
+                project_id: dbProject?.id || null,
+                project_name: project.name,
+                notes: message || null,
+              });
+              if (error) {
+                toast.error(error.message);
+                return;
+              }
               toast.success("Thank you! We'll contact you shortly to confirm your visit.", {
                 duration: 5000,
               });
