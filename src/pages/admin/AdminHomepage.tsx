@@ -4,11 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
+import { Loader2, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
+import ImageUpload from "@/components/admin/ImageUpload";
+
+type Slide = { titleLine1: string; titleLine2: string; subtitle: string; image: string };
 
 type Settings = {
   hero: { headline: string; subheadline: string; cta_label: string };
+  hero_slides: Slide[];
   about: { title: string; body: string };
   stats: {
     projects_completed: string;
@@ -20,6 +24,7 @@ type Settings = {
 
 const defaults: Settings = {
   hero: { headline: "", subheadline: "", cta_label: "" },
+  hero_slides: [],
   about: { title: "", body: "" },
   stats: {
     projects_completed: "",
@@ -39,11 +44,15 @@ const AdminHomepage = () => {
       const { data, error } = await supabase
         .from("site_settings")
         .select("key, value")
-        .in("key", ["hero", "about", "stats"]);
+        .in("key", ["hero", "hero_slides", "about", "stats"]);
       if (error) toast.error(error.message);
-      const next = { ...defaults };
+      const next: Settings = { ...defaults, hero_slides: [] };
       data?.forEach((row: any) => {
-        (next as any)[row.key] = { ...(defaults as any)[row.key], ...row.value };
+        if (row.key === "hero_slides") {
+          next.hero_slides = Array.isArray(row.value) ? row.value : (row.value?.slides ?? []);
+        } else {
+          (next as any)[row.key] = { ...(defaults as any)[row.key], ...row.value };
+        }
       });
       setSettings(next);
       setLoading(false);
@@ -54,6 +63,7 @@ const AdminHomepage = () => {
     setSaving(true);
     const rows = [
       { key: "hero", value: settings.hero },
+      { key: "hero_slides", value: settings.hero_slides as any },
       { key: "about", value: settings.about },
       { key: "stats", value: settings.stats },
     ];
@@ -61,6 +71,22 @@ const AdminHomepage = () => {
     setSaving(false);
     if (error) return toast.error(error.message);
     toast.success("Homepage updated");
+  };
+
+  const updateSlide = (idx: number, patch: Partial<Slide>) => {
+    setSettings((s) => ({
+      ...s,
+      hero_slides: s.hero_slides.map((sl, i) => (i === idx ? { ...sl, ...patch } : sl)),
+    }));
+  };
+  const addSlide = () => {
+    setSettings((s) => ({
+      ...s,
+      hero_slides: [...s.hero_slides, { titleLine1: "", titleLine2: "", subtitle: "", image: "" }],
+    }));
+  };
+  const removeSlide = (idx: number) => {
+    setSettings((s) => ({ ...s, hero_slides: s.hero_slides.filter((_, i) => i !== idx) }));
   };
 
   if (loading)
@@ -112,6 +138,54 @@ const AdminHomepage = () => {
               setSettings({ ...settings, hero: { ...settings.hero, cta_label: e.target.value } })
             }
           />
+        </div>
+      </section>
+
+      {/* HERO SLIDES */}
+      <section className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xs uppercase tracking-wider text-primary">Hero Slides</h2>
+          <Button type="button" variant="outline" size="sm" onClick={addSlide}>
+            <Plus className="h-3.5 w-3.5 mr-1" /> Add slide
+          </Button>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          The full-screen rotating banner on the homepage. Leave empty to keep default slides.
+        </p>
+        {settings.hero_slides.length === 0 && (
+          <p className="text-xs text-muted-foreground italic">No custom slides yet — defaults are showing.</p>
+        )}
+        <div className="space-y-6">
+          {settings.hero_slides.map((slide, idx) => (
+            <div key={idx} className="border border-border rounded-md p-4 space-y-3 bg-card/50">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-muted-foreground">Slide {idx + 1}</span>
+                <Button type="button" variant="ghost" size="icon" onClick={() => removeSlide(idx)}>
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label>Title line 1</Label>
+                  <Input value={slide.titleLine1} onChange={(e) => updateSlide(idx, { titleLine1: e.target.value })} />
+                </div>
+                <div>
+                  <Label>Title line 2</Label>
+                  <Input value={slide.titleLine2} onChange={(e) => updateSlide(idx, { titleLine2: e.target.value })} />
+                </div>
+              </div>
+              <div>
+                <Label>Subtitle</Label>
+                <Input value={slide.subtitle} onChange={(e) => updateSlide(idx, { subtitle: e.target.value })} />
+              </div>
+              <ImageUpload
+                bucket="project-images"
+                value={slide.image}
+                onChange={(p) => updateSlide(idx, { image: p || "" })}
+                label="Background image"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
