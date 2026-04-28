@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { blogImageUrl } from "@/lib/storage";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 
 type Post = {
   id: string;
@@ -25,24 +27,31 @@ const formatDate = (d: string | null) =>
 const News = () => {
   const [items, setItems] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const { isPreview, authLoading } = usePreview();
 
   useEffect(() => {
+    if (authLoading) return;
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("blog_posts")
         .select("id, slug, title, excerpt, cover_image_path, published_at, created_at, blog_categories!inner(slug, name)")
-        .eq("is_published", true)
         .eq("blog_categories.slug", "news")
-        .or("published_at.is.null,published_at.lte." + new Date().toISOString())
         .order("published_at", { ascending: false, nullsFirst: false })
         .order("created_at", { ascending: false });
+      if (!isPreview) {
+        q = q
+          .eq("is_published", true)
+          .or("published_at.is.null,published_at.lte." + new Date().toISOString());
+      }
+      const { data } = await q;
       setItems(((data as any[]) || []) as Post[]);
       setLoading(false);
     })();
-  }, []);
+  }, [isPreview, authLoading]);
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && <PreviewBanner status="published" label="Listing includes drafts" />}
       <Navbar />
       <SEO title="News & Updates" description="Latest news, events, and updates from Regent Design & Development Ltd — a leading real estate developer in Bangladesh." path="/news" />
       <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-regent-charcoal">
