@@ -343,6 +343,77 @@ const AdminProjects = () => {
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <Label>Bedrooms</Label>
+                  <Input
+                    value={editing.bedrooms || ""}
+                    placeholder="e.g. 03 or 03-04"
+                    onChange={(e) => setEditing({ ...editing, bedrooms: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label>Facing</Label>
+                  <Input
+                    value={editing.facing || ""}
+                    placeholder="e.g. South / North"
+                    onChange={(e) => setEditing({ ...editing, facing: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label>Structural Designer</Label>
+                  <Input
+                    value={editing.structural_designer || ""}
+                    placeholder="e.g. Prof. Shafiul Bari (BUET)"
+                    onChange={(e) => setEditing({ ...editing, structural_designer: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label>Project Features (one per line)</Label>
+                <Textarea
+                  rows={5}
+                  value={(editing.features || []).join("\n")}
+                  placeholder={"Earthquake-resistant RCC structure\nHigh-speed elevator with backup\n24/7 security with CCTV"}
+                  onChange={(e) =>
+                    setEditing({
+                      ...editing,
+                      features: e.target.value
+                        .split("\n")
+                        .map((s) => s.trim())
+                        .filter(Boolean),
+                    })
+                  }
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  Shown in the "Project Features" section. One feature per line.
+                </p>
+              </div>
+
+              <div>
+                <Label>Construction Progress (label : percent, one per line)</Label>
+                <Textarea
+                  rows={4}
+                  value={(editing.progress_items || []).map((p) => `${p.label} : ${p.value}`).join("\n")}
+                  placeholder={"Foundation : 100\nStructure : 85\nFinishing : 15\nOverall Progress : 55"}
+                  onChange={(e) => {
+                    const items = e.target.value
+                      .split("\n")
+                      .map((line) => {
+                        const [label, value] = line.split(":").map((s) => s.trim());
+                        if (!label) return null;
+                        return { label, value: Math.max(0, Math.min(100, Number(value) || 0)) };
+                      })
+                      .filter(Boolean) as ProgressItem[];
+                    setEditing({ ...editing, progress_items: items });
+                  }}
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  Format: <code>Label : 75</code>. Percent is clamped to 0–100.
+                </p>
+              </div>
+
               <div>
                 <Label>Amenities (comma separated)</Label>
                 <Input
@@ -358,6 +429,9 @@ const AdminProjects = () => {
                     })
                   }
                 />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  Used as fallback if "Project Features" is empty.
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
