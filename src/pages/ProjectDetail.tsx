@@ -864,19 +864,21 @@ const ProjectDetail = () => {
   const [dbProject, setDbProject] = useState<any | null>(null);
   const [dbLoaded, setDbLoaded] = useState(false);
 
+  const { isPreview, authLoading } = usePreview();
+
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || authLoading) return;
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("projects")
         .select("*")
-        .eq("slug", slug)
-        .eq("is_active", true)
-        .maybeSingle();
+        .eq("slug", slug);
+      if (!isPreview) q = q.eq("is_active", true);
+      const { data } = await q.maybeSingle();
       setDbProject(data);
       setDbLoaded(true);
     })();
-  }, [slug]);
+  }, [slug, isPreview, authLoading]);
 
   // Build merged project data — DB takes precedence, fallback to hardcoded
   const project: ProjectData | null = (() => {
