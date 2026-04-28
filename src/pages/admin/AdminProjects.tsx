@@ -61,6 +61,9 @@ const empty: Partial<Project> = {
   amenities: [],
   latitude: null,
   longitude: null,
+  meta_title: "",
+  meta_description: "",
+  og_image_path: null,
   is_active: true,
   display_order: 0,
 };
