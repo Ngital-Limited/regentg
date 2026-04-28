@@ -11,6 +11,8 @@ import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat,
 import { useState, useEffect, FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 import img_lifestyle_3107041_1280 from "@/assets/imported/lifestyle-3107041_1280.jpg";
 import img_real_estate_9053405_1280 from "@/assets/imported/real-estate-9053405_1280.jpg";
 import img_img_07_04_03_524_1280 from "@/assets/imported/07-04-03-524_1280.jpg";
