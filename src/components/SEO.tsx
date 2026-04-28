@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { usePageSEO } from "@/hooks/usePageSEO";
+import { supabase } from "@/integrations/supabase/client";
 
 interface SEOProps {
   title: string;
@@ -7,6 +9,8 @@ interface SEOProps {
   image?: string;
   type?: "website" | "article";
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** When true, do not look up admin-managed page_seo overrides (used by detail pages that already pass full meta) */
+  skipPageOverride?: boolean;
 }
 
 const SITE_URL = "https://regentgroup.com.bd";
@@ -33,10 +37,26 @@ const upsertLink = (rel: string, href: string) => {
   el.setAttribute("href", href);
 };
 
-const SEO = ({ title, description, path = "/", image, type = "website", jsonLd }: SEOProps) => {
+const ogImageUrl = (path?: string | null) => {
+  if (!path) return null;
+  if (path.startsWith("http")) return path;
+  // og_image_path could come from blog-images or project-images bucket
+  return supabase.storage.from("blog-images").getPublicUrl(path).data.publicUrl;
+};
+
+const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, skipPageOverride }: SEOProps) => {
+  const override = usePageSEO(skipPageOverride ? "__none__" : path);
+
+  const effectiveTitle = override?.meta_title || title;
+  const effectiveDescription = override?.meta_description || description;
+  const effectiveImage = image || ogImageUrl(override?.og_image_path) || DEFAULT_IMAGE;
+
   const url = `${SITE_URL}${path}`;
-  const ogImage = image || DEFAULT_IMAGE;
-  const fullTitle = title.includes("Regent") ? title : `${title} | Regent Design & Development Ltd`;
+  const ogImage = effectiveImage;
+  const fullTitle = effectiveTitle.includes("Regent")
+    ? effectiveTitle
+    : `${effectiveTitle} | Regent Design & Development Ltd`;
+  const description2 = effectiveDescription;
 
   useEffect(() => {
     document.title = fullTitle;
