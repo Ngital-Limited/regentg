@@ -94,7 +94,7 @@ const AdminProjects = () => {
       .order("display_order", { ascending: true })
       .order("name", { ascending: true });
     if (error) toast.error(error.message);
-    else setProjects((data as Project[]) || []);
+    else setProjects((data as unknown as Project[]) || []);
     setLoading(false);
   };
 
