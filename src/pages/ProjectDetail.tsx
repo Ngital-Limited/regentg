@@ -13,6 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { usePreview } from "@/hooks/usePreview";
 import PreviewBanner from "@/components/PreviewBanner";
+import { brochureUrl, projectImageUrl } from "@/lib/storage";
 import img_lifestyle_3107041_1280 from "@/assets/imported/lifestyle-3107041_1280.jpg";
 import img_real_estate_9053405_1280 from "@/assets/imported/real-estate-9053405_1280.jpg";
 import img_img_07_04_03_524_1280 from "@/assets/imported/07-04-03-524_1280.jpg";
@@ -887,15 +888,11 @@ const ProjectDetail = () => {
     if (!dbProject && !staticProject) return null;
     if (!dbProject) return staticProject;
 
-    const cover = dbProject.cover_image_path
-      ? supabase.storage.from("project-images").getPublicUrl(dbProject.cover_image_path).data.publicUrl
-      : staticProject?.heroImage;
-    const gallery: string[] = (dbProject.gallery_paths || []).map(
-      (p: string) => supabase.storage.from("project-images").getPublicUrl(p).data.publicUrl
-    );
-    const brochure = dbProject.brochure_path
-      ? supabase.storage.from("brochures").getPublicUrl(dbProject.brochure_path).data.publicUrl
-      : staticProject?.brochureUrl;
+    const cover = projectImageUrl(dbProject.cover_image_path) || staticProject?.heroImage;
+    const gallery: string[] = (dbProject.gallery_paths || [])
+      .map((p: string) => projectImageUrl(p))
+      .filter(Boolean) as string[];
+    const brochure = brochureUrl(dbProject.brochure_path) || staticProject?.brochureUrl;
 
     const glance: { icon: string; label: string; value: string }[] = [];
     if (dbProject.location) glance.push({ icon: "address", label: "Address", value: dbProject.location });
@@ -1057,9 +1054,7 @@ const ProjectDetail = () => {
         }
         path={`/projects/${slug}`}
         image={
-          (dbProject?.og_image_path
-            ? supabase.storage.from("project-images").getPublicUrl(dbProject.og_image_path).data.publicUrl
-            : null) || project.heroImage
+          projectImageUrl(dbProject?.og_image_path) || project.heroImage
         }
         type="article"
         jsonLd={[residenceSchema, breadcrumbSchema]}
