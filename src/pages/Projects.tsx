@@ -5,6 +5,22 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Search, SlidersHorizontal, X } from "lucide-react";
+import img_Islam_Day_View from "@/assets/imported/Islam-Day-View.jpg";
+import img_Palace from "@/assets/imported/Palace.jpg";
+import img_REGENT_SAPPHIRE_p_i from "@/assets/imported/REGENT-SAPPHIRE-p-i.jpg";
+import img_Regent_Hasina from "@/assets/imported/Regent-Hasina.webp";
+import img_Spring_Field from "@/assets/imported/Spring-Field.jpg";
+import img_Spring_dale_Side_View from "@/assets/imported/Spring-dale-Side-View.jpg";
+import img_Up_22Grand_heritage from "@/assets/imported/Up-22Grand-heritage.jpg";
+import img_tara_p_i from "@/assets/imported/tara-p-i.jpg";
+import img_Jannat_Night from "@/assets/imported/Jannat-Night.jpg";
+import img_Night_View_1 from "@/assets/imported/Night-View-1.jpg";
+import img_REGENT_EAST_CASTLE_4 from "@/assets/imported/REGENT-EAST-CASTLE-4.jpg";
+import img_REGENT_SUFIA_2 from "@/assets/imported/REGENT-SUFIA-2.png";
+import img_full_image_25_06_2018 from "@/assets/imported/full-image-25-06-2018.png";
+import img_full_view from "@/assets/imported/full-view.jpg";
+import img_updated_hira_REGENT_PARBATA_GRAND_4_5_1 from "@/assets/imported/updated-hira_REGENT-PARBATA-GRAND-4-5-1.jpg";
+import img_F_01_HD_15_07_25_scaled from "@/assets/imported/F-01-HD-15.07.25-scaled.jpg";
 
 const toSlug = (name: string) => name.toLowerCase().replace(/\s+/g, "-");
 
@@ -27,7 +43,7 @@ const allProjects: ProjectInfo[] = [
     size: "1350-3280 SFT",
     bedrooms: "3-4",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Up-22Grand-heritage.jpg",
+    image: img_Up_22Grand_heritage,
   },
   {
     name: "Regent Hasina",
@@ -36,7 +52,7 @@ const allProjects: ProjectInfo[] = [
     size: "2180 SFT",
     bedrooms: "4",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Hasina.webp",
+    image: img_Regent_Hasina,
   },
   {
     name: "Regent Sapphire",
@@ -45,7 +61,7 @@ const allProjects: ProjectInfo[] = [
     size: "2650 SFT",
     bedrooms: "4",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-p-i.jpg",
+    image: img_REGENT_SAPPHIRE_p_i,
   },
   {
     name: "Regent Spring Dale",
@@ -54,7 +70,7 @@ const allProjects: ProjectInfo[] = [
     size: "2450 SFT",
     bedrooms: "4",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-dale-Side-View.jpg",
+    image: img_Spring_dale_Side_View,
   },
   {
     name: "Regent Tara",
@@ -63,7 +79,7 @@ const allProjects: ProjectInfo[] = [
     size: "1650 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/tara-p-i.jpg",
+    image: img_tara_p_i,
   },
   {
     name: "Regent Palace",
@@ -72,7 +88,7 @@ const allProjects: ProjectInfo[] = [
     size: "1580 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Palace.jpg",
+    image: img_Palace,
   },
   {
     name: "Regent Spring Field",
@@ -81,7 +97,7 @@ const allProjects: ProjectInfo[] = [
     size: "2200 SFT",
     bedrooms: "4",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-Field.jpg",
+    image: img_Spring_Field,
   },
   {
     name: "Regent Rizia",
@@ -90,7 +106,7 @@ const allProjects: ProjectInfo[] = [
     size: "1700 SFT",
     bedrooms: "3-4",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2026/02/F-01-HD-15.07.25-scaled.jpg",
+    image: img_F_01_HD_15_07_25_scaled,
   },
   // Completed
   {
@@ -100,7 +116,7 @@ const allProjects: ProjectInfo[] = [
     size: "1570 & 1670 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat-Night.jpg",
+    image: img_Jannat_Night,
   },
   {
     name: "Regent South Pearl",
@@ -109,7 +125,7 @@ const allProjects: ProjectInfo[] = [
     size: "1348 & 1361 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/full-image-25-06-2018.png",
+    image: img_full_image_25_06_2018,
   },
   {
     name: "Regent East Castle",
@@ -118,7 +134,7 @@ const allProjects: ProjectInfo[] = [
     size: "1393 & 1398 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-4.jpg",
+    image: img_REGENT_EAST_CASTLE_4,
   },
   {
     name: "Regent South Lake",
@@ -127,7 +143,7 @@ const allProjects: ProjectInfo[] = [
     size: "1744 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/full-view.jpg",
+    image: img_full_view,
   },
   {
     name: "Regent East Queen",
@@ -136,7 +152,7 @@ const allProjects: ProjectInfo[] = [
     size: "1520 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Night-View-1.jpg",
+    image: img_Night_View_1,
   },
   {
     name: "Regent Sufia",
@@ -145,7 +161,7 @@ const allProjects: ProjectInfo[] = [
     size: "1383 & 1405 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SUFIA-2.png",
+    image: img_REGENT_SUFIA_2,
   },
   {
     name: "Regent Parbata Grand",
@@ -154,7 +170,7 @@ const allProjects: ProjectInfo[] = [
     size: "1064-1396 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/04/updated-hira_REGENT-PARBATA-GRAND-4-5-1.jpg",
+    image: img_updated_hira_REGENT_PARBATA_GRAND_4_5_1,
   },
   {
     name: "Regent Islam",
@@ -163,7 +179,7 @@ const allProjects: ProjectInfo[] = [
     size: "1650 SFT",
     bedrooms: "3",
     type: "Residential",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Islam-Day-View.jpg",
+    image: img_Islam_Day_View,
   },
 ];
 

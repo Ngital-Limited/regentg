@@ -10,6 +10,127 @@ import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { toast } from "sonner";
+import img_lifestyle_3107041_1280 from "@/assets/imported/lifestyle-3107041_1280.jpg";
+import img_real_estate_9053405_1280 from "@/assets/imported/real-estate-9053405_1280.jpg";
+import img_img_07_04_03_524_1280 from "@/assets/imported/07-04-03-524_1280.jpg";
+import img_img_07_36_12_440_1280 from "@/assets/imported/07-36-12-440_1280.jpg";
+import img_img_07_41_50_734_1280 from "@/assets/imported/07-41-50-734_1280.jpg";
+import img_m_Modern from "@/assets/imported/m-Modern.jpg";
+import img_Blow_Up_2_1 from "@/assets/imported/Blow-Up-2-1.jpg";
+import img_Close_01_Feb_2022_2 from "@/assets/imported/Close_01-Feb-2022-2.jpg";
+import img_Front_1B_1 from "@/assets/imported/Front-1B-1.jpg";
+import img_Front_1C from "@/assets/imported/Front-1C.jpg";
+import img_Ground_View_1 from "@/assets/imported/Ground-View-1.jpg";
+import img_Hasina_Close_02_Feb_2022_1 from "@/assets/imported/Hasina-Close_02-Feb-2022-1.jpg";
+import img_Hasina_Close_02_Feb_2022_2 from "@/assets/imported/Hasina-Close_02-Feb-2022-2.jpg";
+import img_Hasina_View_01_Feb_2022_1 from "@/assets/imported/Hasina-View_01-Feb-2022-1.jpg";
+import img_Islam_Night_View_15_FEb_2022_scaled_1 from "@/assets/imported/Islam-Night-View_15-FEb-2022-scaled-1.jpg";
+import img_Night_1_1 from "@/assets/imported/Night-1-1.jpg";
+import img_Night_2_1 from "@/assets/imported/Night-2-1.jpg";
+import img_Night_2 from "@/assets/imported/Night-2.jpg";
+import img_Night_View_02_Feb_2022 from "@/assets/imported/Night-View_02-Feb-2022-.jpg";
+import img_REGENT_ISLAM_1 from "@/assets/imported/REGENT-ISLAM-1.jpg";
+import img_REGENT_ISLAM_2 from "@/assets/imported/REGENT-ISLAM-2.jpg";
+import img_REGENT_ISLAM_3 from "@/assets/imported/REGENT-ISLAM-3.jpg";
+import img_REGENT_ISLAM_4 from "@/assets/imported/REGENT-ISLAM-4.jpg";
+import img_REGENT_ISLAM_5 from "@/assets/imported/REGENT-ISLAM-5.jpg";
+import img_REGENT_PALACE_1 from "@/assets/imported/REGENT-PALACE-1.jpg";
+import img_REGENT_PALACE_3 from "@/assets/imported/REGENT-PALACE-3.jpg";
+import img_REGENT_PALACE_4 from "@/assets/imported/REGENT-PALACE-4.jpg";
+import img_REGENT_PALACE_5 from "@/assets/imported/REGENT-PALACE-5.jpg";
+import img_REGENT_PALACE_6 from "@/assets/imported/REGENT-PALACE-6.jpg";
+import img_REGENT_PALACE_7 from "@/assets/imported/REGENT-PALACE-7.jpg";
+import img_REGENT_SAPPHIRE_1 from "@/assets/imported/REGENT-SAPPHIRE-1.jpg";
+import img_REGENT_SAPPHIRE_10 from "@/assets/imported/REGENT-SAPPHIRE-10.jpg";
+import img_REGENT_SAPPHIRE_11 from "@/assets/imported/REGENT-SAPPHIRE-11.jpg";
+import img_REGENT_SAPPHIRE_2 from "@/assets/imported/REGENT-SAPPHIRE-2.jpg";
+import img_REGENT_SAPPHIRE_3 from "@/assets/imported/REGENT-SAPPHIRE-3.jpg";
+import img_REGENT_SAPPHIRE_4 from "@/assets/imported/REGENT-SAPPHIRE-4.jpg";
+import img_REGENT_SAPPHIRE_5 from "@/assets/imported/REGENT-SAPPHIRE-5.jpg";
+import img_REGENT_SAPPHIRE_6 from "@/assets/imported/REGENT-SAPPHIRE-6.jpg";
+import img_REGENT_SAPPHIRE_7 from "@/assets/imported/REGENT-SAPPHIRE-7.jpg";
+import img_REGENT_SAPPHIRE_8 from "@/assets/imported/REGENT-SAPPHIRE-8.jpg";
+import img_REGENT_SAPPHIRE_9 from "@/assets/imported/REGENT-SAPPHIRE-9.jpg";
+import img_REGENT_SPRING_FIELD_1 from "@/assets/imported/REGENT-SPRING-FIELD-1.jpg";
+import img_REGENT_SPRING_FIELD_2 from "@/assets/imported/REGENT-SPRING-FIELD-2.jpg";
+import img_REGENT_SPRING_FIELD_3 from "@/assets/imported/REGENT-SPRING-FIELD-3.jpg";
+import img_REGENT_SPRING_FIELD_4 from "@/assets/imported/REGENT-SPRING-FIELD-4.jpg";
+import img_REGENT_SPRING_FIELD_5 from "@/assets/imported/REGENT-SPRING-FIELD-5.jpg";
+import img_REGENT_SPRING_FIELD_6 from "@/assets/imported/REGENT-SPRING-FIELD-6.jpg";
+import img_REGENT_SPRING_FIELD_7 from "@/assets/imported/REGENT-SPRING-FIELD-7.jpg";
+import img_REGENT_TARA_1 from "@/assets/imported/REGENT-TARA-1.jpg";
+import img_REGENT_TARA_10 from "@/assets/imported/REGENT-TARA-10.jpg";
+import img_REGENT_TARA_2 from "@/assets/imported/REGENT-TARA-2.jpg";
+import img_REGENT_TARA_3 from "@/assets/imported/REGENT-TARA-3.jpg";
+import img_REGENT_TARA_4 from "@/assets/imported/REGENT-TARA-4.jpg";
+import img_REGENT_TARA_5 from "@/assets/imported/REGENT-TARA-5.jpg";
+import img_REGENT_TARA_6 from "@/assets/imported/REGENT-TARA-6.jpg";
+import img_REGENT_TARA_7 from "@/assets/imported/REGENT-TARA-7.jpg";
+import img_REGENT_TARA_8 from "@/assets/imported/REGENT-TARA-8.jpg";
+import img_REGENT_TARA_9 from "@/assets/imported/REGENT-TARA-9.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_1 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-1.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_10 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-10.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_11 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-11.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_12 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-12.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_13 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-13.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_14 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-14.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_15 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-15.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_16 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-16.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_2 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-2.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_3 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-3.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_4 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-4.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_5 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-5.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_6 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-6.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_7 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-7.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_8 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-8.jpg";
+import img_RGH_Roof_Top_3_24_Aug_2023_9 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-9.jpg";
+import img_Roof_1_3 from "@/assets/imported/Roof-1-3.jpg";
+import img_Roof_2B_2 from "@/assets/imported/Roof-2B-2.jpg";
+import img_Side_Ground_1_scaled_1 from "@/assets/imported/Side-Ground-1-scaled-1.jpg";
+import img_Side_Ground_Vertical_1 from "@/assets/imported/Side-Ground-Vertical-1.jpg";
+import img_Top_View_1 from "@/assets/imported/Top-View-1.jpg";
+import img_dae33a8cc9 from "@/assets/imported/dae33a8cc9.jpg";
+import img_dfe593ed9f from "@/assets/imported/dfe593ed9f.jpg";
+import img_e2e7202782 from "@/assets/imported/e2e7202782.jpg";
+import img_Blow_Up_B from "@/assets/imported/Blow-Up-B.jpg";
+import img_Blow_Up_C_1 from "@/assets/imported/Blow-Up-C-1.jpg";
+import img_Blow_Up_Left_Side from "@/assets/imported/Blow-Up_Left-Side.jpg";
+import img_Blow_Up_Right_Side from "@/assets/imported/Blow-Up_Right-Side.jpg";
+import img_Ground_Outside from "@/assets/imported/Ground_Outside.jpg";
+import img_Jannat_Day_View_1 from "@/assets/imported/Jannat-Day-View-1.jpg";
+import img_Jannat_Night_View_2 from "@/assets/imported/Jannat-Night-View-2.jpg";
+import img_Jannat_Close_1_1 from "@/assets/imported/Jannat_Close-1-1.jpg";
+import img_Jannat_Close_2_1 from "@/assets/imported/Jannat_Close-2-1.jpg";
+import img_Night_View from "@/assets/imported/Night-View.jpg";
+import img_REGENT_EAST_CASTLE_1 from "@/assets/imported/REGENT-EAST-CASTLE-1.jpg";
+import img_REGENT_EAST_CASTLE_2 from "@/assets/imported/REGENT-EAST-CASTLE-2.jpg";
+import img_REGENT_EAST_CASTLE_3 from "@/assets/imported/REGENT-EAST-CASTLE-3.jpg";
+import img_REGENT_EAST_CASTLE_4 from "@/assets/imported/REGENT-EAST-CASTLE-4.jpg";
+import img_REGENT_EAST_CASTLE_5 from "@/assets/imported/REGENT-EAST-CASTLE-5.jpg";
+import img_REGENT_EAST_QUEEN_1 from "@/assets/imported/REGENT-EAST-QUEEN-1.jpg";
+import img_REGENT_EAST_QUEEN_2 from "@/assets/imported/REGENT-EAST-QUEEN-2.jpg";
+import img_REGENT_EAST_QUEEN_3 from "@/assets/imported/REGENT-EAST-QUEEN-3.jpg";
+import img_REGENT_EAST_QUEEN_4 from "@/assets/imported/REGENT-EAST-QUEEN-4.jpg";
+import img_REGENT_EAST_QUEEN_5 from "@/assets/imported/REGENT-EAST-QUEEN-5.jpg";
+import img_REGENT_PARBATA_GRAND_1 from "@/assets/imported/REGENT-PARBATA-GRAND-1.jpg";
+import img_REGENT_PARBATA_GRAND_2 from "@/assets/imported/REGENT-PARBATA-GRAND-2.jpg";
+import img_REGENT_PARBATA_GRAND_3 from "@/assets/imported/REGENT-PARBATA-GRAND-3.jpg";
+import img_REGENT_PARBATA_GRAND_4 from "@/assets/imported/REGENT-PARBATA-GRAND-4.jpg";
+import img_REGENT_PARBATA_GRAND_5 from "@/assets/imported/REGENT-PARBATA-GRAND-5.jpg";
+import img_REGENT_SOUTH_LAKE_1 from "@/assets/imported/REGENT-SOUTH-LAKE-1.jpg";
+import img_REGENT_SOUTH_LAKE_2 from "@/assets/imported/REGENT-SOUTH-LAKE-2.jpg";
+import img_REGENT_SOUTH_LAKE_3 from "@/assets/imported/REGENT-SOUTH-LAKE-3.jpg";
+import img_REGENT_SUFIA_1 from "@/assets/imported/REGENT-SUFIA-1.jpg";
+import img_REGENT_SUFIA_2 from "@/assets/imported/REGENT-SUFIA-2.jpg";
+import img_full_image_25_06_2018 from "@/assets/imported/full-image-25-06-2018.jpg";
+import img_Day_View_2_scaled from "@/assets/imported/Day-View-2-scaled.jpg";
+import img_Day_View_3_scaled from "@/assets/imported/Day-View-3-scaled.jpg";
+import img_F_01_HD_15_07_25_scaled from "@/assets/imported/F-01-HD-15.07.25-scaled.jpg";
+import img_Front_View_Partial_scaled from "@/assets/imported/Front-View-Partial-scaled.jpg";
+import img_Front_View_scaled from "@/assets/imported/Front-View-scaled.jpg";
+import img_GF_HD_01_15_07_25_scaled from "@/assets/imported/GF-HD-01-15.07.25-scaled.jpg";
+import img_Side_View_1_scaled from "@/assets/imported/Side-View-1-scaled.jpg";
+import img_Side_View_2_scaled from "@/assets/imported/Side-View-2-scaled.jpg";
 
 const defaultFeatures = [
   "Earthquake-resistant RCC structure designed by BUET professor",
@@ -77,7 +198,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Grand Heritage",
     tagline: "Where Luxury Meets Everyday Convenience",
     status: "ongoing" as const,
-    heroImage: "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-8.jpg",
+    heroImage: img_RGH_Roof_Top_3_24_Aug_2023_8,
     overview: "Introducing Regent Grand Heritage—a Premium South-Facing Condominium in the peaceful residential area of Shahjadpur, just a stone's throw from Gulshan-2. Spanning 10 levels (B+G+9) of refined living, this Architectural Gem offers a seamless blend of Elegance, Comfort and Modern Functionality. Designed with sophistication in mind, the well-ventilated apartments are set within a striking Grand Stoned Façade and supported by 4 High-Speed Lifts for smooth access. Residents enjoy a wide range of Premium Amenities including a Fully Equipped Gym, Mosque, Children's Play Zone and a Beautifully Landscaped Rooftop complete with a BBQ area, Jogging track and Serene Seating Zones for socializing or unwinding. Ideally suited for professionals and families, Regent Grand Heritage is especially convenient for those who work in or frequently commute to Gulshan and Baridhara, ensuring a quick and hassle-free connection to Dhaka's key business and diplomatic centers.",
     features: [
       "Magnificient Grand Structure With Double Height Entrance",
@@ -105,22 +226,22 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "December 2028" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-8.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-5.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-13.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-6.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-7.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-9.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-11.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-14.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-15.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-10.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-16.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-12.jpg",
+      img_RGH_Roof_Top_3_24_Aug_2023_8,
+      img_RGH_Roof_Top_3_24_Aug_2023_1,
+      img_RGH_Roof_Top_3_24_Aug_2023_2,
+      img_RGH_Roof_Top_3_24_Aug_2023_3,
+      img_RGH_Roof_Top_3_24_Aug_2023_5,
+      img_RGH_Roof_Top_3_24_Aug_2023_13,
+      img_RGH_Roof_Top_3_24_Aug_2023_6,
+      img_RGH_Roof_Top_3_24_Aug_2023_7,
+      img_RGH_Roof_Top_3_24_Aug_2023_9,
+      img_RGH_Roof_Top_3_24_Aug_2023_4,
+      img_RGH_Roof_Top_3_24_Aug_2023_11,
+      img_RGH_Roof_Top_3_24_Aug_2023_14,
+      img_RGH_Roof_Top_3_24_Aug_2023_15,
+      img_RGH_Roof_Top_3_24_Aug_2023_10,
+      img_RGH_Roof_Top_3_24_Aug_2023_16,
+      img_RGH_Roof_Top_3_24_Aug_2023_12,
     ],
     mapCoords: { lat: 23.7937, lng: 90.4203 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Grand_Heritage_Brochure_20.pdf",
@@ -154,14 +275,14 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "June 2025" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Hasina-Close_02-Feb-2022-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Night-View_02-Feb-2022-.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/e2e7202782.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Hasina-Close_02-Feb-2022-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/dae33a8cc9.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Hasina-View_01-Feb-2022-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/dfe593ed9f.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Close_01-Feb-2022-2.jpg",
+      img_Hasina_Close_02_Feb_2022_2,
+      img_Night_View_02_Feb_2022,
+      img_e2e7202782,
+      img_Hasina_Close_02_Feb_2022_1,
+      img_dae33a8cc9,
+      img_Hasina_View_01_Feb_2022_1,
+      img_dfe593ed9f,
+      img_Close_01_Feb_2022_2,
     ],
     mapCoords: { lat: 23.8215359, lng: 90.4440474 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-HASINA-PDF.pdf",
@@ -170,7 +291,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Sapphire",
     tagline: "Prestigious North-Facing Living in Bashundhara R/A",
     status: "ongoing" as const,
-    heroImage: "https://i.ibb.co.com/3mgVLkBb/m-Modern.jpg",
+    heroImage: img_m_Modern,
     overview: "Regent Sapphire is a prestigious North-Facing residential development in the serene and secure neighborhood of Block-L of Bashundhara R/A. Each Floor is dedicated to a single, expansive 2650 SFT apartment—thoughtfully designed for optimum Natural Light, Cross-Ventilation and Seamless Living. What truly sets Regent Sapphire apart is its impressive Wide Façade, a Rare Architectural advantage in Bashundhara, which not only enhances the building's aesthetic appeal but also allows for a grander presence and more open interior layouts. The building blends Modern elegance with functional design, featuring a beautifully landscaped rooftop for leisure and social gatherings. Nestled in a fully planned area, Regent Sapphire enjoys close proximity to essential amenities including a mosque, reputed schools and more—offering residents a lifestyle of both luxury and convenience in one of Dhaka's most sought-after locations.",
     features: [
       "Well Ventilated Apartment",
@@ -195,17 +316,17 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "December 2027" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-5.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-6.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-7.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-8.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-9.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-10.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-11.jpg",
+      img_REGENT_SAPPHIRE_1,
+      img_REGENT_SAPPHIRE_2,
+      img_REGENT_SAPPHIRE_3,
+      img_REGENT_SAPPHIRE_4,
+      img_REGENT_SAPPHIRE_5,
+      img_REGENT_SAPPHIRE_6,
+      img_REGENT_SAPPHIRE_7,
+      img_REGENT_SAPPHIRE_8,
+      img_REGENT_SAPPHIRE_9,
+      img_REGENT_SAPPHIRE_10,
+      img_REGENT_SAPPHIRE_11,
     ],
     mapCoords: { lat: 23.8190, lng: 90.4350 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/05/Regent-Sapphire-v2-low.pdf",
@@ -239,17 +360,17 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "December 2027" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Blow-Up-2-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Front-1B-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Front-1C.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Ground-View-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Night-1-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Night-2-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Roof-1-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Roof-2B-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Side-Ground-1-scaled-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Side-Ground-Vertical-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Top-View-1.jpg",
+      img_Blow_Up_2_1,
+      img_Front_1B_1,
+      img_Front_1C,
+      img_Ground_View_1,
+      img_Night_1_1,
+      img_Night_2_1,
+      img_Roof_1_3,
+      img_Roof_2B_2,
+      img_Side_Ground_1_scaled_1,
+      img_Side_Ground_Vertical_1,
+      img_Top_View_1,
     ],
     mapCoords: { lat: 23.8200, lng: 90.4440 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/spring-dale.pdf",
@@ -283,16 +404,16 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "December 2026" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-5.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-6.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-7.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-8.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-9.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-TARA-10.jpg",
+      img_REGENT_TARA_1,
+      img_REGENT_TARA_2,
+      img_REGENT_TARA_3,
+      img_REGENT_TARA_4,
+      img_REGENT_TARA_5,
+      img_REGENT_TARA_6,
+      img_REGENT_TARA_7,
+      img_REGENT_TARA_8,
+      img_REGENT_TARA_9,
+      img_REGENT_TARA_10,
     ],
     mapCoords: { lat: 23.7671012, lng: 90.4551473 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Tara-Brochure.pdf",
@@ -301,7 +422,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Palace",
     tagline: "Warmth, Serenity & Modern Luxury",
     status: "ongoing" as const,
-    heroImage: "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-PALACE-1.jpg",
+    heroImage: img_REGENT_PALACE_1,
     overview: "Regent Palace is nestled in the vibrant heart of Adabor offering a harmonious blend of Warmth, Serenity and Modern Luxury. This thoughtfully crafted residential development features elegant 1580 SFT, 3-bedroom apartment tailored for comfortable, stylish urban living. With standout architectural beauty and premium finishing materials used throughout the common areas, Regent Palace sets a new benchmark in the Adabor–Mohammadpur zone, reflecting a level of craftsmanship rarely found in the area. Residents will enjoy a range of lifestyle-enhancing amenities, including a Landscaped Rooftop with BBQ facilities and a Grand Community Hall—perfect for both relaxation and community gatherings. Ideally located near Shyamoli, Tokyo Square, top schools, hospitals & more, Regent Palace also offers seamless access to Dhanmondi, Lalmatia, Mirpur, and Japan Garden City.",
     features: [
       "Premium Quality Fitting & Features",
@@ -326,13 +447,13 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "June 2025" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Night-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-PALACE-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-PALACE-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-PALACE-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-PALACE-5.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-PALACE-6.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-PALACE-7.jpg",
+      img_Night_2,
+      img_REGENT_PALACE_1,
+      img_REGENT_PALACE_3,
+      img_REGENT_PALACE_4,
+      img_REGENT_PALACE_5,
+      img_REGENT_PALACE_6,
+      img_REGENT_PALACE_7,
     ],
     mapCoords: { lat: 23.7733429, lng: 90.3485950 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Palace-1.pdf",
@@ -366,13 +487,13 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "March 2026" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-5.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-6.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SPRING-FIELD-7.jpg",
+      img_REGENT_SPRING_FIELD_1,
+      img_REGENT_SPRING_FIELD_2,
+      img_REGENT_SPRING_FIELD_3,
+      img_REGENT_SPRING_FIELD_4,
+      img_REGENT_SPRING_FIELD_5,
+      img_REGENT_SPRING_FIELD_6,
+      img_REGENT_SPRING_FIELD_7,
     ],
     mapCoords: { lat: 23.781365, lng: 90.367875 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-Field-Brochure.pdf",
@@ -406,14 +527,14 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "—" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/GF-HD-01-15.07.25-scaled.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/Side-View-1-scaled.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/Front-View-scaled.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/Front-View-Partial-scaled.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/Day-View-3-scaled.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/F-01-HD-15.07.25-scaled.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/Day-View-2-scaled.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2026/02/Side-View-2-scaled.jpg",
+      img_GF_HD_01_15_07_25_scaled,
+      img_Side_View_1_scaled,
+      img_Front_View_scaled,
+      img_Front_View_Partial_scaled,
+      img_Day_View_3_scaled,
+      img_F_01_HD_15_07_25_scaled,
+      img_Day_View_2_scaled,
+      img_Side_View_2_scaled,
     ],
     mapCoords: { lat: 23.8759, lng: 90.3795 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2026/02/Rizia-Brochure-v12-1.pdf",
@@ -423,7 +544,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Jannat",
     tagline: "Elegant South-Facing Living in Aftabnagar",
     status: "completed" as const,
-    heroImage: "https://cdn.pixabay.com/photo/2026/04/19/07/04/07-04-03-524_1280.jpg",
+    heroImage: img_img_07_04_03_524_1280,
     overview: "Regent Jannat is a completed residential project located in Block F of the Aftabnagar R/A, Dhaka. This G+8 building features 16 south-facing apartments, offering spacious 3-bedroom layouts of 1570 and 1670 SFT. Designed by Prof. Shafiul Bari of BUET, the earthquake-resistant structure combines modern architectural elegance with premium amenities, including 24/7 security, generator backup, and a communal rooftop space.",
     features: [
       "Modern and elegant architectural design",
@@ -448,10 +569,10 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "June 2023" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat_Close-1-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat_Close-2-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat-Day-View-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Jannat-Night-View-2.jpg",
+      img_Jannat_Close_1_1,
+      img_Jannat_Close_2_1,
+      img_Jannat_Day_View_1,
+      img_Jannat_Night_View_2,
     ],
     mapCoords: { lat: 23.7697, lng: 90.4312 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-Jannat-2.pdf",
@@ -485,10 +606,10 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "December 2020" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Blow-Up_Left-Side.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Ground_Outside.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/full-image-25-06-2018.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Blow-Up_Right-Side.jpg",
+      img_Blow_Up_Left_Side,
+      img_Ground_Outside,
+      img_full_image_25_06_2018,
+      img_Blow_Up_Right_Side,
     ],
     mapCoords: { lat: 23.7501032, lng: 90.4294576 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-South-Pearl.pdf",
@@ -497,7 +618,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent East Castle",
     tagline: "Signature East-Facing Living on Shadhinata Sarani",
     status: "completed" as const,
-    heroImage: "https://cdn.pixabay.com/photo/2026/04/19/07/36/07-36-12-440_1280.jpg",
+    heroImage: img_img_07_36_12_440_1280,
     overview: "Regent East Castle is a signature residential address located on Shadhinata Sarani in North Badda, offering a perfect blend of urban convenience and structural elegance. This East-facing G+7 building features 14 spacious apartments designed for modern family living. Completed in June 2021 and boasting a 100% progress rate, the project ensures peace of mind with a robust structure designed by Prof. Shafiul Bari (BUET).",
     features: [
       "East-Facing Orientation: Perfectly positioned to capture the morning sun and maintain a bright, refreshing indoor atmosphere",
@@ -521,11 +642,11 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "June 2021" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-CASTLE-5.jpg",
+      img_REGENT_EAST_CASTLE_1,
+      img_REGENT_EAST_CASTLE_2,
+      img_REGENT_EAST_CASTLE_3,
+      img_REGENT_EAST_CASTLE_4,
+      img_REGENT_EAST_CASTLE_5,
     ],
     mapCoords: { lat: 23.784918, lng: 90.4301727 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-East-Castle.pdf",
@@ -534,7 +655,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent South Lake",
     tagline: "Exclusive Single-Unit Living by Hatirjheel",
     status: "completed" as const,
-    heroImage: "https://cdn.pixabay.com/photo/2026/04/19/07/41/07-41-50-734_1280.jpg",
+    heroImage: img_img_07_41_50_734_1280,
     overview: "Regent South Lake offers an exclusive living experience within the prestigious Mahanagar Housing Society, adjacent to the scenic Hatirjheel area. This boutique G+7 development is designed for ultimate privacy, featuring only one apartment per floor. With a sprawling 1744 SFT layout and a desirable South-facing orientation, each home is bathed in natural light and air. Structural safety is guaranteed by Prof. Shafiul Bari (BUET), and the project has been fully handed over since June 2020.",
     features: [
       "Single-Unit Privacy: Exclusive one-apartment-per-floor layout ensuring maximum privacy and quiet",
@@ -559,9 +680,9 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "June 2020" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SOUTH-LAKE-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SOUTH-LAKE-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SOUTH-LAKE-3.jpg",
+      img_REGENT_SOUTH_LAKE_1,
+      img_REGENT_SOUTH_LAKE_2,
+      img_REGENT_SOUTH_LAKE_3,
     ],
     mapCoords: { lat: 23.7663796, lng: 90.4147224 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-South-Lake.pdf",
@@ -595,11 +716,11 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "February 2023" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-QUEEN-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-QUEEN-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-QUEEN-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-QUEEN-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-EAST-QUEEN-5.jpg",
+      img_REGENT_EAST_QUEEN_1,
+      img_REGENT_EAST_QUEEN_2,
+      img_REGENT_EAST_QUEEN_3,
+      img_REGENT_EAST_QUEEN_4,
+      img_REGENT_EAST_QUEEN_5,
     ],
     mapCoords: { lat: 23.7925, lng: 90.4225 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-East-Queen.pdf",
@@ -608,7 +729,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Sufia",
     tagline: "Majestic South-Facing Living in West Agargaon",
     status: "completed" as const,
-    heroImage: "https://cdn.pixabay.com/photo/2024/09/17/11/19/real-estate-9053405_1280.jpg",
+    heroImage: img_real_estate_9053405_1280,
     overview: "Regent Sufia is a majestic residential landmark situated in the rapidly developing hub of West Agargaon. Rising to G+9 floors, this project offers 18 thoughtfully designed apartments that prioritize space and functionality. With a South-facing orientation, residents enjoy the quintessential Dhaka breeze and ample natural light. Handed over in December 2020, the building stands as a symbol of structural reliability, having been designed by the renowned Prof. Shafiul Bari (BUET).",
     features: [
       "Optimal South Facing: Ideally positioned to capture the soothing southern breeze and provide excellent cross-ventilation",
@@ -633,11 +754,11 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "December 2020" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Night-View.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Blow-Up-B.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/Blow-Up-C-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SUFIA-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-SUFIA-2.jpg",
+      img_Night_View,
+      img_Blow_Up_B,
+      img_Blow_Up_C_1,
+      img_REGENT_SUFIA_1,
+      img_REGENT_SUFIA_2,
     ],
     mapCoords: { lat: 23.779832, lng: 90.3697709 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-Sufia.pdf",
@@ -646,7 +767,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Parbata Grand",
     tagline: "Landmark Community Living in Mirpur 10",
     status: "completed" as const,
-    heroImage: "https://cdn.pixabay.com/photo/2018/01/25/20/53/lifestyle-3107041_1280.jpg",
+    heroImage: img_lifestyle_3107041_1280,
     overview: "Regent Parbata Grand is a landmark residential complex situated in the vibrant heart of Mirpur 10 (Senpara Parbata). This impressive B+G+9 story development is designed for large-scale community living, housing 126 premium apartments with versatile sizes ranging from 1064 to 1396 SFT. With its South-facing orientation and a massive architectural footprint, it offers a perfect balance of urban connectivity and structural safety. Handed over in December 2020, the project remains a premier choice for families seeking a secure, BUET-designed home in a thriving neighborhood.",
     features: [
       "Massive Community Living: A large-scale project featuring 126 units, fostering a vibrant and diverse neighborly environment",
@@ -671,11 +792,11 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "December 2020" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-PARBATA-GRAND-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-PARBATA-GRAND-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-PARBATA-GRAND-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-PARBATA-GRAND-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/04/REGENT-PARBATA-GRAND-5.jpg",
+      img_REGENT_PARBATA_GRAND_1,
+      img_REGENT_PARBATA_GRAND_2,
+      img_REGENT_PARBATA_GRAND_3,
+      img_REGENT_PARBATA_GRAND_4,
+      img_REGENT_PARBATA_GRAND_5,
     ],
     mapCoords: { lat: 23.8069, lng: 90.3687 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/04/Regent-Parbata-Grand-Final.pdf",
@@ -707,12 +828,12 @@ const projectsData: Record<string, ProjectData> = {
       { icon: "handover", label: "Handover Date", value: "June 2025" },
     ],
     gallery: [
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-1.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-2.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-3.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-4.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-ISLAM-5.jpg",
-      "https://regentgroup.com.bd/wp-content/uploads/2025/02/Islam-Night-View_15-FEb-2022-scaled-1.jpg",
+      img_REGENT_ISLAM_1,
+      img_REGENT_ISLAM_2,
+      img_REGENT_ISLAM_3,
+      img_REGENT_ISLAM_4,
+      img_REGENT_ISLAM_5,
+      img_Islam_Night_View_15_FEb_2022_scaled_1,
     ],
     mapCoords: { lat: 23.7849, lng: 90.4302 },
     brochureUrl: "https://regentgroup.com.bd/wp-content/uploads/2025/02/regent-islam-all.pdf",

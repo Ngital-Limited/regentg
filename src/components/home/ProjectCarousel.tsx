@@ -3,16 +3,24 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionHeading from "../SectionHeading";
+import img_Palace from "@/assets/imported/Palace.jpg";
+import img_REGENT_SAPPHIRE_p_i from "@/assets/imported/REGENT-SAPPHIRE-p-i.jpg";
+import img_Regent_Hasina from "@/assets/imported/Regent-Hasina.webp";
+import img_Spring_Field from "@/assets/imported/Spring-Field.jpg";
+import img_Spring_dale_Side_View from "@/assets/imported/Spring-dale-Side-View.jpg";
+import img_Up_22Grand_heritage from "@/assets/imported/Up-22Grand-heritage.jpg";
+import img_tara_p_i from "@/assets/imported/tara-p-i.jpg";
+import img_F_01_HD_15_07_25_scaled from "@/assets/imported/F-01-HD-15.07.25-scaled.jpg";
 
 const projectImages: Record<string, string> = {
-  "Regent Tara": "https://regentgroup.com.bd/wp-content/uploads/2025/02/tara-p-i.jpg",
-  "Regent Spring Field": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-Field.jpg",
-  "Regent Rizia": "https://regentgroup.com.bd/wp-content/uploads/2026/02/F-01-HD-15.07.25-scaled.jpg",
-  "Regent Palace": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Palace.jpg",
-  "Regent Grand Heritage": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Up-22Grand-heritage.jpg",
-  "Regent Hasina": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Regent-Hasina.webp",
-  "Regent Sapphire": "https://regentgroup.com.bd/wp-content/uploads/2025/02/REGENT-SAPPHIRE-p-i.jpg",
-  "Regent Spring Dale": "https://regentgroup.com.bd/wp-content/uploads/2025/02/Spring-dale-Side-View.jpg",
+  "Regent Tara": img_tara_p_i,
+  "Regent Spring Field": img_Spring_Field,
+  "Regent Rizia": img_F_01_HD_15_07_25_scaled,
+  "Regent Palace": img_Palace,
+  "Regent Grand Heritage": img_Up_22Grand_heritage,
+  "Regent Hasina": img_Regent_Hasina,
+  "Regent Sapphire": img_REGENT_SAPPHIRE_p_i,
+  "Regent Spring Dale": img_Spring_dale_Side_View,
 };
 
 const ongoingProjects = [

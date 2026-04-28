@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Maximize, BedDouble, Building2, Layers } from "lucide-react";
+import img_RGH_Roof_Top_3_24_Aug_2023_8 from "@/assets/imported/RGH-Roof-Top-3_24-Aug-2023-8.jpg";
 
 const FeaturedProject = () => {
   const project = {
@@ -13,7 +14,7 @@ const FeaturedProject = () => {
     floors: "B+G+9",
     totalApartments: "90",
     handover: "December 2028",
-    image: "https://regentgroup.com.bd/wp-content/uploads/2025/02/RGH-Roof-Top-3_24-Aug-2023-8.jpg",
+    image: img_RGH_Roof_Top_3_24_Aug_2023_8,
     description:
       "A Premium South-Facing Condominium in the peaceful residential area of Shahjadpur, just a stone's throw from Gulshan-2. Spanning 10 levels of refined living, this Architectural Gem offers a seamless blend of Elegance, Comfort and Modern Functionality.",
   };

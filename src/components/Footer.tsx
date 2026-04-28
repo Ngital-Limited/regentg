@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone } from "lucide-react";
+import img_concordnoaddress from "@/assets/imported/concordnoaddress.webp";
+import img_rehab_1024x265 from "@/assets/imported/rehab-1024x265.webp";
 
 const socials = [
   { href: "https://www.facebook.com/regentgroupbd", label: "Facebook", path: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" },
@@ -88,14 +90,14 @@ const Footer = () => {
         <div className="container-regent py-8 md:py-10">
           <div className="flex flex-wrap items-center justify-center gap-x-16 md:gap-x-24 gap-y-8">
             <img
-              src="https://regentgroup.com.bd/wp-content/uploads/2025/09/concordnoaddress.webp"
+              src=img_concordnoaddress
               alt="Concord"
               className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
             <div className="h-12 md:h-16 w-px bg-border" aria-hidden="true" />
             <img
-              src="https://regentgroup.com.bd/wp-content/uploads/2025/09/rehab-1024x265.webp"
+              src=img_rehab_1024x265
               alt="REHAB"
               className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
