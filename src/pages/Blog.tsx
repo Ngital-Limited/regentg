@@ -7,6 +7,8 @@ import { ArrowRight, Clock, User, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { blogImageUrl } from "@/lib/storage";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 
 type Post = {
   id: string;
@@ -17,6 +19,7 @@ type Post = {
   author_name: string | null;
   published_at: string | null;
   created_at: string;
+  is_published?: boolean;
   blog_categories: { name: string; slug: string } | null;
 };
 
@@ -26,29 +29,36 @@ const formatDate = (d: string | null) =>
 const Blog = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const { isPreview, authLoading } = usePreview();
 
   useEffect(() => {
+    if (authLoading) return;
     (async () => {
-      const { data } = await supabase
+      let q = supabase
         .from("blog_posts")
-        .select("id, slug, title, excerpt, cover_image_path, author_name, published_at, created_at, blog_categories(name, slug)")
-        .eq("is_published", true)
-        .or("published_at.is.null,published_at.lte." + new Date().toISOString())
+        .select("id, slug, title, excerpt, cover_image_path, author_name, published_at, created_at, is_published, blog_categories(name, slug)")
         .order("published_at", { ascending: false, nullsFirst: false })
         .order("created_at", { ascending: false });
+      if (!isPreview) {
+        q = q
+          .eq("is_published", true)
+          .or("published_at.is.null,published_at.lte." + new Date().toISOString());
+      }
+      const { data } = await q;
       const filtered = ((data as any[]) || []).filter(
         (p) => p.blog_categories?.slug !== "news"
       );
       setPosts(filtered);
       setLoading(false);
     })();
-  }, []);
+  }, [isPreview, authLoading]);
 
   const featured = posts[0];
   const rest = posts.slice(1);
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && <PreviewBanner status="published" label="Listing includes drafts" />}
       <Navbar />
 
       <SEO title="Blog & Insights" description="Real estate insights, buying guides, and industry updates from Regent Design & Development Ltd." path="/blog" />
