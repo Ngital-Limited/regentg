@@ -95,6 +95,12 @@ const BlogDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {isPreview && (
+        <PreviewBanner
+          status={post.is_published ? "published" : "draft"}
+          label={post.title}
+        />
+      )}
       <Navbar />
       <SEO
         title={post.title}
