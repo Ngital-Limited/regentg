@@ -428,7 +428,9 @@ const AdminProjects = () => {
                     checked={!!editing.is_active}
                     onCheckedChange={(v) => setEditing({ ...editing, is_active: v })}
                   />
-                  <Label className="mb-2">Active (visible publicly)</Label>
+                  <Label className="mb-2">
+                    {editing.is_active ? "Published (visible publicly)" : "Draft (hidden from public)"}
+                  </Label>
                 </div>
               </div>
             </div>
