@@ -19,6 +19,7 @@ type DbProject = {
   area_sqft: number | null;
   units: number | null;
   cover_image_path: string | null;
+  is_active?: boolean;
 };
 
 const statusOptions = ["All", "Ongoing", "Completed", "Upcoming"];
