@@ -23,6 +23,9 @@ type Post = {
   published_at: string | null;
   created_at: string;
   is_published?: boolean;
+  meta_title?: string | null;
+  meta_description?: string | null;
+  og_image_path?: string | null;
   blog_categories: { name: string; slug: string } | null;
 };
 
@@ -42,7 +45,7 @@ const BlogDetail = () => {
     (async () => {
       let q = supabase
         .from("blog_posts")
-        .select("id, slug, title, excerpt, body, cover_image_path, author_name, published_at, created_at, is_published, blog_categories(name, slug)")
+        .select("id, slug, title, excerpt, body, cover_image_path, author_name, published_at, created_at, is_published, meta_title, meta_description, og_image_path, blog_categories(name, slug)")
         .eq("slug", slug);
       if (!isPreview) q = q.eq("is_published", true);
       const { data } = await q.maybeSingle();
@@ -103,11 +106,12 @@ const BlogDetail = () => {
       )}
       <Navbar />
       <SEO
-        title={post.title}
-        description={(post.excerpt || post.title).slice(0, 160)}
+        title={post.meta_title || post.title}
+        description={(post.meta_description || post.excerpt || post.title).slice(0, 160)}
         path={`/blog/${slug}`}
-        image={coverUrl || undefined}
+        image={blogImageUrl(post.og_image_path) || coverUrl || undefined}
         type="article"
+        skipPageOverride
       />
 
       <section className="relative pt-20">

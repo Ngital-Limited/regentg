@@ -21,6 +21,9 @@ type Post = {
   published_at: string | null;
   created_at: string;
   is_published?: boolean;
+  meta_title?: string | null;
+  meta_description?: string | null;
+  og_image_path?: string | null;
 };
 
 const formatDate = (d: string | null) =>
@@ -37,7 +40,7 @@ const NewsDetail = () => {
     (async () => {
       let q = supabase
         .from("blog_posts")
-        .select("id, slug, title, excerpt, body, cover_image_path, published_at, created_at, is_published")
+        .select("id, slug, title, excerpt, body, cover_image_path, published_at, created_at, is_published, meta_title, meta_description, og_image_path")
         .eq("slug", slug);
       if (!isPreview) q = q.eq("is_published", true);
       const { data } = await q.maybeSingle();
@@ -87,11 +90,12 @@ const NewsDetail = () => {
       )}
       <Navbar />
       <SEO
-        title={article.title}
-        description={(article.excerpt || article.title).slice(0, 160)}
+        title={article.meta_title || article.title}
+        description={(article.meta_description || article.excerpt || article.title).slice(0, 160)}
         path={`/news/${slug}`}
-        image={cover || undefined}
+        image={blogImageUrl(article.og_image_path) || cover || undefined}
         type="article"
+        skipPageOverride
       />
 
       <section className="relative pt-28 md:pt-32 pb-12 md:pb-16 px-4 bg-regent-charcoal">
