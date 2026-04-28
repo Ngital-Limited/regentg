@@ -322,11 +322,14 @@ export type Database = {
         Row: {
           amenities: string[] | null
           area_sqft: number | null
+          bedrooms: string | null
           brochure_path: string | null
           cover_image_path: string | null
           created_at: string
           description: string | null
           display_order: number
+          facing: string | null
+          features: string[] | null
           floors: number | null
           gallery_paths: string[] | null
           handover_date: string | null
@@ -339,20 +342,25 @@ export type Database = {
           meta_title: string | null
           name: string
           og_image_path: string | null
+          progress_items: Json | null
           short_description: string | null
           slug: string
           status: string | null
+          structural_designer: string | null
           units: number | null
           updated_at: string
         }
         Insert: {
           amenities?: string[] | null
           area_sqft?: number | null
+          bedrooms?: string | null
           brochure_path?: string | null
           cover_image_path?: string | null
           created_at?: string
           description?: string | null
           display_order?: number
+          facing?: string | null
+          features?: string[] | null
           floors?: number | null
           gallery_paths?: string[] | null
           handover_date?: string | null
@@ -365,20 +373,25 @@ export type Database = {
           meta_title?: string | null
           name: string
           og_image_path?: string | null
+          progress_items?: Json | null
           short_description?: string | null
           slug: string
           status?: string | null
+          structural_designer?: string | null
           units?: number | null
           updated_at?: string
         }
         Update: {
           amenities?: string[] | null
           area_sqft?: number | null
+          bedrooms?: string | null
           brochure_path?: string | null
           cover_image_path?: string | null
           created_at?: string
           description?: string | null
           display_order?: number
+          facing?: string | null
+          features?: string[] | null
           floors?: number | null
           gallery_paths?: string[] | null
           handover_date?: string | null
@@ -391,9 +404,11 @@ export type Database = {
           meta_title?: string | null
           name?: string
           og_image_path?: string | null
+          progress_items?: Json | null
           short_description?: string | null
           slug?: string
           status?: string | null
+          structural_designer?: string | null
           units?: number | null
           updated_at?: string
         }
@@ -438,6 +453,60 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      videos: {
+        Row: {
+          category: string | null
+          cover_image_path: string | null
+          created_at: string
+          description: string | null
+          display_order: number
+          id: string
+          is_published: boolean
+          meta_description: string | null
+          meta_title: string | null
+          og_image_path: string | null
+          published_at: string | null
+          slug: string
+          title: string
+          updated_at: string
+          youtube_id: string
+        }
+        Insert: {
+          category?: string | null
+          cover_image_path?: string | null
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          is_published?: boolean
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image_path?: string | null
+          published_at?: string | null
+          slug: string
+          title: string
+          updated_at?: string
+          youtube_id: string
+        }
+        Update: {
+          category?: string | null
+          cover_image_path?: string | null
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          is_published?: boolean
+          meta_description?: string | null
+          meta_title?: string | null
+          og_image_path?: string | null
+          published_at?: string | null
+          slug?: string
+          title?: string
+          updated_at?: string
+          youtube_id?: string
         }
         Relationships: []
       }
