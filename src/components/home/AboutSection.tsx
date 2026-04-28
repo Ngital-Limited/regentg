@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
 import SectionHeading from "../SectionHeading";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 
 const AboutSection = () => {
+  const about = useSiteSetting<{ title: string; body: string }>("about", {
+    title: "REGENT DESIGN & DEVELOPMENT LTD",
+    body: "Regent Design & Development Ltd (RDDL) is one of the leading real estate companies in Bangladesh. With a proven track record of delivering over 400 apartments across Dhaka, we have established ourselves as a trusted name in the industry.\n\nOur commitment to quality, innovation, and timely delivery has made us the preferred choice for discerning homebuyers who seek nothing but the best.",
+  });
+  const stats = useSiteSetting<{ projects_completed?: string; happy_families?: string }>(
+    "stats",
+    { projects_completed: "400+" }
+  );
+  const headlineNumber = stats.happy_families || stats.projects_completed || "400+";
+  const paragraphs = (about.body || "").split(/\n\n+/);
+
   return (
     <section className="section-padding bg-regent-charcoal">
       <div className="container-regent">
@@ -12,16 +24,12 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <SectionHeading subtitle="About Us" title="REGENT DESIGN & DEVELOPMENT LTD" align="left" />
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6 text-justify">
-              Regent Design & Development Ltd (RDDL) is one of the leading real estate companies in Bangladesh.
-              With a proven track record of delivering over 400 apartments across Dhaka, we have established
-              ourselves as a trusted name in the industry.
-            </p>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-8 text-justify">
-              Our commitment to quality, innovation, and timely delivery has made us the preferred choice
-              for discerning homebuyers who seek nothing but the best.
-            </p>
+            <SectionHeading subtitle="About Us" title={about.title || "REGENT DESIGN & DEVELOPMENT LTD"} align="left" />
+            {paragraphs.map((p, i) => (
+              <p key={i} className="text-muted-foreground text-sm leading-relaxed mb-6 text-justify">
+                {p}
+              </p>
+            ))}
             <a href="/about" className="inline-block px-8 py-3 border border-primary text-primary text-sm uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all">
               Learn More
             </a>
@@ -37,7 +45,7 @@ const AboutSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-regent-charcoal border border-border" />
             <div className="absolute inset-8 border border-primary/20 flex items-center justify-center">
               <div className="text-center space-y-2">
-                <span className="text-4xl md:text-5xl lg:text-7xl font-light text-primary">400+</span>
+                <span className="text-4xl md:text-5xl lg:text-7xl font-light text-primary">{headlineNumber}</span>
                 <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Apartments Delivered</p>
               </div>
             </div>
