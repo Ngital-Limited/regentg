@@ -286,7 +286,7 @@ const Projects = () => {
                   className="w-full pb-3 pt-1 bg-transparent border-b border-border text-sm text-foreground focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer pr-8"
                 >
                   {filter.options.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
+                    <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
                   ))}
                 </select>
                 <svg className="absolute right-0 bottom-3 w-4 h-4 text-foreground pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
