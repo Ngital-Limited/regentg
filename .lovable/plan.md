@@ -1,59 +1,38 @@
+# Replace Google Maps with Leaflet in Project Detail Map
 
-# Regent Design & Development Ltd — Website Plan
+## Context
 
-## Brand & Design System
-- **Dark luxury theme** with deep blacks/charcoals
-- **Primary colors**: Sky blue `#3EC9F3` (from logo), Dark navy `#303192`, Charcoal `#373229`, Near-black `#0D0D0D`
-- **Typography**: Clean, minimal sans-serif (Inter for body, tracking-wide headings)
-- **Logo**: Uploaded Regent logo used in navbar and footer
+The homepage `MapSection.tsx` already uses **Leaflet** (free, OpenStreetMap-based) — no change needed there.
 
-## Pages (7 total)
+The actual paid Google Maps usage is in `src/components/ProjectMap.tsx`, used on every project detail page (`/projects/:slug`). It currently embeds a Google Maps iframe (`google.com/maps?...&output=embed`) and links out to Google Maps.
 
-### 1. Homepage
-- **Full-screen hero slider** (edge-to-edge, placeholder images) with project highlights and CTA
-- **Ongoing Projects carousel** — 4 cards in 4:5 ratio with project names
-- **About Regent** section — company intro with "Since 1981" heritage
-- **Why Regent / What Makes Us Unique** — 4 feature cards: Quality Materials, Build to Perfection, Architectural Design, On Time Handover, Credibility
-- **Awards & Memberships** section
-- **Regent Insights** section
-- **Our Stakeholders** section
-- **Full-view project location map** (interactive map of Dhaka with project pins)
-- **Footer** with contact info, quick links, social media
+## Goal
 
-### 2. About Page
-- Company history, mission, vision
-- Leadership/team section
-- Awards & recognition
+Replace the Google Maps iframe with a Leaflet map for a single project pin, keeping the **exact same outer design**: same card frame, aspect ratio, dark gradient overlay, footer with location label and external link button.
 
-### 3. Projects Page
-- Tabs: Ongoing (8 projects) / Completed (8 projects)
-- Project cards in 4:5 ratio grid
-- Each card links to a project detail view
+## Changes
 
-### 4. News Page
-- News listing with cards
+### `src/components/ProjectMap.tsx`
 
-### 5. Blog Page
-- Blog post listing with featured image cards
+1. Remove the `<iframe>` Google Maps embed.
+2. Replace with a Leaflet map matching the homepage style:
+   - Tile layer: `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png` (same dark CARTO basemap as homepage — free).
+   - Centered on `[lat, lng]`, zoom 16.
+   - `scrollWheelZoom: false` (consistent with homepage), zoom controls enabled.
+   - Single custom SVG pin marker in brand primary color (`hsl(194, 89%, 57%)`), matching the homepage marker style.
+   - Tooltip on the marker showing `projectName`.
+3. Initialize map with `useEffect` + `useRef` (same pattern as `MapSection.tsx`); cleanup on unmount.
+4. Keep the existing dark gradient overlay (`pointer-events-none`) on top of the map for brand cohesion.
+5. Keep the footer row unchanged: MapPin icon, project name, address, and the "Open in Google Maps" external link button (this is just a free outbound link — not a paid API call, safe to keep so users can get directions). If preferred, we can switch the link to OpenStreetMap (`https://www.openstreetmap.org/?mlat=...&mlon=...#map=17/...`) — see open question.
+6. Import `"leaflet/dist/leaflet.css"` (already used elsewhere, dependency present).
 
-### 6. Career Page
-- Open positions listing
-- Application info
+### Files touched
+- `src/components/ProjectMap.tsx` — rewrite map rendering, keep wrapper/footer markup.
 
-### 7. Contact Page
-- Contact form
-- Head office address, hotline, email
-- Embedded map
+### Files NOT changed
+- `src/components/home/MapSection.tsx` — already Leaflet.
+- `src/pages/ProjectDetail.tsx` — `ProjectMap` props/API stay identical (`lat`, `lng`, `projectName`, `address`).
 
-## Layout
-- Fixed top navbar with Regent logo + nav links (transparent on hero, solid on scroll)
-- Smooth scroll animations and section transitions
-- Fully responsive (mobile hamburger menu)
-- Footer with company info, contact details, and quick links
+## Open question
 
-## Technical
-- React Router for all 7 pages
-- Embla Carousel for slider and project carousel
-- Placeholder images throughout (to be replaced later)
-- Framer Motion for scroll animations
-- Leaflet or embedded Google Maps for location map
+The "Open in Google Maps" button at the bottom is just an outbound link (no API key, no billing). Keep it, or replace with an "Open in OpenStreetMap" link to fully remove Google branding?
