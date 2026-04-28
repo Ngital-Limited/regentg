@@ -19,6 +19,8 @@ import MultiImageUpload from "@/components/admin/MultiImageUpload";
 import BrochureUpload from "@/components/admin/BrochureUpload";
 import { slugify } from "@/lib/slug";
 
+type ProgressItem = { label: string; value: number };
+
 type Project = {
   id: string;
   slug: string;
@@ -33,6 +35,11 @@ type Project = {
   units: number | null;
   floors: number | null;
   area_sqft: number | null;
+  bedrooms: string | null;
+  facing: string | null;
+  structural_designer: string | null;
+  features: string[] | null;
+  progress_items: ProgressItem[] | null;
   handover_date: string | null;
   amenities: string[] | null;
   latitude: number | null;
@@ -57,6 +64,11 @@ const empty: Partial<Project> = {
   units: null,
   floors: null,
   area_sqft: null,
+  bedrooms: "",
+  facing: "",
+  structural_designer: "",
+  features: [],
+  progress_items: [],
   handover_date: null,
   amenities: [],
   latitude: null,
@@ -99,6 +111,8 @@ const AdminProjects = () => {
       slug,
       gallery_paths: editing.gallery_paths || [],
       amenities: editing.amenities || [],
+      features: editing.features || [],
+      progress_items: editing.progress_items || [],
     };
     const { error } = editing.id
       ? await supabase.from("projects").update(payload).eq("id", editing.id)
