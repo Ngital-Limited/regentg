@@ -4,11 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
+import { Loader2, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
+import ImageUpload from "@/components/admin/ImageUpload";
+
+type Slide = { titleLine1: string; titleLine2: string; subtitle: string; image: string };
 
 type Settings = {
   hero: { headline: string; subheadline: string; cta_label: string };
+  hero_slides: Slide[];
   about: { title: string; body: string };
   stats: {
     projects_completed: string;
@@ -20,6 +24,7 @@ type Settings = {
 
 const defaults: Settings = {
   hero: { headline: "", subheadline: "", cta_label: "" },
+  hero_slides: [],
   about: { title: "", body: "" },
   stats: {
     projects_completed: "",
