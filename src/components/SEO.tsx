@@ -9,7 +9,7 @@ interface SEOProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const SITE_URL = "https://regent.ngital.com.bd";
+const SITE_URL = "https://regentgroup.com.bd";
 const DEFAULT_IMAGE = `${SITE_URL}/regent-dark-logo.png`;
 const SCHEMA_ID = "seo-jsonld-schema";
 
