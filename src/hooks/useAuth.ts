@@ -28,21 +28,23 @@ export const useAuth = (): AuthState => {
 
     const checkAdminRole = async (userId: string) => {
       for (let attempt = 0; attempt < 3; attempt += 1) {
-        const { data, error } = await supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", userId)
-          .eq("role", "admin")
-          .maybeSingle();
+        const { data, error } = await supabase.rpc("has_role", {
+          _user_id: userId,
+          _role: "admin",
+        });
 
         if (!mounted) return;
 
         if (!error) {
-          setIsAdmin(!!data);
+          setIsAdmin(data === true);
           return;
         }
 
-        if (attempt < 2 && error.message.toLowerCase().includes("schema cache")) {
+        const retryable = ["schema cache", "failed to fetch", "network", "timeout"].some((term) =>
+          error.message.toLowerCase().includes(term)
+        );
+
+        if (attempt < 2 && retryable) {
           await wait(800 * (attempt + 1));
           continue;
         }
