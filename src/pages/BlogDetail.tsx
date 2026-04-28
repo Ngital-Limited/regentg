@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Clock, User, Calendar, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { blogImageUrl } from "@/lib/storage";
+import { usePreview } from "@/hooks/usePreview";
+import PreviewBanner from "@/components/PreviewBanner";
 
 type Post = {
   id: string;
@@ -20,6 +22,7 @@ type Post = {
   author_name: string | null;
   published_at: string | null;
   created_at: string;
+  is_published?: boolean;
   blog_categories: { name: string; slug: string } | null;
 };
 
