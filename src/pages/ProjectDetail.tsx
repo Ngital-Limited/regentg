@@ -900,14 +900,29 @@ const ProjectDetail = () => {
     const glance: { icon: string; label: string; value: string }[] = [];
     if (dbProject.location) glance.push({ icon: "address", label: "Address", value: dbProject.location });
     if (dbProject.area_sqft) glance.push({ icon: "size", label: "Size", value: `${dbProject.area_sqft} SFT` });
-    if (dbProject.units != null) glance.push({ icon: "total", label: "Total Apartments", value: String(dbProject.units) });
+    if (dbProject.bedrooms) glance.push({ icon: "bedroom", label: "Bedroom", value: dbProject.bedrooms });
+    if (dbProject.facing) glance.push({ icon: "facing", label: "Project Facing", value: dbProject.facing });
     if (dbProject.floors != null) glance.push({ icon: "floor", label: "Floor", value: String(dbProject.floors) });
+    if (dbProject.units != null) glance.push({ icon: "total", label: "Total Apartments", value: String(dbProject.units) });
+    if (dbProject.structural_designer) glance.push({ icon: "designer", label: "Structural Designer", value: dbProject.structural_designer });
     if (dbProject.handover_date)
       glance.push({
         icon: "handover",
         label: "Handover Date",
         value: new Date(dbProject.handover_date).toLocaleDateString("en-US", { year: "numeric", month: "long" }),
       });
+
+    const dbFeatures: string[] = (dbProject.features && dbProject.features.length)
+      ? dbProject.features
+      : (dbProject.amenities || []);
+
+    const dbProgress: { label: string; value: number }[] =
+      Array.isArray(dbProject.progress_items) && dbProject.progress_items.length
+        ? (dbProject.progress_items as any[]).map((p) => ({
+            label: String(p.label || ""),
+            value: Number(p.value) || 0,
+          }))
+        : staticProject?.progress || [];
 
     return {
       name: dbProject.name,
@@ -917,8 +932,8 @@ const ProjectDetail = () => {
         : "ongoing") as "ongoing" | "completed",
       heroImage: cover || undefined,
       overview: dbProject.description || staticProject?.overview || "",
-      features: (dbProject.amenities && dbProject.amenities.length ? dbProject.amenities : staticProject?.features) || [],
-      progress: staticProject?.progress || [],
+      features: dbFeatures.length ? dbFeatures : (staticProject?.features || []),
+      progress: dbProgress,
       glance: glance.length ? glance : staticProject?.glance || [],
       gallery: gallery.length ? gallery : staticProject?.gallery || [],
       mapCoords: {
