@@ -92,7 +92,7 @@ const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
             className="inline-flex shrink-0 items-center justify-center gap-2 border border-border/60 px-5 py-3 text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <ExternalLink className="h-3.5 w-3.5" />
-            Open in OpenStreetMap
+            Open in Google Maps
           </a>
         </div>
       </div>
