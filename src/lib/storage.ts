@@ -2,6 +2,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 export const publicUrl = (bucket: string, path?: string | null) => {
   if (!path) return null;
+  if (path.startsWith("/")) return path;
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   return supabase.storage.from(bucket).getPublicUrl(path).data.publicUrl;
 };
