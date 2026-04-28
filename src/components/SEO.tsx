@@ -61,18 +61,18 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, 
   useEffect(() => {
     document.title = fullTitle;
 
-    upsertMeta('meta[name="description"]', "name", "description", description);
+    upsertMeta('meta[name="description"]', "name", "description", description2);
     upsertLink("canonical", url);
 
     upsertMeta('meta[property="og:type"]', "property", "og:type", type);
     upsertMeta('meta[property="og:title"]', "property", "og:title", fullTitle);
-    upsertMeta('meta[property="og:description"]', "property", "og:description", description);
+    upsertMeta('meta[property="og:description"]', "property", "og:description", description2);
     upsertMeta('meta[property="og:url"]', "property", "og:url", url);
     upsertMeta('meta[property="og:image"]', "property", "og:image", ogImage);
 
     upsertMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
     upsertMeta('meta[name="twitter:title"]', "name", "twitter:title", fullTitle);
-    upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
+    upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", description2);
     upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", ogImage);
 
     // JSON-LD: Organization, WebSite, WebPage/Article + page-specific
@@ -99,7 +99,7 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, 
     const webPageSchema = {
       "@type": type === "article" ? "Article" : "WebPage",
       name: fullTitle,
-      description,
+      description: description2,
       url,
       image: ogImage,
       inLanguage: "en",
@@ -128,7 +128,7 @@ const SEO = ({ title, description, path = "/", image, type = "website", jsonLd, 
       document.head.appendChild(scriptEl);
     }
     scriptEl.textContent = JSON.stringify(graph);
-  }, [fullTitle, description, url, ogImage, type, jsonLd]);
+  }, [fullTitle, description2, url, ogImage, type, jsonLd]);
 
   return null;
 };
