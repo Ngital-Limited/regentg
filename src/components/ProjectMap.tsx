@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, ExternalLink } from "lucide-react";
+import { Check, Copy, MapPin } from "lucide-react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -14,9 +14,15 @@ interface ProjectMapProps {
 const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
+  const [copied, setCopied] = useState(false);
 
-  // Outbound OpenStreetMap link to keep project locations fully non-Google.
-  const mapUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`;
+  const copyText = `${projectName}${address ? `, ${address}` : ""} — ${lat}, ${lng}`;
+
+  const handleCopyLocation = async () => {
+    await navigator.clipboard.writeText(copyText);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  };
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -85,15 +91,14 @@ const ProjectMap = ({ lat, lng, projectName, address }: ProjectMapProps) => {
             </div>
           </div>
 
-          <a
-            href={mapUrl}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="button"
+            onClick={handleCopyLocation}
             className="inline-flex shrink-0 items-center justify-center gap-2 border border-border/60 px-5 py-3 text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:border-primary hover:text-primary"
           >
-            <ExternalLink className="h-3.5 w-3.5" />
-            Open in OpenStreetMap
-          </a>
+            {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copied ? "Copied" : "Copy Location"}
+          </button>
         </div>
       </div>
     </motion.div>
