@@ -37,6 +37,9 @@ type Project = {
   amenities: string[] | null;
   latitude: number | null;
   longitude: number | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  og_image_path: string | null;
   is_active: boolean;
   display_order: number;
 };
