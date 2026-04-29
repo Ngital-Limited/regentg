@@ -90,7 +90,7 @@ const Blog = () => {
                       loading="lazy"
                       width={800}
                       height={512}
-                      className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full aspect-card object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
                   <div className="p-6 space-y-3">
