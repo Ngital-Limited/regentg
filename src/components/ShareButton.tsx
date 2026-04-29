@@ -131,6 +131,13 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
             {copied ? <Check className="w-4 h-4 text-primary" /> : <Link2 className="w-4 h-4" />}
             <span>{copied ? "Copied!" : "Copy link"}</span>
           </button>
+          <button
+            onClick={handlePrint}
+            className="flex items-center gap-3 px-3 py-2.5 text-left text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-sm"
+          >
+            <Printer className="w-4 h-4" />
+            <span>Print</span>
+          </button>
           {socialLinks.map((s) => (
             <a
               key={s.name}
