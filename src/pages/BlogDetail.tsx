@@ -123,7 +123,7 @@ const BlogDetail = () => {
             </article>
 
             {/* Post Navigation */}
-            <div className="mt-16 pt-10 border-t border-border/50 flex justify-between items-center">
+            <div className="mt-16 pt-10 border-t border-border/50 flex justify-between items-center print-omit">
               {postIndex > 0 ? (
                 <Link
                   to={`/blog/${blogPosts[postIndex - 1].slug}`}
