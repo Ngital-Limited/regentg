@@ -16,7 +16,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <SEO title="Home — Premium Real Estate in Dhaka" description="Regent Design & Development Ltd builds premium residential & commercial real estate across Dhaka, Bangladesh. Trusted since 1981." path="/" />
+      <SEO
+        title="Regent - Leading Real Estate Company in Dhaka, Bangladesh"
+        description="Looking for a trusted real estate company in Dhaka? Regent is a leading real estate developer specializing in modern residential projects and premium living spaces. Discover your dream home with us today."
+        path="/"
+        image="https://regentgroup.com.bd/og-home.png"
+      />
       <HeroSlider />
       <ProjectCarousel />
       <AboutSection />
