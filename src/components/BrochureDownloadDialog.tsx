@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Download, User, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { notifyLead } from "@/lib/notifyLead";
 
 interface BrochureDownloadDialogProps {
   open: boolean;
@@ -19,7 +21,7 @@ const BrochureDownloadDialog = ({ open, onOpenChange, projectName, brochureUrl }
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!name.trim() || !phone.trim()) {
@@ -41,6 +43,29 @@ const BrochureDownloadDialog = ({ open, onOpenChange, projectName, brochureUrl }
     }
 
     setLoading(true);
+
+    const id = crypto.randomUUID();
+    const { error } = await supabase.from("brochure_leads").insert({
+      id,
+      name: name.trim(),
+      email: "not-provided@regentgroup.com.bd",
+      phone: phone.trim(),
+      project_name: projectName,
+    });
+
+    if (error) {
+      setLoading(false);
+      toast({ title: "Submission failed", description: error.message, variant: "destructive" });
+      return;
+    }
+
+    notifyLead(id, {
+      formType: "Brochure Download",
+      name: name.trim(),
+      phone: phone.trim(),
+      projectName,
+    });
+
     toast({
       title: "Download Starting",
       description: `Thank you ${name}! Your brochure for ${projectName} is opening.`,

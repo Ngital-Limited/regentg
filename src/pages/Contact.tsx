@@ -5,18 +5,45 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, Clock, Globe, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { notifyLead } from "@/lib/notifyLead";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast({ title: "Please fill in all required fields", variant: "destructive" });
       return;
     }
+    setSubmitting(true);
+    const id = crypto.randomUUID();
+    const { error } = await supabase.from("contact_submissions").insert({
+      id,
+      name: form.name,
+      email: form.email,
+      phone: form.phone || "N/A",
+      subject: form.subject || null,
+      message: form.message,
+    });
+    if (error) {
+      setSubmitting(false);
+      toast({ title: "Submission failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    notifyLead(id, {
+      formType: "Contact Form",
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      subject: form.subject,
+      message: form.message,
+    });
+    setSubmitting(false);
     setSubmitted(true);
     toast({ title: "Message sent successfully!", description: "We'll get back to you shortly." });
   };
@@ -153,10 +180,11 @@ const Contact = () => {
                 <p className="text-[10px] text-muted-foreground/60">* Required fields</p>
                 <button
                   type="submit"
-                  className="group flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all"
+                  disabled={submitting}
+                  className="group flex items-center gap-3 px-8 py-3.5 bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-all disabled:opacity-60"
                 >
                   <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  Send Message
+                  {submitting ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>

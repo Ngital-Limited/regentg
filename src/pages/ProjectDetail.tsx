@@ -10,6 +10,8 @@ import { Progress } from "@/components/ui/progress";
 import { MapPin, Maximize, BedDouble, Compass, Building2, Home, Layers, HardHat, Calendar, Download, Phone, Mail, Clock, X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { notifyLead } from "@/lib/notifyLead";
 import img_lifestyle_3107041_1280 from "@/assets/imported/lifestyle-3107041_1280.jpg";
 import img_real_estate_9053405_1280 from "@/assets/imported/real-estate-9053405_1280.jpg";
 import img_img_07_04_03_524_1280 from "@/assets/imported/07-04-03-524_1280.jpg";
@@ -1310,13 +1312,16 @@ const ProjectDetail = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="border border-border/50 p-5 md:p-8 lg:p-12 space-y-6 md:space-y-8"
-            onSubmit={(e: FormEvent<HTMLFormElement>) => {
+            onSubmit={async (e: FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               const form = e.currentTarget;
               const formData = new FormData(form);
               const name = (formData.get("name") as string)?.trim();
               const phone = (formData.get("phone") as string)?.trim();
               const email = (formData.get("email") as string)?.trim();
+              const date = (formData.get("date") as string)?.trim();
+              const interest = (formData.get("interest") as string)?.trim();
+              const message = (formData.get("message") as string)?.trim();
 
               if (!name || !phone) {
                 toast.error("Please fill in your name and phone number.");
@@ -1326,6 +1331,34 @@ const ProjectDetail = () => {
                 toast.error("Please enter a valid email address.");
                 return;
               }
+
+              const id = crypto.randomUUID();
+              const { error } = await supabase.from("visit_bookings").insert({
+                id,
+                name,
+                email: email || "not-provided@regentgroup.com.bd",
+                phone,
+                project_name: project.name,
+                preferred_date: date || new Date().toISOString().slice(0, 10),
+                preferred_time: interest || "site-visit",
+                notes: message || null,
+              });
+              if (error) {
+                toast.error(error.message);
+                return;
+              }
+
+              notifyLead(id, {
+                formType: "Schedule Visit",
+                name,
+                email,
+                phone,
+                projectName: project.name,
+                subject: interest,
+                message: message
+                  ? `${message}\n\nPreferred Date: ${date || "—"}`
+                  : `Preferred Date: ${date || "—"}`,
+              });
 
               toast.success("Thank you! We'll contact you shortly to confirm your visit.", {
                 duration: 5000,

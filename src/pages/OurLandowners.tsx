@@ -3,6 +3,9 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { notifyLead } from "@/lib/notifyLead";
 import {
   ShieldCheck, PenTool, FileText, BarChart3, Wallet, Handshake,
   Scale, Rocket, HardHat, HeartHandshake, FileCheck, Clock, Send,
@@ -77,8 +80,38 @@ const OurLandowners = () => {
     frontRoad: "", landFacing: "", landLocation: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.name || !form.mobile || !form.email || !form.landLocation) return;
+    setSubmitting(true);
+    const id = crypto.randomUUID();
+    const details = `Land Size: ${form.landSize}\nFront Road: ${form.frontRoad}\nLand Facing: ${form.landFacing}\nLand Location: ${form.landLocation}`;
+    const { error } = await supabase.from("contact_submissions").insert({
+      id,
+      name: form.name,
+      email: form.email,
+      phone: form.mobile,
+      subject: "Land Development Inquiry",
+      message: details,
+    });
+    if (error) {
+      setSubmitting(false);
+      toast.error(error.message);
+      return;
+    }
+    notifyLead(id, {
+      formType: "Land Development Inquiry",
+      name: form.name,
+      email: form.email,
+      phone: form.mobile,
+      subject: "Land Development Inquiry",
+      message: details,
+    });
+    setSubmitting(false);
+    toast.success("Thank you! Our team will reach out soon.");
+    setForm({ name: "", mobile: "", email: "", landSize: "", frontRoad: "", landFacing: "", landLocation: "" });
   };
 
   return (

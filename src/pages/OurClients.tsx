@@ -3,6 +3,9 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { notifyLead } from "@/lib/notifyLead";
 import {
   Landmark, HeadphonesIcon, ShieldCheck, PenTool, Wallet,
   Scale, HardHat, HeartHandshake, FileCheck, Clock, Send,
@@ -64,8 +67,35 @@ const reasons = [
 const OurClients = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.name || !form.email || !form.phone) return;
+    setSubmitting(true);
+    const id = crypto.randomUUID();
+    const { error } = await supabase.from("contact_submissions").insert({
+      id,
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      subject: "Buyer Inquiry (Our Clients page)",
+      message: "Buyer inquiry submitted from the Our Clients page.",
+    });
+    if (error) {
+      setSubmitting(false);
+      toast.error(error.message);
+      return;
+    }
+    notifyLead(id, {
+      formType: "Buyer Inquiry",
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+    });
+    setSubmitting(false);
+    toast.success("Thank you! We'll be in touch shortly.");
+    setForm({ name: "", email: "", phone: "" });
   };
 
   return (
