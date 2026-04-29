@@ -276,7 +276,7 @@ const Projects = () => {
             <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">PROJECTS</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-4 text-sm max-w-lg mx-auto">
-              Explore our portfolio of ongoing, completed, and upcoming projects shaping what’s next.
+              Explore Our Portfolio of Ongoing, Completed, and Upcoming Projects Shaping What’s Next.
             </p>
           </motion.div>
         </div>
