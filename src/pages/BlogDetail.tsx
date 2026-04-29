@@ -184,7 +184,7 @@ const BlogDetail = () => {
                       src={related.image}
                       alt={related.title}
                       loading="lazy"
-                      className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full aspect-card object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
                   <div className="p-4 space-y-2">
