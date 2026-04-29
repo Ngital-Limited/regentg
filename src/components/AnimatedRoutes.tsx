@@ -16,6 +16,7 @@ import OurClients from "@/pages/OurClients";
 import OurLandowners from "@/pages/OurLandowners";
 
 import Videos from "@/pages/Videos";
+import Unsubscribe from "@/pages/Unsubscribe";
 import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
@@ -39,6 +40,7 @@ const AnimatedRoutes = () => {
         <Route path="/our-landowners" element={<PageTransition><OurLandowners /></PageTransition>} />
         
         <Route path="/videos" element={<PageTransition><Videos /></PageTransition>} />
+        <Route path="/unsubscribe" element={<PageTransition><Unsubscribe /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
