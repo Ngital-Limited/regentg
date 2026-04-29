@@ -47,7 +47,7 @@ const allProjects: ProjectInfo[] = [
   },
   {
     name: "Regent Hasina",
-    status: "ongoing",
+    status: "completed",
     location: "Bashundhara R/A",
     size: "2180 SFT",
     bedrooms: "4",

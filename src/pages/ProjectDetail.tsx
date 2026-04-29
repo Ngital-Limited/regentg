@@ -251,7 +251,7 @@ const projectsData: Record<string, ProjectData> = {
   "regent-hasina": {
     name: "Regent Hasina",
     tagline: "A Masterpiece of Refined Architecture",
-    status: "ongoing" as const,
+    status: "completed" as const,
     heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
     overview: "Regent Group proudly presents Regent Hasina—a true Masterpiece of refined Architecture and Exclusive Living, located in the prestigious Block-K of Bashundhara R/A. This elegantly designed residence offers 2180 SFT of thoughtfully planned space, featuring 4 spacious bedrooms that embrace privacy, comfort, and sophistication. Crafted for those who appreciate both form and function, Regent Hasina boasts a beautifully landscaped rooftop complete with tranquil seating area creating a serene escape within the city.",
     features: [
