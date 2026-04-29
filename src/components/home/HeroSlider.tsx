@@ -67,9 +67,9 @@ const HeroSlider = () => {
         </motion.div>
       ))}
 
-      {/* Overlay layers — keep top of image visible, darken progressively toward text */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/90 pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/95 via-black/75 to-transparent pointer-events-none" />
+      {/* Overlay layers — keep top of image visible, darken progressively toward text. z-index above slide images (which use zIndex 1). */}
+      <div className="absolute inset-0 z-[2] bg-gradient-to-b from-transparent via-black/40 to-black/90 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 z-[2] h-[65%] bg-gradient-to-t from-black/95 via-black/75 to-transparent pointer-events-none" />
 
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-4">
         <div className="container-regent">
