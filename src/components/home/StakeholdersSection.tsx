@@ -25,7 +25,7 @@ const StakeholdersSection = () => {
                 to={s.path}
                 className="block p-6 border border-border bg-card/30 text-center hover:border-primary/30 transition-all"
               >
-                <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">{s.label}</p>
+                <p className="uppercase tracking-[0.15em] text-muted-foreground text-xl">{s.label}</p>
               </Link>
             </motion.div>
           ))}
