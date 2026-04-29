@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Share2, Link2, Check, Mail, MessageCircle, Printer } from "lucide-react";
 
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -33,6 +33,7 @@ interface ShareButtonProps {
 const ShareButton = ({ title, text, url, className = "", label = "Share" }: ShareButtonProps) => {
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   const shareUrl = url || (typeof window !== "undefined" ? window.location.href : "");
   const shareText = text || title;
@@ -53,10 +54,52 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
   };
 
   const handlePrint = () => {
+    if (typeof window === "undefined") return;
+
+    // Close the popover first so it isn't captured in the print output
     setOpen(false);
-    if (typeof window !== "undefined") {
-      window.print();
+
+    // Inject a print-only header with the page title and current URL
+    const doc = document;
+    const existing = doc.getElementById("print-header");
+    if (existing) existing.remove();
+
+    const header = doc.createElement("div");
+    header.id = "print-header";
+    header.className = "print-header";
+    header.innerHTML = `
+      <span class="print-title"></span>
+      <span class="print-url"></span>
+    `;
+    (header.querySelector(".print-title") as HTMLElement).textContent = title || doc.title;
+    (header.querySelector(".print-url") as HTMLElement).textContent = shareUrl;
+
+    // Insert at the top of the print area if present, otherwise at body start
+    const printArea = doc.querySelector(".print-area");
+    if (printArea) {
+      printArea.insertBefore(header, printArea.firstChild);
+    } else {
+      doc.body.insertBefore(header, doc.body.firstChild);
     }
+
+    doc.body.classList.add("print-article");
+
+    const cleanup = () => {
+      doc.body.classList.remove("print-article");
+      const h = doc.getElementById("print-header");
+      if (h) h.remove();
+      window.removeEventListener("afterprint", cleanup);
+      // Restore focus to the share trigger
+      requestAnimationFrame(() => triggerRef.current?.focus());
+    };
+    window.addEventListener("afterprint", cleanup);
+
+    // Defer to allow popover close + DOM update before opening print dialog
+    setTimeout(() => {
+      window.print();
+      // Fallback for browsers that don't fire afterprint reliably
+      setTimeout(cleanup, 1000);
+    }, 50);
   };
 
   const handleNativeShare = async () => {
@@ -114,9 +157,11 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
+          ref={triggerRef}
           onClick={handleTriggerClick}
           className={`inline-flex items-center gap-2 px-4 py-2 border border-border bg-card hover:border-primary/50 hover:text-primary text-foreground text-xs uppercase tracking-[0.2em] transition-colors ${className}`}
           aria-label="Share this page"
+          data-no-print
         >
           <Share2 className="w-3.5 h-3.5" />
           {label}

@@ -42,7 +42,7 @@ const BlogDetail = () => {
       />
 
       {/* Hero Image */}
-      <section className="relative pt-20">
+      <section className="relative pt-20 print-omit">
         <div className="aspect-[21/9] max-h-[500px] w-full overflow-hidden">
           <img
             src={post.image}
@@ -56,7 +56,7 @@ const BlogDetail = () => {
       </section>
 
       {/* Article Content */}
-      <section className="relative -mt-32 z-10 pb-20">
+      <section className="relative -mt-32 z-10 pb-20 print-area">
         <div className="container-regent max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -66,7 +66,7 @@ const BlogDetail = () => {
             {/* Back link */}
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors mb-8 print-omit"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to Blog
             </Link>
@@ -93,10 +93,18 @@ const BlogDetail = () => {
             </h1>
 
             {/* Divider + Share */}
-            <div className="mb-10 flex items-center justify-between gap-4 flex-wrap">
+            <div className="mb-10 flex items-center justify-between gap-4 flex-wrap print-omit">
               <div className="w-16 h-[2px] bg-primary" />
               <ShareButton title={post.title} text={post.excerpt} />
             </div>
+
+            {/* Print-only hero image */}
+            <img
+              src={post.image}
+              alt={post.title}
+              className="hidden print:block w-full mb-6"
+              aria-hidden="true"
+            />
 
             {/* Article Body */}
             <article className="space-y-6">
@@ -123,7 +131,7 @@ const BlogDetail = () => {
             </article>
 
             {/* Post Navigation */}
-            <div className="mt-16 pt-10 border-t border-border/50 flex justify-between items-center">
+            <div className="mt-16 pt-10 border-t border-border/50 flex justify-between items-center print-omit">
               {postIndex > 0 ? (
                 <Link
                   to={`/blog/${blogPosts[postIndex - 1].slug}`}
@@ -161,7 +169,7 @@ const BlogDetail = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-20"
+            className="mt-20 print-omit"
           >
             <h3 className="text-xs uppercase tracking-[0.3em] text-primary mb-8">Related Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

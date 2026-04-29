@@ -38,12 +38,12 @@ const NewsDetail = () => {
       />
 
       {/* Hero */}
-      <section className="relative pt-28 md:pt-32 pb-12 md:pb-16 px-4 bg-regent-charcoal">
+      <section className="relative pt-28 md:pt-32 pb-12 md:pb-16 px-4 bg-regent-charcoal print-area">
         <div className="container-regent max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <Link
               to="/news"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-xs uppercase tracking-[0.2em] mb-8"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-xs uppercase tracking-[0.2em] mb-8 print-omit"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to News
@@ -54,17 +54,17 @@ const NewsDetail = () => {
             <h1 className="text-2xl md:text-5xl font-light tracking-wide text-foreground">
               {article.title}
             </h1>
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex items-center gap-4 print-omit">
               <div className="w-16 h-[2px] bg-primary" />
               <ShareButton title={article.title} text={article.excerpt} />
             </div>
-            
+
           </motion.div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background print-area">
         <div className="container-regent max-w-4xl">
           {article.image && (
             <motion.div
