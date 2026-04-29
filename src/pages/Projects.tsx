@@ -48,7 +48,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Hasina",
     status: "completed",
-    location: "Bashundhara R/A",
+    location: "West Agargaon",
     size: "2180 SFT",
     bedrooms: "4",
     type: "Residential",
@@ -57,7 +57,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Sapphire",
     status: "ongoing",
-    location: "Bashundhara R/A",
+    location: "West Agargaon",
     size: "2650 SFT",
     bedrooms: "4",
     type: "Residential",
@@ -66,7 +66,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Spring Dale",
     status: "ongoing",
-    location: "Bashundhara R/A",
+    location: "West Agargaon",
     size: "2450 SFT",
     bedrooms: "4",
     type: "Residential",
@@ -93,7 +93,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Spring Field",
     status: "ongoing",
-    location: "Bashundhara R/A",
+    location: "West Agargaon",
     size: "2200 SFT",
     bedrooms: "4",
     type: "Residential",
