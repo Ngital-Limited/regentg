@@ -22,7 +22,7 @@ const InsightsSection = () => {
               View All <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             {latestNews.map((item, i) => (
               <motion.div
                 key={item.slug}
@@ -30,24 +30,25 @@ const InsightsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="h-full"
               >
                 <Link
                   to={`/news/${item.slug}`}
-                  className="block group border border-border bg-card hover:border-primary/30 transition-all duration-500 overflow-hidden"
+                  className="flex flex-col h-full group border border-border bg-card hover:border-primary/30 transition-all duration-500 overflow-hidden"
                 >
-                  {item.image ? (
-                    <div className="aspect-video overflow-hidden">
+                  <div className="aspect-card overflow-hidden bg-muted shrink-0">
+                    {item.image ? (
                       <img
                         src={item.image}
                         alt={item.title}
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                    </div>
-                  ) : (
-                    <div className="aspect-video bg-gradient-to-br from-primary/10 via-secondary/10 to-card" />
-                  )}
-                  <div className="p-6 space-y-3">
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-primary/10 via-secondary/10 to-card" />
+                    )}
+                  </div>
+                  <div className="p-6 space-y-3 flex flex-col flex-1">
                     <div className="flex items-center gap-3">
                       <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-medium bg-primary/10 px-2 py-0.5">News</span>
                       <span className="text-[10px] text-muted-foreground">{item.date}</span>
@@ -70,7 +71,7 @@ const InsightsSection = () => {
               View All <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             {latestBlogs.map((post, i) => (
               <motion.div
                 key={post.slug}
@@ -78,12 +79,13 @@ const InsightsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="h-full"
               >
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="block group border border-border bg-card hover:border-primary/30 transition-all duration-500 overflow-hidden"
+                  className="flex flex-col h-full group border border-border bg-card hover:border-primary/30 transition-all duration-500 overflow-hidden"
                 >
-                  <div className="aspect-video overflow-hidden">
+                  <div className="aspect-card overflow-hidden bg-muted shrink-0">
                     <img
                       src={post.image}
                       alt={post.title}
@@ -91,7 +93,7 @@ const InsightsSection = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-6 space-y-3">
+                  <div className="p-6 space-y-3 flex flex-col flex-1">
                     <div className="flex items-center gap-3">
                       <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-medium bg-primary/10 px-2 py-0.5">{post.category}</span>
                       <span className="text-[10px] text-muted-foreground">{post.date}</span>
@@ -99,7 +101,7 @@ const InsightsSection = () => {
                     <h3 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-relaxed line-clamp-2">
                       {post.title}
                     </h3>
-                    <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground pt-1">
+                    <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground pt-1 mt-auto">
                       <Clock className="w-3 h-3" />{post.readTime}
                     </div>
                   </div>
