@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Share2, Link2, Check, Mail, MessageCircle } from "lucide-react";
+import { Share2, Link2, Check, Mail, MessageCircle, Printer } from "lucide-react";
 
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -49,6 +49,13 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
       setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Could not copy link");
+    }
+  };
+
+  const handlePrint = () => {
+    setOpen(false);
+    if (typeof window !== "undefined") {
+      window.print();
     }
   };
 
@@ -123,6 +130,13 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
           >
             {copied ? <Check className="w-4 h-4 text-primary" /> : <Link2 className="w-4 h-4" />}
             <span>{copied ? "Copied!" : "Copy link"}</span>
+          </button>
+          <button
+            onClick={handlePrint}
+            className="flex items-center gap-3 px-3 py-2.5 text-left text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-sm"
+          >
+            <Printer className="w-4 h-4" />
+            <span>Print</span>
           </button>
           {socialLinks.map((s) => (
             <a
