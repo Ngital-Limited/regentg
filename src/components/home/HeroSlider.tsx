@@ -67,9 +67,9 @@ const HeroSlider = () => {
         </motion.div>
       ))}
 
-      {/* Overlay layers — ensure slider text stays readable on any image */}
-      {/* Light global overlay — keeps overall image visible */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/80 pointer-events-none" />
+      {/* Overlay layers — keep top of image visible, darken progressively toward text */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/90 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/95 via-black/75 to-transparent pointer-events-none" />
 
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-4">
         <div className="container-regent">
