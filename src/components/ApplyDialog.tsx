@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
+import { notifyLead } from "@/lib/notifyLead";
 
 interface ApplyDialogProps {
   open: boolean;
@@ -52,12 +54,44 @@ const ApplyDialog = ({ open, onOpenChange, jobTitle }: ApplyDialogProps) => {
 
     setSubmitting(true);
     try {
-      const subject = encodeURIComponent(`Application: ${jobTitle} — ${name}`);
-      const body = encodeURIComponent(
-        `Position: ${jobTitle}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nPlease find my CV attached (${cv.name}).`
-      );
-      window.location.href = `mailto:info@regentgroup.com.bd?subject=${subject}&body=${body}`;
-      toast.success("Opening your email client. Please attach your CV before sending.");
+      const id = crypto.randomUUID();
+      const ext = cv.name.split(".").pop() || "pdf";
+      const cvPath = `${id}.${ext}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("cvs")
+        .upload(cvPath, cv, { contentType: cv.type, upsert: false });
+
+      if (uploadError) {
+        toast.error("Failed to upload CV: " + uploadError.message);
+        return;
+      }
+
+      const { error: insertError } = await supabase.from("job_applications").insert({
+        id,
+        name,
+        email,
+        phone,
+        position: jobTitle,
+        cv_path: cvPath,
+        cv_filename: cv.name,
+      });
+
+      if (insertError) {
+        toast.error("Submission failed: " + insertError.message);
+        return;
+      }
+
+      notifyLead(id, {
+        formType: "Job Application",
+        name,
+        email,
+        phone,
+        jobTitle,
+        message: `CV uploaded: ${cv.name} (stored at cvs/${cvPath})`,
+      });
+
+      toast.success("Application submitted! We'll be in touch.");
       reset();
       onOpenChange(false);
     } finally {
