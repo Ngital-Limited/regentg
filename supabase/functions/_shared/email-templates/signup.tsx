@@ -9,10 +9,14 @@ import {
   Head,
   Heading,
   Html,
+  Img,
   Link,
   Preview,
+  Section,
   Text,
 } from 'npm:@react-email/components@0.0.22'
+
+import { brand, main, container, logoWrap, logo, headerBar, h1, text, link, button, divider, footer, footerLink } from './_styles.ts'
 
 interface SignupEmailProps {
   siteName: string
@@ -29,29 +33,34 @@ export const SignupEmail = ({
 }: SignupEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Confirm your email for {siteName}</Preview>
+    <Preview>Confirm your email to start exploring Regent</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Confirm your email</Heading>
+        <Section style={logoWrap}>
+          <Img src={brand.logoUrl} alt="Regent" width="140" style={logo} />
+        </Section>
+        <Section style={headerBar} />
+        <Heading style={h1}>Welcome to Regent</Heading>
         <Text style={text}>
-          Thanks for signing up for{' '}
-          <Link href={siteUrl} style={link}>
-            <strong>{siteName}</strong>
-          </Link>
-          !
+          Thanks for signing up. Please confirm your email address (
+          <Link href={`mailto:${recipient}`} style={link}>{recipient}</Link>
+          ) to activate your account and start exploring our premium residential projects in Dhaka.
         </Text>
+        <Section style={{ textAlign: 'center', margin: '30px 0' }}>
+          <Button style={button} href={confirmationUrl}>Confirm Email</Button>
+        </Section>
         <Text style={text}>
-          Please confirm your email address (
-          <Link href={`mailto:${recipient}`} style={link}>
-            {recipient}
-          </Link>
-          ) by clicking the button below:
+          Or copy and paste this link into your browser:
+          <br />
+          <Link href={confirmationUrl} style={link}>{confirmationUrl}</Link>
         </Text>
-        <Button style={button} href={confirmationUrl}>
-          Verify Email
-        </Button>
+        <hr style={divider} />
         <Text style={footer}>
-          If you didn't create an account, you can safely ignore this email.
+          If you didn't create a Regent account, you can safely ignore this email.
+        </Text>
+        <Text style={footer}>
+          © {new Date().getFullYear()} Regent Design &amp; Development Ltd. ·{' '}
+          <Link href={siteUrl} style={footerLink}>{siteName}</Link>
         </Text>
       </Container>
     </Body>
@@ -59,28 +68,3 @@ export const SignupEmail = ({
 )
 
 export default SignupEmail
-
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
-}
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
-const link = { color: 'inherit', textDecoration: 'underline' }
-const button = {
-  backgroundColor: '#000000',
-  color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
-  textDecoration: 'none',
-}
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }

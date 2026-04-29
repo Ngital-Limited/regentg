@@ -3,56 +3,48 @@
 import * as React from 'npm:react@18.3.1'
 
 import {
-  Body,
-  Button,
-  Container,
-  Head,
-  Heading,
-  Html,
-  Link,
-  Preview,
-  Text,
+  Body, Button, Container, Head, Heading, Html, Img, Link, Preview, Section, Text,
 } from 'npm:@react-email/components@0.0.22'
+
+import { brand, main, container, logoWrap, logo, headerBar, h1, text, link, button, divider, footer, footerLink } from './_styles.ts'
 
 interface EmailChangeEmailProps {
   siteName: string
+  siteUrl?: string
   email: string
   newEmail: string
   confirmationUrl: string
 }
 
 export const EmailChangeEmail = ({
-  siteName,
-  email,
-  newEmail,
-  confirmationUrl,
+  siteName, siteUrl, email, newEmail, confirmationUrl,
 }: EmailChangeEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Confirm your email change for {siteName}</Preview>
+    <Preview>Confirm your email change for Regent</Preview>
     <Body style={main}>
       <Container style={container}>
+        <Section style={logoWrap}>
+          <Img src={brand.logoUrl} alt="Regent" width="140" style={logo} />
+        </Section>
+        <Section style={headerBar} />
         <Heading style={h1}>Confirm your email change</Heading>
         <Text style={text}>
-          You requested to change your email address for {siteName} from{' '}
-          <Link href={`mailto:${email}`} style={link}>
-            {email}
-          </Link>{' '}
-          to{' '}
-          <Link href={`mailto:${newEmail}`} style={link}>
-            {newEmail}
-          </Link>
-          .
+          You requested to change the email on your {siteName} account from{' '}
+          <Link href={`mailto:${email}`} style={link}>{email}</Link> to{' '}
+          <Link href={`mailto:${newEmail}`} style={link}>{newEmail}</Link>.
         </Text>
-        <Text style={text}>
-          Click the button below to confirm this change:
-        </Text>
-        <Button style={button} href={confirmationUrl}>
-          Confirm Email Change
-        </Button>
+        <Text style={text}>Please confirm this change by clicking the button below.</Text>
+        <Section style={{ textAlign: 'center', margin: '30px 0' }}>
+          <Button style={button} href={confirmationUrl}>Confirm Email Change</Button>
+        </Section>
+        <hr style={divider} />
         <Text style={footer}>
-          If you didn't request this change, please secure your account
-          immediately.
+          If you didn't request this change, please secure your account immediately.
+        </Text>
+        <Text style={footer}>
+          © {new Date().getFullYear()} Regent Design &amp; Development Ltd.{siteUrl ? ' · ' : ''}
+          {siteUrl ? <Link href={siteUrl} style={footerLink}>{siteName}</Link> : null}
         </Text>
       </Container>
     </Body>
@@ -60,28 +52,3 @@ export const EmailChangeEmail = ({
 )
 
 export default EmailChangeEmail
-
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
-}
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
-const link = { color: 'inherit', textDecoration: 'underline' }
-const button = {
-  backgroundColor: '#000000',
-  color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
-  textDecoration: 'none',
-}
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
