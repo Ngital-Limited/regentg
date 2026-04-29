@@ -42,7 +42,7 @@ const BlogDetail = () => {
       />
 
       {/* Hero Image */}
-      <section className="relative pt-20">
+      <section className="relative pt-20 print-omit">
         <div className="aspect-[21/9] max-h-[500px] w-full overflow-hidden">
           <img
             src={post.image}
