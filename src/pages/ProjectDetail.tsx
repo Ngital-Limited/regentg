@@ -291,7 +291,7 @@ const projectsData: Record<string, ProjectData> = {
   },
   "regent-sapphire": {
     name: "Regent Sapphire",
-    tagline: "Prestigious North-Facing Living in Bashundhara R/A",
+    tagline: "Prestigious North-Facing Living in West Agargaon",
     status: "ongoing" as const,
     heroImage: img_m_Modern,
     overview: "Regent Sapphire is a prestigious North-Facing residential development in the serene and secure neighborhood of Block-L of Bashundhara R/A. Each Floor is dedicated to a single, expansive 2650 SFT apartment—thoughtfully designed for optimum Natural Light, Cross-Ventilation and Seamless Living. What truly sets Regent Sapphire apart is its impressive Wide Façade, a Rare Architectural advantage in Bashundhara, which not only enhances the building's aesthetic appeal but also allows for a grander presence and more open interior layouts. The building blends Modern elegance with functional design, featuring a beautifully landscaped rooftop for leisure and social gatherings. Nestled in a fully planned area, Regent Sapphire enjoys close proximity to essential amenities including a mosque, reputed schools and more—offering residents a lifestyle of both luxury and convenience in one of Dhaka's most sought-after locations.",
