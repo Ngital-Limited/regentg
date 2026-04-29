@@ -22,7 +22,7 @@ const News = () => {
 
       <section className="section-padding bg-background">
         <div className="container-regent">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {newsItems.map((item, i) => (
               <motion.article
                 key={item.slug}
@@ -30,23 +30,24 @@ const News = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="h-full"
               >
                 <Link
                   to={`/news/${item.slug}`}
-                  className="block border border-border bg-card overflow-hidden hover:border-primary/30 transition-all group cursor-pointer"
+                  className="flex flex-col h-full border border-border bg-card overflow-hidden hover:border-primary/30 transition-all group cursor-pointer"
                 >
-                  {item.image && (
-                    <div className="aspect-video overflow-hidden">
+                  <div className="aspect-video overflow-hidden bg-muted shrink-0">
+                    {item.image && (
                       <img
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                    </div>
-                  )}
-                  <div className="p-8">
+                    )}
+                  </div>
+                  <div className="p-8 flex flex-col flex-1">
                     <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{item.date}</span>
-                    <h3 className="text-lg font-light tracking-wide text-foreground mt-3 mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-light tracking-wide text-foreground mt-3 mb-3 group-hover:text-primary transition-colors line-clamp-2">
                       {item.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{item.excerpt}</p>
