@@ -3,6 +3,9 @@ import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { notifyLead } from "@/lib/notifyLead";
 import {
   Landmark, HeadphonesIcon, ShieldCheck, PenTool, Wallet,
   Scale, HardHat, HeartHandshake, FileCheck, Clock, Send,
