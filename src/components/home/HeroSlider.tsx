@@ -84,11 +84,6 @@ const HeroSlider = () => {
                 transition={{ duration: 0.7 }}
                 className="absolute inset-x-0 bottom-0 space-y-2 md:space-y-3"
               >
-                {/* Subtle blurred panel sits behind the text only */}
-                <div
-                  aria-hidden
-                  className="absolute -inset-x-4 -inset-y-3 md:-inset-x-6 md:-inset-y-4 -z-10 rounded-sm bg-black/25 backdrop-blur-md [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_100%)]"
-                />
                 <span className="relative text-primary text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium block [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
                   {slides[current].subtitle}
                 </span>
