@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Share2, Link2, Check, Mail, MessageCircle } from "lucide-react";
+import { Share2, Link2, Check, Mail, MessageCircle, Printer } from "lucide-react";
 
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
