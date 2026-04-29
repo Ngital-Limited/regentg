@@ -68,9 +68,9 @@ const HeroSlider = () => {
       ))}
 
       {/* Overlay layers — ensure slider text stays readable on any image */}
-      <div className="absolute inset-0 bg-black/85 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/70 pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black via-black/90 to-black/40 pointer-events-none" />
+      {/* Light global overlay — keeps overall image visible */}
+      <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
 
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-4">
         <div className="container-regent">
@@ -84,10 +84,15 @@ const HeroSlider = () => {
                 transition={{ duration: 0.7 }}
                 className="absolute inset-x-0 bottom-0 space-y-2 md:space-y-3"
               >
-                <span className="text-primary text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium block [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
+                {/* Subtle blurred panel sits behind the text only */}
+                <div
+                  aria-hidden
+                  className="absolute -inset-x-4 -inset-y-3 md:-inset-x-6 md:-inset-y-4 -z-10 rounded-sm bg-black/25 backdrop-blur-md [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_100%)]"
+                />
+                <span className="relative text-primary text-[10px] md:text-[11px] uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium block [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
                   {slides[current].subtitle}
                 </span>
-                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase leading-tight [text-shadow:0_4px_16px_rgba(0,0,0,0.7)]">
+                <h1 className="relative text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light tracking-wide text-foreground uppercase leading-tight [text-shadow:0_4px_16px_rgba(0,0,0,0.7)]">
                   {slides[current].titleLine1}<br />
                   {slides[current].titleLine2}
                 </h1>
