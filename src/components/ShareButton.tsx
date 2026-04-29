@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Share2, Link2, Check, Mail, MessageCircle, Printer } from "lucide-react";
 
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
