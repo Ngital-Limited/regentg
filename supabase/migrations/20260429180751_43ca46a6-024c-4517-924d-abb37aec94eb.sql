@@ -1,0 +1,1 @@
+UPDATE public.projects SET status = 'completed' WHERE slug = 'regent-hasina';
