@@ -253,7 +253,7 @@ const projectsData: Record<string, ProjectData> = {
     tagline: "A Masterpiece of Refined Architecture",
     status: "completed" as const,
     heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
-    overview: "Regent Group proudly presents Regent Hasina—a true Masterpiece of refined Architecture and Exclusive Living, located in the prestigious Block-K of Bashundhara R/A. This elegantly designed residence offers 2180 SFT of thoughtfully planned space, featuring 4 spacious bedrooms that embrace privacy, comfort, and sophistication. Crafted for those who appreciate both form and function, Regent Hasina boasts a beautifully landscaped rooftop complete with tranquil seating area creating a serene escape within the city.",
+    overview: "Regent Group proudly presents Regent Hasina—a true Masterpiece of refined Architecture and Exclusive Living, located in the prestigious Block-K of West Agargaon. This elegantly designed residence offers 2180 SFT of thoughtfully planned space, featuring 4 spacious bedrooms that embrace privacy, comfort, and sophistication. Crafted for those who appreciate both form and function, Regent Hasina boasts a beautifully landscaped rooftop complete with tranquil seating area creating a serene escape within the city.",
     features: [
       "Full Building Made of Stone",
       "Modern Architectural Design",
@@ -266,7 +266,7 @@ const projectsData: Record<string, ProjectData> = {
       { label: "Overall Progress", value: 100 },
     ],
     glance: [
-      { icon: "address", label: "Address", value: "Block – K, Bashundhara R/A, Dhaka" },
+      { icon: "address", label: "Address", value: "Block – K, West Agargaon, Dhaka" },
       { icon: "size", label: "Size", value: "2180 SFT" },
       { icon: "bedroom", label: "Bedroom", value: "04" },
       { icon: "facing", label: "Project Facing", value: "North" },
@@ -291,10 +291,10 @@ const projectsData: Record<string, ProjectData> = {
   },
   "regent-sapphire": {
     name: "Regent Sapphire",
-    tagline: "Prestigious North-Facing Living in Bashundhara R/A",
+    tagline: "Prestigious North-Facing Living in West Agargaon",
     status: "ongoing" as const,
     heroImage: img_m_Modern,
-    overview: "Regent Sapphire is a prestigious North-Facing residential development in the serene and secure neighborhood of Block-L of Bashundhara R/A. Each Floor is dedicated to a single, expansive 2650 SFT apartment—thoughtfully designed for optimum Natural Light, Cross-Ventilation and Seamless Living. What truly sets Regent Sapphire apart is its impressive Wide Façade, a Rare Architectural advantage in Bashundhara, which not only enhances the building's aesthetic appeal but also allows for a grander presence and more open interior layouts. The building blends Modern elegance with functional design, featuring a beautifully landscaped rooftop for leisure and social gatherings. Nestled in a fully planned area, Regent Sapphire enjoys close proximity to essential amenities including a mosque, reputed schools and more—offering residents a lifestyle of both luxury and convenience in one of Dhaka's most sought-after locations.",
+    overview: "Regent Sapphire is a prestigious North-Facing residential development in the serene and secure neighborhood of Block-L of West Agargaon. Each Floor is dedicated to a single, expansive 2650 SFT apartment—thoughtfully designed for optimum Natural Light, Cross-Ventilation and Seamless Living. What truly sets Regent Sapphire apart is its impressive Wide Façade, a Rare Architectural advantage in West Agargaon, which not only enhances the building's aesthetic appeal but also allows for a grander presence and more open interior layouts. The building blends Modern elegance with functional design, featuring a beautifully landscaped rooftop for leisure and social gatherings. Nestled in a fully planned area, Regent Sapphire enjoys close proximity to essential amenities including a mosque, reputed schools and more—offering residents a lifestyle of both luxury and convenience in one of Dhaka's most sought-after locations.",
     features: [
       "Well Ventilated Apartment",
       "High-Capacity Generator Backup",
@@ -307,7 +307,7 @@ const projectsData: Record<string, ProjectData> = {
       { label: "Overall Progress", value: 5 },
     ],
     glance: [
-      { icon: "address", label: "Address", value: "Block-L, Bashundhara R/A, Dhaka" },
+      { icon: "address", label: "Address", value: "Block-L, West Agargaon, Dhaka" },
       { icon: "size", label: "Size", value: "2650 SFT" },
       { icon: "bedroom", label: "Bedroom", value: "04" },
       { icon: "facing", label: "Project Facing", value: "North" },
@@ -351,7 +351,7 @@ const projectsData: Record<string, ProjectData> = {
       { label: "Overall Progress", value: 5 },
     ],
     glance: [
-      { icon: "address", label: "Address", value: "Block- K, Bashundara R/A, Dhaka" },
+      { icon: "address", label: "Address", value: "Block- K, West Agargaon, Dhaka" },
       { icon: "size", label: "Size", value: "2450 SFT" },
       { icon: "bedroom", label: "Bedroom", value: "04" },
       { icon: "facing", label: "Project Facing", value: "West" },
