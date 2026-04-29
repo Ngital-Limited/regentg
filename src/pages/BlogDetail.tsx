@@ -93,7 +93,7 @@ const BlogDetail = () => {
             </h1>
 
             {/* Divider + Share */}
-            <div className="mb-10 flex items-center justify-between gap-4 flex-wrap">
+            <div className="mb-10 flex items-center justify-between gap-4 flex-wrap print-omit">
               <div className="w-16 h-[2px] bg-primary" />
               <ShareButton title={post.title} text={post.excerpt} />
             </div>
