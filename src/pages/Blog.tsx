@@ -41,7 +41,7 @@ const Blog = () => {
                 <img
                   src={blogPosts[0].image}
                   alt={blogPosts[0].title}
-                  className="w-full h-full object-cover aspect-video lg:aspect-auto group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover aspect-card lg:aspect-auto group-hover:scale-105 transition-transform duration-700"
                   width={800}
                   height={512}
                 />
