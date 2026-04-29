@@ -134,3 +134,135 @@
 .custom-popup .leaflet-popup-close-button {
   color: hsl(200 20% 70%) !important;
 }
+
+/* ===========================
+   Print-friendly layout
+   =========================== */
+@media print {
+  /* Page setup with title + URL header */
+  @page {
+    margin: 18mm 16mm 18mm 16mm;
+  }
+
+  /* Force light background and dark text for ink-friendly print */
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  /* Hide chrome that doesn't belong on paper */
+  nav,
+  header nav,
+  footer,
+  .no-print,
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* When a page is in print-article mode, show only the article */
+  body.print-article .print-hide,
+  body.print-article nav,
+  body.print-article footer,
+  body.print-article [data-radix-popper-content-wrapper],
+  body.print-article [role="dialog"] {
+    display: none !important;
+  }
+
+  body.print-article main,
+  body.print-article .print-area {
+    display: block !important;
+  }
+
+  /* Cleaner typography for print */
+  .print-area,
+  .print-area * {
+    color: #111111 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .print-area {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 11.5pt;
+    line-height: 1.6;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-area h1 {
+    font-size: 22pt;
+    line-height: 1.2;
+    margin: 0 0 8pt 0;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  .print-area h2 {
+    font-size: 15pt;
+    margin-top: 16pt;
+    margin-bottom: 6pt;
+    font-weight: 600;
+  }
+
+  .print-area p {
+    margin: 0 0 8pt 0;
+    text-align: left;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Optimized images for print */
+  .print-area img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    filter: none !important;
+    margin: 8pt 0;
+  }
+
+  /* Drop hero gradient overlays etc. */
+  .print-area .absolute,
+  .print-area [class*="gradient"] {
+    background: transparent !important;
+  }
+
+  /* Print-only header injected via JS on each printable page */
+  .print-header {
+    display: block !important;
+    border-bottom: 1px solid #999;
+    padding-bottom: 6pt;
+    margin-bottom: 14pt;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 9pt;
+    color: #444 !important;
+  }
+  .print-header .print-title {
+    display: block;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #111 !important;
+    margin-bottom: 2pt;
+  }
+  .print-header .print-url {
+    word-break: break-all;
+  }
+
+  /* Hide post-navigation, related posts, share buttons, back links on print */
+  .print-area .print-omit {
+    display: none !important;
+  }
+
+  a, a:visited {
+    text-decoration: none;
+    color: #111 !important;
+  }
+}
+
+/* Hide the print-only header on screen */
+.print-header {
+  display: none;
+}
+
