@@ -36,7 +36,7 @@ const News = () => {
                   to={`/news/${item.slug}`}
                   className="flex flex-col h-full border border-border bg-card overflow-hidden hover:border-primary/30 transition-all group cursor-pointer"
                 >
-                  <div className="aspect-video overflow-hidden bg-muted shrink-0">
+                  <div className="aspect-card overflow-hidden bg-muted shrink-0">
                     {item.image && (
                       <img
                         src={item.image}

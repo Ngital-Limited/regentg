@@ -70,6 +70,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      aspectRatio: {
+        // Shared aspect ratio for News & Blog card image containers
+        card: "16 / 9",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
