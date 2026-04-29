@@ -266,7 +266,7 @@ const projectsData: Record<string, ProjectData> = {
       { label: "Overall Progress", value: 100 },
     ],
     glance: [
-      { icon: "address", label: "Address", value: "Block – K, Bashundhara R/A, Dhaka" },
+      { icon: "address", label: "Address", value: "Block – K, West Agargaon, Dhaka" },
       { icon: "size", label: "Size", value: "2180 SFT" },
       { icon: "bedroom", label: "Bedroom", value: "04" },
       { icon: "facing", label: "Project Facing", value: "North" },
