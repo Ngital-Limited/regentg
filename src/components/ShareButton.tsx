@@ -157,9 +157,11 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
+          ref={triggerRef}
           onClick={handleTriggerClick}
           className={`inline-flex items-center gap-2 px-4 py-2 border border-border bg-card hover:border-primary/50 hover:text-primary text-foreground text-xs uppercase tracking-[0.2em] transition-colors ${className}`}
           aria-label="Share this page"
+          data-no-print
         >
           <Share2 className="w-3.5 h-3.5" />
           {label}
