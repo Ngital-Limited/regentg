@@ -52,6 +52,13 @@ const ShareButton = ({ title, text, url, className = "", label = "Share" }: Shar
     }
   };
 
+  const handlePrint = () => {
+    setOpen(false);
+    if (typeof window !== "undefined") {
+      window.print();
+    }
+  };
+
   const handleNativeShare = async () => {
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
