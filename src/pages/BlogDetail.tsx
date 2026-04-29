@@ -56,7 +56,7 @@ const BlogDetail = () => {
       </section>
 
       {/* Article Content */}
-      <section className="relative -mt-32 z-10 pb-20">
+      <section className="relative -mt-32 z-10 pb-20 print-area">
         <div className="container-regent max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
