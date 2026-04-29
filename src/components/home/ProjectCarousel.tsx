@@ -25,7 +25,6 @@ const projectImages: Record<string, string> = {
 
 const ongoingProjects = [
   "Regent Grand Heritage",
-  "Regent Hasina",
   "Regent Sapphire",
   "Regent Spring Dale",
   "Regent Tara",
