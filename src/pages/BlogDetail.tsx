@@ -98,6 +98,14 @@ const BlogDetail = () => {
               <ShareButton title={post.title} text={post.excerpt} />
             </div>
 
+            {/* Print-only hero image */}
+            <img
+              src={post.image}
+              alt={post.title}
+              className="hidden print:block w-full mb-6"
+              aria-hidden="true"
+            />
+
             {/* Article Body */}
             <article className="space-y-6">
               {post.content.map((paragraph, i) => {
