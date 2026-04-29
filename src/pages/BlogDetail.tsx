@@ -66,7 +66,7 @@ const BlogDetail = () => {
             {/* Back link */}
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors mb-8 print-omit"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to Blog
             </Link>
