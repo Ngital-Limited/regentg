@@ -68,9 +68,9 @@ const HeroSlider = () => {
       ))}
 
       {/* Overlay layers — ensure slider text stays readable on any image */}
-      <div className="absolute inset-0 bg-black/75 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/50 pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-black/85 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/70 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black via-black/90 to-black/40 pointer-events-none" />
 
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-4">
         <div className="container-regent">
