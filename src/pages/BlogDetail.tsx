@@ -161,7 +161,7 @@ const BlogDetail = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-20"
+            className="mt-20 print-omit"
           >
             <h3 className="text-xs uppercase tracking-[0.3em] text-primary mb-8">Related Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
