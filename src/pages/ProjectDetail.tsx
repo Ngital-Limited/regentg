@@ -304,7 +304,7 @@ const projectsData: Record<string, ProjectData> = {
       "Premium Quality Fitting & Features",
     ],
     progress: [
-      { label: "Overall Progress", value: 5 },
+      { label: "Overall Progress", value: 10 },
     ],
     glance: [
       { icon: "address", label: "Address", value: "Block-L, West Agargaon, Dhaka" },
@@ -475,7 +475,7 @@ const projectsData: Record<string, ProjectData> = {
       "Landscaped Roof Top with Seating Arrangement",
     ],
     progress: [
-      { label: "Overall Progress", value: 70 },
+      { label: "Overall Progress", value: 80 },
     ],
     glance: [
       { icon: "address", label: "Address", value: "West Agargaon (Near 60Ft Road), Dhaka-1207" },
