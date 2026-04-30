@@ -515,7 +515,7 @@ const projectsData: Record<string, ProjectData> = {
       "24/7 security with CCTV surveillance",
     ],
     progress: [
-      { label: "Overall Progress", value: 30 },
+      { label: "Overall Progress", value: 20 },
     ],
     glance: [
       { icon: "address", label: "Address", value: "Plot-09, Road-02, Sector-15/I, Uttara, Dhaka" },
