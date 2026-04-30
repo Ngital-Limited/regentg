@@ -102,7 +102,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Rizia",
     status: "ongoing",
-    location: "Uttara",
+    location: "Sector-15/I, Uttara",
     size: "1700 SFT",
     bedrooms: "3-4",
     type: "Residential",
