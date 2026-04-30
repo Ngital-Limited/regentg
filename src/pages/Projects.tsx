@@ -66,7 +66,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Spring Dale",
     status: "ongoing",
-    location: "West Agargaon",
+    location: "Block-K, West Agargaon",
     size: "2450 SFT",
     bedrooms: "4",
     type: "Residential",
