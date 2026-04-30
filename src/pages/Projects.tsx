@@ -121,7 +121,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent South Pearl",
     status: "completed",
-    location: "Khilgaon",
+    location: "Block-A, Khilgaon",
     size: "1348 & 1361 SFT",
     bedrooms: "3",
     type: "Residential",
