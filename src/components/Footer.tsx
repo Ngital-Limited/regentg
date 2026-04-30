@@ -98,7 +98,7 @@ const Footer = () => {
             <img
               src={img_rehab_1024x265}
               alt="REHAB"
-              className="h-8 sm:h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              className="h-5 sm:h-8 md:h-10 w-auto opacity-80 hover:opacity-100 transition-opacity"
               loading="lazy"
             />
           </div>
