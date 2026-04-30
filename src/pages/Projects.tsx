@@ -57,7 +57,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Sapphire",
     status: "ongoing",
-    location: "West Agargaon",
+    location: "Block-L, West Agargaon",
     size: "2650 SFT",
     bedrooms: "4",
     type: "Residential",
