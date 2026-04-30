@@ -69,7 +69,7 @@ const Contact = () => {
             <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">CONTACT US</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-4 text-sm max-w-lg mx-auto">
-              We'd love to hear from you. Reach out to discuss your dream home or any queries.
+              We'd Love To Hear From You. Reach Out To Discuss Your Dream Home Or Any Queries.
             </p>
           </motion.div>
         </div>

@@ -20,7 +20,7 @@ const Blog = () => {
             <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">BLOG</h1>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
             <p className="text-muted-foreground mt-6 max-w-xl mx-auto text-sm leading-relaxed">
-              Insights, guides, and stories from the world of real estate in Bangladesh.
+              Insights, Guides, And Stories From The World Of Real Estate In Bangladesh.
             </p>
           </motion.div>
         </div>
