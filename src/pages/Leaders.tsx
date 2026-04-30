@@ -52,7 +52,7 @@ const Leaders = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-regent-charcoal via-background to-background" />
         <div className="container-regent text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="text-primary text-xs capitalize tracking-[0.3em]">Leadership</span>
+            <span className="text-primary text-xs uppercase tracking-[0.3em]">Leadership</span>
             <h1 className="text-3xl md:text-6xl font-light tracking-wide mt-4 text-foreground">
               OUR LEADERS
             </h1>
