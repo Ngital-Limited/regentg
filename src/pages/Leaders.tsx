@@ -57,7 +57,7 @@ const Leaders = () => {
               OUR LEADERS
             </h1>
             <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-2xl mx-auto">
-              Visionary leadership driving Regent Group's legacy of trust and excellence
+              Visionary Leadership Driving Regent Group's Legacy Of Trust And Excellence
             </p>
             <div className="w-16 h-[2px] bg-primary mt-6 mx-auto" />
           </motion.div>
