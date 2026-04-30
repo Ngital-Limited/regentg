@@ -214,7 +214,7 @@ const projectsData: Record<string, ProjectData> = {
       "Jogging Track",
     ],
     progress: [
-      { label: "Overall Progress", value: 22 },
+      { label: "Overall Progress", value: 50 },
     ],
     glance: [
       { icon: "address", label: "Address", value: "Pragati Sarani Road, Shahjadpur, North Badda, Dhaka" },
