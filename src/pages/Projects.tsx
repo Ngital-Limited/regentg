@@ -48,7 +48,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Hasina",
     status: "completed",
-    location: "West Agargaon",
+    location: "Block-K, West Agargaon",
     size: "2180 SFT",
     bedrooms: "4",
     type: "Residential",
