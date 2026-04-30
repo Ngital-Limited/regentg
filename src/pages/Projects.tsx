@@ -39,7 +39,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Grand Heritage",
     status: "ongoing",
-    location: "Shahjadpur, Gulshan",
+    location: "Shahjadpur, North Badda",
     size: "1350-3280 SFT",
     bedrooms: "3-4",
     type: "Residential",
