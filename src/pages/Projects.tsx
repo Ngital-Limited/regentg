@@ -75,7 +75,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Tara",
     status: "ongoing",
-    location: "Aftabnagar R/A",
+    location: "Block-M, Aftabnagar R/A",
     size: "1650 SFT",
     bedrooms: "3",
     type: "Residential",
