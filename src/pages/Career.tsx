@@ -21,56 +21,6 @@ interface JobOpening {
 
 const openings: JobOpening[] = [
   {
-    title: "Senior Architect",
-    department: "Design",
-    location: "Banani, Dhaka",
-    type: "Full-time",
-    experience: "8+ years",
-    deadline: "Open until filled",
-    overview:
-      "Lead the design of premium residential projects from concept to handover. Translate Regent's design philosophy into refined, livable spaces with strong attention to material, light, and proportion.",
-    responsibilities: [
-      "Lead the architectural design process for ongoing and upcoming residential projects",
-      "Develop concept designs, schematic drawings, and detailed construction documents",
-      "Coordinate with structural, MEP, and interior consultants",
-      "Review submissions for RAJUK and other regulatory approvals",
-      "Mentor junior architects and review their drawings for quality and accuracy",
-      "Conduct regular site visits to ensure design intent is preserved during construction",
-    ],
-    requirements: [
-      "B.Arch from BUET / a recognized university (M.Arch preferred)",
-      "Minimum 8 years of experience in residential / mixed-use developments",
-      "Strong proficiency in AutoCAD, Revit, SketchUp, and Adobe Suite",
-      "Sound knowledge of Bangladesh National Building Code (BNBC) and RAJUK guidelines",
-      "Excellent design sensibility, leadership, and client communication skills",
-    ],
-  },
-  {
-    title: "Civil Engineer",
-    department: "Construction",
-    location: "Banani, Dhaka",
-    type: "Full-time",
-    experience: "4–7 years",
-    deadline: "Open until filled",
-    overview:
-      "Manage day-to-day site execution for high-end residential projects, ensuring construction quality, schedule, and safety standards meet Regent's benchmarks.",
-    responsibilities: [
-      "Plan, supervise, and monitor site construction activities end-to-end",
-      "Ensure work is executed as per approved drawings and specifications",
-      "Coordinate with subcontractors, suppliers, and consultants",
-      "Maintain quality control, safety compliance, and progress reporting",
-      "Prepare BOQs, work schedules, and material requisitions",
-      "Conduct quantity surveys and verify contractor bills",
-    ],
-    requirements: [
-      "B.Sc. in Civil Engineering from a recognized university",
-      "4–7 years of experience in real estate / high-rise construction",
-      "Working knowledge of AutoCAD, MS Project, and estimation tools",
-      "Strong understanding of structural drawings and construction methods",
-      "Leadership, problem-solving, and on-site decision-making skills",
-    ],
-  },
-  {
     title: "Marketing Executive",
     department: "Marketing",
     location: "Banani, Dhaka",
