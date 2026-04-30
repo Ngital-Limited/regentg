@@ -112,7 +112,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Jannat",
     status: "completed",
-    location: "Aftabnagar R/A, Dhaka",
+    location: "Block-F, Aftabnagar R/A",
     size: "1570 & 1670 SFT",
     bedrooms: "3",
     type: "Residential",
