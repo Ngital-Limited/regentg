@@ -139,7 +139,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent South Lake",
     status: "completed",
-    location: "Mahanagar Housing, Hatirjheel",
+    location: "Mahanagar Housing Society, Hatirjheel",
     size: "1744 SFT",
     bedrooms: "3",
     type: "Residential",
