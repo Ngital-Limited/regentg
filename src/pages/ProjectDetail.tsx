@@ -504,7 +504,7 @@ const projectsData: Record<string, ProjectData> = {
     name: "Regent Rizia",
     tagline: "Live at the Center of Growth & Convenience",
     status: "ongoing" as const,
-    heroImage: "https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9",
+    heroImage: "https://images.unsplash.com/photo-1777537896337-62c8f2bface0",
     overview: "Regent Rizia enjoys a truly enviable location at Sector-15/I of Uttara—just a few steps away from the Uttara Metro Rail Station. This excellent connectivity ensures fast, effortless travel across the city, making your daily commute smoother than ever. Surrounded by Major Landmarks like the North Metro Rail Station, Fantasy Island, University of Creative Arts and close to essential facilities like mosque, universities & hospitals, Regent Rizia is perfectly placed for a vibrant yet peaceful lifestyle. Live at the center of growth and convenience while enjoying the comfort of a beautifully designed home at Regent Rizia.",
     features: [
       "Steps Away from Uttara Metro Rail Station",
