@@ -9,7 +9,7 @@ export interface ProjectLocation {
 
 export const projectLocations: ProjectLocation[] = [
   // Ongoing
-  { name: "Regent Grand Heritage", slug: "regent-grand-heritage", location: "Shahjadpur, Gulshan", status: "ongoing", lat: 23.7937, lng: 90.4203 },
+  { name: "Regent Grand Heritage", slug: "regent-grand-heritage", location: "Shahjadpur, North Badda", status: "ongoing", lat: 23.7937, lng: 90.4203 },
   { name: "Regent Sapphire", slug: "regent-sapphire", location: "West Agargaon", status: "ongoing", lat: 23.8190, lng: 90.4350 },
   { name: "Regent Spring Dale", slug: "regent-spring-dale", location: "West Agargaon", status: "ongoing", lat: 23.8200, lng: 90.4440 },
   { name: "Regent Tara", slug: "regent-tara", location: "Aftabnagar R/A", status: "ongoing", lat: 23.7671, lng: 90.4551 },

@@ -39,7 +39,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Grand Heritage",
     status: "ongoing",
-    location: "Shahjadpur, Gulshan",
+    location: "Shahjadpur, North Badda",
     size: "1350-3280 SFT",
     bedrooms: "3-4",
     type: "Residential",
@@ -48,7 +48,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Hasina",
     status: "completed",
-    location: "West Agargaon",
+    location: "Block-K, West Agargaon",
     size: "2180 SFT",
     bedrooms: "4",
     type: "Residential",
@@ -57,7 +57,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Sapphire",
     status: "ongoing",
-    location: "West Agargaon",
+    location: "Block-L, West Agargaon",
     size: "2650 SFT",
     bedrooms: "4",
     type: "Residential",
@@ -66,7 +66,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Spring Dale",
     status: "ongoing",
-    location: "West Agargaon",
+    location: "Block-K, West Agargaon",
     size: "2450 SFT",
     bedrooms: "4",
     type: "Residential",
@@ -75,7 +75,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Tara",
     status: "ongoing",
-    location: "Aftabnagar R/A",
+    location: "Block-M, Aftabnagar R/A",
     size: "1650 SFT",
     bedrooms: "3",
     type: "Residential",
@@ -102,7 +102,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Rizia",
     status: "ongoing",
-    location: "Uttara",
+    location: "Sector-15/I, Uttara",
     size: "1700 SFT",
     bedrooms: "3-4",
     type: "Residential",
@@ -112,7 +112,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent Jannat",
     status: "completed",
-    location: "Aftabnagar R/A, Dhaka",
+    location: "Block-F, Aftabnagar R/A",
     size: "1570 & 1670 SFT",
     bedrooms: "3",
     type: "Residential",
@@ -121,7 +121,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent South Pearl",
     status: "completed",
-    location: "Khilgaon",
+    location: "Block-A, Khilgaon",
     size: "1348 & 1361 SFT",
     bedrooms: "3",
     type: "Residential",
@@ -139,7 +139,7 @@ const allProjects: ProjectInfo[] = [
   {
     name: "Regent South Lake",
     status: "completed",
-    location: "Mahanagar Housing, Hatirjheel",
+    location: "Mahanagar Housing Society, Hatirjheel",
     size: "1744 SFT",
     bedrooms: "3",
     type: "Residential",
